@@ -1,0 +1,68 @@
+[
+  {
+    "id": "c1",
+    "name": "Trần Thị Bích",
+    "email": "bich.tran@gmail.com",
+    "phone": "0901234567",
+    "address": "12 Nguyễn Trãi, Quận 1, TP.HCM",
+    "joinDate": "2025-03-14",
+    "totalOrders": 8,
+    "totalSpent": 2450000,
+    "tier": "Vàng"
+  },
+  {
+    "id": "c2",
+    "name": "Lê Văn Cường",
+    "email": "cuong.le@gmail.com",
+    "phone": "0912345678",
+    "address": "45 Lê Lợi, Quận Hải Châu, Đà Nẵng",
+    "joinDate": "2025-05-02",
+    "totalOrders": 3,
+    "totalSpent": 680000,
+    "tier": "Bạc"
+  },
+  {
+    "id": "c3",
+    "name": "Phạm Thị Duyên",
+    "email": "duyen.pham@gmail.com",
+    "phone": "0923456789",
+    "address": "78 Trần Phú, Quận Ba Đình, Hà Nội",
+    "joinDate": "2025-01-20",
+    "totalOrders": 15,
+    "totalSpent": 5230000,
+    "tier": "Kim cương"
+  },
+  {
+    "id": "c4",
+    "name": "Hoàng Minh Đức",
+    "email": "duc.hoang@gmail.com",
+    "phone": "0934567890",
+    "address": "9 Nguyễn Huệ, Quận 1, TP.HCM",
+    "joinDate": "2025-06-11",
+    "totalOrders": 1,
+    "totalSpent": 150000,
+    "tier": "Mới"
+  },
+  {
+    "id": "c5",
+    "name": "Vũ Thị Hoa",
+    "email": "hoa.vu@gmail.com",
+    "phone": "0945678901",
+    "address": "22 Hai Bà Trưng, TP. Huế",
+    "joinDate": "2025-02-08",
+    "totalOrders": 6,
+    "totalSpent": 1920000,
+    "tier": "Vàng"
+  },
+  {
+    "id": "c6",
+    "name": "Đặng Quốc Huy",
+    "email": "huy.dang@gmail.com",
+    "phone": "0956789012",
+    "address": "5 Phan Chu Trinh, TP. Cần Thơ",
+    "joinDate": "2025-04-27",
+    "totalOrders": 4,
+    "totalSpent": 890000,
+    "tier": "Bạc"
+  }
+]

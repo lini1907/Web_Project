@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="../assets/logo.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mua Chung - Giá Sỉ | FarmTable</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/be-vietnam-pro@1.2.0/dist/font/static/font.css" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <link rel="stylesheet" href="../CSS/style.css">
+  
+  <style>
+    body { font-family: 'Be Vietnam Pro', sans-serif; }
+    .countdown-timer { font-weight: bold; color: #d4183d; }
+    .progress-bar { background: #E5E7EB; border-radius: 999px; height: 8px; overflow: hidden; }
+    .progress-fill { background: #40916C; height: 100%; }
+    .deal-card { border: 1px solid #E5E7EB; border-radius: 16px; background: white; transition: all 0.3s; }
+    .deal-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+    .tab-button { padding: 8px 16px; border-bottom: 3px solid transparent; cursor: pointer; font-weight: 500; transition: all 0.3s; }
+    .tab-button.active { border-bottom-color: #1B4332; color: #1B4332; }
+    .tab-button:not(.active) { color: #6B7280; }
+  </style>
+</head>
+<body class="bg-[#F0FDF4]">
+  <nav id="navbar-container"></nav>
+
+  <div class="relative h-[280px] w-full bg-[#1B4332] overflow-hidden">
+    <img src="https://images.unsplash.com/photo-1488459716781-31db52582fe9?auto=format&fit=crop&q=80&w=1200" 
+         alt="Group Buy" class="absolute inset-0 w-full h-full object-cover opacity-40 mix-blend-overlay">
+    <div class="absolute inset-0 flex flex-col items-center justify-center text-white px-4 text-center">
+      <div class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-1.5 rounded-full text-sm font-medium mb-4">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.856-1.487M15 10a3 3 0 11-6 0 3 3 0 016 0zM6 20a9 9 0 0118 0"></path>
+        </svg>
+        Cộng đồng mua sỉ FarmTable
+      </div>
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">Mua Chung - Giá Sỉ</h1>
+      <p class="text-lg text-white/90 max-w-2xl">
+        Gom đơn trực tiếp từ nhà vườn, cắt giảm khâu trung gian để nhận giá cực tốt cho nông sản tươi mới mỗi ngày.
+      </p>
+    </div>
+  </div>
+
+  <div class="max-w-[1200px] mx-auto px-4 -mt-8 relative z-10">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+      <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 flex items-center gap-4">
+        <div class="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center text-blue-600">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.856-1.487M15 10a3 3 0 11-6 0 3 3 0 016 0zM6 20a9 9 0 0118 0"></path>
+          </svg>
+        </div>
+        <div>
+          <p class="text-gray-500 text-sm">Người đang tham gia</p>
+          <p class="text-2xl font-bold text-[#1F2937]">1,284</p>
+        </div>
+      </div>
+      <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 flex items-center gap-4">
+        <div class="w-12 h-12 rounded-full bg-green-50 flex items-center justify-center text-[#40916C]">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8L5.257 19.393A2 2 0 005 18.07V5a2 2 0 012-2h14a2 2 0 012 2v10"></path>
+          </svg>
+        </div>
+        <div>
+          <p class="text-gray-500 text-sm">Tiết kiệm trung bình</p>
+          <p class="text-2xl font-bold text-[#1F2937]">35%</p>
+        </div>
+      </div>
+      <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 flex items-center gap-4">
+        <div class="w-12 h-12 rounded-full bg-purple-50 flex items-center justify-center text-purple-600">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+        </div>
+        <div>
+          <p class="text-gray-500 text-sm">Phiên đã thành công</p>
+          <p class="text-2xl font-bold text-[#1F2937]">856</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 mb-8">
+      <h2 class="text-lg font-bold text-[#1B4332] mb-4 flex items-center gap-2">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+        Cách thức hoạt động
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6 text-sm">
+        <div>
+          <div class="font-bold text-[#40916C] mb-1">1. Chọn sản phẩm</div>
+          <p class="text-gray-600">Tìm sản phẩm đang mở bán gom chung từ các nông trại.</p>
+        </div>
+        <div>
+          <div class="font-bold text-[#40916C] mb-1">2. Đặt cọc</div>
+          <p class="text-gray-600">Thanh toán cọc 20% để giữ chỗ và xác nhận tham gia.</p>
+        </div>
+        <div>
+          <div class="font-bold text-[#40916C] mb-1">3. Chờ gom đủ đơn</div>
+          <p class="text-gray-600">Khi đủ số lượng, nhà vườn sẽ tiến hành thu hoạch ngay.</p>
+        </div>
+        <div>
+          <div class="font-bold text-[#40916C] mb-1">4. Nhận hàng tươi</div>
+          <p class="text-gray-600">Giao đến tận tay bạn trong vòng 24h sau thu hoạch.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex items-center justify-between border-b border-gray-200 mb-8">
+      <div class="flex gap-6">
+        <button class="tab-button active" onclick="switchTab(event, 'active')">Đang diễn ra</button>
+        <button class="tab-button" onclick="switchTab(event, 'upcoming')">Sắp mở bán</button>
+        <button class="tab-button" onclick="switchTab(event, 'done')">Đã hoàn thành</button>
+      </div>
+      <div class="flex items-center gap-3">
+        <a href="shop.html" class="px-6 py-2 border border-[#40916C] text-[#40916C] hover:bg-[#F0FAF3] rounded-xl font-bold transition-colors">
+          Xem Shop
+        </a>
+        <button onclick="openCreateRoomModal()" class="px-6 py-2 bg-[#F97316] hover:bg-[#ea580c] text-white rounded-xl font-bold transition-colors">
+          + Tạo phòng mới
+        </button>
+      </div>
+    </div>
+
+    <div id="deals-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pb-16">
+    </div>
+  </div>
+
+  <footer id="footer-container"></footer>
+
+  <div id="modal-overlay" style="display: none;" class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+    <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-y-auto">
+      <div id="modal-content"></div>
+    </div>
+  </div>
+
+  <!-- CONFIRM JOIN MODAL -->
+  <div id="join-confirm-overlay" style="display: none;" class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+    <div class="bg-white rounded-2xl shadow-2xl max-w-sm w-full p-6 text-center">
+      <div class="w-14 h-14 rounded-full bg-[#F0FAF3] flex items-center justify-center text-[#40916C] mx-auto mb-4">
+        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+        </svg>
+      </div>
+      <h3 class="text-lg font-bold text-[#1F2937] mb-2">Xác nhận đặt mua chung</h3>
+      <p id="join-confirm-text" class="text-gray-600 text-sm mb-6"></p>
+      <div class="flex gap-3">
+        <button onclick="closeJoinConfirm()" class="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold py-2.5 rounded-lg transition-colors">Hủy</button>
+        <button onclick="acceptJoinConfirm()" class="flex-1 bg-[#40916C] hover:bg-[#2D6A4F] text-white font-bold py-2.5 rounded-lg transition-colors">Xác nhận</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="../JS/cart.js"></script>
+  <script src="../JS/account.js"></script>
+  <script src="../JS/dom.js"></script>
+  
+  <script>
+    const allDeals = [
+      {
+        id: 1,
+        name: "Cải bó xôi Đà Lạt VietGAP",
+        farm: "Vườn rau chú Năm, Đức Trọng",
+        retailPrice: 45000,
+        groupPrice: 28000,
+        totalNeeded: 50,
+        currentCount: 35,
+        unit: "kg",
+        endTime: 4*3600 + 23*60 + 15,
+        image: "https://images.unsplash.com/photo-1597362925123-77861d3fbac7?q=80&w=400",
+        status: "active",
+        category: "active"
+      },
+      {
+        id: 2,
+        name: "Táo Fuji nhập khẩu",
+        farm: "HTX Nông nghiệp Xanh",
+        retailPrice: 250000,
+        groupPrice: 180000,
+        totalNeeded: 20,
+        currentCount: 18,
+        unit: "hộp 500g",
+        endTime: 1*3600 + 15*60 + 30,
+        image: "https://images.unsplash.com/photo-1487376480913-24046456a727?q=80&w=400",
+        status: "hot",
+        category: "active"
+      },
+      {
+        id: 3,
+        name: "Cam sành Vĩnh Long",
+        farm: "Nhà vườn cô Ba, Bến Tre",
+        retailPrice: 120000,
+        groupPrice: 85000,
+        totalNeeded: 100,
+        currentCount: 42,
+        unit: "kg",
+        endTime: 12*3600 + 45*60,
+        image: "https://images.unsplash.com/photo-1592558480962-903b06077406?q=80&w=400",
+        status: "active",
+        category: "active"
+      },
+      {
+        id: 4,
+        name: "Cà chua Cherry Thủy Canh",
+        farm: "Farm Cầu Đất",
+        retailPrice: 65000,
+        groupPrice: 42000,
+        totalNeeded: 30,
+        currentCount: 30,
+        unit: "kg",
+        endTime: 0,
+        image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=400",
+        status: "success",
+        category: "done"
+      },
+      {
+        id: 5,
+        name: "Dưa lưới sương mai",
+        farm: "Nông trại Mặt Trời",
+        retailPrice: 80000,
+        groupPrice: 55000,
+        totalNeeded: 40,
+        currentCount: 0,
+        unit: "kg",
+        endTime: "Mở bán lúc 08:00 mai",
+        image: "https://images.unsplash.com/photo-1590868309235-ea34bed7bd7f?q=80&w=400",
+        status: "upcoming",
+        category: "upcoming"
+      },
+      {
+        id: 6,
+        name: "Nấm hương tươi",
+        farm: "HTX Nấm Sạch",
+        retailPrice: 150000,
+        groupPrice: 110000,
+        totalNeeded: 20,
+        currentCount: 0,
+        unit: "kg",
+        endTime: "Mở bán lúc 10:00 mai",
+        image: "https://images.unsplash.com/photo-1540420773420-3366772f4999?q=80&w=400",
+        status: "upcoming",
+        category: "upcoming"
+      },
+      {
+        id: 7,
+        name: "Bơ sáp 034",
+        farm: "Vườn bơ chú Sáu",
+        retailPrice: 90000,
+        groupPrice: 60000,
+        totalNeeded: 50,
+        currentCount: 50,
+        unit: "kg",
+        endTime: 0,
+        image: "https://images.unsplash.com/photo-1610832958506-aa56368176cf?q=80&w=400",
+        status: "success",
+        category: "done"
+      },
+      {
+        id: 8,
+        name: "Khoai lang mật Đà Lạt",
+        farm: "Nông trại Sương Mai",
+        retailPrice: 55000,
+        groupPrice: 38000,
+        totalNeeded: 60,
+        currentCount: 21,
+        unit: "kg",
+        endTime: 6*3600 + 10*60,
+        image: "https://images.unsplash.com/photo-1590779033100-9f60a05a013d?q=80&w=400",
+        status: "active",
+        category: "active"
+      },
+      {
+        id: 9,
+        name: "Tôm sú tươi Cà Mau",
+        farm: "HTX Thủy sản Cà Mau",
+        retailPrice: 320000,
+        groupPrice: 250000,
+        totalNeeded: 25,
+        currentCount: 9,
+        unit: "kg",
+        endTime: 9*3600 + 30*60,
+        image: "https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?q=80&w=400",
+        status: "active",
+        category: "active"
+      },
+      {
+        id: 10,
+        name: "Sữa tươi trang trại Mộc Châu",
+        farm: "Trang trại bò sữa Mộc Châu",
+        retailPrice: 42000,
+        groupPrice: 30000,
+        totalNeeded: 40,
+        currentCount: 0,
+        unit: "lốc 4 hộp",
+        endTime: "Mở bán lúc 09:00 mai",
+        image: "https://images.unsplash.com/photo-1550583724-b2692b85b150?q=80&w=400",
+        status: "upcoming",
+        category: "upcoming"
+      },
+      {
+        id: 11,
+        name: "Gà ta thả vườn Đồng Nai",
+        farm: "Trang trại gà thả vườn Đồng Nai",
+        retailPrice: 160000,
+        groupPrice: 130000,
+        totalNeeded: 30,
+        currentCount: 12,
+        unit: "kg",
+        endTime: 5*3600 + 20*60,
+        image: "https://images.unsplash.com/photo-1587593810167-a84920ea0781?q=80&w=400",
+        status: "active",
+        category: "active"
+      }
+    ];
+
+    let currentTab = "active";
+    let timerIntervals = {};
+
+    function formatTime(seconds) {
+      if (typeof seconds !== 'number' || seconds <= 0) return "00:00:00";
+      const h = Math.floor(seconds / 3600);
+      const m = Math.floor((seconds % 3600) / 60);
+      const s = seconds % 60;
+      return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+    }
+
+    function updateCountdown(dealId) {
+      const deal = allDeals.find(d => d.id === dealId);
+      if (!deal || typeof deal.endTime !== 'number') return;
+      
+      deal.endTime--;
+      const element = document.getElementById(`timer-${dealId}`);
+      if (element) {
+        element.textContent = formatTime(deal.endTime);
+        if (deal.endTime <= 0) {
+          clearInterval(timerIntervals[dealId]);
+          element.textContent = "00:00:00";
+        }
+      }
+    }
+
+    function renderDealCard(deal) {
+      const progress = (deal.currentCount / deal.totalNeeded) * 100;
+      const discount = Math.round((1 - deal.groupPrice / deal.retailPrice) * 100);
+      
+      let timerHtml = '';
+      if (typeof deal.endTime === 'number' && deal.endTime > 0) {
+        timerHtml = `<div class="countdown-timer" id="timer-${deal.id}">${formatTime(deal.endTime)}</div>`;
+      } else if (typeof deal.endTime === 'string') {
+        timerHtml = `<div class="text-gray-600 text-sm">${deal.endTime}</div>`;
+      }
+
+      const statusDisplay = {
+        'active': '🔴 Đang diễn ra',
+        'hot': '🔥 Hot - Sắp đủ',
+        'success': '✅ Đã hoàn thành',
+        'upcoming': '⏰ Sắp mở bán'
+      };
+
+      return `
+        <div class="deal-card p-5">
+          <a href="product-detail.html?id=gb-${deal.id}" onclick="saveDealForDetail(${deal.id})" class="relative block mb-4 overflow-hidden rounded-2xl h-40">
+            <img src="${deal.image}" alt="${deal.name}" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+            <div class="absolute top-3 right-3 bg-[#F97316] text-white px-2.5 py-1 rounded-lg text-xs font-bold">-${discount}%</div>
+          </a>
+
+          <a href="product-detail.html?id=gb-${deal.id}" onclick="saveDealForDetail(${deal.id})" class="font-bold text-[#1F2937] mb-1 line-clamp-2 block hover:text-[#40916C] transition-colors">${deal.name}</a>
+          <p class="text-gray-600 text-sm mb-3">🏪 ${deal.farm}</p>
+          
+          <div class="mb-3">
+            <div class="text-xs text-gray-500 mb-1">Tiến độ: ${deal.currentCount}/${deal.totalNeeded} ${deal.unit}</div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: ${progress}%"></div>
+            </div>
+            <div class="text-xs text-gray-500 mt-1">${Math.round(progress)}% hoàn thành</div>
+          </div>
+
+          <div class="flex items-center justify-between mb-3">
+            <div>
+              <span class="text-[#d4183d] font-bold">${deal.groupPrice.toLocaleString('vi-VN')}đ</span>
+              <span class="text-gray-400 line-through text-sm ml-1">${deal.retailPrice.toLocaleString('vi-VN')}đ</span>
+            </div>
+            <div class="text-[#40916C] font-bold text-sm">${formatTime(deal.endTime)}</div>
+          </div>
+
+          <div class="text-center text-xs text-gray-500 mb-3 font-medium">${statusDisplay[deal.status]}</div>
+          ${timerHtml ? `<div class="text-center mb-3">${timerHtml}</div>` : ''}
+          
+          <button class="w-full bg-[#40916C] hover:bg-[#2D6A4F] text-white font-bold py-2 rounded-xl transition-colors"
+                  onclick="confirmGroupBuy({id: 'gb-${deal.id}', name: '${deal.name}', price: ${deal.groupPrice}, image: '${deal.image}', farm: '${deal.farm}', unit: '${deal.unit}'}, this)">
+            Tham gia
+          </button>
+        </div>
+      `;
+    }
+
+    function saveDealForDetail(dealId) {
+      const deal = allDeals.find(d => d.id === dealId);
+      if (!deal) return;
+      const detail = {
+        id: 'gb-' + deal.id,
+        name: deal.name,
+        farm: deal.farm,
+        price: deal.groupPrice,
+        oldPrice: deal.retailPrice,
+        unit: deal.unit,
+        mainImage: deal.image,
+        galleryImages: [],
+        description: `Sản phẩm mua chung giá sỉ trực tiếp từ nông trại "${deal.farm}". Tiến độ gom đơn: ${deal.currentCount}/${deal.totalNeeded} ${deal.unit}.`,
+        certifications: [],
+        rating: 4.8,
+        reviewCount: 0,
+        soldCount: deal.currentCount,
+        badge: 'Mua chung',
+        category: 'mua-chung'
+      };
+      sessionStorage.setItem('ft_detail_' + detail.id, JSON.stringify(detail));
+    }
+
+    function switchTab(event, tab) {
+      currentTab = tab;
+      document.querySelectorAll('.tab-button').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      event.target.classList.add('active');
+      renderDeals();
+    }
+
+    function renderDeals() {
+      const filtered = allDeals.filter(d => d.category === currentTab);
+      const container = document.getElementById('deals-container');
+      container.innerHTML = filtered.map(renderDealCard).join('');
+      
+      filtered.forEach(deal => {
+        if (typeof deal.endTime === 'number' && deal.endTime > 0) {
+          if (timerIntervals[deal.id]) clearInterval(timerIntervals[deal.id]);
+          timerIntervals[deal.id] = setInterval(() => updateCountdown(deal.id), 1000);
+        }
+      });
+    }
+
+    function closeModal() {
+      document.getElementById('modal-overlay').style.display = 'none';
+    }
+
+    function openCreateRoomModal() {
+      const modalContent = document.getElementById('modal-content');
+      modalContent.innerHTML = `
+        <div class="p-6 md:p-8">
+          <div class="flex justify-between items-center mb-6">
+            <h2 class="text-2xl font-bold text-[#1F2937]">Tạo Phòng Mua Chung Mới</h2>
+            <button onclick="closeModal()" class="text-gray-400 hover:text-gray-600 text-2xl">×</button>
+          </div>
+          
+          <form onsubmit="handleCreateRoom(event)" class="space-y-5">
+            <div>
+              <label class="block text-sm font-bold text-[#1F2937] mb-2">Tên sản phẩm *</label>
+              <input id="cr-name" type="text" placeholder="VD: Cà chua bi Đà Lạt" class="w-full px-4 py-2.5 border border-gray-200 rounded-lg focus:outline-none focus:border-[#40916C]" required>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-bold text-[#1F2937] mb-2">Giá bán lẻ (đ) *</label>
+                <input id="cr-retail" type="number" placeholder="50000" class="w-full px-4 py-2.5 border border-gray-200 rounded-lg focus:outline-none focus:border-[#40916C]" required>
+              </div>
+              <div>
+                <label class="block text-sm font-bold text-[#1F2937] mb-2">Giá gom chung (đ) *</label>
+                <input id="cr-group" type="number" placeholder="35000" class="w-full px-4 py-2.5 border border-gray-200 rounded-lg focus:outline-none focus:border-[#40916C]" required>
+              </div>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-bold text-[#1F2937] mb-2">Số lượng cần gom *</label>
+                <input id="cr-total" type="number" placeholder="50" class="w-full px-4 py-2.5 border border-gray-200 rounded-lg focus:outline-none focus:border-[#40916C]" required>
+              </div>
+              <div>
+                <label class="block text-sm font-bold text-[#1F2937] mb-2">Đơn vị (kg, hộp...) *</label>
+                <input id="cr-unit" type="text" placeholder="kg" class="w-full px-4 py-2.5 border border-gray-200 rounded-lg focus:outline-none focus:border-[#40916C]" required>
+              </div>
+            </div>
+            
+            <div>
+              <label class="block text-sm font-bold text-[#1F2937] mb-2">Nông trại *</label>
+              <input id="cr-farm" type="text" placeholder="Tên nông trại, địa chỉ" class="w-full px-4 py-2.5 border border-gray-200 rounded-lg focus:outline-none focus:border-[#40916C]" required>
+            </div>
+            
+            <div>
+              <label class="block text-sm font-bold text-[#1F2937] mb-2">Mô tả sản phẩm</label>
+              <textarea placeholder="Nhập mô tả chi tiết..." class="w-full px-4 py-2.5 border border-gray-200 rounded-lg focus:outline-none focus:border-[#40916C] h-20 resize-none"></textarea>
+            </div>
+            
+            <div class="flex gap-3 pt-4">
+              <button type="submit" class="flex-1 bg-[#40916C] hover:bg-[#2D6A4F] text-white font-bold py-2.5 rounded-lg transition-colors">
+                Tạo Phòng
+              </button>
+              <button type="button" onclick="closeModal()" class="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2.5 rounded-lg transition-colors">
+                Hủy
+              </button>
+            </div>
+          </form>
+        </div>
+      `;
+      document.getElementById('modal-overlay').style.display = 'flex';
+    }
+
+    function handleCreateRoom(event) {
+      event.preventDefault();
+
+      const name = document.getElementById('cr-name').value;
+      const retailPrice = parseInt(document.getElementById('cr-retail').value);
+      const groupPrice = parseInt(document.getElementById('cr-group').value);
+      const totalNeeded = parseInt(document.getElementById('cr-total').value);
+      const unit = document.getElementById('cr-unit').value;
+      const farm = document.getElementById('cr-farm').value;
+
+      const newDeal = {
+        id: allDeals.length + 1,
+        name: name,
+        farm: farm,
+        retailPrice: retailPrice,
+        groupPrice: groupPrice,
+        totalNeeded: totalNeeded,
+        currentCount: 0,
+        unit: unit,
+        endTime: "Mới tạo",
+        image: "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?q=80&w=400",
+        status: "upcoming",
+        category: "upcoming"
+      };
+
+      allDeals.unshift(newDeal);
+      closeModal();
+      showToast("🎉 Tạo phòng thành công! Phòng của bạn nằm ở mục 'Sắp mở bán'.");
+
+      const upcomingTabBtn = document.querySelectorAll('.tab-button')[1];
+      switchTab({target: upcomingTabBtn}, 'upcoming');
+    }
+
+    let pendingJoin = null;
+
+    function confirmGroupBuy(product, button) {
+      pendingJoin = { product, button };
+      document.getElementById('join-confirm-text').textContent =
+        `Bạn có chắc chắn muốn đặt mua chung "${product.name}"? Giá: ${product.price.toLocaleString('vi-VN')}đ — Nông trại: ${product.farm}`;
+      document.getElementById('join-confirm-overlay').style.display = 'flex';
+    }
+
+    function closeJoinConfirm() {
+      pendingJoin = null;
+      document.getElementById('join-confirm-overlay').style.display = 'none';
+    }
+
+    function acceptJoinConfirm() {
+      if (!pendingJoin) return;
+      const { product, button } = pendingJoin;
+
+      addToCart(product);
+      showToast(`Đã tham gia mua chung "${product.name}" 🛒`);
+      button.textContent = '✓ Đã thêm';
+      button.disabled = true;
+      button.classList.add('opacity-60', 'cursor-not-allowed');
+      setTimeout(() => {
+        button.textContent = 'Tham gia';
+        button.disabled = false;
+        button.classList.remove('opacity-60', 'cursor-not-allowed');
+      }, 2000);
+
+      closeJoinConfirm();
+    }
+
+    document.getElementById('join-confirm-overlay').addEventListener('click', function(e) {
+      if (e.target === this) closeJoinConfirm();
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+      if(document.getElementById('navbar-container') && typeof renderNavbar === "function") {
+          document.getElementById('navbar-container').innerHTML = renderNavbar();
+      }
+      if(document.getElementById('footer-container') && typeof renderFooter === "function") {
+          document.getElementById('footer-container').innerHTML = renderFooter();
+      }
+      
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+      renderDeals();
+      if(typeof attachAddToCartEvents === "function") attachAddToCartEvents();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="../assets/logo.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Giải Cứu Nông Sản | FarmTable</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <link rel="stylesheet" href="../CSS/style.css" />
+</head>
+<body class="min-h-screen bg-[#FFF4ED] text-[#1F2937] flex flex-col font-sans">
+
+  <div id="navbar-container"></div>
+
+  <main class="flex-1">
+    <!-- Hero banner -->
+    <div class="relative h-[300px] w-full bg-gradient-to-r from-[#F97316] to-[#40916C] overflow-hidden">
+      <img src="https://images.unsplash.com/photo-1590779033100-9f60a05a013d?q=80&w=400" alt="Giải cứu nông sản"
+        class="absolute inset-0 w-full h-full object-cover opacity-30 mix-blend-overlay" />
+      <div class="absolute inset-0 flex flex-col items-center justify-center text-white px-4 text-center">
+        <span class="bg-white text-[#F97316] px-4 py-1 rounded-full text-sm font-bold uppercase mb-4 shadow-sm">
+          Chiến dịch mỗi ngày
+        </span>
+        <h1 class="text-4xl md:text-5xl font-bold mb-4 drop-shadow-md">Nông sản xấu mã — vẫn ngon như thường</h1>
+        <p class="text-lg text-white/95 max-w-2xl font-medium">
+          Vẻ ngoài không hoàn hảo nhưng chất lượng và hương vị vẫn tuyệt đối. Cùng FarmTable giảm lãng phí thực phẩm và ủng hộ người nông dân!
+        </p>
+      </div>
+    </div>
+
+    <!-- Content -->
+    <div class="max-w-[1200px] mx-auto px-4 md:px-8 py-16">
+      <div class="mb-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div>
+          <h2 class="text-2xl font-bold text-[#1F2937]">Nông sản cần giải cứu hôm nay</h2>
+          <p class="text-gray-600 mt-1">Cập nhật lúc 06:00 sáng. Số lượng có hạn.</p>
+        </div>
+        <div id="category-filters" class="flex overflow-x-auto no-scrollbar gap-2 w-full sm:w-auto">
+          <button class="filter-btn active whitespace-nowrap px-4 py-1.5 rounded-full text-[13px] font-semibold bg-[#F97316] text-white" data-category="all">Tất cả</button>
+          <button class="filter-btn whitespace-nowrap px-4 py-1.5 rounded-full text-[13px] font-medium bg-white text-[#4B5563] hover:bg-gray-100 border border-orange-100" data-category="rau-cu">Rau củ</button>
+          <button class="filter-btn whitespace-nowrap px-4 py-1.5 rounded-full text-[13px] font-medium bg-white text-[#4B5563] hover:bg-gray-100 border border-orange-100" data-category="trai-cay">Trái cây</button>
+          <button class="filter-btn whitespace-nowrap px-4 py-1.5 rounded-full text-[13px] font-medium bg-white text-[#4B5563] hover:bg-gray-100 border border-orange-100" data-category="thit-thuy-san">Thịt cá</button>
+          <button class="filter-btn whitespace-nowrap px-4 py-1.5 rounded-full text-[13px] font-medium bg-white text-[#4B5563] hover:bg-gray-100 border border-orange-100" data-category="trung-sua">Trứng &amp; Sữa</button>
+        </div>
+      </div>
+
+      <div id="rescue-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+
+      <div class="mt-16 bg-orange-100/50 rounded-2xl p-8 border border-orange-200">
+        <h3 class="text-2xl font-bold text-[#1F2937] mb-8 text-center">Tại sao mua nông sản xấu mã?</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+          <div>
+            <div class="w-16 h-16 bg-white text-[#F97316] text-2xl rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-sm">
+              <i data-lucide="leaf" class="w-7 h-7"></i>
+            </div>
+            <h4 class="font-bold text-[#1F2937] mb-2">Chất lượng không đổi</h4>
+            <p class="text-sm text-gray-700">Hương vị và hàm lượng dinh dưỡng hoàn toàn tương đương nông sản loại 1, chỉ khác ở hình thức bên ngoài.</p>
+          </div>
+          <div>
+            <div class="w-16 h-16 bg-white text-[#F97316] text-2xl rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-sm">
+              <i data-lucide="heart-handshake" class="w-7 h-7"></i>
+            </div>
+            <h4 class="font-bold text-[#1F2937] mb-2">Đồng hành cùng nông dân</h4>
+            <p class="text-sm text-gray-700">Giúp người nông dân không bị ép giá hoặc phải bỏ đi mồ hôi công sức của mình sau mỗi vụ mùa.</p>
+          </div>
+          <div>
+            <div class="w-16 h-16 bg-white text-[#F97316] text-2xl rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-sm">
+              <i data-lucide="piggy-bank" class="w-7 h-7"></i>
+            </div>
+            <h4 class="font-bold text-[#1F2937] mb-2">Tiết kiệm & bền vững</h4>
+            <p class="text-sm text-gray-700">Tiết kiệm đến 50% chi phí bữa ăn hằng ngày, đồng thời giảm phát thải khí nhà kính từ rác thải thực phẩm.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="shop.html" class="px-6 py-2.5 bg-[#F97316] hover:bg-[#ea580c] text-white rounded-xl font-bold transition-colors">
+          Xem tất cả sản phẩm tại Shop
+        </a>
+        <a href="mystery-box.html" class="px-6 py-2.5 bg-white border border-orange-200 hover:bg-orange-50 text-[#F97316] rounded-xl font-bold transition-colors">
+          Khám phá Mystery Box
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <div id="footer-container"></div>
+
+  <script src="../JS/cart.js"></script>
+  <script src="../JS/account.js"></script>
+  <script src="../JS/dom.js"></script>
+  <script src="../Ajax/fetch-products.js"></script>
+  <script>
+    var rescueProducts = [];
+    var currentCategory = 'all';
+
+    function renderRescueGrid() {
+      var filtered = rescueProducts.filter(function (p) {
+        return currentCategory === 'all' || p.category === currentCategory;
+      });
+      var container = document.getElementById('rescue-grid');
+      if (filtered.length === 0) {
+        container.innerHTML = '<p class="col-span-full text-center text-gray-500 py-8">Không có sản phẩm trong danh mục này.</p>';
+        return;
+      }
+      var forced = filtered.map(function (p) { return Object.assign({}, p, { badge: 'Giải cứu' }); });
+      container.innerHTML = forced.map(renderProductCard).join('');
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+      attachAddToCartEvents();
+    }
+
+    function setupRescueFilters() {
+      var buttons = document.querySelectorAll('#category-filters .filter-btn');
+      buttons.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          buttons.forEach(function (b) {
+            b.classList.remove('active', 'bg-[#F97316]', 'text-white');
+            b.classList.add('bg-white', 'text-[#4B5563]');
+          });
+          btn.classList.add('active', 'bg-[#F97316]', 'text-white');
+          btn.classList.remove('bg-white', 'text-[#4B5563]');
+          currentCategory = btn.dataset.category;
+          renderRescueGrid();
+        });
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      document.getElementById('navbar-container').innerHTML = renderNavbar();
+      document.getElementById('footer-container').innerHTML = renderFooter();
+      setupMobileMenu();
+      updateCartBadge();
+      lucide.createIcons();
+      setupRescueFilters();
+
+      showLoadingState('rescue-grid');
+      fetch(PRODUCTS_JSON_URL)
+        .then(function (res) {
+          if (!res.ok) throw new Error('HTTP ' + res.status);
+          return res.json();
+        })
+        .then(function (products) {
+          rescueProducts = products.filter(function (p) {
+            return p.badge === 'Giải cứu';
+          });
+          renderRescueGrid();
+        })
+        .catch(function (err) {
+          showErrorState('rescue-grid', err.message);
+        });
+
+      attachAddToCartEvents();
+    });
+  </script>
+</body>
+</html>

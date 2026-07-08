@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="../assets/logo.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FarmTable — Nông sản sạch từ nhà vườn</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <link rel="stylesheet" href="../CSS/style.css" />
+</head>
+<body class="min-h-screen bg-[#F0FDF4] text-[#1F2937] flex flex-col font-sans">
+
+  <div id="navbar-container"></div>
+
+  <main class="flex-1">
+    <div class="max-w-[1200px] mx-auto px-4 md:px-0 py-4 flex flex-col gap-6 pb-12">
+
+      <!-- SECTION 1 — Category sidebar + Hero banner -->
+      <section class="flex gap-4">
+        <div class="w-[220px] h-[280px] bg-white border border-[#E5E7EB] rounded-[8px] overflow-hidden hidden md:flex flex-col flex-shrink-0">
+          <div class="text-[14px] font-bold text-[#1F2937] py-3 px-4 bg-[#F0FAF3] border-b border-[#E5E7EB] flex-shrink-0">Danh mục sản phẩm</div>
+          <div class="flex flex-col text-[13px] font-medium text-[#4B5563] overflow-y-auto thin-scrollbar">
+            <a href="shop.html" class="px-4 py-2.5 hover:bg-[#F0FAF3] hover:text-[#40916C] transition-colors flex items-center gap-2">🥬 Rau lá xanh</a>
+            <a href="shop.html" class="px-4 py-2.5 hover:bg-[#F0FAF3] hover:text-[#40916C] transition-colors flex items-center gap-2">🥕 Củ quả</a>
+            <a href="shop.html" class="px-4 py-2.5 hover:bg-[#F0FAF3] hover:text-[#40916C] transition-colors flex items-center gap-2">🍅 Cà chua &amp; ớt</a>
+            <a href="shop.html" class="px-4 py-2.5 hover:bg-[#F0FAF3] hover:text-[#40916C] transition-colors flex items-center gap-2">🍎 Trái cây tươi</a>
+            <a href="shop.html" class="px-4 py-2.5 hover:bg-[#F0FAF3] hover:text-[#40916C] transition-colors flex items-center gap-2">🌿 Thảo mộc &amp; Herbs</a>
+            <a href="shop.html" class="px-4 py-2.5 hover:bg-[#F0FAF3] hover:text-[#40916C] transition-colors flex items-center gap-2">🥚 Trứng &amp; Sữa tươi</a>
+            <a href="shop.html" class="px-4 py-2.5 hover:bg-[#F0FAF3] hover:text-[#40916C] transition-colors flex items-center gap-2">🍄 Nấm các loại</a>
+            <a href="rescue.html" class="px-4 py-2.5 hover:bg-[#F0FAF3] hover:text-[#40916C] transition-colors flex items-center justify-between">
+              <span class="flex items-center gap-2">♻️ Nông sản xấu mã</span>
+              <span class="bg-[#D8F3DC] text-[#1B4332] text-[9px] font-bold px-1.5 py-0.5 rounded-sm">GIẢI CỨU</span>
+            </a>
+            <a href="mystery-box.html" class="px-4 py-2.5 hover:bg-[#F0FAF3] hover:text-[#40916C] transition-colors flex items-center justify-between">
+              <span class="flex items-center gap-2">🎁 Mystery Box</span>
+              <span class="bg-purple-100 text-[#7C3AED] text-[9px] font-bold px-1.5 py-0.5 rounded-sm">BÍ ẨN</span>
+            </a>
+            <a href="group-buy.html" class="px-4 py-2.5 hover:bg-[#F0FAF3] hover:text-[#40916C] transition-colors flex items-center justify-between">
+              <span class="flex items-center gap-2">👥 Đang mua chung</span>
+              <span class="bg-orange-100 text-[#F97316] text-[9px] font-bold px-1.5 py-0.5 rounded-sm">HOT</span>
+            </a>
+            <a href="farm.html" class="px-4 py-2.5 hover:bg-[#F0FAF3] hover:text-[#40916C] transition-colors flex items-center gap-2">🏪 Cửa hàng nông trại</a>
+          </div>
+        </div>
+
+        <div class="flex-1 flex gap-4 overflow-hidden h-[280px]">
+          <div id="hero-banner" class="relative flex-1 rounded-[8px] overflow-hidden group">
+            <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&amp;fit=crop&amp;q=80&amp;w=1200" alt="Banner" class="absolute inset-0 w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent"></div>
+            <div class="absolute inset-y-0 left-0 p-8 flex flex-col justify-center text-white max-w-[400px]">
+              <div id="dom-demo-banner" class="bg-[#F97316] text-white text-[10px] font-bold px-2 py-1 rounded-sm w-max mb-3 flex items-center gap-1">
+                ⚡ FLASH SALE kết thúc sau <span id="hero-flash-timer">02:14:35</span>
+              </div>
+              <h2 class="text-[28px] font-bold leading-tight mb-2">Rau củ hữu cơ<br/>Giảm đến 50%</h2>
+              <p class="text-[14px] text-white/90 mb-6">Nông sản tươi từ Đà Lạt, Lâm Đồng</p>
+              <a href="shop.html" class="bg-white text-[#40916C] font-bold px-6 py-2 rounded-[4px] w-max hover:bg-gray-100 transition-colors text-[14px] inline-block">Mua ngay</a>
+            </div>
+            <div id="hero-dots" class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5">
+              <div class="w-2 h-2 rounded-full bg-[#40916C]"></div>
+              <div class="w-2 h-2 rounded-full bg-white/50"></div>
+              <div class="w-2 h-2 rounded-full bg-white/50"></div>
+            </div>
+          </div>
+
+          <div class="hidden lg:flex flex-col gap-4 w-[280px] flex-shrink-0">
+            <a href="shop.html?sale=1" class="flex-1 rounded-[8px] bg-[#F97316] relative overflow-hidden flex flex-col items-center justify-center text-white group hover:opacity-95 transition-opacity">
+              <div class="absolute inset-0 opacity-20 dot-pattern"></div>
+              <i data-lucide="clock" class="w-8 h-8 mb-2"></i>
+              <div class="font-bold text-[18px]">Flash Sale 12h</div>
+              <div class="text-[12px] bg-white/20 px-2 py-1 rounded-sm mt-2">Đang diễn ra</div>
+            </a>
+            <a href="mystery-box.html" class="flex-1 rounded-[8px] bg-[#7C3AED] relative overflow-hidden flex flex-col items-center justify-center text-white group hover:opacity-95 transition-opacity">
+              <div class="absolute inset-0 opacity-20 dot-pattern"></div>
+              <span class="text-[32px] leading-none mb-1">🎁</span>
+              <div class="font-bold text-[18px]">Mystery Box hôm nay</div>
+              <div class="text-[12px] bg-white/20 px-2 py-1 rounded-sm mt-2">Bất ngờ &amp; Tiết kiệm</div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 2 — FLASH SALE BAR -->
+      <section class="bg-white border border-[#E5E7EB] py-4 w-full rounded-[12px]">
+        <div class="max-w-[1200px] mx-auto px-4 md:px-6">
+          <div class="flex justify-between items-center mb-4">
+            <div class="flex items-center gap-4">
+              <h2 class="text-[20px] font-bold text-[#F97316] flex items-center gap-1">⚡ FLASH SALE</h2>
+              <div class="flex items-center gap-1.5 text-[14px] font-medium text-gray-600 hidden sm:flex">
+                <span>Kết thúc sau:</span>
+                <div id="flash-timer" class="flex gap-1">
+                  <span class="bg-[#1F2937] text-white px-1.5 py-0.5 rounded-[2px] font-mono leading-none timer-h">01</span>
+                  <span>:</span>
+                  <span class="bg-[#1F2937] text-white px-1.5 py-0.5 rounded-[2px] font-mono leading-none timer-m">45</span>
+                  <span>:</span>
+                  <span class="bg-[#1F2937] text-white px-1.5 py-0.5 rounded-[2px] font-mono leading-none timer-s">23</span>
+                </div>
+              </div>
+            </div>
+            <a href="shop.html?sale=1" class="text-[#40916C] text-[14px] font-medium hover:underline flex items-center gap-1">
+              Xem tất cả <i data-lucide="arrow-right" class="w-3 h-3"></i>
+            </a>
+          </div>
+          <div id="flash-sale-strip" class="flex gap-4 overflow-x-auto no-scrollbar pb-2 snap-x"></div>
+        </div>
+      </section>
+
+      <!-- SECTION 3 — 3 MINI-BANNERS -->
+      <section class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <a href="rescue.html" class="bg-[#D8F3DC] rounded-[12px] p-3 flex items-center gap-3 h-[72px] md:h-[84px] group hover:-translate-y-1 transition-transform">
+          <span class="text-[28px] md:text-[32px] leading-none">🥕</span>
+          <div class="flex-1">
+            <h3 class="text-[14px] font-bold text-[#1B4332] mb-0.5 group-hover:text-[#40916C] transition-colors">Nông sản xấu mã</h3>
+            <p class="text-[11px] text-[#1B4332]/80 leading-tight">Giảm 30–50% — vẫn ngon như thường</p>
+          </div>
+          <i data-lucide="arrow-right" class="w-4 h-4 text-[#1B4332]"></i>
+        </a>
+        <a href="mystery-box.html" class="bg-[#EDE9FE] rounded-[12px] p-3 flex items-center gap-3 h-[72px] md:h-[84px] group hover:-translate-y-1 transition-transform">
+          <span class="text-[28px] md:text-[32px] leading-none">🎁</span>
+          <div class="flex-1">
+            <h3 class="text-[14px] font-bold text-[#7C3AED] mb-0.5">Mystery Box hôm nay</h3>
+            <p class="text-[11px] text-[#7C3AED]/80 leading-tight">Combo rau bí ẩn theo mùa siêu tiết kiệm</p>
+          </div>
+          <i data-lucide="arrow-right" class="w-4 h-4 text-[#7C3AED]"></i>
+        </a>
+        <a href="group-buy.html" class="bg-[#FFEDD5] rounded-[12px] p-3 flex items-center gap-3 h-[72px] md:h-[84px] group hover:-translate-y-1 transition-transform">
+          <span class="text-[28px] md:text-[32px] leading-none">👥</span>
+          <div class="flex-1">
+            <h3 class="text-[14px] font-bold text-[#F97316] mb-0.5">Mua chung giá sỉ</h3>
+            <p class="text-[11px] text-[#F97316]/80 leading-tight">Đang gom: 14 phòng hoạt động</p>
+          </div>
+          <i data-lucide="arrow-right" class="w-4 h-4 text-[#F97316]"></i>
+        </a>
+      </section>
+
+      <!-- SECTION 4 — PRODUCT GRID (Ajax loaded) -->
+      <section class="bg-white p-4 md:p-6 rounded-[12px] border border-[#E5E7EB]">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
+          <h2 class="text-[20px] font-bold text-[#1F2937]">Nông sản nổi bật</h2>
+          <div id="category-filters" class="flex overflow-x-auto no-scrollbar gap-2 w-full sm:w-auto">
+            <button class="filter-btn active whitespace-nowrap px-4 py-1.5 rounded-full text-[13px] font-semibold bg-[#40916C] text-white">Tất cả</button>
+            <button class="filter-btn whitespace-nowrap px-4 py-1.5 rounded-full text-[13px] font-medium bg-[#F8F3EC] text-[#4B5563] hover:bg-gray-200">Rau củ</button>
+            <button class="filter-btn whitespace-nowrap px-4 py-1.5 rounded-full text-[13px] font-medium bg-[#F8F3EC] text-[#4B5563] hover:bg-gray-200">Trái cây</button>
+            <button class="filter-btn whitespace-nowrap px-4 py-1.5 rounded-full text-[13px] font-medium bg-[#F8F3EC] text-[#4B5563] hover:bg-gray-200">Giải cứu</button>
+            <button class="filter-btn whitespace-nowrap px-4 py-1.5 rounded-full text-[13px] font-medium bg-[#F8F3EC] text-[#4B5563] hover:bg-gray-200">Mua chung</button>
+          </div>
+        </div>
+        <div id="product-grid-container" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4"></div>
+        <div class="flex justify-center mt-6">
+          <a href="shop.html" class="inline-flex items-center justify-center bg-white border border-gray-300 text-gray-700 px-8 py-2 rounded-[6px] font-medium text-[14px] hover:bg-gray-50 transition-colors">Xem thêm sản phẩm</a>
+        </div>
+      </section>
+
+      <!-- SECTION 5 — FARM SPOTLIGHT -->
+      <section class="bg-white p-4 md:p-6 rounded-[12px] border border-[#E5E7EB]">
+        <div class="flex justify-between items-center mb-4">
+          <h2 class="text-[20px] font-bold text-[#1F2937]">Nông trại được kiểm duyệt</h2>
+          <a href="farm.html" class="text-[#40916C] text-[14px] font-medium hover:underline flex items-center gap-1">Xem tất cả <i data-lucide="arrow-right" class="w-3 h-3"></i></a>
+        </div>
+        <div class="flex gap-4 overflow-x-auto no-scrollbar snap-x">
+          <div class="w-[240px] flex-shrink-0 bg-white border border-[#E5E7EB] rounded-[12px] overflow-hidden hover:shadow-[0_4px_12px_rgba(0,0,0,0.08)] transition-all snap-start">
+            <div class="h-[100px] w-full bg-gray-200 relative"><img src="https://images.unsplash.com/photo-1560493676-04071c5f467b?q=80&amp;w=1080" alt="HTX Nông nghiệp Đức Trọng" class="w-full h-full object-cover" /></div>
+            <div class="px-4 pb-4 relative">
+              <div class="w-[48px] h-[48px] rounded-full border-2 border-white bg-white overflow-hidden absolute -top-6 left-4 shadow-sm"><img src="https://images.unsplash.com/photo-1530507629858-e4977d30e9e0?q=80&amp;w=200" alt="Farmer" class="w-full h-full object-cover" /></div>
+              <div class="pt-8">
+                <h3 class="font-bold text-[14px] text-[#1F2937] leading-tight mb-1">HTX Nông nghiệp Đức Trọng</h3>
+                <div class="flex items-center gap-1 text-[12px] text-gray-500 mb-2"><i data-lucide="map-pin" class="w-3 h-3"></i> Lâm Đồng</div>
+                <div class="flex gap-2 text-[11px] font-medium text-[#40916C] mb-3"><span class="bg-[#F0FAF3] px-1.5 py-0.5 rounded-sm">⭐ 4.9</span><span class="bg-[#F0FAF3] px-1.5 py-0.5 rounded-sm">🌿 Hữu cơ</span><span class="bg-[#F0FAF3] px-1.5 py-0.5 rounded-sm">✓ KYC</span></div>
+                <div class="text-[12px] text-gray-600 mb-3">127 sản phẩm</div>
+                <a href="farm.html" class="flex items-center justify-center w-full h-[32px] border border-[#40916C] text-[#40916C] hover:bg-[#40916C] hover:text-white rounded-[6px] text-[13px] font-semibold transition-colors">Ghé thăm</a>
+              </div>
+            </div>
+          </div>
+          <div class="w-[240px] flex-shrink-0 bg-white border border-[#E5E7EB] rounded-[12px] overflow-hidden hover:shadow-[0_4px_12px_rgba(0,0,0,0.08)] transition-all snap-start">
+            <div class="h-[100px] w-full bg-gray-200 relative"><img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?q=80&amp;w=1080" alt="Vườn rau sạch Mộc Châu" class="w-full h-full object-cover" /></div>
+            <div class="px-4 pb-4 relative">
+              <div class="w-[48px] h-[48px] rounded-full border-2 border-white bg-white overflow-hidden absolute -top-6 left-4 shadow-sm"><img src="https://images.unsplash.com/photo-1707235164180-85fa316ce0ab?q=80&amp;w=200" alt="Farmer" class="w-full h-full object-cover" /></div>
+              <div class="pt-8">
+                <h3 class="font-bold text-[14px] text-[#1F2937] leading-tight mb-1">Vườn rau sạch Mộc Châu</h3>
+                <div class="flex items-center gap-1 text-[12px] text-gray-500 mb-2"><i data-lucide="map-pin" class="w-3 h-3"></i> Sơn La</div>
+                <div class="flex gap-2 text-[11px] font-medium text-[#40916C] mb-3"><span class="bg-[#F0FAF3] px-1.5 py-0.5 rounded-sm">⭐ 4.9</span><span class="bg-[#F0FAF3] px-1.5 py-0.5 rounded-sm">🌿 Hữu cơ</span><span class="bg-[#F0FAF3] px-1.5 py-0.5 rounded-sm">✓ KYC</span></div>
+                <div class="text-[12px] text-gray-600 mb-3">127 sản phẩm</div>
+                <a href="farm.html" class="flex items-center justify-center w-full h-[32px] border border-[#40916C] text-[#40916C] hover:bg-[#40916C] hover:text-white rounded-[6px] text-[13px] font-semibold transition-colors">Ghé thăm</a>
+              </div>
+            </div>
+          </div>
+          <div class="w-[240px] flex-shrink-0 bg-white border border-[#E5E7EB] rounded-[12px] overflow-hidden hover:shadow-[0_4px_12px_rgba(0,0,0,0.08)] transition-all snap-start">
+            <div class="h-[100px] w-full bg-gray-200 relative"><img src="https://images.unsplash.com/photo-1518994603110-1912b3272afd?q=80&amp;w=1080" alt="Nông trại Đà Lạt Xanh" class="w-full h-full object-cover" /></div>
+            <div class="px-4 pb-4 relative">
+              <div class="w-[48px] h-[48px] rounded-full border-2 border-white bg-white overflow-hidden absolute -top-6 left-4 shadow-sm"><img src="https://images.unsplash.com/photo-1530507629858-e4977d30e9e0?q=80&amp;w=200&amp;sig=2" alt="Farmer" class="w-full h-full object-cover" /></div>
+              <div class="pt-8">
+                <h3 class="font-bold text-[14px] text-[#1F2937] leading-tight mb-1">Nông trại Đà Lạt Xanh</h3>
+                <div class="flex items-center gap-1 text-[12px] text-gray-500 mb-2"><i data-lucide="map-pin" class="w-3 h-3"></i> Lâm Đồng</div>
+                <div class="flex gap-2 text-[11px] font-medium text-[#40916C] mb-3"><span class="bg-[#F0FAF3] px-1.5 py-0.5 rounded-sm">⭐ 4.9</span><span class="bg-[#F0FAF3] px-1.5 py-0.5 rounded-sm">🌿 Hữu cơ</span><span class="bg-[#F0FAF3] px-1.5 py-0.5 rounded-sm">✓ KYC</span></div>
+                <div class="text-[12px] text-gray-600 mb-3">127 sản phẩm</div>
+                <a href="farm.html" class="flex items-center justify-center w-full h-[32px] border border-[#40916C] text-[#40916C] hover:bg-[#40916C] hover:text-white rounded-[6px] text-[13px] font-semibold transition-colors">Ghé thăm</a>
+              </div>
+            </div>
+          </div>
+          <div class="w-[240px] flex-shrink-0 bg-white border border-[#E5E7EB] rounded-[12px] overflow-hidden hover:shadow-[0_4px_12px_rgba(0,0,0,0.08)] transition-all snap-start">
+            <div class="h-[100px] w-full bg-gray-200 relative"><img src="https://images.unsplash.com/photo-1510844355160-2fb07bf9af75?q=80&amp;w=1080" alt="Miệt vườn Miền Tây" class="w-full h-full object-cover" /></div>
+            <div class="px-4 pb-4 relative">
+              <div class="w-[48px] h-[48px] rounded-full border-2 border-white bg-white overflow-hidden absolute -top-6 left-4 shadow-sm"><img src="https://images.unsplash.com/photo-1707235164180-85fa316ce0ab?q=80&amp;w=200&amp;sig=2" alt="Farmer" class="w-full h-full object-cover" /></div>
+              <div class="pt-8">
+                <h3 class="font-bold text-[14px] text-[#1F2937] leading-tight mb-1">Miệt vườn Miền Tây</h3>
+                <div class="flex items-center gap-1 text-[12px] text-gray-500 mb-2"><i data-lucide="map-pin" class="w-3 h-3"></i> Vĩnh Long</div>
+                <div class="flex gap-2 text-[11px] font-medium text-[#40916C] mb-3"><span class="bg-[#F0FAF3] px-1.5 py-0.5 rounded-sm">⭐ 4.9</span><span class="bg-[#F0FAF3] px-1.5 py-0.5 rounded-sm">🌿 Hữu cơ</span><span class="bg-[#F0FAF3] px-1.5 py-0.5 rounded-sm">✓ KYC</span></div>
+                <div class="text-[12px] text-gray-600 mb-3">127 sản phẩm</div>
+                <a href="farm.html" class="flex items-center justify-center w-full h-[32px] border border-[#40916C] text-[#40916C] hover:bg-[#40916C] hover:text-white rounded-[6px] text-[13px] font-semibold transition-colors">Ghé thăm</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 6 — GROUP BUY LIVE -->
+      <section class="bg-white p-4 md:p-6 rounded-[12px] border border-[#E5E7EB]">
+        <div class="flex items-center gap-3 mb-6">
+          <h2 class="text-[20px] font-bold text-[#1F2937] flex items-center gap-2">🔴 Phòng mua chung đang hoạt động</h2>
+          <span class="bg-red-100 text-red-600 text-[12px] font-bold px-2 py-0.5 rounded-full">14 phòng</span>
+        </div>
+        <div id="group-buy-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"></div>
+      </section>
+
+      <!-- SECTION 7 — RECENTLY VIEWED + SUGGESTIONS -->
+      <section class="flex flex-col lg:flex-row gap-6 mb-12">
+        <div class="w-full lg:w-[30%] bg-white p-4 md:p-6 rounded-[12px] border border-[#E5E7EB]">
+          <h2 class="text-[16px] font-bold text-[#1F2937] mb-4">Đã xem gần đây</h2>
+          <div id="recently-viewed" class="flex flex-col gap-3"></div>
+        </div>
+        <div class="w-full lg:w-[70%] bg-white p-4 md:p-6 rounded-[12px] border border-[#E5E7EB]">
+          <h2 class="text-[16px] font-bold text-[#1F2937] mb-4">Gợi ý cho bạn</h2>
+          <div id="suggestions-grid" class="grid grid-cols-2 md:grid-cols-4 gap-3"></div>
+        </div>
+      </section>
+
+      <!-- SECTION 8 — VENDOR CTA -->
+      <section class="bg-[#1B4332] py-10 w-full relative left-1/2 -translate-x-1/2 w-screen px-4">
+        <div class="max-w-[1200px] mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+          <div>
+            <h3 class="text-white text-xl font-bold mb-1">Bạn là nông dân hoặc nhà vườn?</h3>
+            <p class="text-green-200 text-sm">Đăng ký bán hàng trên FarmTable — tiếp cận hàng nghìn khách hàng mỗi ngày</p>
+          </div>
+          <a href="vendor-login.html" class="flex-shrink-0 bg-white text-[#1B4332] px-8 py-3 rounded-xl font-bold text-sm hover:bg-green-50 transition-colors">Bắt đầu bán hàng →</a>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <div id="footer-container"></div>
+
+  <script src="../JS/cart.js"></script>
+  <script src="../JS/account.js"></script>
+  <script src="../JS/dom.js"></script>
+  <script src="../DOM/dom-examples.js"></script>
+  <script src="../Ajax/fetch-products.js"></script>
+  <script>
+    function getSoldPercent(soldCount) {
+      return Math.min(92, Math.round((soldCount / 1300) * 100) + 20);
+    }
+    function getDiscountPercent(price, oldPrice) {
+      return Math.round((1 - price / oldPrice) * 100);
+    }
+
+    function renderFlashSaleStrip(products) {
+      var strip = document.getElementById('flash-sale-strip');
+      if (!strip) return;
+      var onSale = products.filter(function (p) { return !!p.oldPrice; });
+      strip.innerHTML = onSale.slice(0, 6).map(function (product) {
+        var soldPct = getSoldPercent(product.soldCount);
+        var discountPct = getDiscountPercent(product.price, product.oldPrice);
+        var oldP = product.oldPrice;
+        var img = product.mainImage.split('?')[0] + '?auto=format&fit=crop&q=80&w=300';
+        return (
+          '<a href="product-detail.html?id=' + product.id + '" class="w-[170px] flex-shrink-0 flex flex-col gap-2 snap-start group">' +
+            '<div class="relative aspect-square rounded-[8px] overflow-hidden bg-gray-100 border border-gray-100">' +
+              '<div class="absolute top-0 right-0 bg-[#d4183d] text-white text-[12px] font-bold px-1.5 py-0.5 rounded-bl-[8px] z-10">-' + discountPct + '%</div>' +
+              '<img src="' + img + '" alt="' + product.name + '" class="w-full h-full object-cover group-hover:scale-105 transition-transform" />' +
+            '</div>' +
+            '<h3 class="text-[14px] leading-[1.3] text-[#1F2937] line-clamp-2 h-[36px] group-hover:text-[#40916C] transition-colors">' + product.name + '</h3>' +
+            '<div class="flex items-center gap-2">' +
+              '<span class="text-[16px] font-bold text-[#d4183d]">' + formatPrice(product.price) + '</span>' +
+              '<span class="text-[12px] text-gray-400 line-through">' + formatPrice(oldP) + '</span>' +
+            '</div>' +
+            '<div class="w-full h-[14px] bg-red-100 rounded-full relative overflow-hidden flex items-center justify-center border border-red-200">' +
+              '<div class="absolute left-0 top-0 bottom-0 bg-[#d4183d] rounded-full" style="width:' + soldPct + '%"></div>' +
+              '<span class="relative z-10 text-[9px] font-bold text-white uppercase shadow-sm">Đã bán ' + soldPct + '%</span>' +
+            '</div>' +
+          '</a>'
+        );
+      }).join('');
+    }
+
+    function renderGroupBuyGrid(products) {
+      var ids = ['3', '9', '4', '6'];
+      var items = ids.map(function (id) { return products.find(function (p) { return p.id === id; }); }).filter(Boolean);
+      var grid = document.getElementById('group-buy-grid');
+      if (!grid) return;
+      grid.innerHTML = items.map(function (item) {
+        return (
+          '<div class="flex gap-3 p-3 border border-[#E5E7EB] rounded-[12px] bg-white hover:border-[#F97316] transition-colors">' +
+            '<div class="w-[80px] h-[80px] rounded-[8px] bg-gray-100 overflow-hidden flex-shrink-0">' +
+              '<img src="' + item.mainImage + '" alt="' + item.name + '" class="w-full h-full object-cover" />' +
+            '</div>' +
+            '<div class="flex-1 flex flex-col justify-center">' +
+              '<h3 class="font-bold text-[14px] text-[#1F2937] leading-tight mb-1 line-clamp-1">' + item.name + '</h3>' +
+              '<p class="text-[11px] text-gray-500 mb-1">Nông trại tuyển chọn</p>' +
+              '<div class="flex items-center gap-1 mb-1.5">' +
+                '<span class="font-bold text-[14px] text-[#40916C]">' + formatPrice(item.price) + '</span>' +
+                (item.oldPrice ? '<span class="text-[11px] text-gray-400 line-through">' + formatPrice(item.oldPrice) + '</span>' : '') +
+              '</div>' +
+              '<div class="w-full mb-1">' +
+                '<div class="w-full h-1.5 bg-gray-200 rounded-full overflow-hidden"><div class="h-full bg-[#40916C] w-[75%] rounded-full"></div></div>' +
+                '<div class="flex justify-between mt-1 text-[10px] font-medium">' +
+                  '<span class="text-[#40916C]">15/20 kg (75%)</span>' +
+                  '<span class="text-[#d4183d] font-bold">⏰ 04:12</span>' +
+                '</div>' +
+              '</div>' +
+              '<a href="group-buy.html" class="flex items-center justify-center w-full h-[28px] mt-2 bg-[#F97316] hover:bg-[#ea580c] text-white rounded-[4px] text-[12px] font-bold transition-colors">Tham gia ngay</a>' +
+            '</div>' +
+          '</div>'
+        );
+      }).join('');
+    }
+
+    function renderRecentlyViewed(products) {
+      var container = document.getElementById('recently-viewed');
+      if (!container) return;
+      container.innerHTML = products.slice(6, 10).map(function (item) {
+        return (
+          '<a href="product-detail.html?id=' + item.id + '" class="flex gap-3 p-2 hover:bg-gray-50 rounded-[8px] transition-colors border border-transparent hover:border-gray-200">' +
+            '<div class="w-[60px] h-[60px] rounded-[6px] bg-gray-100 overflow-hidden flex-shrink-0">' +
+              '<img src="' + item.mainImage + '" alt="' + item.name + '" class="w-full h-full object-cover" />' +
+            '</div>' +
+            '<div class="flex-1">' +
+              '<div class="text-[13px] font-medium text-[#1F2937] line-clamp-2 leading-tight">' + item.name + '</div>' +
+              '<div class="text-[14px] font-bold text-[#40916C] mt-1">' + formatPrice(item.price) + '</div>' +
+            '</div>' +
+          '</a>'
+        );
+      }).join('');
+    }
+
+    function renderSuggestions(products) {
+      var container = document.getElementById('suggestions-grid');
+      if (!container) return;
+      container.innerHTML = products.slice(0, 8).map(function (item) {
+        return (
+          '<div class="flex flex-col group">' +
+            '<a href="product-detail.html?id=' + item.id + '" class="relative aspect-square rounded-[6px] overflow-hidden mb-2 bg-gray-50 border border-gray-100 block">' +
+              '<img src="' + item.mainImage + '" alt="' + item.name + '" class="w-full h-full object-cover group-hover:scale-105 transition-transform" />' +
+            '</a>' +
+            '<a href="product-detail.html?id=' + item.id + '" class="text-[13px] leading-tight text-[#1F2937] hover:text-[#40916C] line-clamp-2 h-[34px] font-medium">' + item.name + '</a>' +
+            '<div class="font-bold text-[14px] text-[#40916C] mt-1">' + formatPrice(item.price) + '</div>' +
+          '</div>'
+        );
+      }).join('');
+    }
+
+    function startCountdown() {
+      var end = Date.now() + (1 * 3600 + 45 * 60 + 23) * 1000;
+      function pad(n) { return String(n).padStart(2, '0'); }
+      function tick() {
+        var diff = Math.max(0, end - Date.now());
+        var h = Math.floor(diff / 3600000);
+        var m = Math.floor((diff % 3600000) / 60000);
+        var s = Math.floor((diff % 60000) / 1000);
+        var timer = document.getElementById('flash-timer');
+        if (timer) {
+          var hs = timer.querySelector('.timer-h');
+          var ms = timer.querySelector('.timer-m');
+          var ss = timer.querySelector('.timer-s');
+          if (hs) hs.textContent = pad(h);
+          if (ms) ms.textContent = pad(m);
+          if (ss) ss.textContent = pad(s);
+        }
+        var heroTimer = document.getElementById('hero-flash-timer');
+        if (heroTimer) heroTimer.textContent = pad(h) + ':' + pad(m) + ':' + pad(s);
+      }
+      tick();
+      setInterval(tick, 1000);
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      document.getElementById('navbar-container').innerHTML = renderNavbar();
+      document.getElementById('footer-container').innerHTML = renderFooter();
+      setupMobileMenu();
+      updateCartBadge();
+      lucide.createIcons();
+      startCountdown();
+
+      fetchAndRenderProducts('product-grid-container').then(function (products) {
+        renderFlashSaleStrip(products);
+        renderGroupBuyGrid(products);
+        renderRecentlyViewed(products);
+        renderSuggestions(products);
+        lucide.createIcons();
+      }).catch(function () {
+        showErrorState('product-grid-container', 'Không thể tải products.json');
+      });
+
+      attachAddToCartEvents();
+    });
+  </script>
+</body>
+</html>

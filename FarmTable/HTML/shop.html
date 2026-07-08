@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="../assets/logo.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tất cả sản phẩm | FarmTable</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <link rel="stylesheet" href="../CSS/style.css" />
+  <style>
+    body { font-family: 'Be Vietnam Pro', sans-serif; }
+    input[type="range"].accent-green { accent-color: #40916C; }
+  </style>
+</head>
+<body class="bg-[#F0FDF4] min-h-screen">
+
+  <div id="navbar-container"></div>
+
+  <div class="pb-16">
+    <!-- Breadcrumb -->
+    <div class="max-w-[1200px] mx-auto px-4 py-4">
+      <div class="flex items-center gap-2 text-sm text-gray-500">
+        <a href="index.html" class="hover:text-[#40916C]">Trang chủ</a>
+        <i data-lucide="chevron-right" class="w-4 h-4"></i>
+        <span class="text-[#1F2937] font-medium">Tất cả sản phẩm</span>
+      </div>
+    </div>
+
+    <div class="max-w-[1200px] mx-auto px-4 flex flex-col md:flex-row gap-8">
+      <!-- Sidebar Filters -->
+      <aside class="w-full md:w-[280px] shrink-0">
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+          <div class="flex items-center gap-2 font-bold text-lg text-[#1B4332] mb-6">
+            <i data-lucide="filter" class="w-5 h-5"></i>
+            Bộ lọc sản phẩm
+          </div>
+
+          <div class="mb-8">
+            <h3 class="font-bold text-[#1F2937] mb-4">Danh mục</h3>
+            <div id="category-filter-list" class="space-y-3"></div>
+          </div>
+
+          <div class="mb-8">
+            <h3 class="font-bold text-[#1F2937] mb-4">Mức giá</h3>
+            <div class="space-y-4">
+              <input
+                id="price-range"
+                type="range"
+                min="0"
+                max="1000000"
+                step="50000"
+                value="500000"
+                class="w-full h-1.5 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-green"
+              />
+              <div class="flex items-center justify-between text-sm text-gray-600">
+                <span>0đ</span>
+                <span id="price-range-value" class="font-medium text-[#40916C]">500.000đ</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-8">
+            <h3 class="font-bold text-[#1F2937] mb-4">Chứng nhận</h3>
+            <div id="cert-filter-list" class="space-y-3"></div>
+          </div>
+
+          <button id="clear-filters-btn" class="w-full py-2.5 bg-gray-100 hover:bg-gray-200 text-[#1F2937] rounded-xl font-medium text-sm transition-colors">
+            Xóa bộ lọc
+          </button>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <div class="flex-1">
+        <div class="bg-white rounded-2xl p-4 shadow-sm border border-gray-100 mb-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p class="text-gray-600 text-sm">
+            Hiển thị <span id="result-range" class="font-bold text-[#1F2937]">0-0</span>
+            trên <span id="result-total" class="font-bold text-[#1F2937]">0</span> sản phẩm
+            <span id="data-source-label" class="ml-2 text-xs font-semibold text-[#40916C] bg-[#E6F4EA] px-2 py-0.5 rounded-full">Nguồn: JSON</span>
+          </p>
+          <div class="flex items-center gap-3 w-full sm:w-auto">
+            <button id="toggle-source-btn" class="text-sm font-medium text-[#40916C] border border-[#40916C] hover:bg-[#40916C] hover:text-white px-3 py-2 rounded-xl transition-colors whitespace-nowrap">
+              Xem dữ liệu XML
+            </button>
+            <span class="text-sm text-gray-500 whitespace-nowrap">Sắp xếp:</span>
+            <div class="relative w-full sm:w-[180px]">
+              <select
+                id="sort-select"
+                class="w-full appearance-none bg-gray-50 border border-gray-200 text-sm text-[#1F2937] py-2 px-4 rounded-xl pr-10 focus:outline-none focus:border-[#40916C] cursor-pointer"
+              >
+                <option value="Mới nhất">Mới nhất</option>
+                <option value="Bán chạy nhất">Bán chạy nhất</option>
+                <option value="Giá: Thấp đến Cao">Giá: Thấp đến Cao</option>
+                <option value="Giá: Cao đến Thấp">Giá: Cao đến Thấp</option>
+              </select>
+              <i data-lucide="chevron-down" class="w-4 h-4 text-gray-500 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Active Filters -->
+        <div id="active-filters" class="flex flex-wrap gap-2 mb-6 hidden"></div>
+
+        <!-- Product Grid -->
+        <div id="product-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4"></div>
+
+        <!-- Xem thêm -->
+        <div class="mt-12 flex justify-center">
+          <button id="load-more-btn" class="hidden px-8 py-3 bg-white border border-[#40916C] text-[#40916C] hover:bg-[#40916C] hover:text-white rounded-xl font-bold transition-colors">
+            Xem thêm sản phẩm
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="footer-container"></div>
+
+  <script src="../JS/cart.js"></script>
+  <script src="../JS/account.js"></script>
+  <script src="../JS/dom.js"></script>
+  <script src="../Ajax/fetch-products.js"></script>
+
+  <script>
+    var CATEGORIES = [
+      { label: "Rau củ quả", value: "rau-cu" },
+      { label: "Trái cây", value: "trai-cay" },
+      { label: "Thịt & Thủy sản", value: "thit-thuy-san" },
+      { label: "Trứng & Sữa", value: "trung-sua" }
+    ];
+
+    var CERTIFICATIONS = [
+      { label: "Chuẩn VietGAP", value: "VietGAP" },
+      { label: "Hữu cơ (Organic)", value: "Hữu cơ" },
+      { label: "GlobalGAP", value: "GlobalGAP" },
+      { label: "Canh tác thuận tự nhiên", value: "Thuận tự nhiên" }
+    ];
+
+    var PAGE_SIZE = 10;
+
+    var allProducts = [];
+    var state = {
+      categories: [],
+      certifications: [],
+      priceRange: 500000,
+      sort: "Mới nhất",
+      search: "",
+      saleOnly: false,
+      visibleCount: PAGE_SIZE
+    };
+
+    function renderCategoryCheckboxes() {
+      var container = document.getElementById('category-filter-list');
+      container.innerHTML = CATEGORIES.map(function (cat) {
+        var checked = state.categories.indexOf(cat.value) > -1;
+        return (
+          '<label class="flex items-center gap-3 cursor-pointer group">' +
+            '<input type="checkbox" data-cat="' + cat.value + '" ' + (checked ? 'checked' : '') + ' ' +
+              'class="cat-checkbox w-5 h-5 rounded border-gray-300 text-[#40916C] focus:ring-[#40916C] cursor-pointer" />' +
+            '<span class="text-sm ' + (checked ? 'text-[#40916C] font-medium' : 'text-gray-600 group-hover:text-[#40916C]') + '">' + cat.label + '</span>' +
+          '</label>'
+        );
+      }).join('');
+      container.querySelectorAll('.cat-checkbox').forEach(function (cb) {
+        cb.addEventListener('change', function () {
+          toggleValue(state.categories, cb.dataset.cat);
+          state.visibleCount = PAGE_SIZE;
+          renderAll();
+        });
+      });
+    }
+
+    function renderCertCheckboxes() {
+      var container = document.getElementById('cert-filter-list');
+      container.innerHTML = CERTIFICATIONS.map(function (cert) {
+        var checked = state.certifications.indexOf(cert.value) > -1;
+        return (
+          '<label class="flex items-center gap-3 cursor-pointer group">' +
+            '<input type="checkbox" data-cert="' + cert.value + '" ' + (checked ? 'checked' : '') + ' ' +
+              'class="cert-checkbox w-5 h-5 rounded border-gray-300 text-[#40916C] focus:ring-[#40916C] cursor-pointer" />' +
+            '<span class="text-sm ' + (checked ? 'text-[#40916C] font-medium' : 'text-gray-600 group-hover:text-[#40916C]') + '">' + cert.label + '</span>' +
+          '</label>'
+        );
+      }).join('');
+      container.querySelectorAll('.cert-checkbox').forEach(function (cb) {
+        cb.addEventListener('change', function () {
+          toggleValue(state.certifications, cb.dataset.cert);
+          state.visibleCount = PAGE_SIZE;
+          renderAll();
+        });
+      });
+    }
+
+    function toggleValue(arr, val) {
+      var idx = arr.indexOf(val);
+      if (idx > -1) arr.splice(idx, 1);
+      else arr.push(val);
+    }
+
+    function getFilteredSorted() {
+      var filtered = allProducts.filter(function (p) {
+        if (p.status === 'stopped') return false;
+        if (state.categories.length > 0 && state.categories.indexOf(p.category) === -1) return false;
+        if (state.certifications.length > 0) {
+          var hasMatch = p.certifications.some(function (c) { return state.certifications.indexOf(c) > -1; });
+          if (!hasMatch) return false;
+        }
+        if (p.price > state.priceRange) return false;
+        if (state.search) {
+          var name = p.name.toLowerCase();
+          if (name.indexOf(state.search.toLowerCase()) === -1) return false;
+        }
+        if (state.saleOnly && !p.oldPrice) return false;
+        return true;
+      });
+
+      filtered.sort(function (a, b) {
+        if (state.sort === "Giá: Thấp đến Cao") return a.price - b.price;
+        if (state.sort === "Giá: Cao đến Thấp") return b.price - a.price;
+        if (state.sort === "Bán chạy nhất") return b.soldCount - a.soldCount;
+        return 0;
+      });
+
+      return filtered;
+    }
+
+    function renderActiveFilters() {
+      var container = document.getElementById('active-filters');
+      var chips = [];
+
+      state.categories.forEach(function (val) {
+        var cat = CATEGORIES.find(function (c) { return c.value === val; });
+        if (!cat) return;
+        chips.push(
+          '<div class="flex items-center gap-1.5 bg-[#E6F4EA] text-[#1B4332] text-sm font-medium px-3 py-1.5 rounded-lg border border-[#40916C]/20">' +
+            cat.label +
+            '<button data-remove-cat="' + val + '" class="hover:text-red-500 transition-colors"><i data-lucide="x" class="w-3.5 h-3.5"></i></button>' +
+          '</div>'
+        );
+      });
+
+      state.certifications.forEach(function (val) {
+        var cert = CERTIFICATIONS.find(function (c) { return c.value === val; });
+        if (!cert) return;
+        chips.push(
+          '<div class="flex items-center gap-1.5 bg-[#E6F4EA] text-[#1B4332] text-sm font-medium px-3 py-1.5 rounded-lg border border-[#40916C]/20">' +
+            cert.label +
+            '<button data-remove-cert="' + val + '" class="hover:text-red-500 transition-colors"><i data-lucide="x" class="w-3.5 h-3.5"></i></button>' +
+          '</div>'
+        );
+      });
+
+      if (state.saleOnly) {
+        chips.push(
+          '<div class="flex items-center gap-1.5 bg-[#FEE2E2] text-[#d4183d] text-sm font-medium px-3 py-1.5 rounded-lg border border-[#d4183d]/20">' +
+            'Đang Sale' +
+            '<button id="remove-sale-chip" class="hover:text-red-700 transition-colors"><i data-lucide="x" class="w-3.5 h-3.5"></i></button>' +
+          '</div>'
+        );
+      }
+
+      if (chips.length === 0) {
+        container.classList.add('hidden');
+        container.innerHTML = '';
+        return;
+      }
+
+      chips.push('<button id="clear-all-chip" class="text-sm font-medium text-gray-500 hover:text-red-500 px-2 py-1.5 transition-colors underline">Xóa tất cả</button>');
+      container.classList.remove('hidden');
+      container.innerHTML = chips.join('');
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+
+      container.querySelectorAll('[data-remove-cat]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          toggleValue(state.categories, btn.dataset.removeCat);
+          state.visibleCount = PAGE_SIZE;
+          renderAll();
+        });
+      });
+      container.querySelectorAll('[data-remove-cert]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          toggleValue(state.certifications, btn.dataset.removeCert);
+          state.visibleCount = PAGE_SIZE;
+          renderAll();
+        });
+      });
+      var clearChip = document.getElementById('clear-all-chip');
+      if (clearChip) clearChip.addEventListener('click', clearFilters);
+      var removeSaleChip = document.getElementById('remove-sale-chip');
+      if (removeSaleChip) removeSaleChip.addEventListener('click', function () {
+        state.saleOnly = false;
+        state.visibleCount = PAGE_SIZE;
+        renderAll();
+      });
+    }
+
+    function renderAll() {
+      var results = getFilteredSorted();
+      var total = results.length;
+      var visible = results.slice(0, state.visibleCount);
+
+      document.getElementById('result-range').textContent = total > 0 ? '1-' + visible.length : '0-0';
+      document.getElementById('result-total').textContent = String(total);
+
+      renderProductGrid(visible, 'product-grid');
+
+      if (total === 0) {
+        document.getElementById('product-grid').innerHTML =
+          '<p class="col-span-full text-center text-gray-500 py-12">Không tìm thấy sản phẩm phù hợp với bộ lọc.</p>';
+      }
+
+      var loadMoreBtn = document.getElementById('load-more-btn');
+      if (state.visibleCount < total) {
+        loadMoreBtn.classList.remove('hidden');
+      } else {
+        loadMoreBtn.classList.add('hidden');
+      }
+
+      renderActiveFilters();
+      renderCategoryCheckboxes();
+      renderCertCheckboxes();
+      updatePriceLabel();
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+    }
+
+    function updatePriceLabel() {
+      document.getElementById('price-range-value').textContent = state.priceRange.toLocaleString('vi-VN') + 'đ';
+      document.getElementById('price-range').value = state.priceRange;
+    }
+
+    function clearFilters() {
+      state.categories = [];
+      state.certifications = [];
+      state.priceRange = 500000;
+      state.saleOnly = false;
+      state.visibleCount = PAGE_SIZE;
+      renderAll();
+    }
+
+    document.getElementById('price-range').addEventListener('input', function (e) {
+      state.priceRange = Number(e.target.value);
+      state.visibleCount = PAGE_SIZE;
+      renderAll();
+    });
+
+    document.getElementById('sort-select').addEventListener('change', function (e) {
+      state.sort = e.target.value;
+      renderAll();
+    });
+
+    document.getElementById('clear-filters-btn').addEventListener('click', clearFilters);
+
+    document.getElementById('load-more-btn').addEventListener('click', function () {
+      state.visibleCount += PAGE_SIZE;
+      renderAll();
+    });
+
+    var usingXmlSource = false;
+
+    document.getElementById('toggle-source-btn').addEventListener('click', function () {
+      var btn = this;
+      var label = document.getElementById('data-source-label');
+
+      if (!usingXmlSource) {
+        showLoadingState('product-grid');
+        fetchProductsFromXML()
+          .then(function (products) {
+            allProducts = applyProductOverlay(products).concat(getExtraProducts());
+            usingXmlSource = true;
+            btn.textContent = 'Xem dữ liệu JSON';
+            label.textContent = 'Nguồn: XML';
+            state.visibleCount = PAGE_SIZE;
+            renderAll();
+          })
+          .catch(function (err) {
+            showErrorState('product-grid', err.message);
+          });
+      } else {
+        showLoadingState('product-grid');
+        fetch(PRODUCTS_JSON_URL)
+          .then(function (res) { return res.json(); })
+          .then(function (products) {
+            allProducts = applyProductOverlay(products).concat(getExtraProducts());
+            usingXmlSource = false;
+            btn.textContent = 'Xem dữ liệu XML';
+            label.textContent = 'Nguồn: JSON';
+            state.visibleCount = PAGE_SIZE;
+            renderAll();
+          });
+      }
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+      document.getElementById('navbar-container').innerHTML = renderNavbar();
+      document.getElementById('footer-container').innerHTML = renderFooter();
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+
+      var params = new URLSearchParams(window.location.search);
+      var cat = params.get('cat');
+      var search = params.get('search');
+      var sale = params.get('sale');
+      if (cat) state.categories.push(cat);
+      if (search) state.search = search;
+      if (sale) state.saleOnly = true;
+
+      fetchAndRenderProducts('product-grid').then(function (products) {
+        allProducts = products;
+        renderAll();
+      });
+    });
+  </script>
+</body>
+</html>

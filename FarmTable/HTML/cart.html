@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="../assets/logo.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Giỏ hàng | FarmTable</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <link rel="stylesheet" href="../CSS/style.css" />
+  <style>
+    body { font-family: 'Be Vietnam Pro', sans-serif; }
+  </style>
+</head>
+<body class="bg-[#F8F3EC] min-h-screen">
+
+  <div id="navbar-container"></div>
+
+  <!-- Empty cart state -->
+  <div id="empty-cart-state" class="hidden py-12">
+    <div class="max-w-[600px] mx-auto px-4 text-center py-24">
+      <i data-lucide="shopping-bag" class="w-16 h-16 text-gray-300 mx-auto mb-4"></i>
+      <h1 class="text-2xl font-bold text-[#1B4332] mb-2">Giỏ hàng trống</h1>
+      <p class="text-gray-500 mb-6">Hãy thêm vài sản phẩm tươi ngon vào giỏ hàng nhé!</p>
+      <a href="shop.html" class="inline-block bg-[#40916C] hover:bg-[#2D6A4F] text-white px-8 py-3 rounded-xl font-bold transition-colors">
+        Tiếp tục mua sắm
+      </a>
+    </div>
+  </div>
+
+  <!-- Cart content -->
+  <div id="cart-content" class="hidden py-12">
+    <div class="max-w-[1200px] mx-auto px-4 md:px-8">
+      <h1 class="text-3xl font-bold text-[#1B4332] mb-8">Giỏ hàng của bạn</h1>
+
+      <div class="flex flex-col lg:flex-row gap-8">
+        <div class="flex-1 bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+          <div class="p-6 border-b border-gray-100 flex items-center justify-between">
+            <h2 id="item-count-label" class="text-xl font-semibold text-[#1F2937]"></h2>
+            <button id="clear-cart-btn" class="text-sm text-red-500 hover:underline">Xóa tất cả</button>
+          </div>
+
+          <div id="cart-items" class="divide-y divide-gray-100"></div>
+
+          <div class="p-6 border-t border-gray-100 bg-gray-50 flex justify-between items-center">
+            <a href="shop.html" class="text-[#40916C] font-semibold flex items-center gap-2 hover:underline">
+              <i data-lucide="arrow-right" class="w-4 h-4 rotate-180"></i> Tiếp tục mua sắm
+            </a>
+          </div>
+        </div>
+
+        <!-- Order Summary -->
+        <div class="w-full lg:w-[380px] flex-shrink-0">
+          <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sticky top-24">
+            <h2 class="text-xl font-semibold text-[#1F2937] mb-6">Tổng đơn hàng</h2>
+
+            <div class="space-y-4 mb-6 text-sm">
+              <div class="flex justify-between text-gray-600">
+                <span>Tạm tính</span>
+                <span id="summary-subtotal" class="font-medium text-[#1F2937]"></span>
+              </div>
+              <div id="summary-discount-row" class="flex justify-between text-gray-600 hidden">
+                <span>Khuyến mãi</span>
+                <span id="summary-discount" class="font-medium text-[#F97316]"></span>
+              </div>
+              <div class="flex justify-between text-gray-600">
+                <span>Phí giao hàng</span>
+                <span id="summary-shipping" class="font-medium text-[#1F2937]"></span>
+              </div>
+              <div id="shipping-free-banner" class="hidden bg-green-50 text-[#40916C] p-2 rounded-lg text-xs font-medium text-center border border-green-100">
+                Chúc mừng! Đơn hàng của bạn được miễn phí giao hàng.
+              </div>
+              <div id="shipping-hint-banner" class="hidden bg-orange-50 text-[#F97316] p-2 rounded-lg text-xs font-medium text-center border border-orange-100">
+                Mua thêm <span id="shipping-hint-amount"></span> để được miễn phí giao hàng.
+              </div>
+            </div>
+
+            <div class="border-t border-gray-100 pt-4 mb-6">
+              <div class="flex justify-between items-center">
+                <span class="font-semibold text-gray-800">Tổng cộng</span>
+                <span id="summary-total" class="font-bold text-2xl text-[#1B4332]"></span>
+              </div>
+              <p class="text-xs text-gray-500 text-right mt-1">(Đã bao gồm VAT nếu có)</p>
+            </div>
+
+            <button id="checkout-btn" class="w-full h-12 bg-[#40916C] hover:bg-[#2D6A4F] text-white rounded-xl font-bold text-[16px] transition-colors flex items-center justify-center gap-2 shadow-lg shadow-[#40916C]/20">
+              Thanh toán <i data-lucide="arrow-right" class="w-5 h-5"></i>
+            </button>
+
+            <div class="mt-4 flex gap-2 justify-center text-xs text-gray-400">
+              <span>✓ Cam kết chất lượng</span>
+              <span>•</span>
+              <span>✓ Đổi trả 24h</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="footer-container"></div>
+
+  <script src="../JS/cart.js"></script>
+  <script src="../JS/account.js"></script>
+  <script src="../JS/dom.js"></script>
+
+  <script>
+    function renderCartItem(item) {
+      var isMystery = item.badge === 'Bí ẩn';
+      var badgeHtml = '';
+      if (item.badge) {
+        badgeHtml =
+          '<span class="text-[10px] font-bold px-2 py-0.5 rounded uppercase ' +
+          (isMystery ? 'bg-[#7C3AED] text-white' : 'bg-[#D8F3DC] text-[#1B4332] border border-[#1B4332]/10') +
+          '">' + item.badge + '</span>';
+      }
+      var oldPriceHtml = item.oldPrice
+        ? '<span class="text-sm text-gray-400 line-through">' + formatPrice(item.oldPrice) + '</span>'
+        : '';
+
+      return (
+        '<div class="p-6 flex gap-4 md:gap-6 items-center ' + (isMystery ? 'bg-purple-50/30' : '') + '">' +
+          '<div class="w-20 h-20 md:w-24 md:h-24 rounded-xl overflow-hidden bg-gray-50 flex-shrink-0">' +
+            '<img src="' + item.image + '" alt="' + item.name + '" class="w-full h-full object-cover" />' +
+          '</div>' +
+          '<div class="flex-1">' +
+            '<div class="flex items-center gap-2 mb-1">' +
+              badgeHtml +
+              '<h3 class="font-semibold text-[#1F2937] text-lg">' + item.name + '</h3>' +
+            '</div>' +
+            '<p class="text-sm text-gray-500 mb-2">' + item.farm + '</p>' +
+            '<div class="flex items-center gap-2">' +
+              '<span class="font-bold text-[#40916C]">' + formatPrice(item.price) + '</span>' +
+              oldPriceHtml +
+            '</div>' +
+          '</div>' +
+          '<div class="flex flex-col md:flex-row items-center gap-4">' +
+            '<div class="flex items-center bg-[#F8F3EC] rounded-lg border border-gray-200">' +
+              '<button data-qty-minus="' + item.id + '" class="w-8 h-8 flex items-center justify-center text-gray-600 hover:text-[#40916C]">' +
+                '<i data-lucide="minus" class="w-4 h-4"></i>' +
+              '</button>' +
+              '<span class="w-8 text-center font-medium text-sm">' + item.quantity + '</span>' +
+              '<button data-qty-plus="' + item.id + '" class="w-8 h-8 flex items-center justify-center text-gray-600 hover:text-[#40916C]">' +
+                '<i data-lucide="plus" class="w-4 h-4"></i>' +
+              '</button>' +
+            '</div>' +
+            '<button data-remove="' + item.id + '" class="p-2 text-gray-400 hover:text-red-500 transition-colors">' +
+              '<i data-lucide="trash-2" class="w-5 h-5"></i>' +
+            '</button>' +
+          '</div>' +
+        '</div>'
+      );
+    }
+
+    function renderCart() {
+      var items = getCart();
+
+      if (items.length === 0) {
+        document.getElementById('empty-cart-state').classList.remove('hidden');
+        document.getElementById('cart-content').classList.add('hidden');
+        return;
+      }
+
+      document.getElementById('empty-cart-state').classList.add('hidden');
+      document.getElementById('cart-content').classList.remove('hidden');
+
+      document.getElementById('item-count-label').textContent = items.length + ' sản phẩm';
+      document.getElementById('cart-items').innerHTML = items.map(renderCartItem).join('');
+
+      var totalPrice = getTotalPrice();
+      var discount = items
+        .filter(function (i) { return i.oldPrice; })
+        .reduce(function (sum, i) { return sum + (i.oldPrice - i.price) * i.quantity; }, 0);
+
+      var shippingFee = (totalPrice >= 200000 || totalPrice === 0) ? 0 : 20000;
+      var finalTotal = totalPrice + shippingFee;
+
+      document.getElementById('summary-subtotal').textContent = formatPrice(totalPrice);
+      document.getElementById('summary-shipping').textContent = shippingFee === 0 ? '0đ' : formatPrice(shippingFee);
+      document.getElementById('summary-total').textContent = formatPrice(finalTotal);
+
+      var discountRow = document.getElementById('summary-discount-row');
+      if (discount > 0) {
+        discountRow.classList.remove('hidden');
+        document.getElementById('summary-discount').textContent = '-' + formatPrice(discount);
+      } else {
+        discountRow.classList.add('hidden');
+      }
+
+      var freeBanner = document.getElementById('shipping-free-banner');
+      var hintBanner = document.getElementById('shipping-hint-banner');
+      if (shippingFee === 0) {
+        freeBanner.classList.remove('hidden');
+        hintBanner.classList.add('hidden');
+      } else {
+        freeBanner.classList.add('hidden');
+        hintBanner.classList.remove('hidden');
+        document.getElementById('shipping-hint-amount').textContent = formatPrice(200000 - totalPrice);
+      }
+
+      attachCartRowEvents();
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+    }
+
+    function attachCartRowEvents() {
+      document.querySelectorAll('[data-qty-minus]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var id = btn.dataset.qtyMinus;
+          var item = getCart().find(function (i) { return i.id === id; });
+          if (!item) return;
+          updateQuantity(id, item.quantity - 1);
+          renderCart();
+        });
+      });
+      document.querySelectorAll('[data-qty-plus]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var id = btn.dataset.qtyPlus;
+          var item = getCart().find(function (i) { return i.id === id; });
+          if (!item) return;
+          updateQuantity(id, item.quantity + 1);
+          renderCart();
+        });
+      });
+      document.querySelectorAll('[data-remove]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          removeFromCart(btn.dataset.remove);
+          renderCart();
+        });
+      });
+    }
+
+    document.getElementById('clear-cart-btn').addEventListener('click', function () {
+      clearCart();
+      renderCart();
+    });
+
+    document.getElementById('checkout-btn').addEventListener('click', function () {
+      window.location.href = 'checkout.html';
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+      document.getElementById('navbar-container').innerHTML = renderNavbar();
+      document.getElementById('footer-container').innerHTML = renderFooter();
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+      renderCart();
+    });
+  </script>
+</body>
+</html>

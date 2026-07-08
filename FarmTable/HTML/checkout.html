@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="../assets/logo.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thanh toán | FarmTable</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <link rel="stylesheet" href="../CSS/style.css" />
+</head>
+<body class="min-h-screen bg-[#F8F3EC] text-[#1F2937] flex flex-col font-sans">
+
+  <div id="navbar-container"></div>
+
+  <main class="flex-1 py-12">
+    <div class="max-w-[1200px] mx-auto px-4 md:px-8">
+
+      <!-- Empty cart state -->
+      <div id="empty-cart-state" class="hidden max-w-[600px] mx-auto text-center py-24">
+        <h1 class="text-2xl font-bold text-[#1B4332] mb-2">Giỏ hàng trống</h1>
+        <p class="text-gray-500 mb-6">Hãy thêm sản phẩm trước khi thanh toán.</p>
+        <a href="shop.html" class="inline-block bg-[#40916C] hover:bg-[#2D6A4F] text-white px-8 py-3 rounded-xl font-bold transition-colors">Mua sắm ngay</a>
+      </div>
+
+      <!-- Checkout content -->
+      <div id="checkout-content">
+        <a href="cart.html" class="inline-flex items-center gap-2 text-gray-500 hover:text-[#40916C] mb-6">
+          <i data-lucide="arrow-left" class="w-4 h-4"></i> Quay lại giỏ hàng
+        </a>
+        <h1 class="text-3xl font-bold text-[#1B4332] mb-8">Thanh toán</h1>
+
+        <form id="checkout-form" class="flex flex-col lg:flex-row gap-8">
+          <div class="flex-1 flex flex-col gap-6">
+
+            <!-- Shipping info -->
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+              <h2 class="text-lg font-semibold text-[#1F2937] mb-4 flex items-center gap-2">
+                <i data-lucide="map-pin" class="w-5 h-5 text-[#40916C]"></i> Thông tin giao hàng
+              </h2>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="flex flex-col gap-1.5">
+                  <label class="text-sm font-medium text-gray-700">Họ và tên</label>
+                  <input id="cf-name" required placeholder="Nguyễn Văn A"
+                    class="h-11 px-4 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-[#40916C]" />
+                </div>
+                <div class="flex flex-col gap-1.5">
+                  <label class="text-sm font-medium text-gray-700">Số điện thoại</label>
+                  <input id="cf-phone" required type="tel" pattern="[0-9]{9,11}" placeholder="09xx xxx xxx"
+                    class="h-11 px-4 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-[#40916C]" />
+                </div>
+                <div class="flex flex-col gap-1.5 md:col-span-2">
+                  <label class="text-sm font-medium text-gray-700">Địa chỉ giao hàng</label>
+                  <input id="cf-address" required placeholder="Số nhà, đường, phường/xã, quận/huyện, tỉnh/thành phố"
+                    class="h-11 px-4 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-[#40916C]" />
+                </div>
+                <div class="flex flex-col gap-1.5 md:col-span-2">
+                  <label class="text-sm font-medium text-gray-700">Ghi chú (không bắt buộc)</label>
+                  <textarea id="cf-note" rows="2" placeholder="Giao giờ hành chính, gọi trước khi giao..."
+                    class="px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-[#40916C] resize-none"></textarea>
+                </div>
+              </div>
+            </div>
+
+            <!-- Payment method -->
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+              <h2 class="text-lg font-semibold text-[#1F2937] mb-4 flex items-center gap-2">
+                <i data-lucide="credit-card" class="w-5 h-5 text-[#40916C]"></i> Phương thức thanh toán
+              </h2>
+              <div class="flex flex-col gap-3" id="payment-options">
+                <label class="payment-option flex items-center gap-3 p-4 rounded-xl border cursor-pointer transition-colors border-[#40916C] bg-[#F0FAF3]" data-method="cod">
+                  <input type="radio" name="payment" value="cod" checked class="accent-[#40916C]" />
+                  <i data-lucide="banknote" class="w-5 h-5 text-gray-500"></i>
+                  <div class="flex-1">
+                    <div class="font-medium text-sm text-[#1F2937]">Thanh toán khi nhận hàng (COD)</div>
+                    <div class="text-xs text-gray-500">Trả tiền mặt cho shipper khi nhận hàng</div>
+                  </div>
+                </label>
+                <label class="payment-option flex items-center gap-3 p-4 rounded-xl border cursor-pointer transition-colors border-gray-200" data-method="bank">
+                  <input type="radio" name="payment" value="bank" class="accent-[#40916C]" />
+                  <i data-lucide="credit-card" class="w-5 h-5 text-gray-500"></i>
+                  <div class="flex-1">
+                    <div class="font-medium text-sm text-[#1F2937]">Chuyển khoản ngân hàng</div>
+                    <div class="text-xs text-gray-500">Chuyển khoản qua QR code hoặc số tài khoản</div>
+                  </div>
+                </label>
+                <label class="payment-option flex items-center gap-3 p-4 rounded-xl border cursor-pointer transition-colors border-gray-200" data-method="momo">
+                  <input type="radio" name="payment" value="momo" class="accent-[#40916C]" />
+                  <i data-lucide="wallet" class="w-5 h-5 text-gray-500"></i>
+                  <div class="flex-1">
+                    <div class="font-medium text-sm text-[#1F2937]">Ví điện tử Momo</div>
+                    <div class="text-xs text-gray-500">Thanh toán nhanh qua ứng dụng Momo</div>
+                  </div>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Order summary -->
+          <div class="w-full lg:w-[380px] flex-shrink-0">
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sticky top-24">
+              <h2 id="summary-title" class="text-xl font-semibold text-[#1F2937] mb-4">Đơn hàng (0)</h2>
+              <div id="summary-items" class="flex flex-col gap-3 mb-6 max-h-[280px] overflow-y-auto"></div>
+              <div class="space-y-3 mb-4 text-sm border-t border-gray-100 pt-4">
+                <div class="flex justify-between text-gray-600">
+                  <span>Tạm tính</span>
+                  <span id="summary-subtotal" class="font-medium text-[#1F2937]">0đ</span>
+                </div>
+                <div class="flex justify-between text-gray-600">
+                  <span>Phí giao hàng</span>
+                  <span id="summary-shipping" class="font-medium text-[#1F2937]">0đ</span>
+                </div>
+              </div>
+              <div class="border-t border-gray-100 pt-4 mb-6">
+                <div class="flex justify-between items-center">
+                  <span class="font-semibold text-gray-800">Tổng cộng</span>
+                  <span id="summary-total" class="font-bold text-2xl text-[#1B4332]">0đ</span>
+                </div>
+              </div>
+              <button type="submit"
+                class="w-full h-12 bg-[#40916C] hover:bg-[#2D6A4F] text-white rounded-xl font-bold text-[16px] transition-colors shadow-lg shadow-[#40916C]/20">
+                Đặt hàng
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <!-- Success state -->
+      <div id="success-state" class="hidden max-w-[600px] mx-auto text-center py-24">
+        <i data-lucide="check-circle-2" class="w-20 h-20 text-[#40916C] mx-auto mb-6"></i>
+        <h1 class="text-2xl font-bold text-[#1B4332] mb-2">Đặt hàng thành công!</h1>
+        <p class="text-gray-500 mb-2">Mã đơn hàng: <span id="order-number" class="font-semibold text-[#1F2937]"></span></p>
+        <p class="text-gray-500 mb-8">
+          Cảm ơn bạn đã ủng hộ nông sản Việt. Đơn hàng sẽ được giao trong 2-4 giờ tới.
+          <br />
+        </p>
+        <p id="guest-order-hint" class="hidden text-sm text-gray-500 mb-4">
+          Bạn đặt hàng không cần đăng nhập — hãy lưu lại mã đơn và số điện thoại để tra cứu đơn hàng sau này.
+        </p>
+        <div class="flex items-center justify-center gap-3">
+          <a id="view-order-link" href="account.html?tab=orders" class="inline-block bg-[#40916C] hover:bg-[#2D6A4F] text-white px-8 py-3 rounded-xl font-bold transition-colors">
+            Xem đơn hàng
+          </a>
+          <a href="index.html" class="inline-block border border-gray-200 text-gray-600 hover:bg-gray-50 px-8 py-3 rounded-xl font-bold transition-colors">
+            Về trang chủ
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <div id="footer-container"></div>
+
+  <script src="../JS/cart.js"></script>
+  <script src="../JS/account.js"></script>
+  <script src="../JS/dom.js"></script>
+  <script src="../Ajax/fetch-orders.js"></script>
+  <script src="../Ajax/fetch-customers.js"></script>
+  <script src="../Ajax/fetch-products.js"></script>
+  <script>
+    function renderSummary() {
+      var items = getCart();
+      var totalPrice = getTotalPrice();
+      var shippingFee = (totalPrice >= 200000 || totalPrice === 0) ? 0 : 20000;
+      var finalTotal = totalPrice + shippingFee;
+
+      document.getElementById('summary-title').textContent = 'Đơn hàng (' + items.length + ')';
+      document.getElementById('summary-items').innerHTML = items.map(function (item) {
+        return (
+          '<div class="flex justify-between text-sm">' +
+            '<span class="text-gray-600 flex-1 line-clamp-1">' + item.name + ' x' + item.quantity + '</span>' +
+            '<span class="font-medium text-[#1F2937] whitespace-nowrap ml-2">' + formatPrice(item.price * item.quantity) + '</span>' +
+          '</div>'
+        );
+      }).join('');
+      document.getElementById('summary-subtotal').textContent = formatPrice(totalPrice);
+      document.getElementById('summary-shipping').textContent = shippingFee === 0 ? 'Miễn phí' : formatPrice(shippingFee);
+      document.getElementById('summary-total').textContent = formatPrice(finalTotal);
+
+      return items;
+    }
+
+    function setupPaymentOptions() {
+      var options = document.querySelectorAll('.payment-option');
+      options.forEach(function (opt) {
+        opt.addEventListener('click', function () {
+          options.forEach(function (o) {
+            o.classList.remove('border-[#40916C]', 'bg-[#F0FAF3]');
+            o.classList.add('border-gray-200');
+          });
+          opt.classList.remove('border-gray-200');
+          opt.classList.add('border-[#40916C]', 'bg-[#F0FAF3]');
+          opt.querySelector('input[type="radio"]').checked = true;
+        });
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      document.getElementById('navbar-container').innerHTML = renderNavbar();
+      document.getElementById('footer-container').innerHTML = renderFooter();
+      setupMobileMenu();
+      updateCartBadge();
+
+      var items = renderSummary();
+      setupPaymentOptions();
+
+      var loggedInCustomer = getCurrentCustomer();
+      if (loggedInCustomer) {
+        document.getElementById('cf-name').value = loggedInCustomer.name || '';
+        document.getElementById('cf-phone').value = loggedInCustomer.phone || '';
+        document.getElementById('cf-address').value = loggedInCustomer.address || '';
+      }
+
+      if (items.length === 0) {
+        document.getElementById('empty-cart-state').classList.remove('hidden');
+        document.getElementById('checkout-content').classList.add('hidden');
+      }
+
+      document.getElementById('checkout-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        var cartItems = getCart();
+        var totalPrice = getTotalPrice();
+        var shippingFee = (totalPrice >= 200000 || totalPrice === 0) ? 0 : 20000;
+        var customer = getCurrentCustomer();
+        var paymentMethod = document.querySelector('input[name="payment"]:checked').value;
+        var phone = document.getElementById('cf-phone').value.trim();
+
+        var order = createOrder({
+          customerId: customer ? customer.id : null,
+          customerEmail: customer ? customer.email : null,
+          customerPhone: phone,
+          customerName: document.getElementById('cf-name').value.trim(),
+          shippingAddress: document.getElementById('cf-address').value.trim(),
+          paymentMethod: paymentMethod,
+          items: cartItems.map(function (item) {
+            return { productId: item.id, name: item.name, price: item.price, quantity: item.quantity, unit: item.unit };
+          }),
+          shippingFee: shippingFee,
+          total: totalPrice + shippingFee
+        });
+
+        if (typeof decrementStockForOrder === 'function') {
+          decrementStockForOrder(order.items);
+        }
+
+        document.getElementById('order-number').textContent = '#' + order.id;
+
+        if (typeof recordCustomerOrder === 'function') {
+          recordCustomerOrder({
+            name: order.customerName,
+            email: customer ? customer.email : null,
+            phone: phone,
+            address: order.shippingAddress,
+            orderTotal: order.total
+          });
+        }
+
+        if (!customer) {
+          document.getElementById('view-order-link').href =
+            'track-order.html?id=' + encodeURIComponent(order.id) + '&phone=' + encodeURIComponent(phone);
+          document.getElementById('guest-order-hint').classList.remove('hidden');
+        }
+
+        clearCart();
+        document.getElementById('checkout-content').classList.add('hidden');
+        document.getElementById('empty-cart-state').classList.add('hidden');
+        document.getElementById('success-state').classList.remove('hidden');
+        lucide.createIcons();
+        window.scrollTo(0, 0);
+      });
+
+      lucide.createIcons();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,391 @@
+/* FarmTable — Shared styles & design tokens */
+
+:root {
+  --green-primary: #40916C;
+  --green-dark: #1B4332;
+  --green-nav: #15803D;
+  --orange: #F97316;
+  --red-sale: #d4183d;
+  --purple: #7C3AED;
+  --bg-page: #F0FDF4;
+  --text-dark: #1F2937;
+  --border-gray: #E5E7EB;
+  --green-light: #F0FAF3;
+  --green-badge: #D8F3DC;
+  --text-muted: #4B5563;
+  --font-family: 'Be Vietnam Pro', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg-page);
+  color: var(--text-dark);
+  margin: 0;
+}
+
+/* Layout */
+.container {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* Scrollbar hide */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Slim themed scrollbar — matches FarmTable green palette instead of the OS default */
+.thin-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: var(--green-primary) #F0FAF3;
+}
+.thin-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+.thin-scrollbar::-webkit-scrollbar-track {
+  background: #F0FAF3;
+}
+.thin-scrollbar::-webkit-scrollbar-thumb {
+  background-color: var(--green-primary);
+  border-radius: 999px;
+}
+.thin-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: var(--green-dark);
+}
+
+/* Line clamp */
+.line-clamp-1 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+}
+.line-clamp-2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: var(--green-primary);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.btn-primary:hover {
+  background-color: #2D6A4F;
+}
+
+.btn-orange {
+  background-color: var(--orange);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.btn-orange:hover {
+  background-color: #ea580c;
+}
+
+.btn-outline-green {
+  border: 1px solid var(--green-primary);
+  color: var(--green-primary);
+  background: transparent;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-outline-green:hover {
+  background-color: var(--green-primary);
+  color: #fff;
+}
+
+/* Toast notification */
+.ft-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 32px;
+  transform: translate(-50%, 16px);
+  background-color: var(--green-dark);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 12px 20px;
+  border-radius: 9999px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 9999;
+  pointer-events: none;
+}
+.ft-toast.ft-toast-show {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+/* Top utility bar */
+.top-bar {
+  background-color: var(--green-dark);
+  color: #fff;
+  height: 32px;
+}
+
+/* Navbar */
+.navbar {
+  background-color: #fff;
+  border-bottom: 1px solid var(--border-gray);
+}
+
+.navbar .cart-badge {
+  position: absolute;
+  top: -4px;
+  right: 0;
+  background-color: #ef4444;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 0 4px;
+  border-radius: 9999px;
+  min-width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.navbar .cart-badge.hidden {
+  display: none;
+}
+
+/* Category nav bar */
+.cat-nav {
+  background-color: var(--green-nav);
+  color: #fff;
+  height: 44px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* Product card — matches Home.tsx / ProductGrid */
+.product-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  padding: 8px;
+  background: #fff;
+  transition: all 0.2s;
+}
+.product-card:hover {
+  border-color: var(--green-primary);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+.product-card.rescue:hover {
+  border-color: var(--green-primary);
+}
+.product-card.mystery:hover {
+  border-color: var(--purple);
+}
+.product-card .product-image-wrap {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 12px;
+  background: #f9fafb;
+  border: 1px solid #f3f4f6;
+}
+.product-card .product-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+.product-card:hover .product-image-wrap img {
+  transform: scale(1.05);
+}
+.product-card .badge-rescue {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  z-index: 10;
+  background: var(--green-badge);
+  color: var(--green-dark);
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 3px;
+  text-transform: uppercase;
+}
+.product-card .wishlist-btn {
+  position: absolute;
+  bottom: 6px;
+  right: 6px;
+  z-index: 10;
+  width: 26px;
+  height: 26px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+  border: none;
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+.product-card .wishlist-btn:hover {
+  transform: scale(1.1);
+  background: #fff;
+}
+.product-card .badge-sale {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  z-index: 10;
+  background: var(--orange);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+.product-card .product-name {
+  font-size: 14px;
+  line-height: 1.25;
+  color: var(--text-dark);
+  font-weight: 500;
+  height: 36px;
+  margin-bottom: 4px;
+  text-decoration: none;
+}
+.product-card .product-name:hover {
+  color: var(--green-primary);
+}
+.product-card .product-farm {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+.product-card .product-rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  color: #6b7280;
+  margin-bottom: 8px;
+}
+.product-card .product-price {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  column-gap: 4px;
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--green-primary);
+  margin-bottom: 12px;
+}
+.product-card.rescue .product-price {
+  color: var(--red-sale);
+}
+.product-card .product-price .unit {
+  font-size: 12px;
+  font-weight: 400;
+  color: #6b7280;
+}
+.product-card .old-price {
+  font-size: 11px;
+  color: #9ca3af;
+  text-decoration: line-through;
+  white-space: nowrap;
+}
+.product-card .btn-add-cart {
+  width: 100%;
+  height: 32px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.product-card .btn-add-cart.green {
+  border: 1px solid var(--green-primary);
+  color: var(--green-primary);
+  background: transparent;
+}
+.product-card .btn-add-cart.green:hover {
+  background: var(--green-primary);
+  color: #fff;
+}
+.product-card .btn-add-cart.red {
+  border: 1px solid var(--red-sale);
+  color: var(--red-sale);
+  background: transparent;
+}
+.product-card .btn-add-cart.red:hover {
+  background: var(--red-sale);
+  color: #fff;
+}
+
+/* Footer */
+.footer {
+  background-color: var(--green-dark);
+  color: #fff;
+  padding-top: 48px;
+  margin-top: 32px;
+}
+.footer-bottom {
+  background-color: #0f2d1e;
+  padding: 16px 0;
+}
+
+/* Mobile menu */
+.mobile-menu {
+  display: none;
+}
+.mobile-menu.open {
+  display: flex;
+}
+
+/* Loading / error states */
+.loading-state,
+.error-state {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 48px 16px;
+  color: var(--text-muted);
+}
+.error-state {
+  color: var(--red-sale);
+}
+
+/* Filter buttons */
+.filter-btn.active {
+  background-color: var(--green-primary) !important;
+  color: #fff !important;
+}
+
+/* Hero side banner dot pattern */
+.dot-pattern {
+  background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0);
+  background-size: 16px 16px;
+}

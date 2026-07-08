@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="../assets/logo.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mystery Box | FarmTable</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <link rel="stylesheet" href="../CSS/style.css" />
+  <style>
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+    .faq-item.open .faq-answer { max-height: 200px; }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); }
+    .faq-chevron { transition: transform 0.2s ease; }
+    .box-option { border: 2px solid #EDE9FE; cursor: pointer; }
+    .box-option.selected { border-color: #7C3AED; box-shadow: 0 8px 24px rgba(124,58,237,0.15); }
+  </style>
+</head>
+<body class="min-h-screen bg-[#FAF5FF] text-[#1F2937] flex flex-col font-sans">
+
+  <div id="navbar-container"></div>
+
+  <main class="flex-1">
+    <!-- Hero banner -->
+    <div class="relative h-[280px] w-full bg-[#5B21B6] overflow-hidden">
+      <div class="absolute inset-0 z-0">
+        <img src="https://image.luatvietnam.vn/uploaded/twebp/images/original/2023/08/04/nong-san-thuong-trai-qua-quy-trinh-che-bien-phuc-tap_0408220051.jpeg"
+          alt="Farm Background" class="w-full h-full object-cover blur-[4px] opacity-40 scale-105" />
+        <div class="absolute inset-0 bg-purple-900/60 mix-blend-multiply"></div>
+      </div>
+      <div class="absolute inset-0 opacity-20 z-0 dot-pattern"></div>
+      <div class="absolute inset-0 flex flex-col items-center justify-center text-white px-4 text-center z-10">
+        <span class="text-6xl mb-3 drop-shadow-md">📦</span>
+        <span class="bg-[#7C3AED] text-white px-4 py-1 rounded-full text-sm font-bold uppercase mb-4 shadow-sm border border-purple-400">
+          Hộp Quà Bất Ngờ
+        </span>
+        <h1 class="text-4xl md:text-5xl font-bold mb-3 drop-shadow-md">Mystery Box</h1>
+        <p class="text-lg text-purple-100 max-w-2xl drop-shadow-sm">
+          Tiết kiệm chi phí, khám phá nông sản mới mỗi tuần với những chiếc hộp bí ẩn chứa đầy sự bất ngờ tươi ngon.
+        </p>
+      </div>
+    </div>
+
+    <!-- Content -->
+    <div class="max-w-[1200px] mx-auto px-4 md:px-8 py-16">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-[#1F2937] mb-4">Chọn hộp bí ẩn của bạn</h2>
+        <p class="text-gray-600 max-w-xl mx-auto">Mỗi hộp là một sự kết hợp ngẫu nhiên của các nông sản đạt chuẩn chất lượng từ mạng lưới nông trại đối tác của FarmTable.</p>
+      </div>
+
+      <div id="box-options" class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10"></div>
+
+      <div class="flex flex-col sm:flex-row justify-center items-center gap-4 mb-20">
+        <button id="open-box-btn" class="px-10 py-4 bg-[#7C3AED] hover:bg-[#6D28D9] text-white rounded-xl font-bold transition-colors shadow-lg shadow-purple-500/20">
+          Mở hộp ngay
+        </button>
+        <a href="rescue.html" class="px-8 py-4 bg-white border border-purple-200 hover:bg-purple-50 text-[#7C3AED] rounded-xl font-bold transition-colors">
+          Xem nông sản giải cứu
+        </a>
+        <a href="shop.html" class="px-8 py-4 bg-white border border-purple-200 hover:bg-purple-50 text-[#7C3AED] rounded-xl font-bold transition-colors">
+          Đến Shop
+        </a>
+      </div>
+
+      <!-- Why exciting -->
+      <div class="bg-white rounded-3xl p-8 md:p-12 border border-purple-100">
+        <h2 class="text-2xl font-bold text-center text-[#1F2937] mb-10">Tại sao thú vị?</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+          <div>
+            <div class="w-16 h-16 bg-purple-100 text-[#7C3AED] text-2xl rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <i data-lucide="sparkles" class="w-7 h-7"></i>
+            </div>
+            <h3 class="font-bold text-[#1F2937] mb-2">Bất ngờ mỗi tuần</h3>
+            <p class="text-sm text-gray-600">Nông sản thay đổi liên tục theo mùa vụ, không tuần nào giống tuần nào.</p>
+          </div>
+          <div>
+            <div class="w-16 h-16 bg-purple-100 text-[#7C3AED] text-2xl rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <i data-lucide="piggy-bank" class="w-7 h-7"></i>
+            </div>
+            <h3 class="font-bold text-[#1F2937] mb-2">Tiết kiệm chi phí</h3>
+            <p class="text-sm text-gray-600">Giá trị thực luôn cao hơn giá bán, giúp bạn tiết kiệm hơn so với mua lẻ.</p>
+          </div>
+          <div>
+            <div class="w-16 h-16 bg-purple-100 text-[#7C3AED] text-2xl rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <i data-lucide="handshake" class="w-7 h-7"></i>
+            </div>
+            <h3 class="font-bold text-[#1F2937] mb-2">Ủng hộ nông dân</h3>
+            <p class="text-sm text-gray-600">Tiêu thụ trực tiếp nông sản thu hoạch trong ngày, hạn chế lãng phí thực phẩm.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ -->
+      <div class="mt-16">
+        <h2 class="text-2xl font-bold text-center text-[#1F2937] mb-8">Câu hỏi thường gặp</h2>
+        <div id="faq-list" class="max-w-[720px] mx-auto flex flex-col gap-3"></div>
+      </div>
+    </div>
+  </main>
+
+  <div id="footer-container"></div>
+
+  <script src="../JS/cart.js"></script>
+  <script src="../JS/account.js"></script>
+  <script src="../JS/dom.js"></script>
+  <script>
+    var boxes = [
+      {
+        id: 'mystery-rau',
+        name: 'Mystery Box Rau 3kg',
+        contents: '3kg rau ăn lá & củ quả theo mùa từ các nông trại Đà Lạt.',
+        price: 85000,
+        value: 120000,
+        left: 12,
+        image: 'https://www.vinmec.com/static/uploads/20190425_063710_470758_rau_xanh_max_1800x1800_jpg_4188e3c202.jpg'
+      },
+      {
+        id: 'mystery-trai-cay',
+        name: 'Mystery Box Trái cây 2kg',
+        contents: '2kg trái cây đa dạng vùng miền, cung cấp vitamin cho cả tuần.',
+        price: 95000,
+        value: 140000,
+        left: 8,
+        image: 'https://cdn.hstatic.net/files/1000246697/article/top-7-trai-cay-nen-an-vao-mua-nong_50cd22ca1c6d4d0387c2f1df417084da.jpeg'
+      },
+      {
+        id: 'mystery-combo',
+        name: 'Combo hỗn hợp 5kg',
+        contents: '5kg kết hợp rau củ, trái cây và gia vị — phù hợp gia đình 4 người.',
+        price: 220000,
+        value: 320000,
+        left: 15,
+        image: 'https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&q=80&w=800'
+      },
+      {
+        id: 'mystery-hai-san',
+        name: 'Mystery Box Hải sản 1.5kg',
+        contents: '1.5kg hải sản tươi sống theo mùa: tôm, mực, cá phi lê.',
+        price: 180000,
+        value: 260000,
+        left: 6,
+        image: 'https://images.unsplash.com/photo-1615141982883-c7ad0e69fd62?auto=format&fit=crop&q=80&w=800'
+      },
+      {
+        id: 'mystery-thit',
+        name: 'Mystery Box Thịt sạch 2kg',
+        contents: '2kg thịt heo/gà/bò sạch VietGAP chọn ngẫu nhiên từ nông trại.',
+        price: 160000,
+        value: 230000,
+        left: 10,
+        image: 'https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?auto=format&fit=crop&q=80&w=800'
+      },
+      {
+        id: 'mystery-trung-sua',
+        name: 'Mystery Box Trứng & Sữa',
+        contents: 'Trứng gà thả vườn, sữa tươi và sữa chua nông trại, tổng 3kg.',
+        price: 90000,
+        value: 130000,
+        left: 20,
+        image: 'https://images.unsplash.com/photo-1550583724-b2692b85b150?auto=format&fit=crop&q=80&w=800'
+      },
+      {
+        id: 'mystery-giai-cuu',
+        name: 'Mystery Box Giải cứu nông sản',
+        contents: '4kg nông sản xấu mã nhưng chất lượng, giải cứu nông dân, tiết kiệm tối đa.',
+        price: 60000,
+        value: 110000,
+        left: 25,
+        image: 'https://images.unsplash.com/photo-1518977676601-b53f82aba655?auto=format&fit=crop&q=80&w=800'
+      },
+      {
+        id: 'mystery-gia-vi',
+        name: 'Mystery Box Gia vị & Thảo mộc',
+        contents: 'Gia vị và thảo mộc tươi theo mùa: sả, gừng, rau thơm, ớt.',
+        price: 45000,
+        value: 70000,
+        left: 18,
+        image: 'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&q=80&w=800'
+      },
+      {
+        id: 'mystery-cao-cap',
+        name: 'Mystery Box Cao cấp 6kg',
+        contents: '6kg nông sản nhập khẩu và đặc sản vùng miền cao cấp.',
+        price: 350000,
+        value: 550000,
+        left: 5,
+        image: 'https://images.unsplash.com/photo-1610348725531-843dff563e2c?auto=format&fit=crop&q=80&w=800'
+      },
+      {
+        id: 'mystery-trai-nhiet-doi',
+        name: 'Mystery Box Trái cây nhiệt đới',
+        contents: '3kg trái cây nhiệt đới đặc trưng: chuối, cam, lê theo mùa thu hoạch.',
+        price: 100000,
+        value: 150000,
+        left: 14,
+        image: 'https://images.unsplash.com/photo-1519996529931-28324d5a630e?auto=format&fit=crop&q=80&w=800'
+      },
+      {
+        id: 'mystery-rau-cu-huu-co',
+        name: 'Mystery Box Rau củ hữu cơ',
+        contents: '3.5kg rau củ hữu cơ đa dạng: cà rốt, súp lơ, bắp cải, dưa leo.',
+        price: 80000,
+        value: 115000,
+        left: 16,
+        image: 'https://images.unsplash.com/photo-1459411621453-7b03977f4bfc?auto=format&fit=crop&q=80&w=800'
+      }
+    ];
+
+    var faqs = [
+      { q: 'Tôi có biết trước bên trong hộp có gì không?', a: 'Không, nội dung hộp là bất ngờ và sẽ được chọn ngẫu nhiên từ các nông sản tươi ngon nhất thu hoạch trong ngày.' },
+      { q: 'Giá trị hộp có thực sự cao hơn giá bán không?', a: 'Có. Giá trị thực của nông sản trong hộp luôn được định giá cao hơn giá bán để đảm bảo bạn luôn được lợi.' },
+      { q: 'Tôi có thể đổi trả nếu không hài lòng không?', a: 'Bạn có thể liên hệ CSKH trong vòng 24h sau khi nhận hàng nếu sản phẩm không đạt chất lượng như cam kết.' },
+      { q: 'Hộp được giao trong bao lâu?', a: 'Đơn hàng Mystery Box thường được giao trong vòng 2-4 giờ sau khi đặt, tùy khu vực.' }
+    ];
+
+    var selectedBoxId = boxes[0].id;
+
+    function renderBoxOptions() {
+      var container = document.getElementById('box-options');
+      container.innerHTML = boxes.map(function (box) {
+        var savings = box.value - box.price;
+        var selectedClass = box.id === selectedBoxId ? ' selected' : '';
+        return (
+          '<div class="box-option' + selectedClass + ' bg-white rounded-2xl p-6 flex flex-col transition-all" data-id="' + box.id + '">' +
+            '<a href="product-detail.html?id=' + box.id + '" onclick="event.stopPropagation(); saveBoxForDetail(\'' + box.id + '\')" class="relative block aspect-[4/3] rounded-xl overflow-hidden mb-4 bg-purple-100/50">' +
+              '<div class="absolute top-3 right-3 z-10 bg-white/90 backdrop-blur-sm text-[#7C3AED] text-xs font-bold px-3 py-1.5 rounded-full shadow-sm">Còn ' + box.left + ' hộp</div>' +
+              '<img src="' + box.image + '" alt="' + box.name + '" class="w-full h-full object-cover" />' +
+            '</a>' +
+            '<a href="product-detail.html?id=' + box.id + '" onclick="event.stopPropagation(); saveBoxForDetail(\'' + box.id + '\')" class="text-lg font-bold text-[#1F2937] mb-1 block hover:text-[#7C3AED] transition-colors">' + box.name + '</a>' +
+            '<p class="text-sm text-gray-600 mb-4 flex-1">' + box.contents + '</p>' +
+            '<div class="flex items-end justify-between mb-2">' +
+              '<div>' +
+                '<div class="text-xs text-gray-500 mb-1">Giá trị thực: <span class="line-through">' + formatPrice(box.value) + '</span></div>' +
+                '<div class="text-2xl font-bold text-[#7C3AED]">' + formatPrice(box.price) + '</div>' +
+              '</div>' +
+            '</div>' +
+            '<div class="text-xs font-semibold text-[#40916C]">Tiết kiệm ' + formatPrice(savings) + '</div>' +
+          '</div>'
+        );
+      }).join('');
+
+      container.querySelectorAll('.box-option').forEach(function (el) {
+        el.addEventListener('click', function () {
+          selectedBoxId = el.dataset.id;
+          renderBoxOptions();
+        });
+      });
+    }
+
+    function saveBoxForDetail(boxId) {
+      var box = boxes.find(function (b) { return b.id === boxId; });
+      if (!box) return;
+      var detail = {
+        id: box.id,
+        name: box.name,
+        farm: 'FarmTable Mystery',
+        price: box.price,
+        oldPrice: box.value,
+        unit: 'hộp',
+        mainImage: box.image,
+        galleryImages: [],
+        description: box.contents,
+        certifications: [],
+        rating: 4.9,
+        reviewCount: 0,
+        soldCount: 0,
+        badge: 'Bí ẩn',
+        category: 'bi-an'
+      };
+      sessionStorage.setItem('ft_detail_' + detail.id, JSON.stringify(detail));
+    }
+
+    function renderFaq() {
+      var container = document.getElementById('faq-list');
+      container.innerHTML = faqs.map(function (item, i) {
+        return (
+          '<div class="faq-item bg-white rounded-xl border border-purple-100 overflow-hidden" data-index="' + i + '">' +
+            '<button class="faq-question w-full flex items-center justify-between text-left px-5 py-4 font-semibold text-[#1F2937]">' +
+              '<span>' + item.q + '</span>' +
+              '<i data-lucide="chevron-down" class="faq-chevron w-5 h-5 text-[#7C3AED] flex-shrink-0"></i>' +
+            '</button>' +
+            '<div class="faq-answer px-5 text-sm text-gray-600"><p class="pb-4">' + item.a + '</p></div>' +
+          '</div>'
+        );
+      }).join('');
+
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+
+      container.querySelectorAll('.faq-item').forEach(function (item) {
+        item.querySelector('.faq-question').addEventListener('click', function () {
+          item.classList.toggle('open');
+        });
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      document.getElementById('navbar-container').innerHTML = renderNavbar();
+      document.getElementById('footer-container').innerHTML = renderFooter();
+      setupMobileMenu();
+      updateCartBadge();
+      lucide.createIcons();
+
+      renderBoxOptions();
+      renderFaq();
+
+      document.getElementById('open-box-btn').addEventListener('click', function () {
+        var box = boxes.find(function (b) { return b.id === selectedBoxId; });
+        addToCart({
+          id: box.id,
+          name: box.name,
+          farm: 'FarmTable Mystery',
+          price: box.price,
+          unit: 'hộp',
+          image: box.image,
+          badge: 'Bí ẩn'
+        }, 1);
+        showToast('🎁 Đã mở "' + box.name + '" và thêm vào giỏ hàng!');
+        var btn = document.getElementById('open-box-btn');
+        var orig = btn.textContent;
+        btn.textContent = '✓ Đã thêm vào giỏ';
+        setTimeout(function () { btn.textContent = orig; }, 1500);
+      });
+    });
+  </script>
+</body>
+</html>

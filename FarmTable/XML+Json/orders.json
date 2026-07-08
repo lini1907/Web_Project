@@ -1,0 +1,90 @@
+[
+  {
+    "id": "FT10023481",
+    "customerId": "c1",
+    "customerName": "Trần Thị Bích",
+    "date": "2026-07-04",
+    "status": "done",
+    "paymentMethod": "cod",
+    "shippingAddress": "12 Nguyễn Trãi, Quận 1, TP.HCM",
+    "items": [
+      { "productId": "3", "name": "Dâu tây New Zealand", "price": 180000, "quantity": 1, "unit": "hộp 500g" },
+      { "productId": "1", "name": "Cà chua bi hữu cơ Đà Lạt", "price": 45000, "quantity": 2, "unit": "kg" }
+    ],
+    "shippingFee": 0,
+    "total": 270000
+  },
+  {
+    "id": "FT10023477",
+    "customerId": "c3",
+    "customerName": "Phạm Thị Duyên",
+    "date": "2026-07-03",
+    "status": "shipping",
+    "paymentMethod": "bank",
+    "shippingAddress": "78 Trần Phú, Quận Ba Đình, Hà Nội",
+    "items": [
+      { "productId": "8", "name": "Trứng gà thả vườn", "price": 45000, "quantity": 2, "unit": "chục" },
+      { "productId": "12", "name": "Khoai tây vàng Đà Lạt", "price": 32000, "quantity": 3, "unit": "kg" }
+    ],
+    "shippingFee": 20000,
+    "total": 206000
+  },
+  {
+    "id": "FT10023465",
+    "customerId": "c2",
+    "customerName": "Lê Văn Cường",
+    "date": "2026-07-02",
+    "status": "done",
+    "paymentMethod": "momo",
+    "shippingAddress": "45 Lê Lợi, Quận Hải Châu, Đà Nẵng",
+    "items": [
+      { "productId": "10", "name": "Cà rốt gãy nhỏ giải cứu", "price": 15000, "quantity": 4, "unit": "kg" }
+    ],
+    "shippingFee": 20000,
+    "total": 80000
+  },
+  {
+    "id": "FT10023450",
+    "customerId": "c5",
+    "customerName": "Vũ Thị Hoa",
+    "date": "2026-07-01",
+    "status": "new",
+    "paymentMethod": "cod",
+    "shippingAddress": "22 Hai Bà Trưng, TP. Huế",
+    "items": [
+      { "productId": "7", "name": "Thịt heo sạch CP", "price": 120000, "quantity": 1, "unit": "kg" },
+      { "productId": "11", "name": "Cá basa tươi sống", "price": 55000, "quantity": 2, "unit": "kg" }
+    ],
+    "shippingFee": 0,
+    "total": 230000
+  },
+  {
+    "id": "FT10023441",
+    "customerId": "c1",
+    "customerName": "Trần Thị Bích",
+    "date": "2026-06-29",
+    "status": "cancelled",
+    "paymentMethod": "bank",
+    "shippingAddress": "12 Nguyễn Trãi, Quận 1, TP.HCM",
+    "items": [
+      { "productId": "13", "name": "Mystery Box Trái Cây", "price": 150000, "quantity": 1, "unit": "hộp" }
+    ],
+    "shippingFee": 20000,
+    "total": 170000
+  },
+  {
+    "id": "FT10023432",
+    "customerId": "c6",
+    "customerName": "Đặng Quốc Huy",
+    "date": "2026-06-27",
+    "status": "done",
+    "paymentMethod": "cod",
+    "shippingAddress": "5 Phan Chu Trinh, TP. Cần Thơ",
+    "items": [
+      { "productId": "5", "name": "Súp lơ xanh", "price": 40000, "quantity": 2, "unit": "bắp" },
+      { "productId": "6", "name": "Nấm đùi gà", "price": 65000, "quantity": 1, "unit": "500g" }
+    ],
+    "shippingFee": 20000,
+    "total": 165000
+  }
+]

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="../assets/logo.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tra cứu đơn hàng | FarmTable</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <link rel="stylesheet" href="../CSS/style.css" />
+</head>
+<body class="min-h-screen bg-[#F0FDF4] text-[#1F2937] flex flex-col font-sans">
+
+  <div id="navbar-container"></div>
+
+  <div class="bg-[#F8F3EC] py-3">
+    <div class="max-w-[1200px] mx-auto px-4 md:px-8 flex items-center gap-2 text-[14px] text-gray-500">
+      <a href="index.html" class="hover:text-[#40916C]">Trang chủ</a>
+      <span>/</span>
+      <span class="text-[#1B4332] font-semibold">Tra cứu đơn hàng</span>
+    </div>
+  </div>
+
+  <main class="flex-1 py-10">
+    <div class="max-w-[560px] mx-auto px-4">
+      <h1 class="text-2xl font-bold text-[#1B4332] mb-2">Tra cứu đơn hàng</h1>
+      <p class="text-gray-500 mb-6 text-sm">
+        Dành cho khách đặt hàng không cần đăng nhập. Nhập đúng mã đơn hàng và số điện thoại đã dùng khi đặt để xem chi tiết.
+      </p>
+
+      <form id="track-form" class="bg-white rounded-2xl border border-[#E5E7EB] p-6 flex flex-col gap-4 mb-8">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Mã đơn hàng</label>
+          <input id="track-id" type="text" required placeholder="VD: FT123456789"
+            class="w-full h-11 px-4 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-[#40916C]" />
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Số điện thoại đã đặt hàng</label>
+          <input id="track-phone" type="tel" required placeholder="09xx xxx xxx"
+            class="w-full h-11 px-4 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-[#40916C]" />
+        </div>
+        <div id="track-error" class="hidden text-sm text-red-600 bg-red-50 rounded-lg px-3 py-2"></div>
+        <button type="submit" class="w-full h-11 bg-[#40916C] hover:bg-[#2D6A4F] text-white rounded-xl font-bold text-[15px] transition-colors">
+          Tra cứu
+        </button>
+      </form>
+
+      <div id="order-result" class="hidden bg-white rounded-2xl border border-[#E5E7EB] p-6"></div>
+    </div>
+  </main>
+
+  <div id="footer-container"></div>
+
+  <script src="../JS/cart.js"></script>
+  <script src="../JS/account.js"></script>
+  <script src="../JS/dom.js"></script>
+  <script src="../Ajax/fetch-orders.js"></script>
+  <script>
+    function renderOrderResult(order) {
+      var status = ORDER_STATUS_LABELS[order.status];
+      var subtotal = order.total - order.shippingFee;
+      var rowsHtml = order.items.map(function (item) {
+        return (
+          '<div class="flex justify-between text-sm py-2 border-b border-gray-50">' +
+            '<span class="text-gray-600">' + item.name + ' <span class="text-gray-400">x' + item.quantity + '</span></span>' +
+            '<span class="font-medium text-[#1F2937]">' + formatPrice(item.price * item.quantity) + '</span>' +
+          '</div>'
+        );
+      }).join('');
+
+      document.getElementById('order-result').innerHTML =
+        '<div class="flex justify-between items-center mb-4">' +
+          '<span class="font-bold text-[#1B4332]">#' + order.id + '</span>' +
+          '<span class="text-xs font-bold px-2 py-1 rounded ' + status.className + '">' + status.label + '</span>' +
+        '</div>' +
+        '<div class="text-sm text-gray-600 mb-1"><strong>Địa chỉ giao:</strong> ' + order.shippingAddress + '</div>' +
+        '<div class="text-sm text-gray-600 mb-1"><strong>Thanh toán:</strong> ' + paymentMethodLabel(order.paymentMethod) + '</div>' +
+        '<div class="text-sm text-gray-600 mb-4"><strong>Ngày đặt:</strong> ' + order.date + '</div>' +
+        '<div class="border-t border-gray-100 pt-2">' + rowsHtml + '</div>' +
+        '<div class="flex justify-between text-sm pt-3"><span class="text-gray-500">Tạm tính</span><span>' + formatPrice(subtotal) + '</span></div>' +
+        '<div class="flex justify-between text-sm py-1"><span class="text-gray-500">Phí giao hàng</span><span>' + (order.shippingFee ? formatPrice(order.shippingFee) : 'Miễn phí') + '</span></div>' +
+        '<div class="flex justify-between font-bold text-[#1B4332] text-lg pt-2 border-t border-gray-100 mt-2"><span>Tổng cộng</span><span>' + formatPrice(order.total) + '</span></div>';
+
+      document.getElementById('order-result').classList.remove('hidden');
+    }
+
+    function runLookup(id, phone) {
+      var errorEl = document.getElementById('track-error');
+      errorEl.classList.add('hidden');
+      document.getElementById('order-result').classList.add('hidden');
+
+      findOrderByCode(id, phone).then(function (order) {
+        if (!order) {
+          errorEl.textContent = 'Không tìm thấy đơn hàng khớp với mã và số điện thoại đã nhập.';
+          errorEl.classList.remove('hidden');
+          return;
+        }
+        renderOrderResult(order);
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      document.getElementById('navbar-container').innerHTML = renderNavbar();
+      document.getElementById('footer-container').innerHTML = renderFooter();
+      setupMobileMenu();
+      updateCartBadge();
+      lucide.createIcons();
+
+      var params = new URLSearchParams(window.location.search);
+      var idParam = params.get('id');
+      var phoneParam = params.get('phone');
+      if (idParam) document.getElementById('track-id').value = idParam;
+      if (phoneParam) document.getElementById('track-phone').value = phoneParam;
+      if (idParam && phoneParam) runLookup(idParam, phoneParam);
+
+      document.getElementById('track-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+        runLookup(document.getElementById('track-id').value, document.getElementById('track-phone').value);
+      });
+    });
+  </script>
+</body>
+</html>

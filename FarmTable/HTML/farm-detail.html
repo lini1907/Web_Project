@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="../assets/logo.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chi tiết Nông trại | FarmTable</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/be-vietnam-pro@1.2.0/dist/font/static/font.css" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <link rel="stylesheet" href="../CSS/style.css">
+  
+  <style>
+    body { font-family: 'Be Vietnam Pro', sans-serif; }
+    .product-card { border: 1px solid transparent; border-radius: 8px; background: white; transition: all 0.3s; }
+    .product-card:hover { border-color: #40916C; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+    .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); display: none; align-items: center; justify-content: center; z-index: 100; padding: 16px; }
+    .modal-overlay.active { display: flex; }
+    .modal-box { animation: modal-pop 0.2s ease-out; }
+    @keyframes modal-pop { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+  </style>
+</head>
+<body class="bg-[#F0FAF3]">
+  <nav id="navbar-container"></nav>
+
+  <div class="relative h-[180px] md:h-[220px] w-full bg-[#1B4332]" id="cover-section">
+    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+    
+    <div class="absolute top-6 left-4 md:left-8">
+      <a href="farm.html" class="flex items-center gap-2 text-white bg-black/30 hover:bg-black/50 backdrop-blur-md px-4 py-2 rounded-full font-medium transition-colors">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+        </svg>
+        Quay lại
+      </a>
+    </div>
+  </div>
+
+  <div class="max-w-[1200px] mx-auto px-4 md:px-8">
+    <!-- Farm Header with Avatar -->
+    <div id="farm-header-section" class="-translate-y-8 md:-translate-y-10 mb-2"></div>
+
+    <!-- Content Section -->
+    <div id="content-section" class="mt-4">
+      <!-- Will be filled by JavaScript -->
+    </div>
+  </div>
+
+  <footer id="footer-container"></footer>
+
+  <!-- CONTACT MODAL -->
+  <div id="contact-modal" class="modal-overlay">
+    <div class="modal-box bg-white rounded-2xl p-6 w-full max-w-sm shadow-2xl text-center">
+      <div class="w-16 h-16 rounded-full bg-[#F0FAF3] flex items-center justify-center text-[#40916C] mx-auto mb-4">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+        </svg>
+      </div>
+      <h3 id="contact-modal-title" class="text-lg font-bold text-[#1F2937] mb-1">Liên hệ với nông trại</h3>
+      <p class="text-gray-500 text-sm mb-5">Bạn có thể liên hệ trực tiếp qua:</p>
+      <div class="space-y-3 mb-6 text-left">
+        <div class="flex items-center gap-3 bg-[#F0FAF3] rounded-xl px-4 py-3">
+          <span class="text-xl">📞</span>
+          <div>
+            <div class="text-xs text-gray-500 font-medium">Hotline</div>
+            <div class="text-sm font-bold text-[#1F2937]">1900 6035</div>
+          </div>
+        </div>
+        <div class="flex items-center gap-3 bg-[#F0FAF3] rounded-xl px-4 py-3">
+          <span class="text-xl">✉️</span>
+          <div>
+            <div class="text-xs text-gray-500 font-medium">Email</div>
+            <div class="text-sm font-bold text-[#1F2937]">hotro@farmtable.vn</div>
+          </div>
+        </div>
+      </div>
+      <button onclick="closeContactModal()" class="w-full bg-[#1B4332] hover:bg-[#2D6A4F] text-white font-bold py-2.5 rounded-xl transition-colors">
+        Đóng
+      </button>
+    </div>
+  </div>
+  <script>
+    document.getElementById('contact-modal').addEventListener('click', function(e) {
+      if (e.target === this) closeContactModal();
+    });
+  </script>
+
+  <script src="../JS/cart.js"></script>
+  <script src="../JS/account.js"></script>
+  <script src="../JS/dom.js"></script>
+  <script src="../Ajax/fetch-products.js"></script>
+  
+  <script>
+    const farms = [
+      {
+        id: 1,
+        name: "Nông trại Đà Lạt Xanh",
+        location: "Lâm Đồng",
+        type: "Hữu cơ (Organic)",
+        rating: 4.9,
+        reviews: 128,
+        image: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?q=80&w=1080",
+        avatar: "https://images.unsplash.com/photo-1530507629858-e4977d30e9e0?q=80&w=200",
+        description: "Chuyên cung cấp các loại rau củ xứ lạnh trồng theo phương pháp hữu cơ 100%, không sử dụng phân bón hóa học và thuốc trừ sâu. Nông trại áp dụng quy trình kiểm soát chất lượng khắt khe từ khâu gieo hạt đến thu hoạch, đảm bảo sản phẩm luôn tươi ngon và an toàn cho sức khỏe gia đình bạn.",
+        products: ["Cà chua bi", "Xà lách", "Súp lơ", "Dâu tây"]
+      },
+      {
+        id: 2,
+        name: "HTX Nông nghiệp Đức Trọng",
+        location: "Lâm Đồng",
+        type: "VietGAP",
+        rating: 4.7,
+        reviews: 85,
+        image: "https://images.unsplash.com/photo-1518994603110-1912b3272afd?q=80&w=1080",
+        avatar: "https://images.unsplash.com/photo-1707235164180-85fa316ce0ab?q=80&w=200",
+        description: "Hợp tác xã với hơn 50 hộ nông dân liên kết, áp dụng công nghệ tưới nhỏ giọt và nhà màng đạt chuẩn VietGAP. Chúng tôi tự hào là nguồn cung cấp rau củ quả ổn định và chất lượng cao cho các siêu thị và chuỗi cửa hàng thực phẩm sạch trên toàn quốc.",
+        products: ["Ớt chuông", "Dưa leo", "Cà rốt", "Hành tây"]
+      },
+      {
+        id: 3,
+        name: "Miệt vườn Cô Ba",
+        location: "Bến Tre",
+        type: "Thuận tự nhiên",
+        rating: 4.8,
+        reviews: 210,
+        image: "https://images.unsplash.com/photo-1510844355160-2fb07bf9af75?q=80&w=1080",
+        avatar: "https://images.unsplash.com/photo-1620918999971-dc338a42175a?q=80&w=200",
+        description: "Vườn cây ăn trái hơn 20 năm tuổi, canh tác hoàn toàn thuận tự nhiên, để cỏ mọc và sử dụng phân bón ủ từ phế phẩm nông nghiệp. Trái cây tại Miệt vườn Cô Ba luôn giữ được hương vị đậm đà nguyên bản của vùng đất phù sa trù phú.",
+        products: ["Bưởi da xanh", "Sầu riêng", "Dừa sáp", "Chôm chôm"]
+      },
+      {
+        id: 4,
+        name: "Vườn rau Củ Chi",
+        location: "TP. Hồ Chí Minh",
+        type: "VietGAP",
+        rating: 4.6,
+        reviews: 56,
+        image: "https://images.unsplash.com/photo-1761839257946-4616bcfafec7?q=80&w=1080",
+        avatar: "https://images.unsplash.com/photo-1562058233-065f1fc8ff51?q=80&w=200",
+        description: "Trang trại thủy canh hiện đại ngay ngoại thành TP.HCM, cung cấp rau ăn lá tươi mới thu hoạch trong ngày. Với quy trình tự động hóa, chúng tôi mang đến những bữa ăn xanh mát và an toàn tuyệt đối cho người dân thành thị.",
+        products: ["Cải ngọt", "Cải bẹ xanh", "Mồng tơi", "Rau muống"]
+      }
+    ];
+
+    const farmProductImages = {
+      1: [
+        "https://images.unsplash.com/photo-1590779033100-9f60a05a013d?q=80&w=400",
+        "https://images.unsplash.com/photo-1597362925123-77861d3fbac7?q=80&w=400",
+        "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=400",
+        "https://images.unsplash.com/photo-1619566636858-adf3ef46400b?q=80&w=400"
+      ],
+      2: [
+        "https://images.unsplash.com/photo-1590868309235-ea34bed7bd7f?q=80&w=400",
+        "https://images.unsplash.com/photo-1540420773420-3366772f4999?q=80&w=400",
+        "https://images.unsplash.com/photo-1590779033100-9f60a05a013d?q=80&w=400",
+        "https://images.unsplash.com/photo-1597362925123-77861d3fbac7?q=80&w=400"
+      ],
+      3: [
+        "https://images.unsplash.com/photo-1580691155297-c6dfa3ca61c4?q=80&w=400",
+        "https://images.unsplash.com/photo-1487376480913-24046456a727?q=80&w=400",
+        "https://images.unsplash.com/photo-1592558480962-903b06077406?q=80&w=400",
+        "https://images.unsplash.com/photo-1610832958506-aa56368176cf?q=80&w=400"
+      ],
+      4: [
+        "https://images.unsplash.com/photo-1760158968536-4282a9213aa9?q=80&w=200",
+        "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=400",
+        "https://images.unsplash.com/photo-1590868309235-ea34bed7bd7f?q=80&w=400",
+        "https://images.unsplash.com/photo-1540420773420-3366772f4999?q=80&w=400"
+      ]
+    };
+
+    function contactFarm(farmName) {
+      document.getElementById('contact-modal-title').textContent = `Liên hệ với ${farmName}`;
+      document.getElementById('contact-modal').classList.add('active');
+    }
+
+    function closeContactModal() {
+      document.getElementById('contact-modal').classList.remove('active');
+    }
+
+    function getQueryParam(param) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(param);
+    }
+
+    function renderFarmHeader(farm) {
+      const headerHtml = `
+        <div class="flex flex-col md:flex-row items-end md:items-center gap-3 md:gap-5">
+          <div class="w-16 h-16 md:w-20 md:h-20 rounded-full border-4 border-white bg-white shadow-lg overflow-hidden shrink-0 z-10">
+            <img src="${farm.avatar}" alt="Avatar" class="w-full h-full object-cover">
+          </div>
+          <div class="flex-1 z-10">
+            <div class="bg-[#1B4332] px-4 py-2.5 md:px-5 md:py-3 rounded-xl inline-block mb-2.5">
+              <h1 class="text-xl md:text-2xl font-bold text-white leading-tight">
+                ${farm.name}
+              </h1>
+            </div>
+            <div class="flex flex-wrap items-center gap-2 md:gap-3">
+              <div class="flex items-center gap-1.5 text-white font-semibold text-xs md:text-sm bg-black/30 px-2.5 py-1 rounded-full backdrop-blur-sm">
+                <svg class="w-4 h-4 text-yellow-300" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L9.9 13.95a7 7 0 01-9.9-9.9zM9 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+                </svg>
+                <span>${farm.location}</span>
+              </div>
+              <div class="flex items-center gap-1.5 bg-[#40916C] text-white px-2.5 py-1 rounded-full text-[11px] md:text-xs font-bold drop-shadow-lg">
+                <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                </svg>
+                ${farm.type}
+              </div>
+              <div class="flex items-center gap-1.5 text-white font-bold text-xs md:text-sm bg-black/30 px-2.5 py-1 rounded-full backdrop-blur-sm drop-shadow-lg">
+                <svg class="w-4 h-4 text-yellow-300 fill-yellow-300" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                </svg>
+                <span>${farm.rating}</span>
+                <span class="text-white/90">• ${farm.reviews} đánh giá</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+      document.getElementById('farm-header-section').innerHTML = headerHtml;
+    }
+
+    function renderContent(farm, products) {
+      const farmProducts = products.filter(p => p.farm.toLowerCase().includes(farm.name.toLowerCase()));
+      
+      const contentHtml = `
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <!-- Left Column: Farm Description -->
+          <div class="lg:col-span-1 flex flex-col gap-6">
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+              <h3 class="text-lg font-bold text-[#1F2937] mb-4 border-b border-gray-100 pb-3">Về nông trại</h3>
+              <p class="text-gray-600 text-[15px] leading-relaxed mb-6">
+                ${farm.description}
+              </p>
+              
+              <div class="space-y-4">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-full bg-[#F0FAF3] flex items-center justify-center text-[#40916C]">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <div class="text-xs text-gray-500 font-medium">Tiêu chuẩn</div>
+                    <div class="text-[14px] font-bold text-[#1F2937]">${farm.type}</div>
+                  </div>
+                </div>
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-full bg-[#F0FAF3] flex items-center justify-center text-[#40916C]">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <div class="text-xs text-gray-500 font-medium">Khu vực</div>
+                    <div class="text-[14px] font-bold text-[#1F2937]">${farm.location}</div>
+                  </div>
+                </div>
+              </div>
+              
+              <button class="w-full mt-6 bg-[#1B4332] hover:bg-[#2D6A4F] text-white font-bold py-2.5 rounded-xl transition-colors"
+                      onclick="contactFarm('${farm.name.replace(/'/g, "\\'")}')">
+                📞 Liên hệ
+              </button>
+            </div>
+          </div>
+
+          <!-- Right Column: Products -->
+          <div class="lg:col-span-2">
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+              <h2 class="text-xl font-bold text-[#1F2937] mb-6 flex items-center gap-2">
+                <svg class="w-5 h-5 text-[#40916C]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+                </svg>
+                Sản phẩm từ ${farm.name}
+              </h2>
+              
+              <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                ${farmProducts.length > 0 ? farmProducts.map(product => `
+                  <div class="product-card p-2 hover:border-[#40916C] hover:shadow-[0_4px_12px_rgba(0,0,0,0.08)]">
+                    <a href="product-detail.html?id=${product.id}" class="relative aspect-square rounded-md overflow-hidden mb-3 bg-gray-50 border border-gray-100 block group">
+                      <img src="${product.mainImage}" alt="${product.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    </a>
+                    <a href="product-detail.html?id=${product.id}" class="text-sm font-bold text-[#1F2937] line-clamp-2 block mb-2">${product.name}</a>
+                    <div class="text-[13px] text-gray-600 mb-2">🏪 ${product.farm}</div>
+                    <div class="text-[14px] font-bold text-[#40916C] mb-3">${product.price.toLocaleString('vi-VN')}đ <span class="text-gray-400 font-normal">/${product.unit}</span></div>
+                    <button class="w-full bg-[#40916C] hover:bg-[#2D6A4F] text-white text-xs font-bold py-1.5 rounded-md transition-colors"
+                            onclick="addToCart({id: '${product.id}', name: '${product.name.replace(/'/g, "\\'")}', price: ${product.price}, image: '${product.mainImage}', farm: '${product.farm.replace(/'/g, "\\'")}', unit: '${product.unit}'}); showToast('Đã thêm ${product.name.replace(/'/g, "\\'")} vào giỏ hàng')">
+                      Thêm vào giỏ
+                    </button>
+                  </div>
+                `).join('') : '<p class="text-gray-500 col-span-full text-center py-8">Không có sản phẩm nào</p>'}
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+      document.getElementById('content-section').innerHTML = contentHtml;
+      attachAddToCartEvents();
+    }
+
+    function initPage() {
+      const farmId = getQueryParam('id');
+      if (!farmId) {
+        window.location.href = 'farm.html';
+        return;
+      }
+
+      const farm = farms.find(f => f.id === Number(farmId));
+      if (!farm) {
+        document.getElementById('content-section').innerHTML = `
+          <div class="min-h-screen bg-[#F0FDF4] flex flex-col items-center justify-center">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">Không tìm thấy nông trại!</h2>
+            <a href="farm.html" class="px-6 py-2 bg-[#40916C] text-white rounded-lg hover:bg-[#2D6A4F] transition-colors">
+              Quay lại danh sách
+            </a>
+          </div>
+        `;
+        return;
+      }
+
+      // Render cover image
+      const coverSection = document.getElementById('cover-section');
+      coverSection.style.backgroundImage = `url('${farm.image}')`;
+      coverSection.style.backgroundSize = 'cover';
+      coverSection.style.backgroundPosition = 'center';
+
+      renderFarmHeader(farm);
+
+      // Fetch products
+      fetch('../XML+Json/products.json')
+        .then(res => res.json())
+        .then(products => {
+          renderContent(farm, products);
+        })
+        .catch(err => {
+          console.error('Error loading products:', err);
+          renderContent(farm, []);
+        });
+    }
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('navbar-container').innerHTML = renderNavbar();
+      document.getElementById('footer-container').innerHTML = renderFooter();
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+      initPage();
+    });
+  </script>
+</body>
+</html>
