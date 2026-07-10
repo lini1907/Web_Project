@@ -1,0 +1,46 @@
+[
+  {
+    "id": "v1",
+    "name": "Nông trại Đà Lạt Xanh",
+    "email": "dalatxanh@farmtable.vn",
+    "password": "dalat123",
+    "phone": "0263123456",
+    "address": "Xã Xuân Thọ, TP. Đà Lạt, Lâm Đồng",
+    "joinDate": "2024-11-05",
+    "productCount": 12,
+    "status": "Đang hoạt động"
+  },
+  {
+    "id": "v2",
+    "name": "Vườn rau sạch Mộc Châu",
+    "email": "mocchau@farmtable.vn",
+    "password": "mocchau123",
+    "phone": "0212234567",
+    "address": "Xã Đông Sang, Mộc Châu, Sơn La",
+    "joinDate": "2024-12-18",
+    "productCount": 9,
+    "status": "Đang hoạt động"
+  },
+  {
+    "id": "v3",
+    "name": "Trang trại hữu cơ Củ Chi",
+    "email": "cuchi@farmtable.vn",
+    "password": "cuchi123",
+    "phone": "0281234567",
+    "address": "Xã Phú Mỹ Hưng, Củ Chi, TP.HCM",
+    "joinDate": "2025-01-22",
+    "productCount": 6,
+    "status": "Đang hoạt động"
+  },
+  {
+    "id": "v4",
+    "name": "Nông sản sạch Tam Đảo",
+    "email": "tamdao@farmtable.vn",
+    "password": "tamdao123",
+    "phone": "0211234567",
+    "address": "Thị trấn Tam Đảo, Vĩnh Phúc",
+    "joinDate": "2025-02-10",
+    "productCount": 4,
+    "status": "Chờ duyệt"
+  }
+]

@@ -1,0 +1,20 @@
+[
+  {
+    "id": "a1",
+    "name": "Nguyễn Văn Admin",
+    "email": "admin@farmtable.vn",
+    "password": "admin123",
+    "phone": "0909000001",
+    "role": "Quản trị viên",
+    "joinDate": "2024-10-01"
+  },
+  {
+    "id": "a2",
+    "name": "Trần Thị Quản Lý",
+    "email": "manager@farmtable.vn",
+    "password": "manager123",
+    "phone": "0909000002",
+    "role": "Quản lý nội dung",
+    "joinDate": "2024-10-15"
+  }
+]
