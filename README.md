@@ -1,4 +1,4 @@
-# FarmTable v2 — Sàn nông sản full-stack
+# FarmTable v2
 
 Đồ án môn **Phát triển Web kinh doanh nâng cao (BIE5061)**. Nâng cấp bản HTML/CSS/JS cũ (thư mục `FarmTable/`, giữ nguyên để đối chiếu) thành ứng dụng:
 
