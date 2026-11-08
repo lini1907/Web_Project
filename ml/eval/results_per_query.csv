@@ -1,0 +1,105 @@
+method,query,recommended,precision,recall,hit,ndcg
+baseline_category_popular,ca-chua-bi-huu-co-da-lat,khoai-tay-vang-da-lat|nam-dui-ga|sup-lo-xanh|dua-leo-da-lat|cai-bo-xoi-vietgap,0.4,0.6667,1.0,0.3836
+baseline_category_popular,ca-chua-meo-mo-giai-cuu,khoai-tay-vang-da-lat|nam-dui-ga|ca-chua-bi-huu-co-da-lat|sup-lo-xanh|dua-leo-da-lat,0.4,1.0,1.0,0.5438
+baseline_category_popular,cai-bo-xoi-vietgap,khoai-tay-vang-da-lat|nam-dui-ga|ca-chua-bi-huu-co-da-lat|sup-lo-xanh|dua-leo-da-lat,0.2,0.3333,1.0,0.2021
+baseline_category_popular,sup-lo-xanh,khoai-tay-vang-da-lat|nam-dui-ga|ca-chua-bi-huu-co-da-lat|dua-leo-da-lat|cai-bo-xoi-vietgap,0.2,0.3333,1.0,0.1815
+baseline_category_popular,bap-cai-tuoi-da-lat,khoai-tay-vang-da-lat|nam-dui-ga|ca-chua-bi-huu-co-da-lat|sup-lo-xanh|dua-leo-da-lat,0.2,0.3333,1.0,0.2021
+baseline_category_popular,khoai-tay-vang-da-lat,nam-dui-ga|ca-chua-bi-huu-co-da-lat|sup-lo-xanh|dua-leo-da-lat|cai-bo-xoi-vietgap,0.0,0.0,0.0,0.0
+baseline_category_popular,ca-rot-gay-nho-giai-cuu,khoai-tay-vang-da-lat|nam-dui-ga|ca-chua-bi-huu-co-da-lat|sup-lo-xanh|dua-leo-da-lat,0.2,0.5,1.0,0.6131
+baseline_category_popular,khoai-lang-size-lon-giai-cuu,khoai-tay-vang-da-lat|nam-dui-ga|ca-chua-bi-huu-co-da-lat|sup-lo-xanh|dua-leo-da-lat,0.2,0.5,1.0,0.6131
+baseline_category_popular,nam-dui-ga,khoai-tay-vang-da-lat|ca-chua-bi-huu-co-da-lat|sup-lo-xanh|dua-leo-da-lat|cai-bo-xoi-vietgap,0.0,0.0,0.0,0.0
+baseline_category_popular,cam-sanh-vinh-long,dau-tay-new-zealand|dau-tay-da-lat-hop-300g|cam-sanh-cai-be|thap-cam-trai-cay-theo-mua|chuoi-gia-nam-my,0.2,0.5,1.0,0.3066
+baseline_category_popular,cam-sanh-cai-be,dau-tay-new-zealand|cam-sanh-vinh-long|dau-tay-da-lat-hop-300g|thap-cam-trai-cay-theo-mua|chuoi-gia-nam-my,0.2,0.5,1.0,0.3869
+baseline_category_popular,dau-tay-new-zealand,cam-sanh-vinh-long|dau-tay-da-lat-hop-300g|cam-sanh-cai-be|thap-cam-trai-cay-theo-mua|chuoi-gia-nam-my,0.2,1.0,1.0,0.6309
+baseline_category_popular,tao-fuji-tray-xuoc-giai-cuu,dau-tay-new-zealand|cam-sanh-vinh-long|dau-tay-da-lat-hop-300g|cam-sanh-cai-be|thap-cam-trai-cay-theo-mua,0.2,0.3333,1.0,0.1815
+baseline_category_popular,dua-luoi-nut-vo-giai-cuu,dau-tay-new-zealand|cam-sanh-vinh-long|dau-tay-da-lat-hop-300g|cam-sanh-cai-be|thap-cam-trai-cay-theo-mua,0.2,0.3333,1.0,0.1815
+baseline_category_popular,bo-sap-tray-vo-giai-cuu,dau-tay-new-zealand|cam-sanh-vinh-long|dau-tay-da-lat-hop-300g|cam-sanh-cai-be|thap-cam-trai-cay-theo-mua,0.2,0.5,1.0,0.2372
+baseline_category_popular,thap-cam-trai-cay-theo-mua,dau-tay-new-zealand|cam-sanh-vinh-long|dau-tay-da-lat-hop-300g|cam-sanh-cai-be|chuoi-gia-nam-my,0.6,0.6,1.0,0.4469
+baseline_category_popular,thit-heo-sach-cp,ca-basa-tuoi-song|thit-ba-chi-heo-sach|ga-ta-tha-vuon|suon-heo-cot-let|tom-su-tuoi-ca-mau,0.4,0.6667,1.0,0.4982
+baseline_category_popular,thit-ba-chi-heo-sach,thit-heo-sach-cp|ca-basa-tuoi-song|ga-ta-tha-vuon|suon-heo-cot-let|tom-su-tuoi-ca-mau,0.4,0.6667,1.0,0.6714
+baseline_category_popular,suon-heo-cot-let,thit-heo-sach-cp|ca-basa-tuoi-song|thit-ba-chi-heo-sach|ga-ta-tha-vuon|tom-su-tuoi-ca-mau,0.4,1.0,1.0,0.9197
+baseline_category_popular,set-thit-nuong-bbq-hon-hop,thit-heo-sach-cp|ca-basa-tuoi-song|thit-ba-chi-heo-sach|ga-ta-tha-vuon|suon-heo-cot-let,0.6,1.0,1.0,0.8855
+baseline_category_popular,ga-ta-tha-vuon,thit-heo-sach-cp|ca-basa-tuoi-song|thit-ba-chi-heo-sach|suon-heo-cot-let|tom-su-tuoi-ca-mau,0.6,1.0,1.0,0.906
+baseline_category_popular,trung-ga-tha-vuon,trung-ga-lan-size-giai-cuu|dau-tay-new-zealand|thit-heo-sach-cp|cam-sanh-vinh-long|khoai-tay-vang-da-lat,0.2,1.0,1.0,1.0
+baseline_category_popular,ca-basa-tuoi-song,thit-heo-sach-cp|thit-ba-chi-heo-sach|ga-ta-tha-vuon|suon-heo-cot-let|tom-su-tuoi-ca-mau,0.0,0.0,0.0,0.0
+baseline_category_popular,ca-hoi-phi-le-tuoi,thit-heo-sach-cp|ca-basa-tuoi-song|thit-ba-chi-heo-sach|ga-ta-tha-vuon|suon-heo-cot-let,0.2,0.3333,1.0,0.2961
+baseline_category_popular,tom-su-tuoi-ca-mau,thit-heo-sach-cp|ca-basa-tuoi-song|thit-ba-chi-heo-sach|ga-ta-tha-vuon|suon-heo-cot-let,0.0,0.0,0.0,0.0
+baseline_category_popular,tom-cang-xanh-song,thit-heo-sach-cp|ca-basa-tuoi-song|thit-ba-chi-heo-sach|ga-ta-tha-vuon|suon-heo-cot-let,0.0,0.0,0.0,0.0
+tfidf_name_desc,ca-chua-bi-huu-co-da-lat,dua-leo-da-lat|bap-cai-tuoi-da-lat|dau-tay-da-lat-hop-300g|ca-chua-meo-mo-giai-cuu|cam-sanh-cai-be,0.4,0.6667,1.0,0.6714
+tfidf_name_desc,ca-chua-meo-mo-giai-cuu,ca-rot-gay-nho-giai-cuu|ca-chua-bi-huu-co-da-lat|cam-sanh-cai-be|dau-tay-da-lat-hop-300g|dua-luoi-nut-vo-giai-cuu,0.2,0.5,1.0,0.3869
+tfidf_name_desc,cai-bo-xoi-vietgap,bap-cai-tuoi-da-lat|sup-lo-xanh|dua-leo-da-lat|cam-sanh-cai-be|bo-sap-tray-vo-giai-cuu,0.4,0.6667,1.0,0.7654
+tfidf_name_desc,sup-lo-xanh,sup-lo-trang-size-nho-giai-cuu|tom-cang-xanh-song|ca-basa-tuoi-song|ca-hoi-phi-le-tuoi|cai-bo-xoi-vietgap,0.4,0.6667,1.0,0.6508
+tfidf_name_desc,bap-cai-tuoi-da-lat,dua-leo-da-lat|ca-chua-bi-huu-co-da-lat|dau-tay-da-lat-hop-300g|khoai-tay-vang-da-lat|cai-bo-xoi-vietgap,0.2,0.3333,1.0,0.1815
+tfidf_name_desc,khoai-tay-vang-da-lat,bap-cai-tuoi-da-lat|dau-tay-da-lat-hop-300g|dua-leo-da-lat|ca-chua-bi-huu-co-da-lat|dau-tay-new-zealand,0.0,0.0,0.0,0.0
+tfidf_name_desc,ca-rot-gay-nho-giai-cuu,ca-chua-meo-mo-giai-cuu|ca-basa-size-nho-giai-cuu|cam-sanh-tray-vo-giai-cuu|sup-lo-trang-size-nho-giai-cuu|nam-dui-ga-lech-form-giai-cuu,0.0,0.0,0.0,0.0
+tfidf_name_desc,khoai-lang-size-lon-giai-cuu,ca-basa-size-nho-giai-cuu|sup-lo-trang-size-nho-giai-cuu|dau-tay-new-zealand|khoai-tay-vang-da-lat|ca-rot-gay-nho-giai-cuu,0.4,1.0,1.0,0.5013
+tfidf_name_desc,nam-dui-ga,nam-dui-ga-lech-form-giai-cuu|ga-ta-tha-vuon|chuoi-gia-nam-my|ca-basa-phi-le-dong-lanh|set-thit-nuong-bbq-hon-hop,0.2,1.0,1.0,1.0
+tfidf_name_desc,cam-sanh-vinh-long,cam-sanh-cai-be|cam-sanh-tray-vo-giai-cuu|thap-cam-trai-cay-theo-mua|ca-chua-bi-huu-co-da-lat|ca-chua-meo-mo-giai-cuu,0.4,1.0,1.0,1.0
+tfidf_name_desc,cam-sanh-cai-be,cam-sanh-vinh-long|cam-sanh-tray-vo-giai-cuu|dau-tay-da-lat-hop-300g|ca-chua-meo-mo-giai-cuu|ca-chua-bi-huu-co-da-lat,0.4,1.0,1.0,1.0
+tfidf_name_desc,dau-tay-new-zealand,dau-tay-da-lat-hop-300g|khoai-tay-vang-da-lat|ca-chua-bi-huu-co-da-lat|bap-cai-tuoi-da-lat|dua-leo-da-lat,0.2,1.0,1.0,1.0
+tfidf_name_desc,tao-fuji-tray-xuoc-giai-cuu,cam-sanh-tray-vo-giai-cuu|bo-sap-tray-vo-giai-cuu|dua-luoi-nut-vo-giai-cuu|ca-basa-phi-le-dong-lanh|bap-cai-tuoi-da-lat,0.2,0.3333,1.0,0.2346
+tfidf_name_desc,dua-luoi-nut-vo-giai-cuu,cam-sanh-tray-vo-giai-cuu|ca-chua-meo-mo-giai-cuu|dua-leo-da-lat|trung-ga-tha-vuon|khoai-lang-size-lon-giai-cuu,0.0,0.0,0.0,0.0
+tfidf_name_desc,bo-sap-tray-vo-giai-cuu,cam-sanh-tray-vo-giai-cuu|ca-basa-size-nho-giai-cuu|tao-fuji-tray-xuoc-giai-cuu|khoai-tay-vang-da-lat|cam-sanh-cai-be,0.0,0.0,0.0,0.0
+tfidf_name_desc,thap-cam-trai-cay-theo-mua,cam-sanh-vinh-long|trung-ga-tha-vuon|cam-sanh-cai-be|ca-chua-meo-mo-giai-cuu|ca-basa-phi-le-dong-lanh,0.2,0.2,1.0,0.1696
+tfidf_name_desc,thit-heo-sach-cp,thit-ba-chi-heo-sach|ca-chua-meo-mo-giai-cuu|suon-heo-cot-let|sup-lo-trang-size-nho-giai-cuu|ca-basa-tuoi-song,0.4,0.6667,1.0,0.7039
+tfidf_name_desc,thit-ba-chi-heo-sach,set-thit-nuong-bbq-hon-hop|suon-heo-cot-let|thit-heo-sach-cp|bap-cai-tuoi-da-lat|ca-hoi-phi-le-tuoi,0.6,1.0,1.0,1.0
+tfidf_name_desc,suon-heo-cot-let,thit-ba-chi-heo-sach|thit-heo-sach-cp|ca-hoi-phi-le-tuoi|khoai-tay-vang-da-lat|dua-leo-da-lat,0.4,1.0,1.0,1.0
+tfidf_name_desc,set-thit-nuong-bbq-hon-hop,thit-ba-chi-heo-sach|ca-basa-phi-le-dong-lanh|nam-dui-ga|ca-hoi-phi-le-tuoi|suon-heo-cot-let,0.4,0.6667,1.0,0.6508
+tfidf_name_desc,ga-ta-tha-vuon,trung-ga-tha-vuon|trung-ga-lan-size-giai-cuu|nam-dui-ga-lech-form-giai-cuu|nam-dui-ga|tom-su-tuoi-ca-mau,0.0,0.0,0.0,0.0
+tfidf_name_desc,trung-ga-tha-vuon,trung-ga-lan-size-giai-cuu|ga-ta-tha-vuon|thap-cam-trai-cay-theo-mua|dua-luoi-nut-vo-giai-cuu|cam-sanh-vinh-long,0.2,1.0,1.0,1.0
+tfidf_name_desc,ca-basa-tuoi-song,ca-basa-size-nho-giai-cuu|ca-basa-phi-le-dong-lanh|tom-su-tuoi-ca-mau|ca-chua-bi-huu-co-da-lat|sup-lo-xanh,0.4,0.6667,1.0,0.7654
+tfidf_name_desc,ca-hoi-phi-le-tuoi,ca-basa-phi-le-dong-lanh|thit-ba-chi-heo-sach|tom-su-tuoi-ca-mau|sup-lo-xanh|ca-basa-tuoi-song,0.4,0.6667,1.0,0.6508
+tfidf_name_desc,tom-su-tuoi-ca-mau,tom-cang-xanh-song|ca-basa-tuoi-song|ca-basa-size-nho-giai-cuu|trung-ga-lan-size-giai-cuu|ca-hoi-phi-le-tuoi,0.4,1.0,1.0,0.8503
+tfidf_name_desc,tom-cang-xanh-song,tom-su-tuoi-ca-mau|sup-lo-xanh|dua-luoi-nut-vo-giai-cuu|ca-basa-tuoi-song|trung-ga-tha-vuon,0.2,1.0,1.0,1.0
+tfidf_unigram_full,ca-chua-bi-huu-co-da-lat,dua-leo-da-lat|bap-cai-tuoi-da-lat|khoai-tay-vang-da-lat|ca-chua-meo-mo-giai-cuu|dau-tay-da-lat-hop-300g,0.4,0.6667,1.0,0.6714
+tfidf_unigram_full,ca-chua-meo-mo-giai-cuu,ca-rot-gay-nho-giai-cuu|ca-chua-bi-huu-co-da-lat|dua-leo-da-lat|sup-lo-trang-size-nho-giai-cuu|khoai-tay-vang-da-lat,0.4,1.0,1.0,0.6934
+tfidf_unigram_full,cai-bo-xoi-vietgap,bap-cai-tuoi-da-lat|sup-lo-xanh|dua-leo-da-lat|sup-lo-trang-size-nho-giai-cuu|khoai-tay-vang-da-lat,0.6,1.0,1.0,0.9675
+tfidf_unigram_full,sup-lo-xanh,sup-lo-trang-size-nho-giai-cuu|bap-cai-tuoi-da-lat|ca-rot-gay-nho-giai-cuu|dua-leo-da-lat|cai-bo-xoi-vietgap,0.6,1.0,1.0,0.9469
+tfidf_unigram_full,bap-cai-tuoi-da-lat,dua-leo-da-lat|cai-bo-xoi-vietgap|ca-chua-bi-huu-co-da-lat|khoai-tay-vang-da-lat|sup-lo-xanh,0.4,0.6667,1.0,0.4776
+tfidf_unigram_full,khoai-tay-vang-da-lat,dua-leo-da-lat|bap-cai-tuoi-da-lat|khoai-lang-size-lon-giai-cuu|ca-chua-bi-huu-co-da-lat|dau-tay-da-lat-hop-300g,0.2,0.5,1.0,0.3066
+tfidf_unigram_full,ca-rot-gay-nho-giai-cuu,ca-chua-meo-mo-giai-cuu|sup-lo-trang-size-nho-giai-cuu|sup-lo-xanh|ca-basa-size-nho-giai-cuu|ca-chua-bi-huu-co-da-lat,0.0,0.0,0.0,0.0
+tfidf_unigram_full,khoai-lang-size-lon-giai-cuu,khoai-tay-vang-da-lat|sup-lo-trang-size-nho-giai-cuu|sup-lo-xanh|bap-cai-tuoi-da-lat|dua-leo-da-lat,0.2,0.5,1.0,0.6131
+tfidf_unigram_full,nam-dui-ga,nam-dui-ga-lech-form-giai-cuu|sup-lo-trang-size-nho-giai-cuu|ga-ta-tha-vuon|sup-lo-xanh|dua-leo-da-lat,0.2,1.0,1.0,1.0
+tfidf_unigram_full,cam-sanh-vinh-long,cam-sanh-tray-vo-giai-cuu|cam-sanh-cai-be|thap-cam-trai-cay-theo-mua|dua-luoi-nut-vo-giai-cuu|dau-tay-da-lat-hop-300g,0.4,1.0,1.0,1.0
+tfidf_unigram_full,cam-sanh-cai-be,cam-sanh-tray-vo-giai-cuu|cam-sanh-vinh-long|thap-cam-trai-cay-theo-mua|bap-cai-tuoi-da-lat|cai-bo-xoi-vietgap,0.4,1.0,1.0,1.0
+tfidf_unigram_full,dau-tay-new-zealand,dau-tay-da-lat-hop-300g|khoai-tay-vang-da-lat|ca-chua-bi-huu-co-da-lat|chuoi-gia-nam-my|bap-cai-tuoi-da-lat,0.2,1.0,1.0,1.0
+tfidf_unigram_full,tao-fuji-tray-xuoc-giai-cuu,cam-sanh-tray-vo-giai-cuu|bo-sap-tray-vo-giai-cuu|thap-cam-trai-cay-theo-mua|dua-luoi-nut-vo-giai-cuu|chuoi-gia-nam-my,0.6,1.0,1.0,0.6183
+tfidf_unigram_full,dua-luoi-nut-vo-giai-cuu,cam-sanh-tray-vo-giai-cuu|dua-leo-da-lat|cam-sanh-vinh-long|bo-sap-tray-vo-giai-cuu|trung-ga-tha-vuon,0.0,0.0,0.0,0.0
+tfidf_unigram_full,bo-sap-tray-vo-giai-cuu,cam-sanh-tray-vo-giai-cuu|tao-fuji-tray-xuoc-giai-cuu|dua-luoi-nut-vo-giai-cuu|cam-sanh-cai-be|khoai-tay-vang-da-lat,0.0,0.0,0.0,0.0
+tfidf_unigram_full,thap-cam-trai-cay-theo-mua,cam-sanh-cai-be|cam-sanh-vinh-long|chuoi-gia-nam-my|cam-sanh-tray-vo-giai-cuu|dau-tay-da-lat-hop-300g,0.6,0.6,1.0,0.6399
+tfidf_unigram_full,thit-heo-sach-cp,thit-ba-chi-heo-sach|suon-heo-cot-let|set-thit-nuong-bbq-hon-hop|ga-ta-tha-vuon|ca-basa-tuoi-song,0.6,1.0,1.0,1.0
+tfidf_unigram_full,thit-ba-chi-heo-sach,thit-heo-sach-cp|set-thit-nuong-bbq-hon-hop|suon-heo-cot-let|ca-hoi-phi-le-tuoi|ca-basa-tuoi-song,0.6,1.0,1.0,1.0
+tfidf_unigram_full,suon-heo-cot-let,thit-ba-chi-heo-sach|thit-heo-sach-cp|set-thit-nuong-bbq-hon-hop|ga-ta-tha-vuon|tom-cang-xanh-song,0.4,1.0,1.0,1.0
+tfidf_unigram_full,set-thit-nuong-bbq-hon-hop,thit-ba-chi-heo-sach|thit-heo-sach-cp|ca-basa-phi-le-dong-lanh|suon-heo-cot-let|ca-hoi-phi-le-tuoi,0.6,1.0,1.0,0.9675
+tfidf_unigram_full,ga-ta-tha-vuon,trung-ga-tha-vuon|trung-ga-lan-size-giai-cuu|thit-ba-chi-heo-sach|nam-dui-ga|nam-dui-ga-lech-form-giai-cuu,0.2,0.3333,1.0,0.2346
+tfidf_unigram_full,trung-ga-tha-vuon,trung-ga-lan-size-giai-cuu|ga-ta-tha-vuon|dua-luoi-nut-vo-giai-cuu|cam-sanh-vinh-long|bo-sap-tray-vo-giai-cuu,0.2,1.0,1.0,1.0
+tfidf_unigram_full,ca-basa-tuoi-song,ca-basa-size-nho-giai-cuu|ca-basa-phi-le-dong-lanh|tom-su-tuoi-ca-mau|ca-hoi-phi-le-tuoi|tom-cang-xanh-song,0.6,1.0,1.0,0.9675
+tfidf_unigram_full,ca-hoi-phi-le-tuoi,ca-basa-phi-le-dong-lanh|ca-basa-tuoi-song|ca-basa-size-nho-giai-cuu|tom-su-tuoi-ca-mau|tom-cang-xanh-song,0.6,1.0,1.0,1.0
+tfidf_unigram_full,tom-su-tuoi-ca-mau,tom-cang-xanh-song|ca-basa-size-nho-giai-cuu|ca-basa-tuoi-song|ca-hoi-phi-le-tuoi|ca-basa-phi-le-dong-lanh,0.4,1.0,1.0,0.8772
+tfidf_unigram_full,tom-cang-xanh-song,tom-su-tuoi-ca-mau|ca-basa-tuoi-song|ca-hoi-phi-le-tuoi|ca-basa-size-nho-giai-cuu|ca-basa-phi-le-dong-lanh,0.2,1.0,1.0,1.0
+tfidf_full (model),ca-chua-bi-huu-co-da-lat,dua-leo-da-lat|bap-cai-tuoi-da-lat|ca-chua-meo-mo-giai-cuu|khoai-tay-vang-da-lat|ca-rot-gay-nho-giai-cuu,0.4,0.6667,1.0,0.7039
+tfidf_full (model),ca-chua-meo-mo-giai-cuu,ca-rot-gay-nho-giai-cuu|ca-chua-bi-huu-co-da-lat|dua-leo-da-lat|sup-lo-trang-size-nho-giai-cuu|khoai-tay-vang-da-lat,0.4,1.0,1.0,0.6934
+tfidf_full (model),cai-bo-xoi-vietgap,bap-cai-tuoi-da-lat|dua-leo-da-lat|sup-lo-xanh|sup-lo-trang-size-nho-giai-cuu|khoai-tay-vang-da-lat,0.6,1.0,1.0,0.906
+tfidf_full (model),sup-lo-xanh,sup-lo-trang-size-nho-giai-cuu|ca-rot-gay-nho-giai-cuu|dua-leo-da-lat|bap-cai-tuoi-da-lat|khoai-tay-vang-da-lat,0.4,0.6667,1.0,0.6714
+tfidf_full (model),bap-cai-tuoi-da-lat,dua-leo-da-lat|cai-bo-xoi-vietgap|ca-chua-bi-huu-co-da-lat|khoai-tay-vang-da-lat|sup-lo-xanh,0.4,0.6667,1.0,0.4776
+tfidf_full (model),khoai-tay-vang-da-lat,dua-leo-da-lat|bap-cai-tuoi-da-lat|ca-chua-bi-huu-co-da-lat|khoai-lang-size-lon-giai-cuu|dau-tay-da-lat-hop-300g,0.2,0.5,1.0,0.2641
+tfidf_full (model),ca-rot-gay-nho-giai-cuu,ca-chua-meo-mo-giai-cuu|sup-lo-trang-size-nho-giai-cuu|sup-lo-xanh|nam-dui-ga-lech-form-giai-cuu|dua-leo-da-lat,0.0,0.0,0.0,0.0
+tfidf_full (model),khoai-lang-size-lon-giai-cuu,khoai-tay-vang-da-lat|sup-lo-trang-size-nho-giai-cuu|bap-cai-tuoi-da-lat|dua-leo-da-lat|sup-lo-xanh,0.2,0.5,1.0,0.6131
+tfidf_full (model),nam-dui-ga,nam-dui-ga-lech-form-giai-cuu|sup-lo-trang-size-nho-giai-cuu|bap-cai-tuoi-da-lat|sup-lo-xanh|dua-leo-da-lat,0.2,1.0,1.0,1.0
+tfidf_full (model),cam-sanh-vinh-long,cam-sanh-cai-be|cam-sanh-tray-vo-giai-cuu|thap-cam-trai-cay-theo-mua|dua-luoi-nut-vo-giai-cuu|dau-tay-da-lat-hop-300g,0.4,1.0,1.0,1.0
+tfidf_full (model),cam-sanh-cai-be,cam-sanh-tray-vo-giai-cuu|cam-sanh-vinh-long|thap-cam-trai-cay-theo-mua|dau-tay-da-lat-hop-300g|dua-luoi-nut-vo-giai-cuu,0.4,1.0,1.0,1.0
+tfidf_full (model),dau-tay-new-zealand,dau-tay-da-lat-hop-300g|chuoi-gia-nam-my|ca-chua-bi-huu-co-da-lat|thap-cam-trai-cay-theo-mua|khoai-tay-vang-da-lat,0.2,1.0,1.0,1.0
+tfidf_full (model),tao-fuji-tray-xuoc-giai-cuu,cam-sanh-tray-vo-giai-cuu|bo-sap-tray-vo-giai-cuu|thap-cam-trai-cay-theo-mua|chuoi-gia-nam-my|dua-luoi-nut-vo-giai-cuu,0.6,1.0,1.0,0.6183
+tfidf_full (model),dua-luoi-nut-vo-giai-cuu,cam-sanh-tray-vo-giai-cuu|bo-sap-tray-vo-giai-cuu|thap-cam-trai-cay-theo-mua|cam-sanh-vinh-long|cam-sanh-cai-be,0.2,0.3333,1.0,0.2346
+tfidf_full (model),bo-sap-tray-vo-giai-cuu,cam-sanh-tray-vo-giai-cuu|tao-fuji-tray-xuoc-giai-cuu|dua-luoi-nut-vo-giai-cuu|cam-sanh-cai-be|thap-cam-trai-cay-theo-mua,0.2,0.5,1.0,0.2372
+tfidf_full (model),thap-cam-trai-cay-theo-mua,cam-sanh-vinh-long|cam-sanh-cai-be|chuoi-gia-nam-my|cam-sanh-tray-vo-giai-cuu|dau-tay-da-lat-hop-300g,0.6,0.6,1.0,0.5148
+tfidf_full (model),thit-heo-sach-cp,thit-ba-chi-heo-sach|suon-heo-cot-let|set-thit-nuong-bbq-hon-hop|ga-ta-tha-vuon|ca-basa-tuoi-song,0.6,1.0,1.0,1.0
+tfidf_full (model),thit-ba-chi-heo-sach,set-thit-nuong-bbq-hon-hop|thit-heo-sach-cp|suon-heo-cot-let|ga-ta-tha-vuon|ca-hoi-phi-le-tuoi,0.6,1.0,1.0,1.0
+tfidf_full (model),suon-heo-cot-let,thit-ba-chi-heo-sach|thit-heo-sach-cp|set-thit-nuong-bbq-hon-hop|ga-ta-tha-vuon|ca-hoi-phi-le-tuoi,0.4,1.0,1.0,1.0
+tfidf_full (model),set-thit-nuong-bbq-hon-hop,thit-ba-chi-heo-sach|thit-heo-sach-cp|suon-heo-cot-let|ca-basa-phi-le-dong-lanh|ga-ta-tha-vuon,0.6,1.0,1.0,1.0
+tfidf_full (model),ga-ta-tha-vuon,trung-ga-tha-vuon|trung-ga-lan-size-giai-cuu|thit-ba-chi-heo-sach|thit-heo-sach-cp|suon-heo-cot-let,0.6,1.0,1.0,0.6183
+tfidf_full (model),trung-ga-tha-vuon,trung-ga-lan-size-giai-cuu|ga-ta-tha-vuon|dua-luoi-nut-vo-giai-cuu|cam-sanh-vinh-long|bo-sap-tray-vo-giai-cuu,0.2,1.0,1.0,1.0
+tfidf_full (model),ca-basa-tuoi-song,ca-basa-size-nho-giai-cuu|ca-basa-phi-le-dong-lanh|ca-hoi-phi-le-tuoi|tom-su-tuoi-ca-mau|tom-cang-xanh-song,0.6,1.0,1.0,1.0
+tfidf_full (model),ca-hoi-phi-le-tuoi,ca-basa-phi-le-dong-lanh|ca-basa-tuoi-song|ca-basa-size-nho-giai-cuu|tom-su-tuoi-ca-mau|tom-cang-xanh-song,0.6,1.0,1.0,1.0
+tfidf_full (model),tom-su-tuoi-ca-mau,tom-cang-xanh-song|ca-basa-size-nho-giai-cuu|ca-basa-tuoi-song|ca-hoi-phi-le-tuoi|ca-basa-phi-le-dong-lanh,0.4,1.0,1.0,0.8772
+tfidf_full (model),tom-cang-xanh-song,tom-su-tuoi-ca-mau|ca-basa-tuoi-song|ca-basa-size-nho-giai-cuu|ca-hoi-phi-le-tuoi|ca-basa-phi-le-dong-lanh,0.2,1.0,1.0,1.0
