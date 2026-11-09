@@ -29,19 +29,20 @@ import { SimilarProductsComponent } from '../recommend/recommend.components';
             <div class="gallery-main">
               <img [src]="activeImage()" [alt]="p.name + ' — ảnh ' + (activeIndex() + 1)" appImgFallback />
               @if (images().length > 1) {
-                <button type="button" class="gallery-nav prev" (click)="step(-1)" aria-label="Ảnh trước">‹</button>
-                <button type="button" class="gallery-nav next" (click)="step(1)" aria-label="Ảnh sau">›</button>
+                <button type="button" class="gallery-nav prev" (click)="step(-1)" aria-label="Ảnh trước"><svg class="icon" aria-hidden="true"><use href="icons.svg#chevron-left" /></svg></button>
+                <button type="button" class="gallery-nav next" (click)="step(1)" aria-label="Ảnh sau"><svg class="icon" aria-hidden="true"><use href="icons.svg#chevron-right" /></svg></button>
                 <span class="gallery-count">{{ activeIndex() + 1 }} / {{ images().length }}</span>
               }
             </div>
             @if (images().length > 1) {
-              <div class="thumbs" role="tablist" aria-label="Bộ ảnh sản phẩm">
+              <div class="thumbs" role="group" aria-label="Bộ ảnh sản phẩm">
                 @for (img of images(); track img; let i = $index) {
-                  <button type="button" role="tab" [attr.aria-selected]="i === activeIndex()" [attr.aria-label]="'Xem ảnh ' + (i + 1)"
+                  <button type="button" [attr.aria-pressed]="i === activeIndex()" [attr.aria-label]="'Xem ảnh ' + (i + 1)"
                     [class.active]="i === activeIndex()" (click)="activeImage.set(img)"><img [src]="img" alt="" loading="lazy" appImgFallback /></button>
                 }
               </div>
             }
+            <p class="photo-credit">Ảnh minh họa sản phẩm; hình thức thực tế có thể khác.</p>
             @if (activeCredit(); as c) {
               <p class="photo-credit">Ảnh: {{ c.artist || 'không rõ tác giả' }} · {{ c.license }} ·
                 <a [href]="c.page" target="_blank" rel="noopener noreferrer">Wikimedia Commons</a></p>
@@ -54,7 +55,7 @@ import { SimilarProductsComponent } from '../recommend/recommend.components';
             <h1>{{ p.name }}</h1>
             <div class="muted">
               @if (p.farm) { <a [routerLink]="['/farms', p.farm.slug]"><svg class="icon" aria-hidden="true"><use href="icons.svg#farm" /></svg> {{ p.farm.name }}</a> · {{ p.farm.province }} · }
-              ★ {{ p.rating }} ({{ p.reviewCount }} đánh giá demo) · đã bán {{ p.soldCount }}
+              <svg class="icon" aria-hidden="true"><use href="icons.svg#star" /></svg> {{ p.rating }} ({{ p.reviewCount }} đánh giá demo) · đã bán {{ p.soldCount }}
             </div>
             <div class="detail-price" [class.rescue]="isRescue()">
               {{ p.price | money }} <small>/ {{ p.unit }}</small>
@@ -65,14 +66,14 @@ import { SimilarProductsComponent } from '../recommend/recommend.components';
             @if (p.rescue) {
               <div class="note" [class.note-danger]="p.rescue.expired">
                 @if (p.rescue.expired) {
-                  ⛔ Hàng giải cứu đã hết hạn bán ({{ p.rescue.expiresAt | date: 'dd/MM/yyyy HH:mm' }}).
+                  <svg class="icon" aria-hidden="true"><use href="icons.svg#alert" /></svg> Hàng giải cứu đã hết hạn bán ({{ p.rescue.expiresAt | date: 'dd/MM/yyyy HH:mm' }}).
                 } @else {
                   <svg class="icon" aria-hidden="true"><use href="icons.svg#clock" /></svg> Giá giải cứu áp dụng đến {{ p.rescue.expiresAt | date: 'HH:mm dd/MM/yyyy' }} ({{ p.rescue.expiresAt | timeLeft }}). Giá do hệ thống tính từ giá gốc.
                 }
               </div>
             }
             <div class="certs">
-              @for (c of p.certifications; track c) { <span class="tag">✔ {{ c }}</span> }
+              @for (c of p.certifications; track c) { <span class="tag"><svg class="icon" aria-hidden="true"><use href="icons.svg#check" /></svg> {{ c }}</span> }
             </div>
             <div class="stock-line">
               @if (p.inStock) { Còn <b>{{ p.stockLeft }}</b> {{ p.unit }} trong kho } @else { <span class="text-danger">Tạm hết hàng</span> }
@@ -87,7 +88,7 @@ import { SimilarProductsComponent } from '../recommend/recommend.components';
             <ul class="perks">
               <li><svg class="icon" aria-hidden="true"><use href="icons.svg#truck" /></svg> Phí ship 20.000đ, miễn phí cho đơn từ 200.000đ</li>
               <li><svg class="icon" aria-hidden="true"><use href="icons.svg#wallet" /></svg> Thanh toán khi nhận hàng (COD)</li>
-              <li>↩️ Hủy miễn phí khi nhà bán chưa xác nhận</li>
+              <li><svg class="icon" aria-hidden="true"><use href="icons.svg#undo" /></svg> Hủy miễn phí khi nhà bán chưa xác nhận</li>
             </ul>
           </div>
         </div>

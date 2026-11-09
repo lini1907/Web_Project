@@ -16,7 +16,7 @@ import { ImgFallbackDirective } from '../../shared/img-fallback.directive';
     <div class="container page">
       <h1><svg class="icon" aria-hidden="true"><use href="icons.svg#cart" /></svg> Giỏ hàng</h1>
       @if (auth.isLoggedIn() && !auth.isBuyer()) {
-        <app-state state="empty" emptyIcon="🏪" emptyText="Tài khoản nhà bán/quản trị không có giỏ hàng." />
+        <app-state state="empty" emptyIcon="store" emptyText="Tài khoản nhà bán/quản trị không có giỏ hàng." />
       } @else if (state() !== 'ok') {
         <app-state [state]="state()" (retry)="load()" />
       } @else if (!cart()?.items?.length) {
@@ -27,8 +27,7 @@ import { ImgFallbackDirective } from '../../shared/img-fallback.directive';
         @let c = cart()!;
         @if (c.guest) {
           <div class="note guest-note">
-            🛈 Đây là <b>giỏ tạm</b> lưu trong phiên làm việc (session) của trình duyệt này. Khi bạn đăng nhập, các sản phẩm sẽ được
-            chuyển vào giỏ của tài khoản và giữ lại trên mọi thiết bị.
+            <svg class="icon" aria-hidden="true"><use href="icons.svg#info" /></svg> Giỏ hàng đang được lưu trên trình duyệt này. Đăng nhập để giữ sản phẩm trong tài khoản.
             <a routerLink="/login" [queryParams]="{ returnUrl: '/cart' }">Đăng nhập</a> ·
             <a routerLink="/register" [queryParams]="{ returnUrl: '/cart' }">Tạo tài khoản</a>
           </div>
@@ -50,11 +49,11 @@ import { ImgFallbackDirective } from '../../shared/img-fallback.directive';
                       {{ l.unitPrice | money }} / {{ l.unit }}
                       @if (l.isRescue) { · <span class="tag tag-green">Giải cứu</span> }
                     </div>
-                    @if (l.warning) { <div class="field-error">⚠ {{ l.warning.message }} @if (l.available > 0) { (còn {{ l.available }}) }</div> }
+                    @if (l.warning) { <div class="field-error"><svg class="icon" aria-hidden="true"><use href="icons.svg#alert" /></svg> {{ l.warning.message }} @if (l.available > 0) { (còn {{ l.available }}) }</div> }
                   </div>
                   <app-qty [value]="l.qty" [max]="l.available > 0 ? l.available : l.qty" [small]="true" [disabled]="busy() === l.id" (valueChange)="setQty(l, $event)" />
                   <div class="cart-line-total">{{ l.lineTotal | money }}</div>
-                  <button type="button" class="icon-btn" (click)="setQty(l, 0)" aria-label="Xóa khỏi giỏ" title="Xóa">✕</button>
+                  <button type="button" class="icon-btn" (click)="setQty(l, 0)" aria-label="Xóa khỏi giỏ" title="Xóa"><svg class="icon" aria-hidden="true"><use href="icons.svg#close" /></svg></button>
                 </div>
               }
             }

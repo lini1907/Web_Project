@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, ElementRef, inject, signal } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { ApiError, newIdempotencyKey } from '../../core/api';
@@ -22,7 +22,9 @@ import { StateComponent } from '../../shared/ui';
       <nav class="breadcrumb"><a routerLink="/cart">Giỏ hàng</a> › <span>Đặt hàng</span></nav>
       <h1>Đặt hàng</h1>
       @if (!auth.isBuyer()) {
-        <app-state state="empty" emptyIcon="🏪" emptyText="Chỉ tài khoản người mua mới đặt hàng được." />
+        <app-state state="empty" emptyIcon="store" emptyText="Chỉ tài khoản người mua mới đặt hàng được." />
+      } @else if (loadError()) {
+        <app-state state="error" [errorText]="loadError()" (retry)="loadCart()" />
       } @else if (!cart()) {
         <app-state state="loading" />
       } @else if (!cart()!.items.length) {
@@ -31,34 +33,34 @@ import { StateComponent } from '../../shared/ui';
         @let c = cart()!;
         <form #f="ngForm" class="checkout-layout" (ngSubmit)="submit(f)" novalidate>
           <section class="card form">
-            <h3>1. Thông tin nhận hàng</h3>
+            <h2>Thông tin nhận hàng</h2>
             <div class="form-row">
               <label>Họ tên người nhận *
-                <input class="input" name="name" [(ngModel)]="model.name" required minlength="2" maxlength="80" #name="ngModel" autocomplete="name" />
-                @if (name.invalid && (name.touched || f.submitted)) { <span class="field-error">Nhập họ tên (ít nhất 2 ký tự)</span> }
+                <input class="input" name="name" [(ngModel)]="model.name" required minlength="2" maxlength="80" #name="ngModel" autocomplete="name" [attr.aria-invalid]="name.invalid && (name.touched || f.submitted)" [attr.aria-describedby]="name.invalid && (name.touched || f.submitted) ? 'shipping-name-error' : null" />
+                @if (name.invalid && (name.touched || f.submitted)) { <span id="shipping-name-error" class="field-error">Nhập họ tên (ít nhất 2 ký tự)</span> }
               </label>
               <label>Số điện thoại *
-                <input class="input" name="phone" [(ngModel)]="model.phone" required pattern="^(\\+84|0)[0-9]{9,10}$" #phone="ngModel" autocomplete="tel" inputmode="tel" />
-                @if (phone.invalid && (phone.touched || f.submitted)) { <span class="field-error">Số điện thoại không hợp lệ (vd 0901234567)</span> }
+                <input class="input" name="phone" [(ngModel)]="model.phone" required pattern="^(\\+84|0)[0-9]{9,10}$" #phone="ngModel" autocomplete="tel" inputmode="tel" [attr.aria-invalid]="phone.invalid && (phone.touched || f.submitted)" [attr.aria-describedby]="phone.invalid && (phone.touched || f.submitted) ? 'shipping-phone-error' : null" />
+                @if (phone.invalid && (phone.touched || f.submitted)) { <span id="shipping-phone-error" class="field-error">Số điện thoại không hợp lệ (vd 0901234567)</span> }
               </label>
             </div>
             <label>Địa chỉ giao hàng *
-              <input class="input" name="address" [(ngModel)]="model.address" required minlength="10" maxlength="300" #address="ngModel" autocomplete="street-address" placeholder="Số nhà, đường, phường/xã, quận/huyện, tỉnh/thành" />
-              @if (address.invalid && (address.touched || f.submitted)) { <span class="field-error">Địa chỉ cần ít nhất 10 ký tự</span> }
+              <input class="input" name="address" [(ngModel)]="model.address" required minlength="10" maxlength="300" #address="ngModel" autocomplete="street-address" placeholder="Số nhà, đường, phường/xã, quận/huyện, tỉnh/thành" [attr.aria-invalid]="address.invalid && (address.touched || f.submitted)" [attr.aria-describedby]="address.invalid && (address.touched || f.submitted) ? 'shipping-address-error' : null" />
+              @if (address.invalid && (address.touched || f.submitted)) { <span id="shipping-address-error" class="field-error">Địa chỉ cần ít nhất 10 ký tự</span> }
             </label>
             <label>Ghi chú cho nhà bán
               <textarea class="input" name="note" [(ngModel)]="model.note" maxlength="500" rows="2" placeholder="Giao giờ hành chính, gọi trước khi giao..."></textarea>
             </label>
             <label class="checkbox"><input type="checkbox" name="save" [(ngModel)]="model.saveAddress" /> Lưu địa chỉ này cho lần sau</label>
 
-            <h3>2. Phương thức thanh toán</h3>
+            <h2>Phương thức thanh toán</h2>
             <label class="pay-option active"><input type="radio" name="pay" checked /> <svg class="icon" aria-hidden="true"><use href="icons.svg#wallet" /></svg> Thanh toán khi nhận hàng (COD)</label>
-            <label class="pay-option disabled" title="Chưa tích hợp cổng thanh toán"><input type="radio" name="pay" disabled /> 🏦 Chuyển khoản ngân hàng — <i>chưa hỗ trợ</i></label>
-            <label class="pay-option disabled" title="Chưa tích hợp cổng thanh toán"><input type="radio" name="pay" disabled /> 📱 Ví MoMo — <i>chưa hỗ trợ</i></label>
+            <label class="pay-option disabled" title="Chưa tích hợp cổng thanh toán"><input type="radio" name="pay" disabled /> <svg class="icon" aria-hidden="true"><use href="icons.svg#wallet" /></svg> Chuyển khoản ngân hàng — <i>chưa hỗ trợ</i></label>
+            <label class="pay-option disabled" title="Chưa tích hợp cổng thanh toán"><input type="radio" name="pay" disabled /> <svg class="icon" aria-hidden="true"><use href="icons.svg#wallet" /></svg> Ví MoMo — <i>chưa hỗ trợ</i></label>
           </section>
 
           <aside class="card summary">
-            <h3>Đơn hàng ({{ c.itemCount }} món)</h3>
+            <h2>Đơn hàng ({{ c.itemCount }} món)</h2>
             @for (l of c.items; track l.id) {
               <div class="row-between small"><span class="line-clamp-1">{{ l.qty }} × {{ l.name }}</span><span>{{ l.lineTotal | money }}</span></div>
             }
@@ -87,6 +89,8 @@ export class CheckoutPage {
   private toast = inject(ToastService);
   private router = inject(Router);
 
+  private host: ElementRef<HTMLElement> = inject(ElementRef);
+  protected loadError = signal<string | null>(null);
   protected cart = signal<Cart | null>(null);
   protected submitting = signal(false);
   protected priceChanged = signal(false);
@@ -97,13 +101,23 @@ export class CheckoutPage {
     const u = this.auth.user();
     if (u?.address) Object.assign(this.model, u.address);
     else if (u) Object.assign(this.model, { name: u.name, phone: u.phone });
-    this.cartService.refresh().then((c) => this.cart.set(c), () => this.cart.set(null));
+    void this.loadCart();
+  }
+
+  async loadCart(): Promise<void> {
+    this.loadError.set(null);
+    try {
+      this.cart.set(await this.cartService.refresh());
+    } catch (e) {
+      this.loadError.set(ApiError.from(e).message);
+    }
   }
 
   async submit(f: NgForm): Promise<void> {
     const c = this.cart();
     if (f.invalid || !c || this.submitting()) {
       f.form.markAllAsTouched();
+      this.host.nativeElement.querySelector<HTMLElement>('input.ng-invalid, textarea.ng-invalid')?.focus();
       return;
     }
     this.submitting.set(true);
@@ -122,10 +136,10 @@ export class CheckoutPage {
         if (err.status >= 400 && err.status < 500) this.idemKey = newIdempotencyKey();
         if (err.code === 'PRICE_CHANGED') {
           this.priceChanged.set(true);
-          this.cart.set(await this.cartService.refresh());
+          await this.loadCart();
         } else if (err.code === 'OUT_OF_STOCK' || err.code === 'RESCUE_EXPIRED') {
           this.toast.error(err.message);
-          this.cart.set(await this.cartService.refresh());
+          await this.loadCart();
         } else {
           this.toast.error(err.message);
         }

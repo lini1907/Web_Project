@@ -1,0 +1,35 @@
+[
+  {
+    "route": "/",
+    "width": 1440,
+    "overflow": false,
+    "height": 3934,
+    "violations": []
+  },
+  {
+    "route": "/",
+    "width": 375,
+    "overflow": false,
+    "height": 7185,
+    "violations": []
+  },
+  {
+    "route": "/mystery-box",
+    "width": 1440,
+    "overflow": false,
+    "height": 1911,
+    "violations": []
+  },
+  {
+    "route": "/mystery-box",
+    "width": 375,
+    "overflow": false,
+    "height": 2951,
+    "violations": []
+  },
+  {
+    "route": "/admin",
+    "width": 375,
+    "violations": []
+  }
+]

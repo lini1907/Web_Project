@@ -16,7 +16,7 @@ import { ToastService } from './core/services/toast.service';
     <app-footer />
     <div class="toasts" aria-live="polite">
       @for (t of toast.toasts(); track t.id) {
-        <div class="toast" [class]="'toast toast-' + t.kind" (click)="toast.dismiss(t.id)">{{ t.text }}</div>
+        <div class="toast" [class]="'toast toast-' + t.kind"><span>{{ t.text }}</span><button type="button" class="icon-btn" (click)="toast.dismiss(t.id)" aria-label="Đóng thông báo"><svg class="icon" aria-hidden="true"><use href="icons.svg#close" /></svg></button></div>
       }
     </div>
   `,

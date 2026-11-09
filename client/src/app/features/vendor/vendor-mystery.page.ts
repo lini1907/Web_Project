@@ -19,13 +19,14 @@ import { StateComponent } from '../../shared/ui';
     </div>
     <p class="muted small">Thành phần hộp chỉ hiển thị trong kênh nhà bán. Trang công khai chỉ thấy nhóm hàng, số loại và khoảng giá trị. Số hộp còn bán = min(tồn nguyên liệu ÷ định lượng).</p>
     @if (state() !== 'ok') {
-      <app-state [state]="state()" emptyText="Chưa có hộp nào" emptyIcon="🎁" (retry)="load()" />
+      <app-state [state]="state()" emptyText="Chưa có hộp nào" emptyIcon="box" (retry)="load()" />
     } @else {
       <div class="box-grid">
         @for (b of boxes(); track b.id) {
           <div class="card">
             <div class="row-between"><h3><svg class="icon" aria-hidden="true"><use href="icons.svg#box" /></svg> {{ b.name }}</h3><span class="tag" [class.tag-green]="b.isActive">{{ b.isActive ? 'Đang bán' : 'Ẩn' }}</span></div>
             <div><b>{{ b.price | money }}</b> · còn bán được <b>{{ b.available }}</b> hộp · đã bán {{ b.soldCount }}</div>
+            <div class="table-wrap" tabindex="0" role="region" [attr.aria-label]="'Thành phần ' + b.name + ', cuộn ngang để xem đầy đủ'">
             <table class="table small">
               <thead><tr><th>Thành phần</th><th>Định lượng</th><th>Tồn</th><th>Đủ cho</th></tr></thead>
               <tbody>
@@ -34,6 +35,7 @@ import { StateComponent } from '../../shared/ui';
                 }
               </tbody>
             </table>
+            </div>
             <button type="button" class="btn btn-outline btn-sm" (click)="edit(b)" [disabled]="!approved()">Sửa</button>
           </div>
         }
@@ -57,7 +59,7 @@ import { StateComponent } from '../../shared/ui';
                 @for (p of products(); track p.id) { <option [value]="p.id">{{ p.name }} (tồn {{ p.stock - p.reservedStock }} {{ p.unit }})</option> }
               </select>
               <input class="input qty-input" type="number" formControlName="qty" min="1" aria-label="Định lượng" />
-              <button type="button" class="icon-btn" (click)="components.removeAt(i)" aria-label="Xóa">✕</button>
+              <button type="button" class="icon-btn" (click)="components.removeAt(i)" aria-label="Xóa"><svg class="icon" aria-hidden="true"><use href="icons.svg#close" /></svg></button>
             </div>
           }
         </div>

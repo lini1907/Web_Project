@@ -43,7 +43,7 @@ import { isoDay } from '../vendor/vendor-dashboard.page';
         <h3>Giá trị phần đơn theo ngày</h3>
         <app-bar-chart [data]="k.daily" />
       </section>
-      <section class="card table-wrap">
+      <section class="card table-wrap" tabindex="0" aria-label="KPI theo nhà bán, cuộn ngang để xem đầy đủ">
         <h3>Theo nhà bán</h3>
         <table class="table">
           <thead><tr><th>Nhà bán</th><th>Phần đơn</th><th>Giá trị hoàn tất</th><th>COD đã thu</th><th>Hủy</th></tr></thead>

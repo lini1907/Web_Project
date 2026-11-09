@@ -10,7 +10,7 @@ import { PaginationComponent, StateComponent } from '../../shared/ui';
   template: `
     <div class="page-head"><h1>Nhật ký thao tác quản trị</h1></div>
     @if (state() !== 'ok') {
-      <app-state [state]="state()" emptyText="Chưa có thao tác nào" emptyIcon="📝" (retry)="load()" />
+      <app-state [state]="state()" emptyText="Chưa có thao tác nào" emptyIcon="note" (retry)="load()" />
     } @else {
       <div class="table-wrap card">
         <table class="table">

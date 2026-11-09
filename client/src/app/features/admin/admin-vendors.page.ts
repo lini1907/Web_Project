@@ -22,7 +22,7 @@ import { StateComponent, StatusBadgeComponent } from '../../shared/ui';
       <input class="input" type="search" placeholder="Tìm tên, email..." [(ngModel)]="q" (keyup.enter)="load()" aria-label="Tìm nhà bán" />
     </div>
     @if (state() !== 'ok') {
-      <app-state [state]="state()" emptyText="Không có nhà bán phù hợp" emptyIcon="🏪" (retry)="load()" />
+      <app-state [state]="state()" emptyText="Không có nhà bán phù hợp" emptyIcon="store" (retry)="load()" />
     } @else {
       <div class="table-wrap card">
         <table class="table">

@@ -18,7 +18,7 @@ import { ProductCardComponent } from '../../shared/product-card.component';
           <div class="section-head">
             <h2>{{ title() }}</h2>
             <span class="rec-source" [class.fallback]="r.source === 'fallback'" [title]="sourceHint(r)">
-              {{ r.source === 'model' ? '🤖 Gợi ý bởi mô hình ' + (r.modelVersion || '') : '📊 Phương pháp cơ sở (bán chạy cùng danh mục)' }}
+              {{ r.source === 'model' ? 'Theo sở thích của bạn' : 'Bán chạy cùng danh mục' }}
             </span>
           </div>
           <div class="product-grid cols-5">

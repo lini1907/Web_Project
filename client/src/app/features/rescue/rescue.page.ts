@@ -30,7 +30,7 @@ import { MoneyPipe } from '../../shared/pipes';
         <div><b>3</b> Hết hạn là tự gỡ khỏi kệ, không thể đặt</div>
       </div>
       @if (state() !== 'ok') {
-        <app-state [state]="state()" emptyText="Hiện chưa có nông sản cần giải cứu" emptyIcon="🌾" (retry)="load()" />
+        <app-state [state]="state()" emptyText="Hiện chưa có nông sản cần giải cứu" emptyIcon="leaf" (retry)="load()" />
       } @else {
         <div class="section-head"><h2>Sắp hết hạn trước</h2><a routerLink="/shop" [queryParams]="{ type: 'rescue' }" class="link">Lọc nâng cao →</a></div>
         <div class="product-grid cols-5">

@@ -1,0 +1,74 @@
+[
+  {
+    "route": "/",
+    "width": 1440,
+    "family": "\"Nunito Sans\", system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "heading": "\"Nunito Sans\", system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "headingWeight": "800",
+    "loaded": true,
+    "overflow": false
+  },
+  {
+    "route": "/",
+    "width": 375,
+    "family": "\"Nunito Sans\", system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "heading": "\"Nunito Sans\", system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "headingWeight": "800",
+    "loaded": true,
+    "overflow": false
+  },
+  {
+    "route": "/shop",
+    "width": 1440,
+    "family": "\"Nunito Sans\", system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "heading": "\"Nunito Sans\", system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "headingWeight": "800",
+    "loaded": true,
+    "overflow": false
+  },
+  {
+    "route": "/shop",
+    "width": 375,
+    "family": "\"Nunito Sans\", system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "heading": "\"Nunito Sans\", system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "headingWeight": "800",
+    "loaded": true,
+    "overflow": false
+  },
+  {
+    "route": "/mystery-box",
+    "width": 1440,
+    "family": "\"Nunito Sans\", system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "heading": "\"Nunito Sans\", system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "headingWeight": "800",
+    "loaded": true,
+    "overflow": false
+  },
+  {
+    "route": "/mystery-box",
+    "width": 375,
+    "family": "\"Nunito Sans\", system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "heading": "\"Nunito Sans\", system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "headingWeight": "800",
+    "loaded": true,
+    "overflow": false
+  },
+  {
+    "route": "/login",
+    "width": 1440,
+    "family": "\"Nunito Sans\", system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "heading": "\"Nunito Sans\", system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "headingWeight": "800",
+    "loaded": true,
+    "overflow": false
+  },
+  {
+    "route": "/login",
+    "width": 375,
+    "family": "\"Nunito Sans\", system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "heading": "\"Nunito Sans\", system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "headingWeight": "800",
+    "loaded": true,
+    "overflow": false
+  }
+]

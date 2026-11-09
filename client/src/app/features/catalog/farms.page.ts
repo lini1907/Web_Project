@@ -32,9 +32,9 @@ import { StateComponent } from '../../shared/ui';
               <div class="farm-avatar">{{ f.name.charAt(0) }}</div>
               <div>
                 <h3>{{ f.name }}</h3>
-                <div class="muted">📍 {{ f.province }} · {{ f.productCount }} sản phẩm</div>
+                <div class="muted"><svg class="icon" aria-hidden="true"><use href="icons.svg#pin" /></svg> {{ f.province }} · {{ f.productCount }} sản phẩm</div>
                 <p class="line-clamp-2">{{ f.story }}</p>
-                <div class="certs">@for (c of f.certifications; track c) { <span class="tag">✔ {{ c }}</span> }</div>
+                <div class="certs">@for (c of f.certifications; track c) { <span class="tag"><svg class="icon" aria-hidden="true"><use href="icons.svg#check" /></svg> {{ c }}</span> }</div>
               </div>
             </a>
           } @empty {

@@ -36,9 +36,9 @@ const POLL_MS = 15000;
 
             <div class="gb-progress-box">
               <div class="row-between"><b>{{ g.joinedQty }} / {{ g.targetQty }} {{ g.product.unit }}</b><span>{{ g.memberCount }} người tham gia</span></div>
-              <div class="progress lg" [class.done]="g.reachedTarget"><div [style.width.%]="g.progress"></div></div>
+              <div class="progress lg" [class.done]="g.reachedTarget" role="progressbar" aria-label="Tiến độ mua chung" [attr.aria-valuenow]="g.joinedQty" aria-valuemin="0" [attr.aria-valuemax]="g.maxQty" [attr.aria-valuetext]="g.joinedQty + ' trên ' + g.targetQty + ' ' + g.product.unit + ' để đạt giá nhóm'"><div [style.width.%]="g.progress"></div></div>
               <div class="row-between small muted">
-                <span>{{ g.reachedTarget ? '✅ Đã đạt ngưỡng — sẽ chốt đơn khi hết hạn hoặc đủ ' + g.maxQty : 'Cần thêm ' + (g.targetQty - g.joinedQty) + ' ' + g.product.unit + ' để đạt ngưỡng' }}</span>
+                <span>{{ g.reachedTarget ? 'Đã đạt ngưỡng — sẽ chốt đơn khi hết hạn hoặc đủ ' + g.maxQty : 'Cần thêm ' + (g.targetQty - g.joinedQty) + ' ' + g.product.unit + ' để đạt ngưỡng' }}</span>
                 <span>Tối đa {{ g.maxQty }} · còn {{ g.remainingQty }}</span>
               </div>
               @if (g.status === 'open') {

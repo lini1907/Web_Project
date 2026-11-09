@@ -14,14 +14,14 @@ import { StatusLabelPipe } from './pipes';
       }
       @case ('error') {
         <div class="state-box state-error" role="alert">
-          <div class="state-icon">⚠️</div>
+          <div class="state-icon"><svg class="icon" aria-hidden="true"><use href="icons.svg#alert" /></svg></div>
           <div>{{ errorText() || 'Không tải được dữ liệu.' }}</div>
           <button class="btn btn-outline btn-sm" type="button" (click)="retry.emit()">Thử lại</button>
         </div>
       }
       @case ('empty') {
         <div class="state-box">
-          <div class="state-icon">{{ emptyIcon() }}</div>
+          <div class="state-icon"><svg class="icon" aria-hidden="true"><use [attr.href]="'icons.svg#' + emptyIcon()" /></svg></div>
           <div>{{ emptyText() }}</div>
           <ng-content />
         </div>
@@ -34,7 +34,7 @@ export class StateComponent {
   readonly loadingText = input('Đang tải...');
   readonly errorText = input<string | null>(null);
   readonly emptyText = input('Chưa có dữ liệu');
-  readonly emptyIcon = input('🧺');
+  readonly emptyIcon = input('cart');
   readonly retry = output<void>();
 }
 
@@ -44,7 +44,7 @@ export class StateComponent {
   template: `
     @if (totalPages() > 1) {
       <nav class="pagination" aria-label="Phân trang">
-        <button type="button" class="page-btn" [disabled]="page() <= 1" (click)="go(page() - 1)" aria-label="Trang trước">‹</button>
+        <button type="button" class="page-btn" [disabled]="page() <= 1" (click)="go(page() - 1)" aria-label="Trang trước"><svg class="icon" aria-hidden="true"><use href="icons.svg#chevron-left" /></svg></button>
         @for (p of pages(); track $index) {
           @if (p === 0) {
             <span class="page-gap">…</span>
@@ -52,7 +52,7 @@ export class StateComponent {
             <button type="button" class="page-btn" [class.active]="p === page()" (click)="go(p)" [attr.aria-current]="p === page() ? 'page' : null">{{ p }}</button>
           }
         }
-        <button type="button" class="page-btn" [disabled]="page() >= totalPages()" (click)="go(page() + 1)" aria-label="Trang sau">›</button>
+        <button type="button" class="page-btn" [disabled]="page() >= totalPages()" (click)="go(page() + 1)" aria-label="Trang sau"><svg class="icon" aria-hidden="true"><use href="icons.svg#chevron-right" /></svg></button>
       </nav>
     }
   `,

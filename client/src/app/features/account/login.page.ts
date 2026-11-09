@@ -1,4 +1,4 @@
-import { Component, inject, input, signal } from '@angular/core';
+import { Component, ElementRef, inject, input, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { ApiError } from '../../core/api';
@@ -12,19 +12,19 @@ import { ToastService } from '../../core/services/toast.service';
   template: `
     <div class="container page auth-page">
       <div class="auth-card card">
-        <h1>{{ mode() === 'vendor' ? '🏪 Đăng nhập nhà bán' : 'Đăng nhập' }}</h1>
-        <p class="muted">Dùng chung một trang cho người mua, nhà bán và quản trị viên.</p>
+        <h1>{{ mode() === 'vendor' ? 'Đăng nhập nhà bán' : 'Đăng nhập' }}</h1>
+        <p class="muted">Đăng nhập để lưu giỏ hàng và theo dõi đơn nông sản của bạn.</p>
         <form [formGroup]="form" (ngSubmit)="submit()" class="form" novalidate>
           <label>Email
-            <input class="input" type="email" formControlName="email" autocomplete="email" [class.invalid]="invalid('email')" />
-            @if (invalid('email')) { <span class="field-error">Email không hợp lệ</span> }
+            <input class="input" type="email" formControlName="email" [attr.aria-invalid]="invalid('email')" [attr.aria-describedby]="invalid('email') ? 'login-email-error' : null" autocomplete="email" [class.invalid]="invalid('email')" />
+            @if (invalid('email')) { <span id="login-email-error" class="field-error">Email không hợp lệ</span> }
           </label>
           <label>Mật khẩu
             <div class="input-group">
-              <input class="input" [type]="show() ? 'text' : 'password'" formControlName="password" autocomplete="current-password" [class.invalid]="invalid('password')" />
+              <input class="input" [type]="show() ? 'text' : 'password'" formControlName="password" [attr.aria-invalid]="invalid('password')" [attr.aria-describedby]="invalid('password') ? 'login-password-error' : null" autocomplete="current-password" [class.invalid]="invalid('password')" />
               <button type="button" class="btn btn-link" (click)="show.set(!show())">{{ show() ? 'Ẩn' : 'Hiện' }}</button>
             </div>
-            @if (invalid('password')) { <span class="field-error">Nhập mật khẩu</span> }
+            @if (invalid('password')) { <span id="login-password-error" class="field-error">Nhập mật khẩu</span> }
           </label>
           <div class="row-between">
             <label class="checkbox"><input type="checkbox" formControlName="remember" /> Ghi nhớ đăng nhập (30 ngày)</label>
@@ -55,6 +55,7 @@ import { ToastService } from '../../core/services/toast.service';
 export class LoginPage {
   readonly mode = input<string | undefined>(undefined, { alias: 'as' });
   readonly returnUrl = input<string | undefined>();
+  private host: ElementRef<HTMLElement> = inject(ElementRef);
   private fb = inject(FormBuilder);
   private auth = inject(AuthService);
   private router = inject(Router);
@@ -100,6 +101,7 @@ export class LoginPage {
   async submit(): Promise<void> {
     if (this.form.invalid) {
       this.form.markAllAsTouched();
+      this.host.nativeElement.querySelector<HTMLInputElement>('input.ng-invalid')?.focus();
       return;
     }
     this.loading.set(true);

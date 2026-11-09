@@ -20,12 +20,12 @@ import { CategoryLabelPipe } from '../../shared/pipes';
     <div class="container page">
       <nav class="breadcrumb"><a routerLink="/">Trang chủ</a> › <span>Cửa hàng</span>@if (f.category) { › <span>{{ f.category | categoryLabel }}</span> }</nav>
       <div class="shop-layout">
-        <aside class="filters" [class.open]="filtersOpen()">
+        <aside id="shop-filters" class="filters" [class.open]="filtersOpen()">
           <div class="filter-group">
             <h3>Danh mục</h3>
-            <button type="button" class="filter-btn" [class.active]="!f.category" (click)="apply({ category: null })">Tất cả</button>
+            <button type="button" class="filter-btn" [attr.aria-pressed]="!f.category" [class.active]="!f.category" (click)="apply({ category: null })">Tất cả</button>
             @for (c of categoryList; track c) {
-              <button type="button" class="filter-btn" [class.active]="f.category === c" (click)="apply({ category: c })"><svg class="icon" aria-hidden="true"><use [attr.href]="'icons.svg#' + c" /></svg> {{ labels[c] }}</button>
+              <button type="button" class="filter-btn" [attr.aria-pressed]="f.category === c" [class.active]="f.category === c" (click)="apply({ category: c })"><svg class="icon" aria-hidden="true"><use [attr.href]="'icons.svg#' + c" /></svg> {{ labels[c] }}</button>
             }
           </div>
           <div class="filter-group">
@@ -58,7 +58,7 @@ import { CategoryLabelPipe } from '../../shared/pipes';
         <section class="shop-main">
           <h1 class="shop-title">Cửa hàng nông sản</h1>
           <div class="shop-toolbar">
-            <button type="button" class="btn btn-outline btn-sm show-sm" (click)="filtersOpen.set(!filtersOpen())"><svg class="icon" aria-hidden="true"><use href="icons.svg#settings" /></svg> Bộ lọc</button>
+            <button type="button" class="btn btn-outline btn-sm show-sm" aria-controls="shop-filters" [attr.aria-expanded]="filtersOpen()" (click)="filtersOpen.set(!filtersOpen())"><svg class="icon" aria-hidden="true"><use href="icons.svg#settings" /></svg> Bộ lọc</button>
             <div class="muted">
               @if (f.q) { Kết quả cho "<b>{{ f.q }}</b>": }
               {{ result()?.total ?? 0 }} sản phẩm
@@ -75,7 +75,7 @@ import { CategoryLabelPipe } from '../../shared/pipes';
           </div>
 
           @if (state() !== 'ok') {
-            <app-state [state]="state()" [errorText]="error()" emptyText="Không có sản phẩm phù hợp bộ lọc" emptyIcon="🔍" (retry)="reload()">
+            <app-state [state]="state()" [errorText]="error()" emptyText="Không có sản phẩm phù hợp bộ lọc" emptyIcon="search" (retry)="reload()">
               <button type="button" class="btn btn-outline btn-sm" (click)="reset()">Xóa bộ lọc</button>
             </app-state>
           } @else {
@@ -115,7 +115,10 @@ export class ShopPage {
     this.route.queryParamMap.pipe(takeUntilDestroyed()).subscribe((p) => this.load(p));
   }
 
+  private requestId = 0;
+
   private load(p: ParamMap): void {
+    const requestId = ++this.requestId;
     const num = (k: string) => (p.get(k) ? Number(p.get(k)) : undefined);
     this.f = {
       q: p.get('q') || undefined,
@@ -134,10 +137,12 @@ export class ShopPage {
     this.state.set('loading');
     this.catalog.products(this.f).subscribe({
       next: (r) => {
+        if (requestId !== this.requestId) return;
         this.result.set(r);
         this.state.set(r.data.length ? 'ok' : 'empty');
       },
       error: (e) => {
+        if (requestId !== this.requestId) return;
         this.error.set(ApiError.from(e).message);
         this.state.set('error');
       },

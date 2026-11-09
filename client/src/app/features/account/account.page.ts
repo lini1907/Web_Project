@@ -40,7 +40,7 @@ import { matchFields, strongPassword, vnPhone } from '../../shared/validators';
         }
         @case ('group-buys') {
           @if (gbState() !== 'ok') {
-            <app-state [state]="gbState()" emptyText="Bạn chưa tham gia chiến dịch mua chung nào" emptyIcon="👥" (retry)="loadGroupBuys()">
+            <app-state [state]="gbState()" emptyText="Bạn chưa tham gia chiến dịch mua chung nào" emptyIcon="users" (retry)="loadGroupBuys()">
               <a routerLink="/group-buy" class="btn btn-orange">Xem chiến dịch đang mở</a>
             </app-state>
           } @else {

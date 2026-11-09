@@ -51,7 +51,7 @@ import { futureAtLeast, lessOrEqual } from '../../shared/validators';
       </form>
     }
     @if (state() !== 'ok') {
-      <app-state [state]="state()" emptyText="Chưa có chiến dịch nào" emptyIcon="👥" (retry)="load()" />
+      <app-state [state]="state()" emptyText="Chưa có chiến dịch nào" emptyIcon="users" (retry)="load()" />
     } @else {
       <div class="table-wrap card">
         <table class="table">

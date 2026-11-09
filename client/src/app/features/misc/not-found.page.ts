@@ -6,7 +6,7 @@ import { RouterLink } from '@angular/router';
   imports: [RouterLink],
   template: `
     <section class="container page center-page">
-      <div class="big-emoji">🥕</div>
+      <div class="state-icon"><svg class="icon" aria-hidden="true"><use href="icons.svg#leaf" /></svg></div>
       <h1>404 · Không tìm thấy trang</h1>
       <p class="muted">Đường dẫn không tồn tại hoặc sản phẩm đã ngừng bán.</p>
       <div class="row-gap">
@@ -23,7 +23,7 @@ export class NotFoundPage {}
   imports: [RouterLink],
   template: `
     <section class="container page center-page">
-      <div class="big-emoji">🔒</div>
+      <div class="state-icon"><svg class="icon" aria-hidden="true"><use href="icons.svg#lock" /></svg></div>
       <h1>Bạn không có quyền vào trang này</h1>
       <p class="muted">Trang này dành cho vai trò khác (người mua / nhà bán / quản trị).</p>
       <a routerLink="/" class="btn btn-primary">Về trang chủ</a>

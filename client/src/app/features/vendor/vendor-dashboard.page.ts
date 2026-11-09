@@ -50,13 +50,13 @@ export function isoDay(d: Date): string {
       </div>
       <div class="grid-2">
         <section class="card">
-          <h3>⚠️ Sắp hết hàng (tồn khả dụng ≤ 5)</h3>
+          <h3><svg class="icon" aria-hidden="true"><use href="icons.svg#alert" /></svg> Sắp hết hàng (tồn khả dụng ≤ 5)</h3>
           @for (p of k.lowStock; track p.id) {
             <div class="row-between"><a [routerLink]="['/vendor/products', p.id]">{{ p.name }}</a><b [class.text-danger]="p.stockLeft <= 0">{{ p.stockLeft }} {{ p.unit }}</b></div>
           } @empty { <p class="muted">Không có sản phẩm sắp hết.</p> }
         </section>
         <section class="card">
-          <h3>🏆 Sản phẩm bán tốt</h3>
+          <h3><svg class="icon" aria-hidden="true"><use href="icons.svg#star" /></svg> Sản phẩm bán tốt</h3>
           @for (p of k.topProducts; track p.name) {
             <div class="row-between"><span>{{ p.name }} <small class="muted">× {{ p.qty }}</small></span><b>{{ p.value | money }}</b></div>
           } @empty { <p class="muted">Chưa có dữ liệu.</p> }

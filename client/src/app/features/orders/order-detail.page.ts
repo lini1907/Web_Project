@@ -23,7 +23,7 @@ const FLOW: PartStatus[] = ['pending', 'confirmed', 'shipping', 'delivered'];
         @let o = order()!;
         <nav class="breadcrumb"><a routerLink="/orders">Đơn hàng của tôi</a> › <span>{{ o.code }}</span></nav>
         @if (placed()) {
-          <div class="note note-success big-note">🎉 Đặt hàng thành công! Nhà bán sẽ xác nhận sớm. Bạn thanh toán <b>{{ o.total | money }}</b> khi nhận hàng.</div>
+          <div class="note note-success big-note"><svg class="icon" aria-hidden="true"><use href="icons.svg#check" /></svg> Đặt hàng thành công! Nhà bán sẽ xác nhận sớm. Bạn thanh toán <b>{{ o.total | money }}</b> khi nhận hàng.</div>
         }
         <div class="page-head">
           <div>
@@ -63,7 +63,7 @@ const FLOW: PartStatus[] = ['pending', 'confirmed', 'shipping', 'delivered'];
                   <div class="order-item">
                     <img [src]="i.image" alt="" appImgFallback />
                     <div class="grow">
-                      <div>{{ i.kind === 'box' ? '🎁 ' : '' }}{{ i.name }} @if (i.isRescue) { <span class="tag tag-green">Giải cứu</span> }</div>
+                      <div>{{ i.kind === 'box' ? 'Hộp: ' : '' }}{{ i.name }} @if (i.isRescue) { <span class="tag tag-green">Giải cứu</span> }</div>
                       <div class="small muted">{{ i.unitPrice | money }} × {{ i.qty }} {{ i.unit }}</div>
                     </div>
                     <b>{{ i.lineTotal | money }}</b>

@@ -8,10 +8,10 @@ import { MoneyPipe, StatusLabelPipe } from '../../shared/pipes';
 import { PaginationComponent, StateComponent, StatusBadgeComponent } from '../../shared/ui';
 
 const ACTION_LABEL: Record<string, string> = {
-  confirmed: '✔ Xác nhận',
-  shipping: '🚚 Giao hàng',
-  delivered: '📬 Đã giao',
-  cancelled: '✕ Hủy',
+  confirmed: 'Xác nhận',
+  shipping: 'Giao hàng',
+  delivered: 'Đã giao',
+  cancelled: 'Hủy',
 };
 
 /** Vendor chỉ thấy và xử lý PHẦN ĐƠN của mình (server lọc theo vendorId của session). */
@@ -26,7 +26,7 @@ const ACTION_LABEL: Record<string, string> = {
       }
     </div>
     @if (state() !== 'ok') {
-      <app-state [state]="state()" emptyText="Không có phần đơn nào" emptyIcon="📦" (retry)="load()" />
+      <app-state [state]="state()" emptyText="Không có phần đơn nào" emptyIcon="box" (retry)="load()" />
     } @else {
       <div class="order-list">
         @for (o of result()!.data; track o.partId) {
@@ -43,7 +43,7 @@ const ACTION_LABEL: Record<string, string> = {
             <ul class="item-list">
               @for (i of o.items; track i.id) {
                 <li>
-                  {{ i.qty }} × {{ i.kind === 'box' ? '🎁 ' : '' }}{{ i.name }} <span class="muted">({{ i.unitPrice | money }}/{{ i.unit }})</span> — <b>{{ i.lineTotal | money }}</b>
+                  {{ i.qty }} × {{ i.kind === 'box' ? 'Hộp: ' : '' }}{{ i.name }} <span class="muted">({{ i.unitPrice | money }}/{{ i.unit }})</span> — <b>{{ i.lineTotal | money }}</b>
                   @if (i.contents?.length) {
                     <div class="small muted">Đóng gói: @for (c of i.contents; track c.productId) { {{ c.qty }} × {{ c.name }}; }</div>
                   }

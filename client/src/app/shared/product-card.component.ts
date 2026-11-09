@@ -12,7 +12,7 @@ import { ImgFallbackDirective } from './img-fallback.directive';
   template: `
     @let p = product();
     <article class="product-card" [class.rescue]="isRescue()">
-      <a class="product-image-wrap" [routerLink]="['/products', p.slug]" [attr.aria-label]="p.name">
+      <a class="product-image-wrap" [routerLink]="['/products', p.slug]">
         <img [src]="p.mainImage" [alt]="p.name" loading="lazy" appImgFallback />
         @if (p.galleryImages.length) {
           <!-- Rê chuột: hiện ảnh phụ đầu tiên; góc dưới: số ảnh trong bộ ảnh -->
@@ -33,7 +33,7 @@ import { ImgFallbackDirective } from './img-fallback.directive';
         <a class="product-farm line-clamp-1" [routerLink]="['/farms', p.farm.slug]"><svg class="icon" aria-hidden="true"><use href="icons.svg#farm" /></svg> {{ p.farm.name }}</a>
       }
       @if (showRating() && p.rating) {
-        <div class="product-rating" title="Số liệu hiển thị kế thừa bản demo">★ {{ p.rating }} · Đã bán {{ p.soldCount }}</div>
+        <div class="product-rating" title="Đánh giá và lượt bán là dữ liệu demo"><svg class="icon" aria-hidden="true"><use href="icons.svg#star" /></svg> {{ p.rating }} · {{ p.soldCount }} đã bán <span class="sr-only">(dữ liệu demo)</span></div>
       }
       <div class="product-price">
         <span>{{ p.price | money }}</span><span class="unit">/{{ p.unit }}</span>
@@ -47,11 +47,12 @@ import { ImgFallbackDirective } from './img-fallback.directive';
       <button
         type="button"
         class="btn-add-cart"
+        [attr.aria-busy]="actions.busyId() === p.id"
         [class.red]="isRescue()"
         [disabled]="!p.inStock || actions.busyId() === p.id"
         (click)="actions.addProduct(p.id, p.name)"
       >
-        {{ !p.inStock ? 'Hết hàng' : actions.busyId() === p.id ? 'Đang thêm...' : 'Thêm vào giỏ' }}
+        <svg class="icon" aria-hidden="true"><use href="icons.svg#cart" /></svg> {{ !p.inStock ? 'Hết hàng' : actions.busyId() === p.id ? 'Đang thêm...' : 'Thêm vào giỏ' }}<span class="sr-only">: {{ p.name }}</span>
       </button>
     </article>
   `,

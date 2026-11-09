@@ -29,18 +29,23 @@ import { ForYouComponent } from '../recommend/recommend.components';
         <div class="hero">
           <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&q=80&w=1200" alt="Quầy nông sản với rau củ và trái cây nhiều màu sắc" fetchpriority="high" appImgFallback />
           <div class="hero-text">
-            <h1>Nông sản sạch,<br />giá tận vườn</h1>
-            <p>Hơn 20 nông trại tại Lâm Đồng, Sơn La, miền Tây... giao trong ngày, trả tiền khi nhận hàng.</p>
+            <h1>Từ nhà vườn,<br />về bếp nhà.</h1>
+            <p>Rau củ, trái cây và thực phẩm từ các nông trại. Chọn món cho bữa cơm nhà, thanh toán khi nhận hàng.</p>
             <div class="row-gap">
-              <a routerLink="/shop" class="btn btn-light">Mua ngay</a>
-              <a routerLink="/rescue" class="btn btn-ghost-light">Giải cứu nông sản →</a>
+              <a routerLink="/shop" class="btn btn-primary">Mua nông sản</a>
+              <a routerLink="/rescue" class="btn btn-outline">Hàng giải cứu</a>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="features-strip">
-        <div><svg class="icon" aria-hidden="true"><use href="icons.svg#truck" /></svg> <b>Giao nhanh</b><span>Miễn phí từ 200.000đ</span></div>
+      <nav class="home-categories" aria-label="Mua theo danh mục">
+        @for (c of categories(); track c.slug) {
+          <a routerLink="/shop" [queryParams]="{ category: c.slug }"><svg class="icon" aria-hidden="true"><use [attr.href]="'icons.svg#' + c.slug" /></svg><span>{{ labels[c.slug] }}</span><small>{{ c.count }} sản phẩm</small></a>
+        }
+      </nav>
+      <section class="features-strip" aria-label="Thông tin mua hàng">
+        <div><svg class="icon" aria-hidden="true"><use href="icons.svg#truck" /></svg> <b>Giao hàng tận nơi</b><span>Miễn phí từ 200.000đ</span></div>
         <div><svg class="icon" aria-hidden="true"><use href="icons.svg#wallet" /></svg> <b>COD</b><span>Nhận hàng mới trả tiền</span></div>
         <div><svg class="icon" aria-hidden="true"><use href="icons.svg#leaf" /></svg> <b>Truy xuất</b><span>Biết rõ nông trại</span></div>
         <div><svg class="icon" aria-hidden="true"><use href="icons.svg#spark" /></svg> <b>Gợi ý thông minh</b><span>Theo sở thích của bạn</span></div>
@@ -52,9 +57,10 @@ import { ForYouComponent } from '../recommend/recommend.components';
         @if (rescue().length) {
           <section class="section rescue-band">
             <div class="section-head">
-              <h2><svg class="icon" aria-hidden="true"><use href="icons.svg#rescue" /></svg> Giải cứu nông sản — sắp hết hạn</h2>
+              <h2><svg class="icon" aria-hidden="true"><use href="icons.svg#rescue" /></svg> Nông sản giải cứu</h2>
               <a routerLink="/rescue" class="link">Xem tất cả →</a>
             </div>
+            <p class="section-description">Ngon lành, dù chưa đẹp mã. Ưu tiên những sản phẩm sắp hết hạn bán.</p>
             <div class="product-grid cols-5">
               @for (p of rescue(); track p.id) {
                 <app-product-card [product]="p" />
@@ -76,7 +82,7 @@ import { ForYouComponent } from '../recommend/recommend.components';
                   <div class="gb-body">
                     <div class="gb-title line-clamp-2">{{ g.title }}</div>
                     <div class="gb-price">{{ g.groupPrice | money }} <s>{{ g.regularPrice | money }}</s></div>
-                    <div class="progress"><div [style.width.%]="g.progress"></div></div>
+                    <div class="progress" role="progressbar" [attr.aria-label]="'Tiến độ ' + g.title" [attr.aria-valuenow]="g.joinedQty" aria-valuemin="0" [attr.aria-valuemax]="g.maxQty" [attr.aria-valuetext]="g.joinedQty + ' trên ' + g.targetQty + ' ' + g.product.unit + ' để đạt giá nhóm'"><div [style.width.%]="g.progress"></div></div>
                     <div class="gb-meta"><span>{{ g.joinedQty }}/{{ g.targetQty }} {{ g.product.unit }}</span><app-countdown [deadline]="g.deadline" [serverTime]="g.serverTime" /></div>
                   </div>
                 </a>
@@ -104,14 +110,14 @@ import { ForYouComponent } from '../recommend/recommend.components';
         @if (boxes().length) {
           <section class="section mystery-band">
             <div>
-              <h2><svg class="icon" aria-hidden="true"><use href="icons.svg#box" /></svg> Mystery Box — mở hộp mới biết</h2>
-              <p>Hộp nông sản theo mùa, giá trị ước tính cao hơn giá bán. Thành phần được giữ bí mật tới khi bạn nhận hàng.</p>
+              <h2><svg class="icon" aria-hidden="true"><use href="icons.svg#box" /></svg> Một hộp mùa vụ, một chút bất ngờ</h2>
+              <p>Nhà vườn chọn nông sản theo mùa cho từng hộp. Xem trước nhóm hàng và khoảng giá trị ước tính, giữ lại chút bất ngờ khi mở hộp.</p>
               <a routerLink="/mystery-box" class="btn btn-purple">Khám phá hộp bí ẩn</a>
             </div>
             <div class="mystery-mini">
               @for (b of boxes(); track b.id) {
                 <a routerLink="/mystery-box" class="mini-box">
-                  <span class="big-emoji"><svg class="icon" aria-hidden="true"><use href="icons.svg#box" /></svg></span>
+                  <img [src]="b.image" [alt]="b.name + ' — ảnh minh họa'" loading="lazy" appImgFallback />
                   <b>{{ b.name }}</b>
                   <span>{{ b.price | money }} · còn {{ b.available }} hộp</span>
                 </a>
@@ -173,7 +179,7 @@ export class HomePage {
     forkJoin({
       categories: this.catalog.categories(),
       rescue: this.catalog.rescue(1, 5),
-      popular: this.catalog.products({ sort: 'popular', limit: 10 }),
+      popular: this.catalog.products({ sort: 'popular', limit: 5 }),
       newest: this.catalog.products({ sort: 'newest', limit: 5, type: 'regular' }),
       groupBuys: this.catalog.groupBuys('open'),
       boxes: this.catalog.mysteryBoxes(),
@@ -186,7 +192,7 @@ export class HomePage {
         this.newest.set(r.newest.data);
         this.groupBuys.set(r.groupBuys.slice(0, 3));
         this.boxes.set(r.boxes);
-        this.farms.set(r.farms.filter((f) => (f.productCount ?? 0) > 0).slice(0, 10));
+        this.farms.set(r.farms.filter((f) => (f.productCount ?? 0) > 0).slice(0, 6));
         this.state.set('ok');
       },
       error: () => this.state.set('error'),

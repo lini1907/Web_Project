@@ -21,11 +21,11 @@ import { ImgFallbackDirective } from '../../shared/img-fallback.directive';
     <div class="container page">
       <div class="tabs">
         @for (t of tabs; track t.key) {
-          <button type="button" class="tab" [class.active]="tab() === t.key" (click)="switch(t.key)">{{ t.label }}</button>
+          <button type="button" class="tab" [attr.aria-pressed]="tab() === t.key" [class.active]="tab() === t.key" (click)="switch(t.key)">{{ t.label }}</button>
         }
       </div>
       @if (state() !== 'ok') {
-        <app-state [state]="state()" emptyText="Chưa có chiến dịch nào" emptyIcon="👥" (retry)="load()" />
+        <app-state [state]="state()" emptyText="Chưa có chiến dịch nào" emptyIcon="users" (retry)="load()" />
       } @else {
         <div class="gb-grid">
           @for (g of items(); track g.id) {
@@ -35,7 +35,7 @@ import { ImgFallbackDirective } from '../../shared/img-fallback.directive';
                 <div class="row-between"><app-status [value]="g.status" /> <span class="muted small">{{ g.vendor.name }}</span></div>
                 <div class="gb-title line-clamp-2">{{ g.title }}</div>
                 <div class="gb-price">{{ g.groupPrice | money }} <s>{{ g.regularPrice | money }}</s> <span class="tag tag-orange">-{{ g.discountRate }}%</span></div>
-                <div class="progress" [class.done]="g.reachedTarget"><div [style.width.%]="g.progress"></div></div>
+                <div class="progress" [class.done]="g.reachedTarget" role="progressbar" [attr.aria-label]="'Tiến độ ' + g.title" [attr.aria-valuenow]="g.joinedQty" aria-valuemin="0" [attr.aria-valuemax]="g.maxQty" [attr.aria-valuetext]="g.joinedQty + ' trên ' + g.targetQty + ' ' + g.product.unit + ' để đạt giá nhóm'"><div [style.width.%]="g.progress"></div></div>
                 <div class="gb-meta">
                   <span>{{ g.joinedQty }}/{{ g.targetQty }} {{ g.product.unit }} · {{ g.memberCount }} người</span>
                   @if (g.status === 'open') { <app-countdown [deadline]="g.deadline" [serverTime]="g.serverTime" /> } @else { <span class="small muted">{{ g.closeReason }}</span> }
@@ -67,14 +67,18 @@ export class GroupBuyListPage {
     this.tab.set(key);
     this.load();
   }
+  private requestId = 0;
+
   load(): void {
+    const requestId = ++this.requestId;
     this.state.set('loading');
     this.catalog.groupBuys(this.tab()).subscribe({
       next: (r) => {
+        if (requestId !== this.requestId) return;
         this.items.set(r);
         this.state.set(r.length ? 'ok' : 'empty');
       },
-      error: () => this.state.set('error'),
+      error: () => { if (requestId === this.requestId) this.state.set('error'); },
     });
   }
 }

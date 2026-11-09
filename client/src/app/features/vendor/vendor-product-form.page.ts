@@ -63,7 +63,7 @@ import { StateComponent } from '../../shared/ui';
         <div class="fieldset">
           <div class="row-between"><b>Chứng nhận</b><button type="button" class="btn btn-outline btn-xs" (click)="addCert()">+ Thêm</button></div>
           @for (c of certs.controls; track $index; let i = $index) {
-            <div class="row-gap"><input class="input" [formControl]="c" placeholder="VD: VietGAP" /><button type="button" class="icon-btn" (click)="certs.removeAt(i)" aria-label="Xóa">✕</button></div>
+            <div class="row-gap"><input class="input" [formControl]="c" placeholder="VD: VietGAP" /><button type="button" class="icon-btn" (click)="certs.removeAt(i)" aria-label="Xóa"><svg class="icon" aria-hidden="true"><use href="icons.svg#close" /></svg></button></div>
           }
         </div>
 
@@ -74,7 +74,7 @@ import { StateComponent } from '../../shared/ui';
             <div class="grow">
               <input class="input" formControlName="mainImage" placeholder="Dán URL ảnh (https://...) hoặc tải lên" />
               @if (e('mainImage')) { <span class="field-error">{{ e('mainImage') }}</span> }
-              <label class="btn btn-outline btn-sm file-btn">📤 Tải ảnh lên (JPG/PNG/WEBP ≤ 2MB)
+              <label class="btn btn-outline btn-sm file-btn"><svg class="icon" aria-hidden="true"><use href="icons.svg#upload" /></svg> Tải ảnh lên (JPG/PNG/WEBP ≤ 2MB)
                 <input type="file" accept="image/jpeg,image/png,image/webp" (change)="upload($event)" hidden />
               </label>
               @if (uploading()) { <span class="small muted">Đang tải ảnh...</span> }
@@ -92,9 +92,9 @@ import { StateComponent } from '../../shared/ui';
                 <figure class="gallery-edit-item" [class.invalid]="g.invalid">
                   <img [src]="g.value" alt="Ảnh phụ {{ i + 1 }}" appImgFallback />
                   <figcaption>
-                    <button type="button" class="icon-btn" (click)="moveGallery(i, -1)" [disabled]="i === 0" aria-label="Đưa lên trước" title="Đưa lên trước">◀</button>
-                    <button type="button" class="icon-btn" (click)="makeMain(i)" aria-label="Đặt làm ảnh chính" title="Đặt làm ảnh chính">★</button>
-                    <button type="button" class="icon-btn" (click)="gallery.removeAt(i); form.markAsDirty()" aria-label="Xóa ảnh" title="Xóa ảnh">✕</button>
+                    <button type="button" class="icon-btn" (click)="moveGallery(i, -1)" [disabled]="i === 0" aria-label="Đưa lên trước" title="Đưa lên trước"><svg class="icon" aria-hidden="true"><use href="icons.svg#chevron-left" /></svg></button>
+                    <button type="button" class="icon-btn" (click)="makeMain(i)" aria-label="Đặt làm ảnh chính" title="Đặt làm ảnh chính"><svg class="icon" aria-hidden="true"><use href="icons.svg#star" /></svg></button>
+                    <button type="button" class="icon-btn" (click)="gallery.removeAt(i); form.markAsDirty()" aria-label="Xóa ảnh" title="Xóa ảnh"><svg class="icon" aria-hidden="true"><use href="icons.svg#close" /></svg></button>
                   </figcaption>
                 </figure>
               }
@@ -108,7 +108,7 @@ import { StateComponent } from '../../shared/ui';
               <button type="button" class="btn btn-outline btn-sm" (click)="addGalleryUrl()" [disabled]="newImageUrl.invalid || !newImageUrl.value">+ Thêm</button>
             </div>
             @if (newImageUrl.invalid && newImageUrl.dirty) { <span class="field-error">URL ảnh phải bắt đầu bằng https:// hoặc /uploads/</span> }
-            <label class="btn btn-outline btn-sm file-btn">📤 Tải nhiều ảnh phụ (tối đa {{ maxGallery - gallery.length }})
+            <label class="btn btn-outline btn-sm file-btn"><svg class="icon" aria-hidden="true"><use href="icons.svg#upload" /></svg> Tải nhiều ảnh phụ (tối đa {{ maxGallery - gallery.length }})
               <input type="file" accept="image/jpeg,image/png,image/webp" multiple (change)="uploadGallery($event)" hidden />
             </label>
           }

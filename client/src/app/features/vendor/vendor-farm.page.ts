@@ -24,7 +24,7 @@ import { StateComponent } from '../../shared/ui';
             <div class="farm-avatar">{{ f.name.charAt(0) }}</div>
             <div class="grow">
               <h3>{{ f.name }}</h3>
-              <div class="muted">📍 {{ f.province }} · {{ f.status === 'hidden' ? 'Đang ẩn' : 'Công khai' }}</div>
+              <div class="muted"><svg class="icon" aria-hidden="true"><use href="icons.svg#pin" /></svg> {{ f.province }} · {{ f.status === 'hidden' ? 'Đang ẩn' : 'Công khai' }}</div>
               <p class="line-clamp-2">{{ f.story }}</p>
               <div class="row-gap">
                 <button type="button" class="btn btn-outline btn-xs" (click)="edit(f)">Sửa</button>

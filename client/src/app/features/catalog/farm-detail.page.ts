@@ -22,9 +22,9 @@ import { StateComponent } from '../../shared/ui';
           <div class="farm-avatar xl">{{ f.name.charAt(0) }}</div>
           <div>
             <h1>{{ f.name }}</h1>
-            <div class="muted">📍 {{ f.address }}{{ f.address ? ', ' : '' }}{{ f.province }}</div>
+            <div class="muted"><svg class="icon" aria-hidden="true"><use href="icons.svg#pin" /></svg> {{ f.address }}{{ f.address ? ', ' : '' }}{{ f.province }}</div>
             @if (f.vendor) { <div class="muted">Đồng hành cùng FarmTable từ {{ f.vendor.since | date: 'MM/yyyy' }}</div> }
-            <div class="certs">@for (c of f.certifications; track c) { <span class="tag">✔ {{ c }}</span> }</div>
+            <div class="certs">@for (c of f.certifications; track c) { <span class="tag"><svg class="icon" aria-hidden="true"><use href="icons.svg#check" /></svg> {{ c }}</span> }</div>
             <p class="prose">{{ f.story }}</p>
           </div>
         </section>

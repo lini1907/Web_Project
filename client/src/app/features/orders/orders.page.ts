@@ -19,7 +19,7 @@ import { PaginationComponent, StateComponent, StatusBadgeComponent } from '../..
         }
       </div>
       @if (state() !== 'ok') {
-        <app-state [state]="state()" emptyText="Chưa có đơn hàng nào" emptyIcon="📦" (retry)="load()">
+        <app-state [state]="state()" emptyText="Chưa có đơn hàng nào" emptyIcon="box" (retry)="load()">
           <a routerLink="/shop" class="btn btn-primary">Bắt đầu mua sắm</a>
         </app-state>
       } @else {
