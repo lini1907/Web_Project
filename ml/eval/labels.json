@@ -1,0 +1,36 @@
+{
+  "description": "Bộ truy vấn đánh giá gợi ý 'sản phẩm tương tự'. Nhãn do nhóm gán thủ công theo tiêu chí độc lập với mô hình: sản phẩm Y được coi là LIÊN QUAN tới X nếu người mua đang xem X có thể chọn Y để THAY THẾ (cùng loại thực phẩm) hoặc dùng cho CÙNG MÓN/CÙNG MỤC ĐÍCH. Nhãn được viết trước khi chạy mô hình, khóa theo slug để không phụ thuộc ObjectId.",
+  "criteria": [
+    "Cùng loại cụ thể (vd: cam sành Vĩnh Long ~ cam sành Cái Bè)",
+    "Cùng nhóm chế biến/món (vd: thịt ba chỉ ~ set BBQ; cà chua bi ~ dưa leo cho salad)",
+    "Không gán liên quan chỉ vì cùng nông trại hoặc cùng tỉnh"
+  ],
+  "queries": [
+    { "query": "ca-chua-bi-huu-co-da-lat", "relevant": ["ca-chua-meo-mo-giai-cuu", "dua-leo-da-lat", "cai-bo-xoi-vietgap"] },
+    { "query": "ca-chua-meo-mo-giai-cuu", "relevant": ["ca-chua-bi-huu-co-da-lat", "dua-leo-da-lat"] },
+    { "query": "cai-bo-xoi-vietgap", "relevant": ["bap-cai-tuoi-da-lat", "sup-lo-xanh", "sup-lo-trang-size-nho-giai-cuu"] },
+    { "query": "sup-lo-xanh", "relevant": ["sup-lo-trang-size-nho-giai-cuu", "bap-cai-tuoi-da-lat", "cai-bo-xoi-vietgap"] },
+    { "query": "bap-cai-tuoi-da-lat", "relevant": ["sup-lo-xanh", "sup-lo-trang-size-nho-giai-cuu", "cai-bo-xoi-vietgap"] },
+    { "query": "khoai-tay-vang-da-lat", "relevant": ["khoai-lang-size-lon-giai-cuu", "ca-rot-gay-nho-giai-cuu"] },
+    { "query": "ca-rot-gay-nho-giai-cuu", "relevant": ["khoai-tay-vang-da-lat", "khoai-lang-size-lon-giai-cuu"] },
+    { "query": "khoai-lang-size-lon-giai-cuu", "relevant": ["khoai-tay-vang-da-lat", "ca-rot-gay-nho-giai-cuu"] },
+    { "query": "nam-dui-ga", "relevant": ["nam-dui-ga-lech-form-giai-cuu"] },
+    { "query": "cam-sanh-vinh-long", "relevant": ["cam-sanh-tray-vo-giai-cuu", "cam-sanh-cai-be"] },
+    { "query": "cam-sanh-cai-be", "relevant": ["cam-sanh-vinh-long", "cam-sanh-tray-vo-giai-cuu"] },
+    { "query": "dau-tay-new-zealand", "relevant": ["dau-tay-da-lat-hop-300g"] },
+    { "query": "tao-fuji-tray-xuoc-giai-cuu", "relevant": ["thap-cam-trai-cay-theo-mua", "dua-luoi-nut-vo-giai-cuu", "chuoi-gia-nam-my"] },
+    { "query": "dua-luoi-nut-vo-giai-cuu", "relevant": ["thap-cam-trai-cay-theo-mua", "tao-fuji-tray-xuoc-giai-cuu", "chuoi-gia-nam-my"] },
+    { "query": "bo-sap-tray-vo-giai-cuu", "relevant": ["chuoi-gia-nam-my", "thap-cam-trai-cay-theo-mua"] },
+    { "query": "thap-cam-trai-cay-theo-mua", "relevant": ["dua-luoi-nut-vo-giai-cuu", "tao-fuji-tray-xuoc-giai-cuu", "chuoi-gia-nam-my", "cam-sanh-cai-be", "dau-tay-da-lat-hop-300g"] },
+    { "query": "thit-heo-sach-cp", "relevant": ["thit-ba-chi-heo-sach", "suon-heo-cot-let", "set-thit-nuong-bbq-hon-hop"] },
+    { "query": "thit-ba-chi-heo-sach", "relevant": ["thit-heo-sach-cp", "suon-heo-cot-let", "set-thit-nuong-bbq-hon-hop"] },
+    { "query": "suon-heo-cot-let", "relevant": ["thit-heo-sach-cp", "thit-ba-chi-heo-sach"] },
+    { "query": "set-thit-nuong-bbq-hon-hop", "relevant": ["thit-ba-chi-heo-sach", "thit-heo-sach-cp", "suon-heo-cot-let"] },
+    { "query": "ga-ta-tha-vuon", "relevant": ["thit-heo-sach-cp", "suon-heo-cot-let", "thit-ba-chi-heo-sach"] },
+    { "query": "trung-ga-tha-vuon", "relevant": ["trung-ga-lan-size-giai-cuu"] },
+    { "query": "ca-basa-tuoi-song", "relevant": ["ca-basa-size-nho-giai-cuu", "ca-basa-phi-le-dong-lanh", "ca-hoi-phi-le-tuoi"] },
+    { "query": "ca-hoi-phi-le-tuoi", "relevant": ["ca-basa-phi-le-dong-lanh", "ca-basa-tuoi-song", "ca-basa-size-nho-giai-cuu"] },
+    { "query": "tom-su-tuoi-ca-mau", "relevant": ["tom-cang-xanh-song", "ca-hoi-phi-le-tuoi"] },
+    { "query": "tom-cang-xanh-song", "relevant": ["tom-su-tuoi-ca-mau"] }
+  ]
+}

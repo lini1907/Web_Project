@@ -1,0 +1,6 @@
+{
+  "name": "farmtable-storefront-qa",
+  "private": true,
+  "scripts": { "test": "node storefront.cjs" },
+  "devDependencies": { "playwright": "^1.65.0", "@axe-core/playwright": "^4.14.0" }
+}

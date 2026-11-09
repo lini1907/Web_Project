@@ -1,0 +1,2259 @@
+{
+  "generatedAt": "2026-11-09T09:24:38.808Z",
+  "note": "Stock illustrations only; not evidence of cultivar, origin, condition or certification. Resized and converted to WebP. Original licenses apply.",
+  "products": {
+    "legacy:3": {
+      "key": "legacy:3",
+      "name": "Dâu tây New Zealand",
+      "originalImage": "https://images.unsplash.com/photo-1601004890684-d8cbf643f5f2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzdHJhd2JlcnJ5fGVufDF8fHx8MTc4Mjg0OTMyMHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "seedGallery": [
+        "https://images.unsplash.com/photo-1587393855524-087f83d95bc9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwyfHxzdHJhd2JlcnJ5fGVufDF8fHx8MTc4Mjg0OTMyMHww&ixlib=rb-4.1.0&q=80&w=1080",
+        "https://images.unsplash.com/photo-1549007953-2f2dc0b24019?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwzfHxzdHJhd2JlcnJ5fGVufDF8fHx8MTc4Mjg0OTMyMHww&ixlib=rb-4.1.0&q=80&w=1080",
+        "https://images.unsplash.com/photo-1594282241894-4da286138f44?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHw0fHxzdHJhd2JlcnJ5fGVufDF8fHx8MTc4Mjg0OTMyMHww&ixlib=rb-4.1.0&q=80&w=1080",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ce/Bowl_of_Strawberries.jpg/960px-Bowl_of_Strawberries.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b2/Strawberries_3.jpg/960px-Strawberries_3.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/legacy-3-960.webp",
+      "thumbnailImage": "/media/catalog/legacy-3-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/legacy-3-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Bowl_of_Strawberries.jpg",
+          "title": "Bowl of Strawberries.jpg",
+          "license": "CC BY-SA 3.0",
+          "artist": "ShakataGaNai",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "legacy:1": {
+      "key": "legacy:1",
+      "name": "Cà chua bi hữu cơ Đà Lạt",
+      "originalImage": "https://images.unsplash.com/photo-1615486171815-2611a6e3cd02?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjaGVycnklMjB0b21hdG98ZW58MXx8fHwxNzgyODQ5MzIwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "seedGallery": [
+        "https://images.unsplash.com/photo-1546094096-0df4bcaaa337?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwyfHxjaGVycnklMjB0b21hdG98ZW58MXx8fHwxNzgyODQ5MzIwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+        "https://images.unsplash.com/photo-1524593166156-312f362cada0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwzfHxjaGVycnklMjB0b21hdG98ZW58MXx8fHwxNzgyODQ5MzIwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+        "https://images.unsplash.com/photo-1592841200221-a6898f307baa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHw0fHxjaGVycnklMjB0b21hdG98ZW58MXx8fHwxNzgyODQ5MzIwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/39/Cherry-Tomatoes-in-Pack.jpg/960px-Cherry-Tomatoes-in-Pack.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/54/Cherry-Tomatoes-Greenhouse-Sitia-Crete-Greece-5.jpg/960px-Cherry-Tomatoes-Greenhouse-Sitia-Crete-Greece-5.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/legacy-1-960.webp",
+      "thumbnailImage": "/media/catalog/legacy-1-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/legacy-1-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Cherry-Tomatoes-in-Pack.jpg",
+          "title": "Cherry-Tomatoes-in-Pack.jpg",
+          "license": "CC0",
+          "artist": "Evan-Amos",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "legacy:2": {
+      "key": "legacy:2",
+      "name": "Cải bó xôi VietGAP",
+      "originalImage": "https://images.unsplash.com/photo-1576045057995-568f588f82fb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzcGluYWNofGVufDF8fHx8MTc4Mjg0OTMxOXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "seedGallery": [
+        "https://images.unsplash.com/photo-1574316071802-0d684efa7bf5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwyfHxzcGluYWNofGVufDF8fHx8MTc4Mjg0OTMxOXww&ixlib=rb-4.1.0&q=80&w=1080",
+        "https://images.unsplash.com/photo-1580910365203-91ea9115a319?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwzfHxzcGluYWNofGVufDF8fHx8MTc4Mjg0OTMxOXww&ixlib=rb-4.1.0&q=80&w=1080",
+        "https://images.unsplash.com/photo-1651427660796-1bc57aafa229?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHw0fHxzcGluYWNofGVufDF8fHx8MTc4Mjg0OTMxOXww&ixlib=rb-4.1.0&q=80&w=1080",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5b/Spinach_%285220544439%29.jpg/960px-Spinach_%285220544439%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/67/Spinach_bunches_in_a_stack.jpg/960px-Spinach_bunches_in_a_stack.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/legacy-2-960.webp",
+      "thumbnailImage": "/media/catalog/legacy-2-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/legacy-2-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Spinach_bunches_in_a_stack.jpg",
+          "title": "Spinach bunches in a stack.jpg",
+          "license": "CC0",
+          "artist": "Jeffery Martin",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "legacy:5": {
+      "key": "legacy:5",
+      "name": "Súp lơ xanh",
+      "originalImage": "https://images.unsplash.com/photo-1685504445355-0e7bdf90d415?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxicm9jY29saXxlbnwxfHx8fDE3ODI4NDkzMjB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "seedGallery": [
+        "https://images.unsplash.com/photo-1583663848850-46af132dc08e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwyfHxicm9jY29saXxlbnwxfHx8fDE3ODI4NDkzMjB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+        "https://images.unsplash.com/photo-1590779033100-9f60a05a013d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwzfHxicm9jY29saXxlbnwxfHx8fDE3ODI4NDkzMjB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+        "https://images.unsplash.com/photo-1614336215203-05a588f74627?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHw0fHxicm9jY29saXxlbnwxfHx8fDE3ODI4NDkzMjB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/db/%E1%B1%A6%E1%B1%9F%E1%B1%B9%E1%B1%A8%E1%B1%A4%E1%B1%AD%E1%B1%B9%E1%B1%B2_%E1%B1%B5%E1%B1%9F%E1%B1%A6%E1%B1%9F_%E1%B1%A0%E1%B1%9A%E1%B1%AF%E1%B1%A4%28Broccoli%29.jpg/960px-%E1%B1%A6%E1%B1%9F%E1%B1%B9%E1%B1%A8%E1%B1%A4%E1%B1%AD%E1%B1%B9%E1%B1%B2_%E1%B1%B5%E1%B1%9F%E1%B1%A6%E1%B1%9F_%E1%B1%A0%E1%B1%9A%E1%B1%AF%E1%B1%A4%28Broccoli%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/legacy-5-960.webp",
+      "thumbnailImage": "/media/catalog/legacy-5-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/legacy-5-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:%E1%B1%A6%E1%B1%9F%E1%B1%B9%E1%B1%A8%E1%B1%A4%E1%B1%AD%E1%B1%B9%E1%B1%B2_%E1%B1%B5%E1%B1%9F%E1%B1%A6%E1%B1%9F_%E1%B1%A0%E1%B1%9A%E1%B1%AF%E1%B1%A4(Broccoli).jpg",
+          "title": "ᱦᱟᱹᱨᱤᱭᱹᱲ ᱵᱟᱦᱟ ᱠᱚᱯᱤ(Broccoli).jpg",
+          "license": "CC BY-SA 4.0",
+          "artist": "ᱩᱯᱟᱞ ᱵᱟᱦᱟ",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "legacy:6": {
+      "key": "legacy:6",
+      "name": "Nấm đùi gà",
+      "originalImage": "https://images.unsplash.com/photo-1542913235-1f46ce06443d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxveXN0ZXIlMjBtdXNocm9vbXxlbnwxfHx8fDE3ODI4NDkzMjB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "seedGallery": [
+        "https://images.unsplash.com/photo-1572782132197-79d85a8d16de?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwyfHxveXN0ZXIlMjBtdXNocm9vbXxlbnwxfHx8fDE3ODI4NDkzMjB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+        "https://images.unsplash.com/photo-1586686804243-d763a9afb755?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwzfHxveXN0ZXIlMjBtdXNocm9vbXxlbnwxfHx8fDE3ODI4NDkzMjB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+        "https://images.unsplash.com/photo-1611281404780-95799250d540?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHw0fHxveXN0ZXIlMjBtdXNocm9vbXxlbnwxfHx8fDE3ODI4NDkzMjB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/78/Pleurotus_eryngii_%28de_Kr%C3%A4uterseitling%29_cultivated_in_Korea%2C_sold_in_Austria%2C_20100127.jpg/960px-Pleurotus_eryngii_%28de_Kr%C3%A4uterseitling%29_cultivated_in_Korea%2C_sold_in_Austria%2C_20100127.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a0/Pleurotus_eryngii_%281%29.jpg/960px-Pleurotus_eryngii_%281%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/legacy-6-960.webp",
+      "thumbnailImage": "/media/catalog/legacy-6-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/legacy-6-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Pleurotus_eryngii_(de_Kr%C3%A4uterseitling)_cultivated_in_Korea,_sold_in_Austria,_20100127.jpg",
+          "title": "Pleurotus eryngii (de Kräuterseitling) cultivated in Korea, sold in Austria, 20100127.jpg",
+          "license": "CC BY-SA 3.0",
+          "artist": "me!",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "legacy:4": {
+      "key": "legacy:4",
+      "name": "Cam sành Vĩnh Long",
+      "originalImage": "https://images.unsplash.com/photo-1557800636-894a64c1696f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxvcmFuZ2UlMjB0YW5nZXJpbmV8ZW58MXx8fHwxNzgyODQ5MzIwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "seedGallery": [
+        "https://images.unsplash.com/photo-1611080626919-7cf5a9dbab5b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwyfHxvcmFuZ2UlMjB0YW5nZXJpbmV8ZW58MXx8fHwxNzgyODQ5MzIwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+        "https://images.unsplash.com/photo-1547514701-42782101795e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwzfHxvcmFuZ2UlMjB0YW5nZXJpbmV8ZW58MXx8fHwxNzgyODQ5MzIwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+        "https://images.unsplash.com/photo-1580052614034-c55d20bfee3b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHw0fHxvcmFuZ2UlMjB0YW5nZXJpbmV8ZW58MXx8fHwxNzgyODQ5MzIwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/43/Ambersweet_oranges.jpg/960px-Ambersweet_oranges.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e3/Oranges_-_whole-halved-segment.jpg/960px-Oranges_-_whole-halved-segment.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/legacy-4-960.webp",
+      "thumbnailImage": "/media/catalog/legacy-4-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/legacy-4-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Ambersweet_oranges.jpg",
+          "title": "Ambersweet oranges.jpg",
+          "license": "Public domain",
+          "artist": "",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "legacy:8": {
+      "key": "legacy:8",
+      "name": "Trứng gà thả vườn",
+      "originalImage": "https://images.unsplash.com/photo-1639194335563-d56b83f0060c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjaGlja2VuJTIwZWdnfGVufDF8fHx8MTc4Mjg0OTMyMXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "seedGallery": [
+        "https://images.unsplash.com/photo-1536816579748-4ecb3f03d72a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwyfHxjaGlja2VuJTIwZWdnfGVufDF8fHx8MTc4Mjg0OTMyMXww&ixlib=rb-4.1.0&q=80&w=1080",
+        "https://images.unsplash.com/photo-1506976785307-8732e854ad03?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwzfHxjaGlja2VuJTIwZWdnfGVufDF8fHx8MTc4Mjg0OTMyMXww&ixlib=rb-4.1.0&q=80&w=1080",
+        "https://images.unsplash.com/photo-1587486913049-53fc88980cfc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHw0fHxjaGlja2VuJTIwZWdnfGVufDF8fHx8MTc4Mjg0OTMyMXww&ixlib=rb-4.1.0&q=80&w=1080",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/92/European_Chicken_Eggs_and_Yubei_Chicken_Eggs_in_the_food_shop_at_Tai_Po.jpg/960px-European_Chicken_Eggs_and_Yubei_Chicken_Eggs_in_the_food_shop_at_Tai_Po.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/91/Chicken_eggs_in_tray.jpg/960px-Chicken_eggs_in_tray.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/legacy-8-960.webp",
+      "thumbnailImage": "/media/catalog/legacy-8-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/legacy-8-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:European_Chicken_Eggs_and_Yubei_Chicken_Eggs_in_the_food_shop_at_Tai_Po.jpg",
+          "title": "European Chicken Eggs and Yubei Chicken Eggs in the food shop at Tai Po.jpg",
+          "license": "CC BY-SA 4.0",
+          "artist": "Peachyeung316",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "legacy:7": {
+      "key": "legacy:7",
+      "name": "Thịt heo sạch CP",
+      "originalImage": "https://images.unsplash.com/photo-1628268909376-e8c44bb3153f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyYXclMjBwb3JrJTIwbWVhdHxlbnwxfHx8fDE3ODI4NDkzMjF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "seedGallery": [
+        "https://images.unsplash.com/photo-1611059263765-f57653f3bba3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwyfHxyYXclMjBwb3JrJTIwbWVhdHxlbnwxfHx8fDE3ODI4NDkzMjF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+        "https://images.unsplash.com/photo-1609518317991-10acee259279?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwzfHxyYXclMjBwb3JrJTIwbWVhdHxlbnwxfHx8fDE3ODI4NDkzMjF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+        "https://images.unsplash.com/photo-1612156502174-bbbad9882af2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHw0fHxyYXclMjBwb3JrJTIwbWVhdHxlbnwxfHx8fDE3ODI4NDkzMjF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fd/Pork_rind_and_pork_lard.jpg/960px-Pork_rind_and_pork_lard.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/legacy-7-960.webp",
+      "thumbnailImage": "/media/catalog/legacy-7-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/legacy-7-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Pork_Shoulder,_Coppa_Cut_(6853905869).jpg",
+          "title": "Pork Shoulder, Coppa Cut (6853905869).jpg",
+          "license": "CC BY 2.0",
+          "artist": "Ryan Snyder",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "legacy:10": {
+      "key": "legacy:10",
+      "name": "Cà rốt gãy nhỏ giải cứu",
+      "originalImage": "https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYXJyb3R8ZW58MXx8fHwxNzgyODQ5MzIxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "seedGallery": [
+        "https://images.unsplash.com/photo-1590868309235-ea34bed7bd7f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwyfHxjYXJyb3R8ZW58MXx8fHwxNzgyODQ5MzIxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+        "https://images.unsplash.com/photo-1633380110125-f6e685676160?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwzfHxjYXJyb3R8ZW58MXx8fHwxNzgyODQ5MzIxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+        "https://images.unsplash.com/photo-1589927986089-35812388d1f4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHw0fHxjYXJyb3R8ZW58MXx8fHwxNzgyODQ5MzIxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/Carrots_..jpg/960px-Carrots_..jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c3/Carrots_at_Ljubljana_Central_Market.JPG/960px-Carrots_at_Ljubljana_Central_Market.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/legacy-10-960.webp",
+      "thumbnailImage": "/media/catalog/legacy-10-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/legacy-10-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Carrots_..jpg",
+          "title": "Carrots ..jpg",
+          "license": "CC0",
+          "artist": "Wilfredor",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "legacy:11": {
+      "key": "legacy:11",
+      "name": "Cá basa tươi sống",
+      "originalImage": "https://images.unsplash.com/photo-1723975465129-269a531e8658?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYXRmaXNofGVufDF8fHx8MTc4Mjg0OTMyMnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "seedGallery": [
+        "https://images.unsplash.com/photo-1515735543535-12664d2453f8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwyfHxjYXRmaXNofGVufDF8fHx8MTc4Mjg0OTMyMnww&ixlib=rb-4.1.0&q=80&w=1080",
+        "https://images.unsplash.com/photo-1663870947073-c6ef23f30970?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwzfHxjYXRmaXNofGVufDF8fHx8MTc4Mjg0OTMyMnww&ixlib=rb-4.1.0&q=80&w=1080",
+        "https://images.unsplash.com/photo-1502839604051-1d3956c4d9c2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHw0fHxjYXRmaXNofGVufDF8fHx8MTc4Mjg0OTMyMnww&ixlib=rb-4.1.0&q=80&w=1080",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e1/Pangasius_mort.jpg/960px-Pangasius_mort.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a3/Pangasius_larnaudii.jpg/960px-Pangasius_larnaudii.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/legacy-11-960.webp",
+      "thumbnailImage": "/media/catalog/legacy-11-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/legacy-11-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Pangasius_mort.jpg",
+          "title": "Pangasius mort.jpg",
+          "license": "CC BY 4.0",
+          "artist": "Lune003",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "legacy:12": {
+      "key": "legacy:12",
+      "name": "Khoai tây vàng Đà Lạt",
+      "originalImage": "https://images.unsplash.com/photo-1518977676601-b53f82aba655?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwb3RhdG98ZW58MXx8fHwxNzgyODQ5MzIxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "seedGallery": [
+        "https://images.unsplash.com/photo-1590165482129-1b8b27698780?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwyfHxwb3RhdG98ZW58MXx8fHwxNzgyODQ5MzIxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+        "https://images.unsplash.com/photo-1617130094141-532436117aa1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwzfHxwb3RhdG98ZW58MXx8fHwxNzgyODQ5MzIxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+        "https://images.unsplash.com/photo-1675501344642-92d35d90fe51?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHw0fHxwb3RhdG98ZW58MXx8fHwxNzgyODQ5MzIxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6e/Peeled_Irish_potatoes.jpg/960px-Peeled_Irish_potatoes.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/94/Potato_for_sale_in_Nigeria.jpg/960px-Potato_for_sale_in_Nigeria.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/legacy-12-960.webp",
+      "thumbnailImage": "/media/catalog/legacy-12-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/legacy-12-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Potato_for_sale_in_Nigeria.jpg",
+          "title": "Potato for sale in Nigeria.jpg",
+          "license": "CC0",
+          "artist": "Iyinolamercy",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "legacy:14": {
+      "key": "legacy:14",
+      "name": "Cà chua méo mó giải cứu",
+      "originalImage": "https://images.pexels.com/photos/29479888/pexels-photo-29479888.jpeg?auto=compress&cs=tinysrgb&w=1080",
+      "seedGallery": [
+        "https://images.pexels.com/photos/33749230/pexels-photo-33749230.jpeg?auto=compress&cs=tinysrgb&w=1080",
+        "https://images.pexels.com/photos/35699715/pexels-photo-35699715.jpeg?auto=compress&cs=tinysrgb&w=1080",
+        "https://images.pexels.com/photos/6316521/pexels-photo-6316521.jpeg?auto=compress&cs=tinysrgb&w=1080",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f5/Tomatoes.jpg/960px-Tomatoes.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6d/Tomatoes_and_other_salad_ingredients_on_wooden_cutting_board.jpg/960px-Tomatoes_and_other_salad_ingredients_on_wooden_cutting_board.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/legacy-14-960.webp",
+      "thumbnailImage": "/media/catalog/legacy-14-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/legacy-14-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Tomatoes.jpg",
+          "title": "Tomatoes.jpg",
+          "license": "CC0",
+          "artist": "Wilfredor",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "legacy:16": {
+      "key": "legacy:16",
+      "name": "Súp lơ trắng size nhỏ giải cứu",
+      "originalImage": "https://images.pexels.com/photos/6631953/pexels-photo-6631953.jpeg?auto=compress&cs=tinysrgb&w=1080",
+      "seedGallery": [
+        "https://images.pexels.com/photos/7572005/pexels-photo-7572005.jpeg?auto=compress&cs=tinysrgb&w=1080",
+        "https://images.pexels.com/photos/32640196/pexels-photo-32640196.jpeg?auto=compress&cs=tinysrgb&w=1080",
+        "https://images.pexels.com/photos/7342178/pexels-photo-7342178.jpeg?auto=compress&cs=tinysrgb&w=1080",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9c/Liat_Portal_for_Foodie_Disorder_%E2%80%93_Whole_roasted_cauliflower.jpg/960px-Liat_Portal_for_Foodie_Disorder_%E2%80%93_Whole_roasted_cauliflower.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/60/Cauliflower-on-plant4.JPG/960px-Cauliflower-on-plant4.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/legacy-16-960.webp",
+      "thumbnailImage": "/media/catalog/legacy-16-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/legacy-16-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Cauliflower-on-plant4.JPG",
+          "title": "Cauliflower-on-plant4.JPG",
+          "license": "CC BY-SA 3.0",
+          "artist": "Edukeralam,( Navaneeth Krishnan S)",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "legacy:15": {
+      "key": "legacy:15",
+      "name": "Cam sành trầy vỏ giải cứu",
+      "originalImage": "https://images.unsplash.com/photo-1557800636-894a64c1696f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800",
+      "seedGallery": [
+        "https://images.unsplash.com/photo-1611080626919-7cf5a9dbab5b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800",
+        "https://images.unsplash.com/photo-1580052614034-c55d20bfee3b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800",
+        "https://images.unsplash.com/photo-1547514701-42782101795e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7e/Oranges_%C3%93bidos_February_2022-1.jpg/960px-Oranges_%C3%93bidos_February_2022-1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d6/Oranges_and_blood_oranges_%2803%29.jpg/960px-Oranges_and_blood_oranges_%2803%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/legacy-15-960.webp",
+      "thumbnailImage": "/media/catalog/legacy-15-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/legacy-15-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Oranges_%C3%93bidos_February_2022-1.jpg",
+          "title": "Oranges Óbidos February 2022-1.jpg",
+          "license": "CC BY-SA 4.0",
+          "artist": "Alvesgaspar",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "legacy:17": {
+      "key": "legacy:17",
+      "name": "Táo Fuji trầy xước giải cứu",
+      "originalImage": "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800",
+      "seedGallery": [
+        "https://images.unsplash.com/photo-1630563451961-ac2ff27616ab?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/54/Kullu_Valley%2C_Vashisht%2C_Manali%2C_Apples%2C_India.jpg/960px-Kullu_Valley%2C_Vashisht%2C_Manali%2C_Apples%2C_India.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6c/Winter_apples_3.jpg/960px-Winter_apples_3.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b7/Efremov_-_Oct_2025_-_Apples_in_the_City_Garden.jpg/960px-Efremov_-_Oct_2025_-_Apples_in_the_City_Garden.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fb/Cindy%27s_Produce_apples_LR.jpg/960px-Cindy%27s_Produce_apples_LR.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/legacy-17-960.webp",
+      "thumbnailImage": "/media/catalog/legacy-17-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/legacy-17-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Kullu_Valley,_Vashisht,_Manali,_Apples,_India.jpg",
+          "title": "Kullu Valley, Vashisht, Manali, Apples, India.jpg",
+          "license": "CC BY 4.0",
+          "artist": "Vyacheslav Argenberg",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "legacy:18": {
+      "key": "legacy:18",
+      "name": "Khoai lang size lớn giải cứu",
+      "originalImage": "https://images.pexels.com/photos/7456548/pexels-photo-7456548.jpeg?auto=compress&cs=tinysrgb&w=1080",
+      "seedGallery": [
+        "https://images.pexels.com/photos/32146989/pexels-photo-32146989.jpeg?auto=compress&cs=tinysrgb&w=1080",
+        "https://images.pexels.com/photos/13059602/pexels-photo-13059602.jpeg?auto=compress&cs=tinysrgb&w=1080",
+        "https://images.pexels.com/photos/10822047/pexels-photo-10822047.jpeg?auto=compress&cs=tinysrgb&w=1080",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3e/Boniatos_Sweet_potatoes.jpg/960px-Boniatos_Sweet_potatoes.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/06/Purple_sweet_potatoes.jpg/960px-Purple_sweet_potatoes.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/legacy-18-960.webp",
+      "thumbnailImage": "/media/catalog/legacy-18-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/legacy-18-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Boniatos_Sweet_potatoes.jpg",
+          "title": "Boniatos Sweet potatoes.jpg",
+          "license": "CC BY 4.0",
+          "artist": "Juan Emilio Prades Bel",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "legacy:20": {
+      "key": "legacy:20",
+      "name": "Dưa lưới nứt vỏ giải cứu",
+      "originalImage": "https://images.pexels.com/photos/18979311/pexels-photo-18979311.jpeg?auto=compress&cs=tinysrgb&w=1080",
+      "seedGallery": [
+        "https://images.pexels.com/photos/23510463/pexels-photo-23510463.jpeg?auto=compress&cs=tinysrgb&w=1080",
+        "https://images.pexels.com/photos/9276867/pexels-photo-9276867.jpeg?auto=compress&cs=tinysrgb&w=1080",
+        "https://images.pexels.com/photos/2714323/pexels-photo-2714323.jpeg?auto=compress&cs=tinysrgb&w=1080",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9a/Cantaloupe.jpg/960px-Cantaloupe.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/42/Cantaloupe_cut_and_whole.jpg/960px-Cantaloupe_cut_and_whole.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/legacy-20-960.webp",
+      "thumbnailImage": "/media/catalog/legacy-20-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/legacy-20-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Cantaloupe.jpg",
+          "title": "Cantaloupe.jpg",
+          "license": "Public domain",
+          "artist": "Renee Comet (Photographer)",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "legacy:19": {
+      "key": "legacy:19",
+      "name": "Cá basa size nhỏ giải cứu",
+      "originalImage": "https://images.pexels.com/photos/14062100/pexels-photo-14062100.jpeg?auto=compress&cs=tinysrgb&w=1080",
+      "seedGallery": [
+        "https://images.pexels.com/photos/14062108/pexels-photo-14062108.jpeg?auto=compress&cs=tinysrgb&w=1080",
+        "https://images.pexels.com/photos/14062101/pexels-photo-14062101.jpeg?auto=compress&cs=tinysrgb&w=1080",
+        "https://images.pexels.com/photos/14062104/pexels-photo-14062104.jpeg?auto=compress&cs=tinysrgb&w=1080",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c0/Pangasius_larnaudii_at_Talat_Phlu.jpg/960px-Pangasius_larnaudii_at_Talat_Phlu.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/80/Pangasius_pangasius_or_Pangas_catfish_in_a_Bangladeshi_bazar.jpg/960px-Pangasius_pangasius_or_Pangas_catfish_in_a_Bangladeshi_bazar.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/legacy-19-960.webp",
+      "thumbnailImage": "/media/catalog/legacy-19-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/legacy-19-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Pangasius_larnaudii_at_Talat_Phlu.jpg",
+          "title": "Pangasius larnaudii at Talat Phlu.jpg",
+          "license": "CC BY-SA 4.0",
+          "artist": "Phoebus 28",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "legacy:21": {
+      "key": "legacy:21",
+      "name": "Nấm đùi gà lệch form giải cứu",
+      "originalImage": "https://images.pexels.com/photos/539452/pexels-photo-539452.jpeg?auto=compress&cs=tinysrgb&w=1080",
+      "seedGallery": [
+        "https://images.pexels.com/photos/13422417/pexels-photo-13422417.jpeg?auto=compress&cs=tinysrgb&w=1080",
+        "https://images.pexels.com/photos/5848430/pexels-photo-5848430.jpeg?auto=compress&cs=tinysrgb&w=1080",
+        "https://images.pexels.com/photos/14612418/pexels-photo-14612418.jpeg?auto=compress&cs=tinysrgb&w=1080",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b3/Pleurotus_eryngii_%28de_Kr%C3%A4uterseitling%29_cultivated_in_Korea%2C_sold_in_Austria.crop.jpg/960px-Pleurotus_eryngii_%28de_Kr%C3%A4uterseitling%29_cultivated_in_Korea%2C_sold_in_Austria.crop.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/55/Coltivazione_di_Pleurotus_eryngii.JPG/960px-Coltivazione_di_Pleurotus_eryngii.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/legacy-21-960.webp",
+      "thumbnailImage": "/media/catalog/legacy-21-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/legacy-21-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Pleurotus_eryngii_(de_Kr%C3%A4uterseitling)_cultivated_in_Korea,_sold_in_Austria.crop.jpg",
+          "title": "Pleurotus eryngii (de Kräuterseitling) cultivated in Korea, sold in Austria.crop.jpg",
+          "license": "CC BY-SA 3.0",
+          "artist": "Wolfgang H. Wögerer",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "legacy:22": {
+      "key": "legacy:22",
+      "name": "Trứng gà lẫn size giải cứu",
+      "originalImage": "https://images.unsplash.com/photo-1518569656558-1f25e69d93d7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800",
+      "seedGallery": [
+        "https://images.unsplash.com/photo-1639194335563-d56b83f0060c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/67/White_chicken_eggs.jpg/960px-White_chicken_eggs.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6d/Thai_Chicken_Eggs_at_Yan_Oi_Market.jpg/960px-Thai_Chicken_Eggs_at_Yan_Oi_Market.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/A_chicken_eggs_from_hong_kong.jpg/960px-A_chicken_eggs_from_hong_kong.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d3/A_two_boxes_of_chicken_eggs_and_vegetables_with_some_fruits_in_the_food_boxes.jpg/960px-A_two_boxes_of_chicken_eggs_and_vegetables_with_some_fruits_in_the_food_boxes.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/legacy-22-960.webp",
+      "thumbnailImage": "/media/catalog/legacy-22-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/legacy-22-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:White_chicken_eggs.jpg",
+          "title": "White chicken eggs.jpg",
+          "license": "CC BY-SA 4.0",
+          "artist": "Santeri Viinamäki",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "legacy:24": {
+      "key": "legacy:24",
+      "name": "Bắp cải tươi Đà Lạt",
+      "originalImage": "https://images.pexels.com/photos/13796758/pexels-photo-13796758.jpeg?auto=compress&cs=tinysrgb&w=1080",
+      "seedGallery": [
+        "https://images.pexels.com/photos/318412/pexels-photo-318412.jpeg?auto=compress&cs=tinysrgb&w=1080",
+        "https://images.pexels.com/photos/10899601/pexels-photo-10899601.jpeg?auto=compress&cs=tinysrgb&w=1080",
+        "https://images.pexels.com/photos/36771049/pexels-photo-36771049.jpeg?auto=compress&cs=tinysrgb&w=1080",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4d/Cabbage_Plants_Kulisholai_Sep25_A7CR_07584.jpg/960px-Cabbage_Plants_Kulisholai_Sep25_A7CR_07584.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/legacy-24-960.webp",
+      "thumbnailImage": "/media/catalog/legacy-24-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/legacy-24-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Cabbage_Plants_Kulisholai_Sep25_A7CR_07584.jpg",
+          "title": "Cabbage Plants Kulisholai Sep25 A7CR 07584.jpg",
+          "license": "CC BY-SA 4.0",
+          "artist": "Timothy A. Gonsalves",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "legacy:26": {
+      "key": "legacy:26",
+      "name": "Cam sành Cái Bè",
+      "originalImage": "https://images.unsplash.com/photo-1587735243615-c03f25aaff15?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800",
+      "seedGallery": [
+        "https://images.unsplash.com/photo-1611080626919-7cf5a9dbab5b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800",
+        "https://images.unsplash.com/photo-1557800636-894a64c1696f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800",
+        "https://images.unsplash.com/photo-1580052614034-c55d20bfee3b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/71/Picture_Oranges.jpg/960px-Picture_Oranges.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2c/Some_Navel_Oranges.JPG/960px-Some_Navel_Oranges.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/legacy-26-960.webp",
+      "thumbnailImage": "/media/catalog/legacy-26-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/legacy-26-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Picture_Oranges.jpg",
+          "title": "Picture Oranges.jpg",
+          "license": "CC BY 2.0",
+          "artist": "Chris Hawes",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "legacy:27": {
+      "key": "legacy:27",
+      "name": "Chuối già Nam Mỹ",
+      "originalImage": "https://images.pexels.com/photos/4399936/pexels-photo-4399936.jpeg?auto=compress&cs=tinysrgb&w=1080",
+      "seedGallery": [
+        "https://images.pexels.com/photos/6200355/pexels-photo-6200355.jpeg?auto=compress&cs=tinysrgb&w=1080",
+        "https://images.pexels.com/photos/34935242/pexels-photo-34935242.jpeg?auto=compress&cs=tinysrgb&w=1080",
+        "https://images.pexels.com/photos/31680045/pexels-photo-31680045.jpeg?auto=compress&cs=tinysrgb&w=1080",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/98/Bananas_on_black_background_02.jpg/960px-Bananas_on_black_background_02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a9/Bunch_of_bananas_on_sale.jpg/960px-Bunch_of_bananas_on_sale.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/legacy-27-960.webp",
+      "thumbnailImage": "/media/catalog/legacy-27-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/legacy-27-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Bananas_on_black_background_02.jpg",
+          "title": "Bananas on black background 02.jpg",
+          "license": "CC BY-SA 4.0",
+          "artist": "Krzysztof Golik",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "legacy:28": {
+      "key": "legacy:28",
+      "name": "Dâu tây Đà Lạt hộp 300g",
+      "originalImage": "https://images.unsplash.com/photo-1601004890684-d8cbf643f5f2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800",
+      "seedGallery": [
+        "https://images.unsplash.com/photo-1587393855524-087f83d95bc9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800",
+        "https://images.unsplash.com/photo-1549007953-2f2dc0b24019?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800",
+        "https://images.unsplash.com/photo-1594282241894-4da286138f44?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/70/Strawberries_%283443118064%29.jpg/960px-Strawberries_%283443118064%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bc/Strawberries_%2811902390455%29.jpg/960px-Strawberries_%2811902390455%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/legacy-28-960.webp",
+      "thumbnailImage": "/media/catalog/legacy-28-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/legacy-28-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Strawberries_(3443118064).jpg",
+          "title": "Strawberries (3443118064).jpg",
+          "license": "CC BY 2.0",
+          "artist": "Kyle McDonald from Brooklyn, New York, USA",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "legacy:23": {
+      "key": "legacy:23",
+      "name": "Dưa leo Đà Lạt",
+      "originalImage": "https://images.pexels.com/photos/2329440/pexels-photo-2329440.jpeg?auto=compress&cs=tinysrgb&w=1080",
+      "seedGallery": [
+        "https://images.pexels.com/photos/3568039/pexels-photo-3568039.jpeg?auto=compress&cs=tinysrgb&w=1080",
+        "https://images.pexels.com/photos/17975573/pexels-photo-17975573.jpeg?auto=compress&cs=tinysrgb&w=1080",
+        "https://images.pexels.com/photos/12181059/pexels-photo-12181059.jpeg?auto=compress&cs=tinysrgb&w=1080",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/76/Greek_yoghurt_cucumbers_garlic.jpg/960px-Greek_yoghurt_cucumbers_garlic.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/legacy-23-960.webp",
+      "thumbnailImage": "/media/catalog/legacy-23-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/legacy-23-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Cucumber_6.jpg",
+          "title": "Cucumber 6.jpg",
+          "artist": "Realpublicdomain2004",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "legacy:29": {
+      "key": "legacy:29",
+      "name": "Thập cẩm trái cây theo mùa",
+      "originalImage": "https://images.pexels.com/photos/36621206/pexels-photo-36621206.jpeg?auto=compress&cs=tinysrgb&w=1080",
+      "seedGallery": [
+        "https://images.pexels.com/photos/37022356/pexels-photo-37022356.jpeg?auto=compress&cs=tinysrgb&w=1080",
+        "https://images.pexels.com/photos/235294/pexels-photo-235294.jpeg?auto=compress&cs=tinysrgb&w=1080",
+        "https://images.pexels.com/photos/3084068/pexels-photo-3084068.jpeg?auto=compress&cs=tinysrgb&w=1080",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5f/Wrapped_fruit_basket.jpg/960px-Wrapped_fruit_basket.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7b/Fruit_Basket_at_Wikimania_2026_%281%29.jpg/960px-Fruit_Basket_at_Wikimania_2026_%281%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/legacy-29-960.webp",
+      "thumbnailImage": "/media/catalog/legacy-29-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/legacy-29-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Wrapped_fruit_basket.jpg",
+          "title": "Wrapped fruit basket.jpg",
+          "license": "CC BY-SA 2.0",
+          "artist": "Matthew Hoelscher from Doral, Florida, USA.",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "legacy:30": {
+      "key": "legacy:30",
+      "name": "Tôm sú tươi Cà Mau",
+      "originalImage": "https://images.pexels.com/photos/33653815/pexels-photo-33653815.jpeg?auto=compress&cs=tinysrgb&w=1080",
+      "seedGallery": [
+        "https://images.pexels.com/photos/21771249/pexels-photo-21771249.jpeg?auto=compress&cs=tinysrgb&w=1080",
+        "https://images.pexels.com/photos/14480456/pexels-photo-14480456.jpeg?auto=compress&cs=tinysrgb&w=1080",
+        "https://images.pexels.com/photos/6372957/pexels-photo-6372957.jpeg?auto=compress&cs=tinysrgb&w=1080",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/85/Penaeus_monodon.IMG_20210504_124630%281%29.jpg/960px-Penaeus_monodon.IMG_20210504_124630%281%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f0/Penaeus_monodon_cooked.jpg/960px-Penaeus_monodon_cooked.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/legacy-30-960.webp",
+      "thumbnailImage": "/media/catalog/legacy-30-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/legacy-30-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Penaeus_monodon.IMG_20210504_124630(1).jpg",
+          "title": "Penaeus monodon.IMG 20210504 124630(1).jpg",
+          "license": "CC BY-SA 4.0",
+          "artist": "Ave Maria Mõistlik",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "legacy:31": {
+      "key": "legacy:31",
+      "name": "Gà ta thả vườn",
+      "originalImage": "https://images.pexels.com/photos/5769376/pexels-photo-5769376.jpeg?auto=compress&cs=tinysrgb&w=1080",
+      "seedGallery": [
+        "https://images.pexels.com/photos/6107716/pexels-photo-6107716.jpeg?auto=compress&cs=tinysrgb&w=1080",
+        "https://images.pexels.com/photos/7140318/pexels-photo-7140318.jpeg?auto=compress&cs=tinysrgb&w=1080",
+        "https://images.pexels.com/photos/8251004/pexels-photo-8251004.jpeg?auto=compress&cs=tinysrgb&w=1080",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ea/Whole_uncooked_chicken_meat_20211127_175955.jpg/960px-Whole_uncooked_chicken_meat_20211127_175955.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/legacy-31-960.webp",
+      "thumbnailImage": "/media/catalog/legacy-31-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/legacy-31-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Whole_uncooked_chicken_meat_20211127_175955.jpg",
+          "title": "Whole uncooked chicken meat 20211127 175955.jpg",
+          "license": "CC BY-SA 4.0",
+          "artist": "Ibrahim Husain Meraj",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "legacy:33": {
+      "key": "legacy:33",
+      "name": "Thịt ba chỉ heo sạch",
+      "originalImage": "https://images.pexels.com/photos/9091138/pexels-photo-9091138.jpeg?auto=compress&cs=tinysrgb&w=1080",
+      "seedGallery": [
+        "https://images.pexels.com/photos/8251005/pexels-photo-8251005.jpeg?auto=compress&cs=tinysrgb&w=1080",
+        "https://images.pexels.com/photos/2676932/pexels-photo-2676932.jpeg?auto=compress&cs=tinysrgb&w=1080",
+        "https://images.pexels.com/photos/31916852/pexels-photo-31916852.jpeg?auto=compress&cs=tinysrgb&w=1080",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b5/Pork_Belly_%282561934235%29.jpg/960px-Pork_Belly_%282561934235%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/37/Steamed_Pork_Belly_with_Shrimp_Paste.jpg/960px-Steamed_Pork_Belly_with_Shrimp_Paste.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/product-unavailable.svg",
+      "thumbnailImage": "/media/product-unavailable.svg",
+      "imageCredits": [],
+      "review": "needs-photo",
+      "error": "No image: Schweinebauch roh.jpg"
+    },
+    "legacy:32": {
+      "key": "legacy:32",
+      "name": "Set thịt nướng BBQ hỗn hợp",
+      "originalImage": "https://images.pexels.com/photos/37128330/pexels-photo-37128330.jpeg?auto=compress&cs=tinysrgb&w=1080",
+      "seedGallery": [
+        "https://images.pexels.com/photos/36734922/pexels-photo-36734922.jpeg?auto=compress&cs=tinysrgb&w=1080",
+        "https://images.pexels.com/photos/33691815/pexels-photo-33691815.jpeg?auto=compress&cs=tinysrgb&w=1080",
+        "https://images.pexels.com/photos/28450690/pexels-photo-28450690.jpeg?auto=compress&cs=tinysrgb&w=1080",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f3/SZ_%E6%B7%B1%E5%9C%B3_Shenzhen_%E5%8D%97%E5%B1%B1%E5%8D%80_Nanshan_%E8%90%AC%E7%A7%91%E9%87%8C%E6%9D%B1%E9%87%8C_China_Vanke_Lane_In_Street_East_Mall_shop_%E6%98%8C%E4%BA%95%E9%9F%93%E5%9C%8B%E7%83%A4%E8%82%89%E8%87%AA%E5%8A%A9%E9%A4%90%E5%BB%B3_ChangJing_Korean_Barbecue_Meat_Buffet_Restaurant_n_hot_pot_food_July_2025_R12S_03.jpg/960px-thumbnail.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/34/SZ_%E6%B7%B1%E5%9C%B3_Shenzhen_%E5%8D%97%E5%B1%B1%E5%8D%80_Nanshan_%E8%90%AC%E7%A7%91%E9%87%8C%E6%9D%B1%E9%87%8C_China_Vanke_Lane_In_Street_East_Mall_shop_%E6%98%8C%E4%BA%95%E9%9F%93%E5%9C%8B%E7%83%A4%E8%82%89%E8%87%AA%E5%8A%A9%E9%A4%90%E5%BB%B3_ChangJing_Korean_Barbecue_Meat_Buffet_Restaurant_%E7%89%9B%E8%82%89_beef_steaks_July_2025_N13P_23.jpg/960px-thumbnail.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/legacy-32-960.webp",
+      "thumbnailImage": "/media/catalog/legacy-32-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/legacy-32-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:SZ_%E6%B7%B1%E5%9C%B3_Shenzhen_%E5%8D%97%E5%B1%B1%E5%8D%80_Nanshan_%E8%90%AC%E7%A7%91%E9%87%8C%E6%9D%B1%E9%87%8C_China_Vanke_Lane_In_Street_East_Mall_shop_%E6%98%8C%E4%BA%95%E9%9F%93%E5%9C%8B%E7%83%A4%E8%82%89%E8%87%AA%E5%8A%A9%E9%A4%90%E5%BB%B3_ChangJing_Korean_Barbecue_Meat_Buffet_Restaurant_n_hot_pot_food_July_2025_R12S_03.jpg",
+          "title": "SZ 深圳 Shenzhen 南山區 Nanshan 萬科里東里 China Vanke Lane In Street East Mall shop 昌井韓國烤肉自助餐廳 ChangJing Korean Barbecue Meat Buffet Restaurant n hot pot food July 2025 R12S 03.jpg",
+          "license": "CC0",
+          "artist": "PDD Ping Done OK",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "legacy:35": {
+      "key": "legacy:35",
+      "name": "Tôm càng xanh sông",
+      "originalImage": "https://images.pexels.com/photos/29133874/pexels-photo-29133874.jpeg?auto=compress&cs=tinysrgb&w=1080",
+      "seedGallery": [
+        "https://images.pexels.com/photos/33202174/pexels-photo-33202174.jpeg?auto=compress&cs=tinysrgb&w=1080",
+        "https://images.pexels.com/photos/5273798/pexels-photo-5273798.jpeg?auto=compress&cs=tinysrgb&w=1080",
+        "https://images.pexels.com/photos/2714384/pexels-photo-2714384.jpeg?auto=compress&cs=tinysrgb&w=1080",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/ff/Macrobrachium_rosenbergii_-_crevette_g%C3%A9ante_d%27eau_douce_-_Aqua_Porte_Dor%C3%A9e_08.JPG/960px-Macrobrachium_rosenbergii_-_crevette_g%C3%A9ante_d%27eau_douce_-_Aqua_Porte_Dor%C3%A9e_08.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/97/Macrobrachium_rosenbergii_-_crevette_g%C3%A9ante_d%27eau_douce_-_Aqua_Porte_Dor%C3%A9e_06.JPG/960px-Macrobrachium_rosenbergii_-_crevette_g%C3%A9ante_d%27eau_douce_-_Aqua_Porte_Dor%C3%A9e_06.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/legacy-35-960.webp",
+      "thumbnailImage": "/media/catalog/legacy-35-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/legacy-35-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Macrobrachium_rosenbergii_-_crevette_g%C3%A9ante_d%27eau_douce_-_Aqua_Porte_Dor%C3%A9e_08.JPG",
+          "title": "Macrobrachium rosenbergii - crevette géante d'eau douce - Aqua Porte Dorée 08.JPG",
+          "license": "CC BY-SA 4.0",
+          "artist": "Cedricguppy - Loury Cédric",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "legacy:34": {
+      "key": "legacy:34",
+      "name": "Cá hồi phi lê tươi",
+      "originalImage": "https://images.pexels.com/photos/5014596/pexels-photo-5014596.jpeg?auto=compress&cs=tinysrgb&w=1080",
+      "seedGallery": [
+        "https://images.pexels.com/photos/14062150/pexels-photo-14062150.jpeg?auto=compress&cs=tinysrgb&w=1080",
+        "https://images.pexels.com/photos/14062142/pexels-photo-14062142.jpeg?auto=compress&cs=tinysrgb&w=1080",
+        "https://images.pexels.com/photos/3296279/pexels-photo-3296279.jpeg?auto=compress&cs=tinysrgb&w=1080",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cc/Salmon_fillet.JPG/960px-Salmon_fillet.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f8/Frozen_salmon_fillet.jpg/960px-Frozen_salmon_fillet.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/legacy-34-960.webp",
+      "thumbnailImage": "/media/catalog/legacy-34-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/legacy-34-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Salmon_fillet.JPG",
+          "title": "Salmon fillet.JPG",
+          "license": "CC BY-SA 3.0",
+          "artist": "BrokenSphere",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "legacy:38": {
+      "key": "legacy:38",
+      "name": "Bơ sáp trầy vỏ giải cứu",
+      "originalImage": "https://images.pexels.com/photos/27462724/pexels-photo-27462724.jpeg?auto=compress&cs=tinysrgb&w=1080",
+      "seedGallery": [
+        "https://images.pexels.com/photos/4352092/pexels-photo-4352092.jpeg?auto=compress&cs=tinysrgb&w=1080",
+        "https://images.pexels.com/photos/10899607/pexels-photo-10899607.jpeg?auto=compress&cs=tinysrgb&w=1080",
+        "https://images.pexels.com/photos/19808826/pexels-photo-19808826.jpeg?auto=compress&cs=tinysrgb&w=1080",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/62/Half_an_avocado.JPG/960px-Half_an_avocado.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/52/Avocado_Fruit_Harvested_From_Backyard.jpg/960px-Avocado_Fruit_Harvested_From_Backyard.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/legacy-38-960.webp",
+      "thumbnailImage": "/media/catalog/legacy-38-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/legacy-38-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Half_an_avocado.JPG",
+          "title": "Half an avocado.JPG",
+          "license": "CC BY-SA 4.0",
+          "artist": "Jennifertl11",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "legacy:37": {
+      "key": "legacy:37",
+      "name": "Cá basa phi lê đông lạnh",
+      "originalImage": "https://images.pexels.com/photos/14062108/pexels-photo-14062108.jpeg?auto=compress&cs=tinysrgb&w=1080",
+      "seedGallery": [
+        "https://images.pexels.com/photos/14062101/pexels-photo-14062101.jpeg?auto=compress&cs=tinysrgb&w=1080",
+        "https://images.pexels.com/photos/14062104/pexels-photo-14062104.jpeg?auto=compress&cs=tinysrgb&w=1080",
+        "https://images.pexels.com/photos/14062100/pexels-photo-14062100.jpeg?auto=compress&cs=tinysrgb&w=1080",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e3/Frozen_basa_fish_fillet.jpg/960px-Frozen_basa_fish_fillet.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/legacy-37-960.webp",
+      "thumbnailImage": "/media/catalog/legacy-37-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/legacy-37-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Frozen_basa_fish_fillet.jpg",
+          "title": "Frozen basa fish fillet.jpg",
+          "license": "CC0",
+          "artist": "Fumikas Sagisavas",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "legacy:36": {
+      "key": "legacy:36",
+      "name": "Sườn heo cốt lết",
+      "originalImage": "https://images.pexels.com/photos/7163989/pexels-photo-7163989.jpeg?auto=compress&cs=tinysrgb&w=1080",
+      "seedGallery": [
+        "https://images.pexels.com/photos/16073914/pexels-photo-16073914.jpeg?auto=compress&cs=tinysrgb&w=1080",
+        "https://images.pexels.com/photos/13669074/pexels-photo-13669074.jpeg?auto=compress&cs=tinysrgb&w=1080",
+        "https://images.pexels.com/photos/410648/pexels-photo-410648.jpeg?auto=compress&cs=tinysrgb&w=1080",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0b/Pork_Chop_%26_Triple_Eggs_with_Rice.jpg/960px-Pork_Chop_%26_Triple_Eggs_with_Rice.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/legacy-36-960.webp",
+      "thumbnailImage": "/media/catalog/legacy-36-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/legacy-36-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:HK_food_ingredient_red_meat_frozen_pork_chop_raw_butt_steak_October_2021_SS2_011.jpg",
+          "title": "HK food ingredient red meat frozen pork chop raw butt steak October 2021 SS2 011.jpg",
+          "artist": "Presixlla MOON",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "x-ot-chuong": {
+      "key": "x-ot-chuong",
+      "name": "Ớt chuông 3 màu Đà Lạt",
+      "originalImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/67/Three_Bell_Pepper_%2840222323453%29.jpg/960px-Three_Bell_Pepper_%2840222323453%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "seedGallery": [
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/67/Three_Bell_Pepper_%2840222323453%29.jpg/960px-Three_Bell_Pepper_%2840222323453%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5c/Red_bell_pepper.jpg/960px-Red_bell_pepper.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cf/Green-orange-yellow_bell_pepper_2017_C.jpg/960px-Green-orange-yellow_bell_pepper_2017_C.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4a/IleBaby_Bell_pepper_Capsicum_annuum_2.jpg/960px-IleBaby_Bell_pepper_Capsicum_annuum_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4b/4_x_Flat_red_bell_pepper_2017_B1.jpg/960px-4_x_Flat_red_bell_pepper_2017_B1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2e/2_x_Flat_red_bell_pepper_2017_F.jpg/960px-2_x_Flat_red_bell_pepper_2017_F.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/x-ot-chuong-960.webp",
+      "thumbnailImage": "/media/catalog/x-ot-chuong-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/x-ot-chuong-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Three_Bell_Pepper_(40222323453).jpg",
+          "title": "Three Bell Pepper (40222323453).jpg",
+          "license": "CC BY 2.0",
+          "artist": "Theo Crazzolara",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "x-xa-lach": {
+      "key": "x-xa-lach",
+      "name": "Xà lách thủy canh Đà Lạt",
+      "originalImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6b/Romaine_lettuce.jpg/960px-Romaine_lettuce.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "seedGallery": [
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6b/Romaine_lettuce.jpg/960px-Romaine_lettuce.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e7/2018-06-18_%28109%29_Lactuca_sativa_%28garden_lettuce%29_at_Bichlh%C3%A4usl_in_Frankenfels%2C_Austria.jpg/960px-2018-06-18_%28109%29_Lactuca_sativa_%28garden_lettuce%29_at_Bichlh%C3%A4usl_in_Frankenfels%2C_Austria.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d7/Lettuce_in_a_stack.jpg/960px-Lettuce_in_a_stack.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7f/Lettuce_Mini_Heads_%287331119710%29.jpg/960px-Lettuce_Mini_Heads_%287331119710%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/22/Lettuce_stack_wide.jpg/960px-Lettuce_stack_wide.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/95/2018-06-01_%28129%29_Lactuca_sativa_%28garden_lettuce%29_Nature_at_Bichlh%C3%A4usl_in_Frankenfels%2C_Austria.jpg/960px-2018-06-01_%28129%29_Lactuca_sativa_%28garden_lettuce%29_Nature_at_Bichlh%C3%A4usl_in_Frankenfels%2C_Austria.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/x-xa-lach-960.webp",
+      "thumbnailImage": "/media/catalog/x-xa-lach-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/x-xa-lach-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Romaine_lettuce.jpg",
+          "title": "Romaine lettuce.jpg",
+          "license": "CC BY-SA 3.0",
+          "artist": "Rainer Zenz",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "x-bi-do": {
+      "key": "x-bi-do",
+      "name": "Bí đỏ hồ lô",
+      "originalImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7c/Pumpkins_in_a_market_in_Istanbul.jpg/960px-Pumpkins_in_a_market_in_Istanbul.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "seedGallery": [
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7c/Pumpkins_in_a_market_in_Istanbul.jpg/960px-Pumpkins_in_a_market_in_Istanbul.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fd/Pumpkin_festival_-_Ludwigsburg_2024_-_30.jpg/960px-Pumpkin_festival_-_Ludwigsburg_2024_-_30.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e1/Pumpkin_2108-1292.jpg/960px-Pumpkin_2108-1292.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/96/Pumpkin_dishes_of_Japan_001.jpg/960px-Pumpkin_dishes_of_Japan_001.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/74/Pumpkins_at_Bakin_Dogo_Market%2C_Kaduna_North.jpg/960px-Pumpkins_at_Bakin_Dogo_Market%2C_Kaduna_North.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/be/Pumpkins_at_Bakin_Dogo_Market%2C_Kaduna_North_01.jpg/960px-Pumpkins_at_Bakin_Dogo_Market%2C_Kaduna_North_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/x-bi-do-960.webp",
+      "thumbnailImage": "/media/catalog/x-bi-do-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/x-bi-do-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Cucurbita_moschata_Butternut_2012_G2.jpg",
+          "title": "Cucurbita moschata Butternut 2012 G2.jpg",
+          "artist": "George Chernilevsky",
+          "license": "Public domain",
+          "licenseUrl": "",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "x-bi-ngoi": {
+      "key": "x-bi-ngoi",
+      "name": "Bí ngòi xanh",
+      "originalImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/84/Zucchini_%2820221106509%29.jpg/960px-Zucchini_%2820221106509%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "seedGallery": [
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/84/Zucchini_%2820221106509%29.jpg/960px-Zucchini_%2820221106509%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/dc/Starr-070730-7874-Cucurbita_pepo-green_zucchini-Foodland_Pukalani-Maui_%2824797124241%29.jpg/960px-Starr-070730-7874-Cucurbita_pepo-green_zucchini-Foodland_Pukalani-Maui_%2824797124241%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3e/Cucurbita_pepo_%27Grey_Zucchini%27_%28top%29_and_%27Black_Zucchini%27_%28bottom%29.jpg/960px-Cucurbita_pepo_%27Grey_Zucchini%27_%28top%29_and_%27Black_Zucchini%27_%28bottom%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ec/Zucchini_Stiell%C3%A4nge_bei_Ernte-3-Josef_Schlaghecken.jpg/960px-Zucchini_Stiell%C3%A4nge_bei_Ernte-3-Josef_Schlaghecken.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e1/Zucchini_%287695511404%29.jpg/960px-Zucchini_%287695511404%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/23/2018-06-18_%28112%29_Cucurbita_pepo_subsp._pepo_Zucchini_%28zucchini%29_at_Bichlh%C3%A4usl_in_Frankenfels%2C_Austria.jpg/960px-2018-06-18_%28112%29_Cucurbita_pepo_subsp._pepo_Zucchini_%28zucchini%29_at_Bichlh%C3%A4usl_in_Frankenfels%2C_Austria.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/x-bi-ngoi-960.webp",
+      "thumbnailImage": "/media/catalog/x-bi-ngoi-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/x-bi-ngoi-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Zucchini_(20221106509).jpg",
+          "title": "Zucchini (20221106509).jpg",
+          "license": "CC BY-SA 2.0",
+          "artist": "Willis Lam",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "x-hanh-tay": {
+      "key": "x-hanh-tay",
+      "name": "Hành tây Đà Lạt",
+      "originalImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a2/Mixed_onions.jpg/960px-Mixed_onions.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "seedGallery": [
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a2/Mixed_onions.jpg/960px-Mixed_onions.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/66/Red_Onions%2C_greengrocers_display%2C_Redruth%2C_Cornwall_-_October_2022.jpg/960px-Red_Onions%2C_greengrocers_display%2C_Redruth%2C_Cornwall_-_October_2022.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f2/Torpedo_onions.jpg/960px-Torpedo_onions.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f8/India_-_Koyambedu_Market_-_Onions_10_%283986292991%29.jpg/960px-India_-_Koyambedu_Market_-_Onions_10_%283986292991%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/33/Onions_Veg_Stall_Ooty_Market_Nilgiris_Aug25_A7CR_07102.jpg/960px-Onions_Veg_Stall_Ooty_Market_Nilgiris_Aug25_A7CR_07102.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d9/India_-_Koyambedu_Market_-_Onions_08_%283987045248%29.jpg/960px-India_-_Koyambedu_Market_-_Onions_08_%283987045248%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/x-hanh-tay-960.webp",
+      "thumbnailImage": "/media/catalog/x-hanh-tay-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/x-hanh-tay-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Mixed_onions.jpg",
+          "title": "Mixed onions.jpg",
+          "license": "CC BY-SA 3.0",
+          "artist": "Colin",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "x-cai-thao": {
+      "key": "x-cai-thao",
+      "name": "Cải thảo Đà Lạt",
+      "originalImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/24/Napa_Cabbage.jpg/960px-Napa_Cabbage.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "seedGallery": [
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/24/Napa_Cabbage.jpg/960px-Napa_Cabbage.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/91/6094Chicken_napa_cabbage_01.jpg/960px-6094Chicken_napa_cabbage_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/dd/Starr-070730-7855-Brassica_rapa-Napa_cabbage-Foodland_Pukalani-Maui_%2824890474225%29.jpg/960px-Starr-070730-7855-Brassica_rapa-Napa_cabbage-Foodland_Pukalani-Maui_%2824890474225%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/82/Napa_Cabbage_%28Won_Bok%2C_Chinese_Cabbage%2C_Celery_Cabbage%29_Bacterial_soft_rot_%2834795134544%29.jpg/960px-Napa_Cabbage_%28Won_Bok%2C_Chinese_Cabbage%2C_Celery_Cabbage%29_Bacterial_soft_rot_%2834795134544%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/13/6094Chicken_napa_cabbage_03.jpg/960px-6094Chicken_napa_cabbage_03.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/03/Mini_Tientsin_Pakchoi_~_Baby_napa_cabbage.jpg/960px-Mini_Tientsin_Pakchoi_~_Baby_napa_cabbage.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/x-cai-thao-960.webp",
+      "thumbnailImage": "/media/catalog/x-cai-thao-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/x-cai-thao-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Napa_Cabbage.jpg",
+          "title": "Napa Cabbage.jpg",
+          "license": "CC BY-SA 4.0",
+          "artist": "SarKaLay စာကလေး",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "x-cu-den": {
+      "key": "x-cu-den",
+      "name": "Củ dền đỏ",
+      "originalImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/32/Liat_Portal_for_Foodie_Disorder_-_Cooked_Boiled_Beetroot.jpg/960px-Liat_Portal_for_Foodie_Disorder_-_Cooked_Boiled_Beetroot.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "seedGallery": [
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/32/Liat_Portal_for_Foodie_Disorder_-_Cooked_Boiled_Beetroot.jpg/960px-Liat_Portal_for_Foodie_Disorder_-_Cooked_Boiled_Beetroot.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a1/Beetroot_1614.jpg/960px-Beetroot_1614.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/29/Beetroot_jm26647.jpg/960px-Beetroot_jm26647.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/Kesari_and_Beetroot_juice.jpg/960px-Kesari_and_Beetroot_juice.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/24/Beetroot_jm27956.jpg/960px-Beetroot_jm27956.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f4/2018-06-01_%28130%29_Leaves_of_Beta_vulgaris_%28beetroot%29_at_Bichlh%C3%A4usl_in_Frankenfels%2C_Austria.jpg/960px-2018-06-01_%28130%29_Leaves_of_Beta_vulgaris_%28beetroot%29_at_Bichlh%C3%A4usl_in_Frankenfels%2C_Austria.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/x-cu-den-960.webp",
+      "thumbnailImage": "/media/catalog/x-cu-den-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/x-cu-den-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Beetroot_1614.jpg",
+          "title": "Beetroot 1614.jpg",
+          "license": "CC BY-SA 4.0",
+          "artist": "Susan Slater",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "x-dau-ha-lan": {
+      "key": "x-dau-ha-lan",
+      "name": "Đậu Hà Lan Mộc Châu",
+      "originalImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/70/Starr-070730-7867-Pisum_sativum_var_macrocarpum-snow_peas-Foodland_Pukalani-Maui_%2824522893769%29.jpg/960px-Starr-070730-7867-Pisum_sativum_var_macrocarpum-snow_peas-Foodland_Pukalani-Maui_%2824522893769%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "seedGallery": [
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/70/Starr-070730-7867-Pisum_sativum_var_macrocarpum-snow_peas-Foodland_Pukalani-Maui_%2824522893769%29.jpg/960px-Starr-070730-7867-Pisum_sativum_var_macrocarpum-snow_peas-Foodland_Pukalani-Maui_%2824522893769%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7d/Starr-070730-7868-Pisum_sativum_var_macrocarpum-snow_peas-Foodland_Pukalani-Maui_%2824864208526%29.jpg/960px-Starr-070730-7868-Pisum_sativum_var_macrocarpum-snow_peas-Foodland_Pukalani-Maui_%2824864208526%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6b/Snow_peas_-_Pisum_sativum.jpg/960px-Snow_peas_-_Pisum_sativum.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/29/Snow_peas.jpg/960px-Snow_peas.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cd/HK_CWB_%E9%8A%85%E9%91%BC%E7%81%A3_Causeway_Bay_%E6%BA%AB%E8%8E%8E%E5%A4%A7%E5%BB%88_Windsor_House_mall_shop_%E7%A8%BB%E9%A6%99%E9%85%92%E5%AE%B6_Tao_Heung_Restaurant_food_%E8%8D%B7%E8%98%AD%E8%B1%86_Snow_peas_September_2022_Px3_01.jpg/960px-HK_CWB_%E9%8A%85%E9%91%BC%E7%81%A3_Causeway_Bay_%E6%BA%AB%E8%8E%8E%E5%A4%A7%E5%BB%88_Windsor_House_mall_shop_%E7%A8%BB%E9%A6%99%E9%85%92%E5%AE%B6_Tao_Heung_Restaurant_food_%E8%8D%B7%E8%98%AD%E8%B1%86_Snow_peas_September_2022_Px3_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a3/Starr-211209-1424-Pisum_sativum-snow_peas_flowers_seedpods-Hawea_Pl_Olinda-Maui_%2852433264926%29.jpg/960px-Starr-211209-1424-Pisum_sativum-snow_peas_flowers_seedpods-Hawea_Pl_Olinda-Maui_%2852433264926%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/x-dau-ha-lan-960.webp",
+      "thumbnailImage": "/media/catalog/x-dau-ha-lan-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/x-dau-ha-lan-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Starr-070730-7867-Pisum_sativum_var_macrocarpum-snow_peas-Foodland_Pukalani-Maui_(24522893769).jpg",
+          "title": "Starr-070730-7867-Pisum sativum var macrocarpum-snow peas-Foodland Pukalani-Maui (24522893769).jpg",
+          "license": "CC BY 3.0 us",
+          "artist": "Forest and Kim Starr",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "x-cai-ngong": {
+      "key": "x-cai-ngong",
+      "name": "Cải ngồng Mộc Châu",
+      "originalImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2e/Chinese_vegetable_027.jpg/960px-Chinese_vegetable_027.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "seedGallery": [
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2e/Chinese_vegetable_027.jpg/960px-Chinese_vegetable_027.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/37/Choi_Sum_stalks.JPG/960px-Choi_Sum_stalks.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7a/HK_food_%E8%8F%9C%E5%BF%83_Choy_sum_vegetable_n_%E6%BD%AE%E5%B7%9E%E9%AD%9A%E6%97%A6_Chiu_Chow_fish_meat_balls_June-2013.JPG/960px-HK_food_%E8%8F%9C%E5%BF%83_Choy_sum_vegetable_n_%E6%BD%AE%E5%B7%9E%E9%AD%9A%E6%97%A6_Chiu_Chow_fish_meat_balls_June-2013.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/22/Choy_Sum_with_Soy_Sauce.jpg/960px-Choy_Sum_with_Soy_Sauce.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3c/Steamed_Bok_Choy_%284233203403%29.jpg/960px-Steamed_Bok_Choy_%284233203403%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/x-cai-ngong-960.webp",
+      "thumbnailImage": "/media/catalog/x-cai-ngong-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/x-cai-ngong-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Chinese_vegetable_027.jpg",
+          "title": "Chinese vegetable 027.jpg",
+          "license": "CC0",
+          "artist": "Anna Frodesiak",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "x-mang-tay": {
+      "key": "x-mang-tay",
+      "name": "Măng tây xanh",
+      "originalImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e7/Steam-boiling_green_asparagus.jpg/960px-Steam-boiling_green_asparagus.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "seedGallery": [
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e7/Steam-boiling_green_asparagus.jpg/960px-Steam-boiling_green_asparagus.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/ff/Asparagus_soup_%28spargelsuppe%29.jpg/960px-Asparagus_soup_%28spargelsuppe%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/02/Asparagus_with_potatoes.jpg/960px-Asparagus_with_potatoes.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/54/Green_asparagus_in_a_supermarket_packaging_in_Canada.jpg/960px-Green_asparagus_in_a_supermarket_packaging_in_Canada.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/64/Fresh_asparagus_spears_for_pickling.jpg/960px-Fresh_asparagus_spears_for_pickling.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d6/Fresh_asparagus_spears_on_plate.jpg/960px-Fresh_asparagus_spears_on_plate.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/x-mang-tay-960.webp",
+      "thumbnailImage": "/media/catalog/x-mang-tay-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/x-mang-tay-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Green_asparagus_in_a_supermarket_packaging_in_Canada.jpg",
+          "title": "Green asparagus in a supermarket packaging in Canada.jpg",
+          "license": "CC BY-SA 4.0",
+          "artist": "Marc-Lautenbacher",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "x-cai-be-xanh": {
+      "key": "x-cai-be-xanh",
+      "name": "Cải bẹ xanh hữu cơ",
+      "originalImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/18/Gai_Choi_Mustard_Greens_-_J_K_Asian_Grocery_%285050526668%29.jpg/960px-Gai_Choi_Mustard_Greens_-_J_K_Asian_Grocery_%285050526668%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "seedGallery": [
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/18/Gai_Choi_Mustard_Greens_-_J_K_Asian_Grocery_%285050526668%29.jpg/960px-Gai_Choi_Mustard_Greens_-_J_K_Asian_Grocery_%285050526668%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/dd/Mustard_greens_with_preserved_egg_-_San_Francisco%2C_CA.jpg/960px-Mustard_greens_with_preserved_egg_-_San_Francisco%2C_CA.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/52/Chinese_mustard_greens_and_ramen_-_Massachusetts.jpg/960px-Chinese_mustard_greens_and_ramen_-_Massachusetts.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/product-unavailable.svg",
+      "thumbnailImage": "/media/product-unavailable.svg",
+      "imageCredits": [],
+      "review": "needs-photo"
+    },
+    "x-rau-muong": {
+      "key": "x-rau-muong",
+      "name": "Rau muống hữu cơ Củ Chi",
+      "originalImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0e/Water_spinach.jpg/960px-Water_spinach.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "seedGallery": [
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0e/Water_spinach.jpg/960px-Water_spinach.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/77/Hunan_cuisine%2C_fried_water_spinach.jpg/960px-Hunan_cuisine%2C_fried_water_spinach.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8c/Adobong_Kangkong_%28water_spinach_adobo%2C_Philippines%29.jpg/960px-Adobong_Kangkong_%28water_spinach_adobo%2C_Philippines%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ec/Water_spinach%2C_spring_onions%2C_malabar_spinach%2C_taiwan_bok_choy%2C_and_pechay_native_on_SM_Hypermarket_at_SM_J_Mall_%282024-10-27%29.jpg/960px-Water_spinach%2C_spring_onions%2C_malabar_spinach%2C_taiwan_bok_choy%2C_and_pechay_native_on_SM_Hypermarket_at_SM_J_Mall_%282024-10-27%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b4/Deep_Fries_Water_Spinach_In_Tempura_Batter.jpg/960px-Deep_Fries_Water_Spinach_In_Tempura_Batter.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/x-rau-muong-960.webp",
+      "thumbnailImage": "/media/catalog/x-rau-muong-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/x-rau-muong-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Water_spinach.jpg",
+          "title": "Water spinach.jpg",
+          "license": "CC0",
+          "artist": "Fumikas Sagisavas",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "x-mong-toi": {
+      "key": "x-mong-toi",
+      "name": "Mồng tơi hữu cơ Củ Chi",
+      "originalImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/56/Basella_alba_leaves_27052014.jpg/960px-Basella_alba_leaves_27052014.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "seedGallery": [
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/56/Basella_alba_leaves_27052014.jpg/960px-Basella_alba_leaves_27052014.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/08/Basella_alba_leaves_26052014_01.jpg/960px-Basella_alba_leaves_26052014_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/05/Basella_alba_leaves_26052014.jpg/960px-Basella_alba_leaves_26052014.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e7/Basella_alba_29042014.jpg/960px-Basella_alba_29042014.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/88/Basella_alba_HDR.jpg/960px-Basella_alba_HDR.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/32/0793jfAlugbati_Basella_alba_plantations_San_Rafael_Bulacan_Philippinesfvf_21.jpg/960px-0793jfAlugbati_Basella_alba_plantations_San_Rafael_Bulacan_Philippinesfvf_21.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/x-mong-toi-960.webp",
+      "thumbnailImage": "/media/catalog/x-mong-toi-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/x-mong-toi-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Basella_alba_leaves_27052014.jpg",
+          "title": "Basella alba leaves 27052014.jpg",
+          "license": "CC BY-SA 3.0",
+          "artist": "Joydeep",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "x-kho-qua": {
+      "key": "x-kho-qua",
+      "name": "Khổ qua (mướp đắng)",
+      "originalImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d8/Fresh_bitter_melon.jpg/960px-Fresh_bitter_melon.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "seedGallery": [
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d8/Fresh_bitter_melon.jpg/960px-Fresh_bitter_melon.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/63/Bitter_melon.jpg/960px-Bitter_melon.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bd/First_bitter_melon_of_the_season.jpg/960px-First_bitter_melon_of_the_season.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/32/%E1%80%80%E1%80%BC%E1%80%80%E1%80%BA%E1%80%9F%E1%80%84%E1%80%BA%E1%80%B8%E1%80%81%E1%80%AB%E1%80%B8%E1%80%9E%E1%80%AE%E1%80%B8_Bitter_Melon.jpg/960px-%E1%80%80%E1%80%BC%E1%80%80%E1%80%BA%E1%80%9F%E1%80%84%E1%80%BA%E1%80%B8%E1%80%81%E1%80%AB%E1%80%B8%E1%80%9E%E1%80%AE%E1%80%B8_Bitter_Melon.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b5/Ripe_bitter_melon_%28Momordica_charantia%29.jpg/960px-Ripe_bitter_melon_%28Momordica_charantia%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8e/Food_from_bitter_melon.jpg/960px-Food_from_bitter_melon.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/x-kho-qua-960.webp",
+      "thumbnailImage": "/media/catalog/x-kho-qua-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/x-kho-qua-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Fresh_bitter_melon.jpg",
+          "title": "Fresh bitter melon.jpg",
+          "license": "CC0",
+          "artist": "Fumikas Sagisavas",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "x-nam-kim-cham": {
+      "key": "x-nam-kim-cham",
+      "name": "Nấm kim châm",
+      "originalImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8f/Tall_enokitake_%2810843409296%29.jpg/960px-Tall_enokitake_%2810843409296%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "seedGallery": [
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8f/Tall_enokitake_%2810843409296%29.jpg/960px-Tall_enokitake_%2810843409296%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/38/Albino_enokitake_caps_%2810843676993%29.jpg/960px-Albino_enokitake_caps_%2810843676993%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/aa/Young_enokitake_mushrooms_%2810843432586%29.jpg/960px-Young_enokitake_mushrooms_%2810843432586%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/52/A_jar_of_enokitake_%2810843372045%29.jpg/960px-A_jar_of_enokitake_%2810843372045%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/x-nam-kim-cham-960.webp",
+      "thumbnailImage": "/media/catalog/x-nam-kim-cham-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/x-nam-kim-cham-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Tall_enokitake_(10843409296).jpg",
+          "title": "Tall enokitake (10843409296).jpg",
+          "license": "CC BY 2.0",
+          "artist": "Wendell Smith",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "x-nam-huong": {
+      "key": "x-nam-huong",
+      "name": "Nấm hương tươi",
+      "originalImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2e/Champignons_shiitake_cuisin%C3%A9s.jpg/960px-Champignons_shiitake_cuisin%C3%A9s.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "seedGallery": [
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2e/Champignons_shiitake_cuisin%C3%A9s.jpg/960px-Champignons_shiitake_cuisin%C3%A9s.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b1/Shiitake_and_Basilicum_toast_-_Tostada_de_shiitake_con_albahaca_%285098582413%29.jpg/960px-Shiitake_and_Basilicum_toast_-_Tostada_de_shiitake_con_albahaca_%285098582413%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/75/Large_basswood_white_shiitake_mushroom_%281%29.jpg/960px-Large_basswood_white_shiitake_mushroom_%281%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ef/Dried_shiitake_mushrooms.jpg/960px-Dried_shiitake_mushrooms.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ac/Shiitake_2017_A.jpg/960px-Shiitake_2017_A.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f7/Shiitake_%28Lentinula_edodes%29_secos_2014-07-09_14-43.jpg/960px-Shiitake_%28Lentinula_edodes%29_secos_2014-07-09_14-43.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/x-nam-huong-960.webp",
+      "thumbnailImage": "/media/catalog/x-nam-huong-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/x-nam-huong-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Shiitake_2017_A.jpg",
+          "title": "Shiitake 2017 A.jpg",
+          "license": "CC0",
+          "artist": "Fructibus",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "x-nam-bao-ngu": {
+      "key": "x-nam-bao-ngu",
+      "name": "Nấm bào ngư xám",
+      "originalImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0b/Oyster_mushrooms_in_Rome%2C_Italy.jpg/960px-Oyster_mushrooms_in_Rome%2C_Italy.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "seedGallery": [
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0b/Oyster_mushrooms_in_Rome%2C_Italy.jpg/960px-Oyster_mushrooms_in_Rome%2C_Italy.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6d/Oyster_Mushrooms_%2815553708905%29.jpg/960px-Oyster_Mushrooms_%2815553708905%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b3/More_oyster_mushrooms_%2820877320743%29.jpg/960px-More_oyster_mushrooms_%2820877320743%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f8/20261107_Black_oyster_mushrooms_01.jpg/960px-20261107_Black_oyster_mushrooms_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5c/More_oyster_mushrooms_%2820875598624%29.jpg/960px-More_oyster_mushrooms_%2820875598624%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/04/Oyster_mushrooms_%283943261112%29.jpg/960px-Oyster_mushrooms_%283943261112%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/x-nam-bao-ngu-960.webp",
+      "thumbnailImage": "/media/catalog/x-nam-bao-ngu-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/x-nam-bao-ngu-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Oyster_mushrooms_in_Rome,_Italy.jpg",
+          "title": "Oyster mushrooms in Rome, Italy.jpg",
+          "license": "CC BY-SA 4.0",
+          "artist": "Thomas Oboe Lee",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "x-khoai-mon": {
+      "key": "x-khoai-mon",
+      "name": "Khoai môn sáp",
+      "originalImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c2/Colocasia_esculenta_dsc07801.jpg/960px-Colocasia_esculenta_dsc07801.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "seedGallery": [
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c2/Colocasia_esculenta_dsc07801.jpg/960px-Colocasia_esculenta_dsc07801.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f3/Taro_Root%2C_Eddoe_or_Colocasia_Esculenta.jpg/960px-Taro_Root%2C_Eddoe_or_Colocasia_Esculenta.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/91/Colocasia_esculenta_var._esculenta-1686669.jpg/960px-Colocasia_esculenta_var._esculenta-1686669.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6c/Taro_root_%28taro_corm%29.jpg/960px-Taro_root_%28taro_corm%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/Taro_for_sale_in_a_wet_market_in_Taipei.jpg/960px-Taro_for_sale_in_a_wet_market_in_Taipei.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c7/Taro_leaf_underside%2C_backlit_by_sun_-_edit.jpg/960px-Taro_leaf_underside%2C_backlit_by_sun_-_edit.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/x-khoai-mon-960.webp",
+      "thumbnailImage": "/media/catalog/x-khoai-mon-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/x-khoai-mon-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Colocasia_esculenta_dsc07801.jpg",
+          "title": "Colocasia esculenta dsc07801.jpg",
+          "license": "CC BY-SA 3.0",
+          "artist": "",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "x-thanh-long": {
+      "key": "x-thanh-long",
+      "name": "Thanh long ruột đỏ Long An",
+      "originalImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6b/Dragon_Fruit_cut_by_Shyamal.jpg/960px-Dragon_Fruit_cut_by_Shyamal.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "seedGallery": [
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6b/Dragon_Fruit_cut_by_Shyamal.jpg/960px-Dragon_Fruit_cut_by_Shyamal.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/55/Dragon_Fruit_01.jpg/960px-Dragon_Fruit_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8e/Dragon_fruit_%28Bangalore%2C_2026%29_01.jpg/960px-Dragon_fruit_%28Bangalore%2C_2026%29_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8f/Dragon_fruit_%28Bangalore%2C_2025%29_03.jpg/960px-Dragon_fruit_%28Bangalore%2C_2025%29_03.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/96/A_dragon_fruit.jpg/960px-A_dragon_fruit.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c3/Red_dragon_fruit.jpg/960px-Red_dragon_fruit.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/product-unavailable.svg",
+      "thumbnailImage": "/media/product-unavailable.svg",
+      "imageCredits": [],
+      "review": "needs-photo"
+    },
+    "x-gung": {
+      "key": "x-gung",
+      "name": "Gừng ta",
+      "originalImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fa/Ginger_Root.jpg/960px-Ginger_Root.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "seedGallery": [
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fa/Ginger_Root.jpg/960px-Ginger_Root.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/33/Ginger_Root_Display.JPG/960px-Ginger_Root_Display.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c9/Liat_Portal_for_Foodie_Disorder_-_Fresh_Ginger_Root.jpg/960px-Liat_Portal_for_Foodie_Disorder_-_Fresh_Ginger_Root.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/dd/Ginger_Root_%28179871501%29.jpeg/960px-Ginger_Root_%28179871501%29.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7f/Ginger_Root_%28Zingiber_officinale%29.jpg/960px-Ginger_Root_%28Zingiber_officinale%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cf/Ginger_root.jpg/960px-Ginger_root.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/x-gung-960.webp",
+      "thumbnailImage": "/media/catalog/x-gung-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/x-gung-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Ginger_Root.jpg",
+          "title": "Ginger Root.jpg",
+          "license": "CC BY-SA 4.0",
+          "artist": "Sanjay Acharya",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "x-bap-my": {
+      "key": "x-bap-my",
+      "name": "Bắp Mỹ ngọt",
+      "originalImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b3/Liat_Portal_for_Foodie_Disorder_-_Cooked_Corn_on_the_Cob.jpg/960px-Liat_Portal_for_Foodie_Disorder_-_Cooked_Corn_on_the_Cob.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "seedGallery": [
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b3/Liat_Portal_for_Foodie_Disorder_-_Cooked_Corn_on_the_Cob.jpg/960px-Liat_Portal_for_Foodie_Disorder_-_Cooked_Corn_on_the_Cob.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/74/Jagung_manis_sweet_corn.jpg/960px-Jagung_manis_sweet_corn.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1a/Tamales_Mexicanos_sweet_corn_tamales_02.jpg/960px-Tamales_Mexicanos_sweet_corn_tamales_02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fe/Dried_sweet_corn_at_Thune_lands.jpg/960px-Dried_sweet_corn_at_Thune_lands.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/30/Grilled_sweet_corn_on_display_on_a_braiistand.jpg/960px-Grilled_sweet_corn_on_display_on_a_braiistand.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7a/Corn_on_the_cob_%285178296206%29.jpg/960px-Corn_on_the_cob_%285178296206%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/x-bap-my-960.webp",
+      "thumbnailImage": "/media/catalog/x-bap-my-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/x-bap-my-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Liat_Portal_for_Foodie_Disorder_-_Fresh_Corn_on_the_Cob.jpg",
+          "title": "Liat Portal for Foodie Disorder - Fresh Corn on the Cob.jpg",
+          "artist": "HaJunkiyada",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "x-xoai-cat": {
+      "key": "x-xoai-cat",
+      "name": "Xoài cát Hòa Lộc",
+      "originalImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/af/Mango_fruit_Nam_Dok_Mai.jpg/960px-Mango_fruit_Nam_Dok_Mai.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "seedGallery": [
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/af/Mango_fruit_Nam_Dok_Mai.jpg/960px-Mango_fruit_Nam_Dok_Mai.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1b/Mango_fruits.JPG/960px-Mango_fruits.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/34/Mango_on_white.jpg/960px-Mango_on_white.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cb/Mango_fruit_Nam_Dok_Mai_-_cross_section.jpg/960px-Mango_fruit_Nam_Dok_Mai_-_cross_section.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/59/An_unripe_mango_in_jaffna.JPG/960px-An_unripe_mango_in_jaffna.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3b/Paitan_Sabah_Common-mango-Mangifera-indica-01.jpg/960px-Paitan_Sabah_Common-mango-Mangifera-indica-01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/x-xoai-cat-960.webp",
+      "thumbnailImage": "/media/catalog/x-xoai-cat-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/x-xoai-cat-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Mango_fruit_Nam_Dok_Mai.jpg",
+          "title": "Mango fruit Nam Dok Mai.jpg",
+          "license": "CC BY-SA 4.0",
+          "artist": "Ivar Leidus",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "x-buoi-da-xanh": {
+      "key": "x-buoi-da-xanh",
+      "name": "Bưởi da xanh Bến Tre",
+      "originalImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f3/Pomelo_fruit.jpg/960px-Pomelo_fruit.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "seedGallery": [
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f3/Pomelo_fruit.jpg/960px-Pomelo_fruit.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/51/Pomelo_flesh.jpg/960px-Pomelo_flesh.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/57/Pomelo_semi_peeled.jpg/960px-Pomelo_semi_peeled.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/19/Pomelo_sold_within_Kadayawan_Village_in_Magsaysay_Park.jpg/960px-Pomelo_sold_within_Kadayawan_Village_in_Magsaysay_Park.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5c/Pomelo_pomelo_-_Flickr_-_aWee.jpg/960px-Pomelo_pomelo_-_Flickr_-_aWee.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c4/Indian_pomelo.JPG/960px-Indian_pomelo.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/x-buoi-da-xanh-960.webp",
+      "thumbnailImage": "/media/catalog/x-buoi-da-xanh-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/x-buoi-da-xanh-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Pomelo_fruit.jpg",
+          "title": "Pomelo fruit.jpg",
+          "license": "CC BY-SA 4.0",
+          "artist": "Ivar Leidus",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "x-mang-cut": {
+      "key": "x-mang-cut",
+      "name": "Măng cụt Bến Tre",
+      "originalImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/34/Sweet_mangosteen.jpg/960px-Sweet_mangosteen.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "seedGallery": [
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/34/Sweet_mangosteen.jpg/960px-Sweet_mangosteen.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e3/Mangosteen_scale_v2.jpg/960px-Mangosteen_scale_v2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c6/Mangosteen_%28Garcinia_mangostana%29_at_a_market_in_Thiruvananthapuram_%2873714%29.jpg/960px-Mangosteen_%28Garcinia_mangostana%29_at_a_market_in_Thiruvananthapuram_%2873714%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/49/Monggis_%28Mangosteen%29.jpg/960px-Monggis_%28Mangosteen%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/58/Mangosteen_fruit_-_ugly_on_the_outside%2C_but_so%2C_so_sweet_inside_-_Flickr_-_GeorgeTan_%5E2...thanks_for_millionth_support.jpg/960px-Mangosteen_fruit_-_ugly_on_the_outside%2C_but_so%2C_so_sweet_inside_-_Flickr_-_GeorgeTan_%5E2...thanks_for_millionth_support.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a9/Mangosteen_-_%E0%B4%AE%E0%B4%BE%E0%B4%99%E0%B5%8D%E0%B4%95%E0%B5%8B%E0%B4%B8%E0%B5%8D%E0%B4%B1%E0%B5%8D%E0%B4%B1%E0%B5%80%E0%B5%BB_03.JPG/960px-Mangosteen_-_%E0%B4%AE%E0%B4%BE%E0%B4%99%E0%B5%8D%E0%B4%95%E0%B5%8B%E0%B4%B8%E0%B5%8D%E0%B4%B1%E0%B5%8D%E0%B4%B1%E0%B5%80%E0%B5%BB_03.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/x-mang-cut-960.webp",
+      "thumbnailImage": "/media/catalog/x-mang-cut-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/x-mang-cut-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Sweet_mangosteen.jpg",
+          "title": "Sweet mangosteen.jpg",
+          "license": "CC BY-SA 4.0",
+          "artist": "Basile Morin",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "x-chom-chom": {
+      "key": "x-chom-chom",
+      "name": "Chôm chôm Java",
+      "originalImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/45/Fruits_of_Asia_001_Rambutan.jpg/960px-Fruits_of_Asia_001_Rambutan.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "seedGallery": [
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/45/Fruits_of_Asia_001_Rambutan.jpg/960px-Fruits_of_Asia_001_Rambutan.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3f/Rambutan_fruit%2C_half_peeled.jpg/960px-Rambutan_fruit%2C_half_peeled.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/96/Rambutan-00817.jpg/960px-Rambutan-00817.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b5/Rambutan_Binjai_Pasar_Baru_Jakarta.JPG/960px-Rambutan_Binjai_Pasar_Baru_Jakarta.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c4/DSCF0610_A_colorful_pile_of_rambutan_fruits_with_spiky_red_and_green_husks_ready_to_be_enjoyed.jpg/960px-DSCF0610_A_colorful_pile_of_rambutan_fruits_with_spiky_red_and_green_husks_ready_to_be_enjoyed.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e9/Rambutan_fruits_%28Nephelium_lappaceum%29.JPG/960px-Rambutan_fruits_%28Nephelium_lappaceum%29.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/x-chom-chom-960.webp",
+      "thumbnailImage": "/media/catalog/x-chom-chom-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/x-chom-chom-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Fruits_of_Asia_001_Rambutan.jpg",
+          "title": "Fruits of Asia 001 Rambutan.jpg",
+          "license": "CC BY 4.0",
+          "artist": "Hans-Jürgen Neubert",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "x-sau-rieng": {
+      "key": "x-sau-rieng",
+      "name": "Sầu riêng Ri6 Đắk Lắk",
+      "originalImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/40/Durian_on_sale_at_fruits_market%2C_Jalan%2C_Kota_Kinabalu_19.jpg/960px-Durian_on_sale_at_fruits_market%2C_Jalan%2C_Kota_Kinabalu_19.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "seedGallery": [
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/40/Durian_on_sale_at_fruits_market%2C_Jalan%2C_Kota_Kinabalu_19.jpg/960px-Durian_on_sale_at_fruits_market%2C_Jalan%2C_Kota_Kinabalu_19.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/aa/Kekayaan_Alam_Wonosalam_-_Durian~1.jpg/960px-Kekayaan_Alam_Wonosalam_-_Durian~1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7a/Durian_in_tree.jpg/960px-Durian_in_tree.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3b/Kulit_durian_kering.JPG/960px-Kulit_durian_kering.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/99/Durian_fruit_singapore.jpg/960px-Durian_fruit_singapore.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5f/%28Durian_fruit_from_Bangkok%2C_Thailand%29_-_DPLA_-_ff5de0b42ee54e0ce764d09a28808450.jpg/960px-%28Durian_fruit_from_Bangkok%2C_Thailand%29_-_DPLA_-_ff5de0b42ee54e0ce764d09a28808450.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/x-sau-rieng-960.webp",
+      "thumbnailImage": "/media/catalog/x-sau-rieng-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/x-sau-rieng-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Durian_on_sale_at_fruits_market,_Jalan,_Kota_Kinabalu_19.jpg",
+          "title": "Durian on sale at fruits market, Jalan, Kota Kinabalu 19.jpg",
+          "license": "CC BY-SA 4.0",
+          "artist": "Suyash Dwivedi",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "x-chanh-day": {
+      "key": "x-chanh-day",
+      "name": "Chanh dây Lâm Đồng",
+      "originalImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/56/Passion_fruit.jpg/960px-Passion_fruit.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "seedGallery": [
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/56/Passion_fruit.jpg/960px-Passion_fruit.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/20/Passion_fruit_shell.jpg/960px-Passion_fruit_shell.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/35/Passion_fruit_lime_lemon_tea.jpg/960px-Passion_fruit_lime_lemon_tea.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a4/Mooloolah-wild-passion-fruit-1022.jpg/960px-Mooloolah-wild-passion-fruit-1022.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/72/Passiflora_edulis_fruit_on_white_background.jpg/960px-Passiflora_edulis_fruit_on_white_background.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/db/Passiflora_edulis_%28fruit%29.jpg/960px-Passiflora_edulis_%28fruit%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/x-chanh-day-960.webp",
+      "thumbnailImage": "/media/catalog/x-chanh-day-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/x-chanh-day-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Passion_fruit.jpg",
+          "title": "Passion fruit.jpg",
+          "license": "CC BY 3.0",
+          "artist": "Challiyan at Malayalam Wikipedia",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "x-vu-sua": {
+      "key": "x-vu-sua",
+      "name": "Vú sữa Lò Rèn",
+      "originalImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b6/Starr-110310-3051-Chrysophyllum_cainito-fruit-Olinda-Maui_%2825079207055%29.jpg/960px-Starr-110310-3051-Chrysophyllum_cainito-fruit-Olinda-Maui_%2825079207055%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "seedGallery": [
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b6/Starr-110310-3051-Chrysophyllum_cainito-fruit-Olinda-Maui_%2825079207055%29.jpg/960px-Starr-110310-3051-Chrysophyllum_cainito-fruit-Olinda-Maui_%2825079207055%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/29/Starr-110310-3050-Chrysophyllum_cainito-fruit-Olinda-Maui_%2824448533914%29.jpg/960px-Starr-110310-3050-Chrysophyllum_cainito-fruit-Olinda-Maui_%2824448533914%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/47/Starr-110310-3036-Chrysophyllum_cainito-fruit-Olinda-Maui_%2824783580050%29.jpg/960px-Starr-110310-3036-Chrysophyllum_cainito-fruit-Olinda-Maui_%2824783580050%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c9/Chrysophyllum_cainito_%286944209644%29.jpg/960px-Chrysophyllum_cainito_%286944209644%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/x-vu-sua-960.webp",
+      "thumbnailImage": "/media/catalog/x-vu-sua-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/x-vu-sua-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Starr-110310-3051-Chrysophyllum_cainito-fruit-Olinda-Maui_(25079207055).jpg",
+          "title": "Starr-110310-3051-Chrysophyllum cainito-fruit-Olinda-Maui (25079207055).jpg",
+          "license": "CC BY 3.0 us",
+          "artist": "Forest and Kim Starr",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "x-nhan": {
+      "key": "x-nhan",
+      "name": "Nhãn xuồng cơm vàng",
+      "originalImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/69/5395Balete_Malunggay_Longan_leaves_Common_houseflies_31.jpg/960px-5395Balete_Malunggay_Longan_leaves_Common_houseflies_31.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "seedGallery": [
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/69/5395Balete_Malunggay_Longan_leaves_Common_houseflies_31.jpg/960px-5395Balete_Malunggay_Longan_leaves_Common_houseflies_31.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6e/5395Balete_Malunggay_Longan_leaves_Common_houseflies_35.jpg/960px-5395Balete_Malunggay_Longan_leaves_Common_houseflies_35.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9f/5395Balete_Malunggay_Longan_leaves_Common_houseflies_34.jpg/960px-5395Balete_Malunggay_Longan_leaves_Common_houseflies_34.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9e/5395Balete_Malunggay_Longan_leaves_Common_houseflies_28.jpg/960px-5395Balete_Malunggay_Longan_leaves_Common_houseflies_28.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1f/Longan_fruits.jpg/960px-Longan_fruits.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bd/Euphoria_longan_%287138064387%29.jpg/960px-Euphoria_longan_%287138064387%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/x-nhan-960.webp",
+      "thumbnailImage": "/media/catalog/x-nhan-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/x-nhan-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Longan_fruits.jpg",
+          "title": "Longan fruits.jpg",
+          "license": "CC0",
+          "artist": "Dinkum",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "x-oi": {
+      "key": "x-oi",
+      "name": "Ổi ruột hồng",
+      "originalImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4d/Koejawel-guava.jpg/960px-Koejawel-guava.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "seedGallery": [
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4d/Koejawel-guava.jpg/960px-Koejawel-guava.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/57/Partly_eaten_guava.jpg/960px-Partly_eaten_guava.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/02/Guava_ID.jpg/960px-Guava_ID.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7e/Myrtaceae-_Psidium_guajava_%28guava%29.jpg/960px-Myrtaceae-_Psidium_guajava_%28guava%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b8/Guava_Fruit.jpg/960px-Guava_Fruit.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a8/Pieces_of_Guava_%2810428362325%29.jpg/960px-Pieces_of_Guava_%2810428362325%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/x-oi-960.webp",
+      "thumbnailImage": "/media/catalog/x-oi-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/x-oi-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Koejawel-guava.jpg",
+          "title": "Koejawel-guava.jpg",
+          "license": "CC BY-SA 4.0",
+          "artist": "Michdevilish",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "x-dua-hau": {
+      "key": "x-dua-hau",
+      "name": "Dưa hấu ruột đỏ Long An",
+      "originalImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1a/Watermelon_for_sale_1.jpg/960px-Watermelon_for_sale_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "seedGallery": [
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1a/Watermelon_for_sale_1.jpg/960px-Watermelon_for_sale_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/91/Culinary_fruits_front_view%3B_Watermelon_and_Strawberry.jpg/960px-Culinary_fruits_front_view%3B_Watermelon_and_Strawberry.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b9/Watermelon.jpg/960px-Watermelon.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0b/Watermelon_yellow_2024_G1.jpg/960px-Watermelon_yellow_2024_G1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/60/Watermelon_slice%2C_May_2024.jpg/960px-Watermelon_slice%2C_May_2024.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6b/Fresh_watermelon_slices.jpg/960px-Fresh_watermelon_slices.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/x-dua-hau-960.webp",
+      "thumbnailImage": "/media/catalog/x-dua-hau-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/x-dua-hau-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Watermelon_for_sale_1.jpg",
+          "title": "Watermelon for sale 1.jpg",
+          "license": "CC BY 3.0",
+          "artist": "Drilnoth",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "x-dua-khom": {
+      "key": "x-dua-khom",
+      "name": "Khóm (dứa) Long An",
+      "originalImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5c/Pineapple_fruit_2.jpg/960px-Pineapple_fruit_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "seedGallery": [
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5c/Pineapple_fruit_2.jpg/960px-Pineapple_fruit_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c5/Pineapple_and_snow_%28Unsplash%29.jpg/960px-Pineapple_and_snow_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/83/Ananas_comosus%2C_Dole_Pineapple_Plantation%2C_Oahu%2C_Hawaii%2C_USA2.jpg/960px-Ananas_comosus%2C_Dole_Pineapple_Plantation%2C_Oahu%2C_Hawaii%2C_USA2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ed/Ananas_bracteatus%2C_Dole_Pineapple_Plantation%2C_Oahu%2C_Hawaii%2C_USA2.jpg/960px-Ananas_bracteatus%2C_Dole_Pineapple_Plantation%2C_Oahu%2C_Hawaii%2C_USA2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f9/Jalchatra_pineapple_market_%282%29.jpg/960px-Jalchatra_pineapple_market_%282%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8d/Pineapple_victoria_dsc07770.jpg/960px-Pineapple_victoria_dsc07770.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/x-dua-khom-960.webp",
+      "thumbnailImage": "/media/catalog/x-dua-khom-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/x-dua-khom-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Pineapple_fruit_2.jpg",
+          "title": "Pineapple fruit 2.jpg",
+          "license": "CC0",
+          "artist": "Wilfredor",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "x-man-hau": {
+      "key": "x-man-hau",
+      "name": "Mận hậu Mộc Châu",
+      "originalImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ec/Plums_African_Rose_-_whole%2C_halved_and_slice.jpg/960px-Plums_African_Rose_-_whole%2C_halved_and_slice.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "seedGallery": [
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ec/Plums_African_Rose_-_whole%2C_halved_and_slice.jpg/960px-Plums_African_Rose_-_whole%2C_halved_and_slice.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/89/Santa_Rosa_plums.jpg/960px-Santa_Rosa_plums.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bb/Plums-farmers-market-seeminglee.jpg/960px-Plums-farmers-market-seeminglee.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6c/Plums.jpg/960px-Plums.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/85/Plums_%28two%29.JPG/960px-Plums_%28two%29.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ef/Plums_%282014%29.jpg/960px-Plums_%282014%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/x-man-hau-960.webp",
+      "thumbnailImage": "/media/catalog/x-man-hau-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/x-man-hau-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Plums_African_Rose_-_whole,_halved_and_slice.jpg",
+          "title": "Plums African Rose - whole, halved and slice.jpg",
+          "license": "CC BY-SA 4.0",
+          "artist": "Ivar Leidus",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "x-hong-gion": {
+      "key": "x-hong-gion",
+      "name": "Hồng giòn Đà Lạt",
+      "originalImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/99/Persimmon_%28fuyu%29.jpg/960px-Persimmon_%28fuyu%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "seedGallery": [
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/99/Persimmon_%28fuyu%29.jpg/960px-Persimmon_%28fuyu%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e9/Persimmon_top.jpg/960px-Persimmon_top.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/78/Fuyu_persimmon_fruits%2C_one_cut_open.jpg/960px-Fuyu_persimmon_fruits%2C_one_cut_open.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b0/Sagada_Persimmon.jpg/960px-Sagada_Persimmon.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7d/Japanese_Persimmon.jpg/960px-Japanese_Persimmon.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/43/Meyer_seedless_persimmon_%287174079134%29.jpg/960px-Meyer_seedless_persimmon_%287174079134%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/x-hong-gion-960.webp",
+      "thumbnailImage": "/media/catalog/x-hong-gion-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/x-hong-gion-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Persimmon_(fuyu).jpg",
+          "title": "Persimmon (fuyu).jpg",
+          "license": "CC BY-SA 4.0",
+          "artist": "Rhododendrites",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "x-chanh-khong-hat": {
+      "key": "x-chanh-khong-hat",
+      "name": "Chanh không hạt",
+      "originalImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e7/Lime_-_whole_and_halved.jpg/960px-Lime_-_whole_and_halved.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "seedGallery": [
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e7/Lime_-_whole_and_halved.jpg/960px-Lime_-_whole_and_halved.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c4/Lime%2C_half.jpg/960px-Lime%2C_half.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/73/Starr-130504-4383-Citrus_latifolia-Tahitian_lime_fruit-Hawea_Pl_Olinda-Maui_%2825092330352%29.jpg/960px-Starr-130504-4383-Citrus_latifolia-Tahitian_lime_fruit-Hawea_Pl_Olinda-Maui_%2825092330352%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1f/Starr-130504-4386-Citrus_latifolia-Tahitian_lime_fruit-Hawea_Pl_Olinda-Maui_%2824842928159%29.jpg/960px-Starr-130504-4386-Citrus_latifolia-Tahitian_lime_fruit-Hawea_Pl_Olinda-Maui_%2824842928159%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cd/Two_limes.jpg/960px-Two_limes.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/66/Lime_%287289090988%29.jpg/960px-Lime_%287289090988%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/x-chanh-khong-hat-960.webp",
+      "thumbnailImage": "/media/catalog/x-chanh-khong-hat-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/x-chanh-khong-hat-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Lime_-_whole_and_halved.jpg",
+          "title": "Lime - whole and halved.jpg",
+          "license": "CC BY-SA 4.0",
+          "artist": "Ivar Leidus",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "x-dua-xiem": {
+      "key": "x-dua-xiem",
+      "name": "Dừa xiêm Bến Tre",
+      "originalImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/76/Green_coconut_fruit.jpg/960px-Green_coconut_fruit.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "seedGallery": [
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/76/Green_coconut_fruit.jpg/960px-Green_coconut_fruit.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e9/Coconut_tree_06271.JPG/960px-Coconut_tree_06271.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/dc/Coconut_tree_06264.JPG/960px-Coconut_tree_06264.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c6/Green_Coconut_%2817486260%29.jpg/960px-Green_Coconut_%2817486260%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4c/Green_coconut_vendor_on_the_streets_of_Dhaka.jpg/960px-Green_coconut_vendor_on_the_streets_of_Dhaka.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/20/Green_Coconut_Fruits.jpg/960px-Green_Coconut_Fruits.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/x-dua-xiem-960.webp",
+      "thumbnailImage": "/media/catalog/x-dua-xiem-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/x-dua-xiem-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Green_coconut_fruit.jpg",
+          "title": "Green coconut fruit.jpg",
+          "license": "CC BY-SA 4.0",
+          "artist": "Ibrahim Achiri",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "x-mit-thai": {
+      "key": "x-mit-thai",
+      "name": "Mít Thái múi vàng",
+      "originalImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9e/Jackfruit-1938193.jpg/960px-Jackfruit-1938193.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "seedGallery": [
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9e/Jackfruit-1938193.jpg/960px-Jackfruit-1938193.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/15/Jackfruit_Flesh.jpg/960px-Jackfruit_Flesh.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/80/Jackfruit_Pulp_Jeg3.jpg/960px-Jackfruit_Pulp_Jeg3.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c5/Jackfruit_tree_with_fruit.jpg/960px-Jackfruit_tree_with_fruit.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2f/Jackfruit_Mix_Served.JPG/960px-Jackfruit_Mix_Served.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/54/Jackfruit_NS-1_01_Asit.jpg/960px-Jackfruit_NS-1_01_Asit.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/x-mit-thai-960.webp",
+      "thumbnailImage": "/media/catalog/x-mit-thai-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/x-mit-thai-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Jackfruit_Flesh.jpg",
+          "title": "Jackfruit Flesh.jpg",
+          "license": "CC BY-SA 3.0",
+          "artist": "Mullookkaaran",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "x-bo-034": {
+      "key": "x-bo-034",
+      "name": "Bơ 034 Đắk Lắk",
+      "originalImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c9/Avocado_Hass_-_single_and_halved.jpg/960px-Avocado_Hass_-_single_and_halved.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "seedGallery": [
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c9/Avocado_Hass_-_single_and_halved.jpg/960px-Avocado_Hass_-_single_and_halved.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/10/Aguacate_gigante_comparado_con_aguacate_normal_%28tipo_Hass%29_%E2%80%93_Giant_avocado_compared_to_normal_avocado_%28Hass_type%29.jpg/960px-Aguacate_gigante_comparado_con_aguacate_normal_%28tipo_Hass%29_%E2%80%93_Giant_avocado_compared_to_normal_avocado_%28Hass_type%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2a/Avocado_IMGP1082.jpg/960px-Avocado_IMGP1082.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/17/Avocado_IMGP1128.jpg/960px-Avocado_IMGP1128.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2c/Avocado_red_peppers.jpg/960px-Avocado_red_peppers.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/x-bo-034-960.webp",
+      "thumbnailImage": "/media/catalog/x-bo-034-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/x-bo-034-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Avocado_IMGP1082.jpg",
+          "title": "Avocado IMGP1082.jpg",
+          "license": "CC BY-SA 3.0",
+          "artist": "Nikodem Nijaki",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "x-bo-than": {
+      "key": "x-bo-than",
+      "name": "Thăn bò nội",
+      "originalImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e1/Tajima_Beef_Steak_%2825249785550%29.jpg/960px-Tajima_Beef_Steak_%2825249785550%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "seedGallery": [
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e1/Tajima_Beef_Steak_%2825249785550%29.jpg/960px-Tajima_Beef_Steak_%2825249785550%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/30/Beef_steak_with_garlic_butter.jpg/960px-Beef_steak_with_garlic_butter.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/62/Beef_steak_with_duck_liver_and_rice.jpg/960px-Beef_steak_with_duck_liver_and_rice.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/42/The_European_style_beef_steak_in_lunch.jpg/960px-The_European_style_beef_steak_in_lunch.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2f/Angus_beef_steak_with_potato.jpg/960px-Angus_beef_steak_with_potato.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/01/HK_SSP_%E6%B7%B1%E6%B0%B4%E5%9F%97_Sham_Shui_Po_%E7%A6%8F%E6%A6%AE%E8%A1%97_120_Fuk_Wing_Street_%E9%A6%AC%E5%BE%B7%E9%87%8C%E9%A4%90%E5%BB%B3_Madrid_Cafe_Restaurant_food_%E8%92%9C%E8%93%89%E9%BB%91%E6%A4%92%E7%85%8E%E7%89%9B%E6%89%92_Garlic_Black_Pepper_Beef_Steak_June_2022_Px3_04.jpg/960px-thumbnail.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/x-bo-than-960.webp",
+      "thumbnailImage": "/media/catalog/x-bo-than-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/x-bo-than-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Beef_tenderloin.jpg",
+          "title": "Beef tenderloin.jpg",
+          "artist": "Rangermike at en.wikipedia",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "x-ca-dieu-hong": {
+      "key": "x-ca-dieu-hong",
+      "name": "Cá diêu hồng",
+      "originalImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9f/506Ants_of_the_Philippines_eating_Blackchin_tilapia_58.jpg/960px-506Ants_of_the_Philippines_eating_Blackchin_tilapia_58.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "seedGallery": [
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9f/506Ants_of_the_Philippines_eating_Blackchin_tilapia_58.jpg/960px-506Ants_of_the_Philippines_eating_Blackchin_tilapia_58.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bf/Grilled_tilapia_with_banku.jpg/960px-Grilled_tilapia_with_banku.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f1/0418Blackchin_tilapia_Gloria_fish_textures_44.jpg/960px-0418Blackchin_tilapia_Gloria_fish_textures_44.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cd/0027Bistek_na_Tilapia_02.jpg/960px-0027Bistek_na_Tilapia_02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e6/Sarsyadong_tilapia.jpg/960px-Sarsyadong_tilapia.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/product-unavailable.svg",
+      "thumbnailImage": "/media/product-unavailable.svg",
+      "imageCredits": [],
+      "review": "needs-photo"
+    },
+    "x-ca-loc": {
+      "key": "x-ca-loc",
+      "name": "Cá lóc đồng",
+      "originalImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a9/Channa_striata_569824998.jpg/960px-Channa_striata_569824998.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "seedGallery": [
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a9/Channa_striata_569824998.jpg/960px-Channa_striata_569824998.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/26/Channa_striata_342778351.jpg/960px-Channa_striata_342778351.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b4/Channa_luci-stri_090819-12094_tsa.jpg/960px-Channa_luci-stri_090819-12094_tsa.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fa/Channa_striata_-_Manoj_Karingamadathil_-_45924258.jpeg/960px-Channa_striata_-_Manoj_Karingamadathil_-_45924258.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/df/Katupat_Kandangan_in_Kandangan.JPG/960px-Katupat_Kandangan_in_Kandangan.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/eb/Channa_striata_-_Justin_Philbois_-_426739053.jpeg/960px-Channa_striata_-_Justin_Philbois_-_426739053.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/x-ca-loc-960.webp",
+      "thumbnailImage": "/media/catalog/x-ca-loc-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/x-ca-loc-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Channa_striata_569824998.jpg",
+          "title": "Channa striata 569824998.jpg",
+          "license": "CC BY-SA 4.0",
+          "artist": "Abu Hamas",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "x-muc-ong": {
+      "key": "x-muc-ong",
+      "name": "Mực ống tươi",
+      "originalImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2b/Lesser_Flying_Squid_-_Todaropsis_eblanae.jpg/960px-Lesser_Flying_Squid_-_Todaropsis_eblanae.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "seedGallery": [
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2b/Lesser_Flying_Squid_-_Todaropsis_eblanae.jpg/960px-Lesser_Flying_Squid_-_Todaropsis_eblanae.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e1/Sepioteuthis_sepioidea_%28Caribbean_Reef_Squid%29.jpg/960px-Sepioteuthis_sepioidea_%28Caribbean_Reef_Squid%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/26/Iwami_squid_drying_DSC01868.jpg/960px-Iwami_squid_drying_DSC01868.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7a/Drying_squid_at_Daepo_Port_02.jpg/960px-Drying_squid_at_Daepo_Port_02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8f/Squid_colors_2.jpg/960px-Squid_colors_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/x-muc-ong-960.webp",
+      "thumbnailImage": "/media/catalog/x-muc-ong-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/x-muc-ong-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Lesser_Flying_Squid_-_Todaropsis_eblanae.jpg",
+          "title": "Lesser Flying Squid - Todaropsis eblanae.jpg",
+          "license": "CC BY-SA 4.0",
+          "artist": "Hans Hillewaert",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "x-nac-vai": {
+      "key": "x-nac-vai",
+      "name": "Nạc vai heo sạch",
+      "originalImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6b/Pork_Shoulder%2C_Coppa_Cut_%286853905869%29.jpg/960px-Pork_Shoulder%2C_Coppa_Cut_%286853905869%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "seedGallery": [
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6b/Pork_Shoulder%2C_Coppa_Cut_%286853905869%29.jpg/960px-Pork_Shoulder%2C_Coppa_Cut_%286853905869%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3f/Diced_Pork_Shoulder_%2813152872373%29.jpg/960px-Diced_Pork_Shoulder_%2813152872373%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7a/Pork_shoulder_on_green_egg_smoker.jpg/960px-Pork_shoulder_on_green_egg_smoker.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9b/Pork_Shoulder_picnic_roast.jpg/960px-Pork_Shoulder_picnic_roast.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1f/Pork_Shoulder_%288216769703%29.jpg/960px-Pork_Shoulder_%288216769703%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/x-nac-vai-960.webp",
+      "thumbnailImage": "/media/catalog/x-nac-vai-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/x-nac-vai-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Pork_Shoulder,_Coppa_Cut_(6853905869).jpg",
+          "title": "Pork Shoulder, Coppa Cut (6853905869).jpg",
+          "license": "CC BY 2.0",
+          "artist": "Ryan Snyder",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "x-ngheu": {
+      "key": "x-ngheu",
+      "name": "Nghêu Bến Tre",
+      "originalImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/be/Meretrix_lamarckii.jpg/960px-Meretrix_lamarckii.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "seedGallery": [
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/be/Meretrix_lamarckii.jpg/960px-Meretrix_lamarckii.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/12/Pismo_clams_on_the_beach_in_Ventura_%28cropped%29.jpg/960px-Pismo_clams_on_the_beach_in_Ventura_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ce/Razor_clams_%281%29.jpg/960px-Razor_clams_%281%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f6/Meretrix_petechialis.jpg/960px-Meretrix_petechialis.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ef/Meretrix_lyrata_Saigon.JPG/960px-Meretrix_lyrata_Saigon.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/33/Steamed_Meretrix_lamarckii.jpg/960px-Steamed_Meretrix_lamarckii.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/x-ngheu-960.webp",
+      "thumbnailImage": "/media/catalog/x-ngheu-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/x-ngheu-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Meretrix_lyrata_Saigon.JPG",
+          "title": "Meretrix lyrata Saigon.JPG",
+          "license": "CC BY-SA 3.0",
+          "artist": "Takeaway",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "x-cua-bien": {
+      "key": "x-cua-bien",
+      "name": "Cua biển Cà Mau",
+      "originalImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a9/Queensland_Mud_Crab_%28Explore%29_-_Flickr_-_Fishyone1.jpg/960px-Queensland_Mud_Crab_%28Explore%29_-_Flickr_-_Fishyone1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "seedGallery": [
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a9/Queensland_Mud_Crab_%28Explore%29_-_Flickr_-_Fishyone1.jpg/960px-Queensland_Mud_Crab_%28Explore%29_-_Flickr_-_Fishyone1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/81/Boiled_mud_crab_%28Scylla_serrata%29_on_plate.jpg/960px-Boiled_mud_crab_%28Scylla_serrata%29_on_plate.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2f/Common_Mud_Crab.jpg/960px-Common_Mud_Crab.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f1/Mud_Crab_on_side_of_boat-1_%2814432199358%29.jpg/960px-Mud_Crab_on_side_of_boat-1_%2814432199358%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fa/Furrowed_Mud_Crab_%2811671028504%29.jpg/960px-Furrowed_Mud_Crab_%2811671028504%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/29/Mud_crab_2.jpg/960px-Mud_crab_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/x-cua-bien-960.webp",
+      "thumbnailImage": "/media/catalog/x-cua-bien-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/x-cua-bien-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Common_Mud_Crab.jpg",
+          "title": "Common Mud Crab.jpg",
+          "license": "CC BY-SA 4.0",
+          "artist": "Prabhisc",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "x-uc-ga": {
+      "key": "x-uc-ga",
+      "name": "Ức gà thả vườn",
+      "originalImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1b/Chicken_breast_on_Vegetables_-_49859595051.jpg/960px-Chicken_breast_on_Vegetables_-_49859595051.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "seedGallery": [
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1b/Chicken_breast_on_Vegetables_-_49859595051.jpg/960px-Chicken_breast_on_Vegetables_-_49859595051.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fc/Chicken_breast_-_Coimbra%2C_Portugal_-_DSC09840.jpg/960px-Chicken_breast_-_Coimbra%2C_Portugal_-_DSC09840.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/28/Chicken_breast_on_Vegetables.jpg/960px-Chicken_breast_on_Vegetables.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a4/Bacon-wrapped_Chicken_Breast_%2810508565854%29.jpg/960px-Bacon-wrapped_Chicken_Breast_%2810508565854%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ea/Cafe_Caramel_Chicken_breast_and_French_Fries.jpg/960px-Cafe_Caramel_Chicken_breast_and_French_Fries.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/x-uc-ga-960.webp",
+      "thumbnailImage": "/media/catalog/x-uc-ga-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/x-uc-ga-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Kycklingfil%C3%A9.jpg",
+          "title": "Kycklingfilé.jpg",
+          "artist": "Dnor",
+          "license": "Public domain",
+          "licenseUrl": "",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "x-dui-ga": {
+      "key": "x-dui-ga",
+      "name": "Đùi gà góc tư",
+      "originalImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/Cooking_Food_material_Chicken_Legs.JPG/960px-Cooking_Food_material_Chicken_Legs.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "seedGallery": [
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/Cooking_Food_material_Chicken_Legs.JPG/960px-Cooking_Food_material_Chicken_Legs.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7f/HK_food_raw_chicken_legs_February_2020_SS2_01.jpg/960px-HK_food_raw_chicken_legs_February_2020_SS2_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/92/HK_food_raw_chicken_legs_February_2020_SS2_02.jpg/960px-HK_food_raw_chicken_legs_February_2020_SS2_02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3b/Bryan%27s_Grocery_BBQ_Chicken_Legs_and_Thighs_%2815776388019%29.jpg/960px-Bryan%27s_Grocery_BBQ_Chicken_Legs_and_Thighs_%2815776388019%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fd/Grilled_meat_-_chicken_legs_near_Host%C3%A1kov%2C_Vladislav%2C_T%C5%99eb%C3%AD%C4%8D_District.jpg/960px-Grilled_meat_-_chicken_legs_near_Host%C3%A1kov%2C_Vladislav%2C_T%C5%99eb%C3%AD%C4%8D_District.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/HK_YMT_%E6%B2%B9%E9%BA%BB%E5%9C%B0_Yau_Ma_Tei_%E7%A2%A7%E8%A1%97_29_Pitt_Street_%E4%B8%8A%E6%B5%B7%E8%A1%97_Shanghai_Street_%E5%A5%BD%E6%97%BA%E7%BE%8E%E9%A3%9F_street_snack_food_shop_%E6%B2%B9%E7%82%B8%E9%9B%9E%E8%85%BF_chicken_legs_March_2020_SS2_04.jpg/960px-HK_YMT_%E6%B2%B9%E9%BA%BB%E5%9C%B0_Yau_Ma_Tei_%E7%A2%A7%E8%A1%97_29_Pitt_Street_%E4%B8%8A%E6%B5%B7%E8%A1%97_Shanghai_Street_%E5%A5%BD%E6%97%BA%E7%BE%8E%E9%A3%9F_street_snack_food_shop_%E6%B2%B9%E7%82%B8%E9%9B%9E%E8%85%BF_chicken_legs_March_2020_SS2_04.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/x-dui-ga-960.webp",
+      "thumbnailImage": "/media/catalog/x-dui-ga-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/x-dui-ga-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:HK_food_raw_chicken_legs_February_2020_SS2_01.jpg",
+          "title": "HK food raw chicken legs February 2020 SS2 01.jpg",
+          "license": "CC BY-SA 4.0",
+          "artist": "Mahea Poonam",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "x-trung-vit": {
+      "key": "x-trung-vit",
+      "name": "Trứng vịt",
+      "originalImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/37/Salted_duck_eggs.jpg/960px-Salted_duck_eggs.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "seedGallery": [
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/37/Salted_duck_eggs.jpg/960px-Salted_duck_eggs.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fe/Gaoyou_boiled_salted_duck_eggs.jpg/960px-Gaoyou_boiled_salted_duck_eggs.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/db/Salted_duck_eggs_closeup.jpg/960px-Salted_duck_eggs_closeup.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/eb/Duck_eggs.jpg/960px-Duck_eggs.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6d/Salted_duck_eggs_in_store.jpg/960px-Salted_duck_eggs_in_store.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3d/Roasted_salted_duck_eggs_%281%29.jpg/960px-Roasted_salted_duck_eggs_%281%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/x-trung-vit-960.webp",
+      "thumbnailImage": "/media/catalog/x-trung-vit-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/x-trung-vit-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Duck_eggs.jpg",
+          "title": "Duck eggs.jpg",
+          "license": "CC0",
+          "artist": "Wilfredor",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "x-trung-ga-omega": {
+      "key": "x-trung-ga-omega",
+      "name": "Trứng gà ta ăn ngô",
+      "originalImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/10/Fresh_brown_eggs_arranged_in_a_carton_on_wooden_kitchen_counter_ready_for_cooking_or_baking.jpg/960px-Fresh_brown_eggs_arranged_in_a_carton_on_wooden_kitchen_counter_ready_for_cooking_or_baking.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "seedGallery": [
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/10/Fresh_brown_eggs_arranged_in_a_carton_on_wooden_kitchen_counter_ready_for_cooking_or_baking.jpg/960px-Fresh_brown_eggs_arranged_in_a_carton_on_wooden_kitchen_counter_ready_for_cooking_or_baking.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c1/Brown-eggs.jpg/960px-Brown-eggs.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0c/Spiral_of_Brown_Eggs.jpg/960px-Spiral_of_Brown_Eggs.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/79/Brown_Eggs_from_Taiwan_%281%29.jpg/960px-Brown_Eggs_from_Taiwan_%281%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/dd/Eggs_in_basket_2020_G1.jpg/960px-Eggs_in_basket_2020_G1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/12/6-Pack-Chicken-Eggs.jpg/960px-6-Pack-Chicken-Eggs.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/x-trung-ga-omega-960.webp",
+      "thumbnailImage": "/media/catalog/x-trung-ga-omega-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/x-trung-ga-omega-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Brown-eggs.jpg",
+          "title": "Brown-eggs.jpg",
+          "license": "Public domain",
+          "artist": "Photos public domain.com",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "x-trung-cut": {
+      "key": "x-trung-cut",
+      "name": "Trứng cút",
+      "originalImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/77/Quail_eggs_%283%29.jpg/960px-Quail_eggs_%283%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "seedGallery": [
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/77/Quail_eggs_%283%29.jpg/960px-Quail_eggs_%283%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ed/Quail_eggs_%282%29.jpg/960px-Quail_eggs_%282%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d4/Quail_Eggs_%284273281025%29.jpg/960px-Quail_Eggs_%284273281025%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4a/5579Flowers_Quail_eggs_03.jpg/960px-5579Flowers_Quail_eggs_03.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/63/Quail_Eggs_%284279000274%29.jpg/960px-Quail_Eggs_%284279000274%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4d/Quail_eggs%2C_Rostov-on-Don%2C_Russia.jpg/960px-Quail_eggs%2C_Rostov-on-Don%2C_Russia.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/x-trung-cut-960.webp",
+      "thumbnailImage": "/media/catalog/x-trung-cut-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/x-trung-cut-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Quail_eggs_(3).jpg",
+          "title": "Quail eggs (3).jpg",
+          "license": "CC0",
+          "artist": "Fumikas Sagisavas",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "x-sua-chua": {
+      "key": "x-sua-chua",
+      "name": "Sữa chua tự nhiên",
+      "originalImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8a/Efsane_yogurt.jpg/960px-Efsane_yogurt.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "seedGallery": [
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8a/Efsane_yogurt.jpg/960px-Efsane_yogurt.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ea/Turkish_strained_yogurt.jpg/960px-Turkish_strained_yogurt.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/98/Sampling_finished_yogurt.jpg/960px-Sampling_finished_yogurt.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0d/Soy_yogurt_image2.jpg/960px-Soy_yogurt_image2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fc/Yoghurt_in_bowl_011715.jpg/960px-Yoghurt_in_bowl_011715.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/57/Yoghurt_in_bowl.jpg/960px-Yoghurt_in_bowl.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/x-sua-chua-960.webp",
+      "thumbnailImage": "/media/catalog/x-sua-chua-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/x-sua-chua-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Efsane_yogurt.jpg",
+          "title": "Efsane yogurt.jpg",
+          "license": "CC BY-SA 4.0",
+          "artist": "E4024",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "x-sua-tuoi": {
+      "key": "x-sua-tuoi",
+      "name": "Sữa tươi thanh trùng Mộc Châu",
+      "originalImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a5/Glass_of_Milk_%2833657535532%29.jpg/960px-Glass_of_Milk_%2833657535532%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "seedGallery": [
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a5/Glass_of_Milk_%2833657535532%29.jpg/960px-Glass_of_Milk_%2833657535532%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/38/Glass_of_milk.jpg/960px-Glass_of_milk.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/63/1948_-_Milk_Bottle_-_Freemans_Dairy_-_Allentown_PA.jpg/960px-1948_-_Milk_Bottle_-_Freemans_Dairy_-_Allentown_PA.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/69/Haribo_milk_bottle.jpg/960px-Haribo_milk_bottle.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c0/1930_-_Milk_Bottle_Top_-_Freemans_Dairy_-_Allentown_PA.jpg/960px-1930_-_Milk_Bottle_Top_-_Freemans_Dairy_-_Allentown_PA.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ad/Glass_of_milk_on_tablecloth.jpg/960px-Glass_of_milk_on_tablecloth.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/x-sua-tuoi-960.webp",
+      "thumbnailImage": "/media/catalog/x-sua-tuoi-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/x-sua-tuoi-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Glass_of_Milk_(33657535532).jpg",
+          "title": "Glass of Milk (33657535532).jpg",
+          "license": "CC BY 2.0",
+          "artist": "NIAID",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "x-pho-mai": {
+      "key": "x-pho-mai",
+      "name": "Phô mai tươi",
+      "originalImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/da/Ricotta_fresca.jpg/960px-Ricotta_fresca.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "seedGallery": [
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/da/Ricotta_fresca.jpg/960px-Ricotta_fresca.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/82/Cottage_Cheese_homemade.jpg/960px-Cottage_Cheese_homemade.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d2/10._cottage_cheese_with_blackberries_%26_cashews_%286902905454%29.jpg/960px-10._cottage_cheese_with_blackberries_%26_cashews_%286902905454%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/50/Ricotta_fresca_%28Wiki_Loves_Sicilia%29.jpg/960px-Ricotta_fresca_%28Wiki_Loves_Sicilia%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/49/Homemade_fresh_cheese_%2822413233226%29.jpg/960px-Homemade_fresh_cheese_%2822413233226%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/x-pho-mai-960.webp",
+      "thumbnailImage": "/media/catalog/x-pho-mai-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/x-pho-mai-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Ricotta_fresca.jpg",
+          "title": "Ricotta fresca.jpg",
+          "license": "CC BY-SA 4.0",
+          "artist": "it:Lasagnolo9",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    },
+    "x-bo-lat": {
+      "key": "x-bo-lat",
+      "name": "Bơ lạt",
+      "originalImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0b/Block_of_butter_2020-09-28_2951b.jpg/960px-Block_of_butter_2020-09-28_2951b.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "seedGallery": [
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0b/Block_of_butter_2020-09-28_2951b.jpg/960px-Block_of_butter_2020-09-28_2951b.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b9/Antoine_Vollon_-_Mound_of_Butter_-_National_Gallery_of_Art.jpg/960px-Antoine_Vollon_-_Mound_of_Butter_-_National_Gallery_of_Art.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/90/Block_of_butter_2020-09-28_2955.jpg/960px-Block_of_butter_2020-09-28_2955.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/16/Block_of_butter_2020-09-28_2945.jpg/960px-Block_of_butter_2020-09-28_2945.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/71/Block_of_butter_2020-09-28_2944.jpg/960px-Block_of_butter_2020-09-28_2944.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "mainImage": "/media/catalog/x-bo-lat-960.webp",
+      "thumbnailImage": "/media/catalog/x-bo-lat-400.webp",
+      "imageCredits": [
+        {
+          "url": "/media/catalog/x-bo-lat-960.webp",
+          "page": "https://commons.wikimedia.org/wiki/File:Block_of_butter_2020-09-28_2951b.jpg",
+          "title": "Block of butter 2020-09-28 2951b.jpg",
+          "license": "CC BY-SA 4.0",
+          "artist": "Salicyna",
+          "modified": "Resized and converted to WebP; original license retained."
+        }
+      ],
+      "review": "illustration"
+    }
+  },
+  "features": [
+    {
+      "originalImage": "https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&q=80&w=1200",
+      "mainImage": "/media/hero.webp",
+      "source": "https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&q=80&w=1200",
+      "license": "Unsplash License",
+      "licenseUrl": "https://unsplash.com/license",
+      "modified": "Resized and converted to WebP from existing project illustration."
+    },
+    {
+      "originalImage": "https://images.unsplash.com/photo-1619566636858-adf3ef46400b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmcnVpdCUyMGJhc2tldHxlbnwxfHx8fDE3ODI4NDkzMjJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "mainImage": "/media/box-fruit.webp",
+      "source": "https://images.unsplash.com/photo-1619566636858-adf3ef46400b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmcnVpdCUyMGJhc2tldHxlbnwxfHx8fDE3ODI4NDkzMjJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "license": "Unsplash License",
+      "licenseUrl": "https://unsplash.com/license",
+      "modified": "Resized and converted to WebP from existing project illustration."
+    },
+    {
+      "originalImage": "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&q=80&w=800",
+      "mainImage": "/media/box-vegetable.webp",
+      "source": "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&q=80&w=800",
+      "license": "Unsplash License",
+      "licenseUrl": "https://unsplash.com/license",
+      "modified": "Resized and converted to WebP from existing project illustration."
+    }
+  ]
+}

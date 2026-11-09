@@ -1,0 +1,45 @@
+{
+  "views": [
+    {
+      "route": "/farms",
+      "width": 320,
+      "overflow": false,
+      "avatarLoaded": true
+    },
+    {
+      "route": "/farms/dau-tay-da-lat",
+      "width": 320,
+      "overflow": false,
+      "avatarLoaded": true
+    },
+    {
+      "route": "/farms",
+      "width": 768,
+      "overflow": false,
+      "avatarLoaded": true
+    },
+    {
+      "route": "/farms/dau-tay-da-lat",
+      "width": 768,
+      "overflow": false,
+      "avatarLoaded": true
+    },
+    {
+      "route": "/farms",
+      "width": 1440,
+      "overflow": false,
+      "avatarLoaded": true
+    },
+    {
+      "route": "/farms/dau-tay-da-lat",
+      "width": 1440,
+      "overflow": false,
+      "avatarLoaded": true
+    }
+  ],
+  "checks": [
+    "All seeded farms have avatar imagery; three slogan headings have no em dash; thumbnails switch and cite sources.",
+    "Vendor upload failure/retry, URL add, select/remove avatar, and save payload verified with mocked writes."
+  ],
+  "errors": []
+}
