@@ -10,3 +10,4 @@ export { Voucher, VOUCHER_TYPES } from './Voucher.js';
 export { Review } from './Review.js';
 export { Shipment, CARRIERS, CARRIER_LABELS, SHIPMENT_STATUSES, SHIPMENT_FLOW } from './Shipment.js';
 export { RecommendHistory } from './RecommendHistory.js';
+export { Article } from './Article.js';

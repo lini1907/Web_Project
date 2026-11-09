@@ -80,6 +80,8 @@ import { CartService } from '../core/services/cart.service';
         <a routerLink="/mystery-box" routerLinkActive="active"><svg class="icon" aria-hidden="true"><use href="icons.svg#box" /></svg> Mystery Box</a>
         <a routerLink="/group-buy" routerLinkActive="active"><svg class="icon" aria-hidden="true"><use href="icons.svg#users" /></svg> Mua chung</a>
         <a routerLink="/farms" routerLinkActive="active"><svg class="icon" aria-hidden="true"><use href="icons.svg#farm" /></svg> Nông trại</a>
+        <a routerLink="/recipes" routerLinkActive="active"><svg class="icon" aria-hidden="true"><use href="icons.svg#leaf" /></svg> Công thức</a>
+        <a routerLink="/blog" routerLinkActive="active"><svg class="icon" aria-hidden="true"><use href="icons.svg#note" /></svg> Blog</a>
         @if (auth.isBuyer()) {
           <a routerLink="/orders" routerLinkActive="active" class="push-right"><svg class="icon" aria-hidden="true"><use href="icons.svg#box" /></svg> Theo dõi đơn</a>
         }

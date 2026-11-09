@@ -10,7 +10,8 @@ import { pathToFileURL, fileURLToPath } from 'node:url';
 import mongoose from 'mongoose';
 import { env } from '../config/env.js';
 import { connectDb } from '../config/db.js';
-import { User, Farm, Product, MysteryBox, Order, GroupBuy, GroupBuyMembership, Cart, Event, AuditLog, Counter, Voucher, Review, Shipment, RecommendHistory } from '../models/index.js';
+import { User, Farm, Product, MysteryBox, Order, GroupBuy, GroupBuyMembership, Cart, Event, AuditLog, Counter, Voucher, Review, Shipment, RecommendHistory, Article } from '../models/index.js';
+import { seedArticles } from './articles.js';
 import { hashPassword } from '../modules/auth/auth.service.js';
 import { slugify } from '../utils/text.js';
 import { rescuePrice, shippingFeeFor } from '../utils/money.js';
@@ -359,12 +360,12 @@ async function seedVouchers() {
 
 export async function runSeed({ reset = false, writeCatalog = !env.isTest } = {}) {
   if (reset) {
-    const collections = [User, Farm, Product, MysteryBox, Order, GroupBuy, GroupBuyMembership, Cart, Event, AuditLog, Counter, Voucher, Review, Shipment, RecommendHistory];
+    const collections = [User, Farm, Product, MysteryBox, Order, GroupBuy, GroupBuyMembership, Cart, Event, AuditLog, Counter, Voucher, Review, Shipment, RecommendHistory, Article];
     for (const M of collections) await M.deleteMany({});
     await mongoose.connection.collection('sessions').deleteMany({}).catch(() => {});
     console.log('Đã xóa dữ liệu cũ.');
   }
-  for (const M of [User, Farm, Product, MysteryBox, Order, GroupBuy, GroupBuyMembership, Cart, Event, AuditLog, Voucher, Review, Shipment, RecommendHistory]) await M.syncIndexes();
+  for (const M of [User, Farm, Product, MysteryBox, Order, GroupBuy, GroupBuyMembership, Cart, Event, AuditLog, Voucher, Review, Shipment, RecommendHistory, Article]) await M.syncIndexes();
 
   const passwordHash = await hashPassword(env.seedPassword);
   const legacyProducts = readJson('products.json');
@@ -378,6 +379,7 @@ export async function runSeed({ reset = false, writeCatalog = !env.isTest } = {}
   await seedGroupBuys(byFarm, productsByLegacy, buyers);
   await seedOrders(productsByLegacy, buyers);
   await seedVouchers();
+  await seedArticles();
   const catalogPath = writeCatalog ? await exportCatalog() : null;
 
   const summary = {

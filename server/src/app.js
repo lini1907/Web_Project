@@ -25,6 +25,8 @@ import voucherRoutes from './modules/vouchers/voucher.routes.js';
 import reviewRoutes from './modules/reviews/review.routes.js';
 import exportRoutes from './modules/exports/export.routes.js';
 import paymentRoutes from './modules/payments/payment.routes.js';
+import articleRoutes from './modules/articles/article.routes.js';
+import chatbotRoutes from './modules/chatbot/chatbot.routes.js';
 import { trackingRouter } from './modules/orders/order.routes.js';
 import { streamHandler } from './services/realtime.js';
 import { requireAuth } from './middleware/auth.js';
@@ -81,7 +83,7 @@ export function createApp({ mongoClient } = {}) {
   api.use('/auth', authRoutes);
   // SSE: luồng thông báo thời gian thực cho người dùng đang đăng nhập.
   api.get('/realtime/stream', requireAuth, streamHandler);
-  for (const r of [productRoutes, farmRoutes, mysteryRoutes, cartRoutes, orderRoutes, groupBuyRoutes, adminRoutes, kpiRoutes, recommendRoutes, uploadRoutes, voucherRoutes, reviewRoutes, exportRoutes, paymentRoutes, trackingRouter]) {
+  for (const r of [productRoutes, farmRoutes, mysteryRoutes, cartRoutes, orderRoutes, groupBuyRoutes, adminRoutes, kpiRoutes, recommendRoutes, uploadRoutes, voucherRoutes, reviewRoutes, exportRoutes, paymentRoutes, trackingRouter, articleRoutes, chatbotRoutes]) {
     api.use(r);
   }
   api.use(notFoundApi);

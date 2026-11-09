@@ -14,6 +14,7 @@ import { AuthService } from '../../core/services/auth.service';
         <a routerLink="/admin/users" routerLinkActive="active"><svg class="icon" aria-hidden="true"><use href="icons.svg#users" /></svg> Tài khoản</a>
         <a routerLink="/admin/vouchers" routerLinkActive="active"><svg class="icon" aria-hidden="true"><use href="icons.svg#tag" /></svg> Mã giảm giá</a>
         <a routerLink="/admin/reviews" routerLinkActive="active"><svg class="icon" aria-hidden="true"><use href="icons.svg#star" /></svg> Đánh giá</a>
+        <a routerLink="/admin/articles" routerLinkActive="active"><svg class="icon" aria-hidden="true"><use href="icons.svg#note" /></svg> Công thức & Blog</a>
         <a routerLink="/admin/audit-logs" routerLinkActive="active"><svg class="icon" aria-hidden="true"><use href="icons.svg#note" /></svg> Nhật ký thao tác</a>
       </aside>
       <section class="dash-main"><router-outlet /></section>
@@ -34,6 +35,7 @@ export const ADMIN_ROUTES: Routes = [
       { path: 'users', loadComponent: () => import('./admin-users.page').then((m) => m.AdminUsersPage), title: 'Tài khoản · Quản trị' },
       { path: 'vouchers', loadComponent: () => import('./admin-vouchers.page').then((m) => m.AdminVouchersPage), title: 'Mã giảm giá · Quản trị' },
       { path: 'reviews', loadComponent: () => import('./admin-reviews.page').then((m) => m.AdminReviewsPage), title: 'Đánh giá · Quản trị' },
+      { path: 'articles', loadComponent: () => import('./admin-articles.page').then((m) => m.AdminArticlesPage), title: 'Công thức & Blog · Quản trị' },
       { path: 'audit-logs', loadComponent: () => import('./admin-audit.page').then((m) => m.AdminAuditPage), title: 'Nhật ký · Quản trị' },
     ],
   },

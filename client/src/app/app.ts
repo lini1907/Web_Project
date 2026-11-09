@@ -4,10 +4,11 @@ import { HeaderComponent } from './layout/header.component';
 import { FooterComponent } from './layout/footer.component';
 import { ToastService } from './core/services/toast.service';
 import { RealtimeService } from './core/services/realtime.service';
+import { ChatWidgetComponent } from './features/content/chat-widget.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HeaderComponent, FooterComponent],
+  imports: [RouterOutlet, HeaderComponent, FooterComponent, ChatWidgetComponent],
   template: `
     <a class="skip-link" href="#main">Bỏ qua tới nội dung</a>
     <app-header />
@@ -15,6 +16,7 @@ import { RealtimeService } from './core/services/realtime.service';
       <router-outlet />
     </main>
     <app-footer />
+    <app-chat-widget />
     <div class="toasts" aria-live="polite">
       @for (t of toast.toasts(); track t.id) {
         <div class="toast" [class]="'toast toast-' + t.kind"><span>{{ t.text }}</span><button type="button" class="icon-btn" (click)="toast.dismiss(t.id)" aria-label="Đóng thông báo"><svg class="icon" aria-hidden="true"><use href="icons.svg#close" /></svg></button></div>

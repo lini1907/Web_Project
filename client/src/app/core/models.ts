@@ -523,3 +523,53 @@ export const PAYMENT_STATUS_LABELS: Record<PaymentStatus, string> = {
   refund_pending: 'Chờ hoàn tiền',
 };
 export const PAYMENT_METHOD_LABELS: Record<PaymentMethod, string> = { cod: 'Thanh toán khi nhận hàng (COD)', vnpay: 'VNPay', momo: 'Ví MoMo' };
+
+// ---------- Trang nội dung ----------
+export type ArticleKind = 'recipe' | 'blog';
+export interface ArticleSummary {
+  id: string;
+  kind: ArticleKind;
+  title: string;
+  slug: string;
+  summary: string;
+  coverImage: string;
+  tags: string[];
+  status: 'draft' | 'published';
+  authorName: string;
+  publishedAt: string | null;
+  views: number;
+  recipe: { servings: number; cookMinutes: number; difficulty: 'easy' | 'medium' | 'hard' } | null;
+  updatedAt: string;
+}
+export interface ArticleDetail extends Omit<ArticleSummary, 'recipe'> {
+  content: string;
+  recipe: (NonNullable<ArticleSummary['recipe']> & { steps: string[]; ingredients: { name: string; amount: string; product: Product | null }[] }) | null;
+}
+export interface ArticleInput {
+  kind: ArticleKind;
+  title: string;
+  summary?: string;
+  coverImage?: string;
+  content?: string;
+  tags?: string[];
+  status?: 'draft' | 'published';
+  recipe?: { servings: number; cookMinutes: number; difficulty: 'easy' | 'medium' | 'hard'; ingredients: { name: string; amount?: string; productId?: string | null }[]; steps: string[] } | null;
+}
+
+// ---------- Chatbot ----------
+export interface ChatProductCard {
+  id: string;
+  slug: string;
+  name: string;
+  price: number;
+  unit: string;
+  image: string;
+  inStock: boolean;
+  farm: string;
+  rescue: { discountRate: number; originalPrice: number } | null;
+}
+export interface ChatReply {
+  reply: string;
+  products: ChatProductCard[];
+  recipes: { slug: string; title: string; summary: string; cookMinutes?: number }[];
+}

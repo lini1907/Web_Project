@@ -28,6 +28,11 @@ export const routes: Routes = [
   { path: 'checkout', canActivate: [authGuard], loadComponent: () => import('./features/cart/checkout.page').then((m) => m.CheckoutPage), title: 'Thanh toán · FarmTable' },
   { path: 'orders', canActivate: [authGuard], loadComponent: () => import('./features/orders/orders.page').then((m) => m.OrdersPage), title: 'Đơn hàng của tôi · FarmTable' },
   { path: 'orders/:id', canActivate: [authGuard], loadComponent: () => import('./features/orders/order-detail.page').then((m) => m.OrderDetailPage), title: 'Theo dõi đơn hàng · FarmTable' },
+  // Trang nội dung
+  { path: 'recipes', loadComponent: () => import('./features/content/articles.page').then((m) => m.ArticlesPage), data: { kind: 'recipe' }, title: 'Công thức nấu ăn · FarmTable' },
+  { path: 'recipes/:slug', loadComponent: () => import('./features/content/article-detail.page').then((m) => m.ArticleDetailPage) },
+  { path: 'blog', loadComponent: () => import('./features/content/articles.page').then((m) => m.ArticlesPage), data: { kind: 'blog' }, title: 'Blog · FarmTable' },
+  { path: 'blog/:slug', loadComponent: () => import('./features/content/article-detail.page').then((m) => m.ArticleDetailPage) },
   { path: 'tracking', loadComponent: () => import('./features/orders/tracking.page').then((m) => m.TrackingPage), title: 'Tra cứu vận đơn · FarmTable' },
   { path: 'track-order', redirectTo: 'tracking' },
 
