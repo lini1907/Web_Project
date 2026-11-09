@@ -6,7 +6,7 @@
  */
 import fs from 'node:fs';
 import path from 'node:path';
-import { pathToFileURL } from 'node:url';
+import { pathToFileURL, fileURLToPath } from 'node:url';
 import mongoose from 'mongoose';
 import { env } from '../config/env.js';
 import { connectDb } from '../config/db.js';
@@ -16,10 +16,16 @@ import { slugify } from '../utils/text.js';
 import { rescuePrice, shippingFeeFor } from '../utils/money.js';
 import { buildSearchText } from '../modules/products/product.service.js';
 import { FARM_META, LEGACY_VENDOR_BY_FARM, EXCLUDED_FARMS, rescueReason } from './farm-meta.js';
+import { EXTRA_PRODUCTS, EXTRA_FARM_META } from './extra-products.js';
 import { exportCatalog } from './export-catalog.js';
 
 const LEGACY_DIR = path.resolve(env.root, '..', 'FarmTable', 'XML+Json');
 const readJson = (f) => JSON.parse(fs.readFileSync(path.join(LEGACY_DIR, f), 'utf8'));
+// Ảnh bổ sung (Wikimedia Commons, nhóm chọn tay) — key: 'x-...' cho sản phẩm mới, 'legacy:<id>' cho sản phẩm kế thừa.
+const IMAGE_FILE = path.join(path.dirname(fileURLToPath(import.meta.url)), 'data', 'product-images.json');
+const EXTRA_IMAGES = fs.existsSync(IMAGE_FILE) ? JSON.parse(fs.readFileSync(IMAGE_FILE, 'utf8')).products : {};
+const imagesFor = (key) => EXTRA_IMAGES[key] || [];
+const creditsOf = (imgs) => imgs.map(({ url, artist, license, page }) => ({ url, artist, license, page }));
 const DAY = 86400000;
 
 // Tồn kho demo xác định (không ngẫu nhiên) để chạy lại cho cùng kết quả.
@@ -75,7 +81,7 @@ async function seedVendorsAndFarms(passwordHash, farmNames) {
   const allFarms = [...new Set([...farmNames, ...legacyVendors.map((v) => v.name)])];
   for (const farmName of allFarms) {
     const legacy = legacyVendors.find((v) => v.id === LEGACY_VENDOR_BY_FARM[farmName] || v.name === farmName);
-    const meta = FARM_META[farmName] || { province: '', certifications: [], story: '' };
+    const meta = FARM_META[farmName] || EXTRA_FARM_META[farmName] || { province: '', certifications: [], story: '' };
     const slug = slugify(farmName);
     const email = legacy?.email || `${slug}@farmtable.vn`;
     const pending = legacy?.status === 'Chờ duyệt';
@@ -110,6 +116,7 @@ async function seedProducts(legacyProducts, byFarm) {
     if (EXCLUDED_FARMS.includes(lp.farm) || lp.badge === 'Bí ẩn') continue;
     const { vendor, farm } = byFarm.get(lp.farm);
     const isRescue = lp.badge === 'Giải cứu' && lp.oldPrice;
+    const extra = imagesFor(`legacy:${lp.id}`);
     const doc = {
       vendorId: vendor._id,
       farmId: farm._id,
@@ -118,7 +125,8 @@ async function seedProducts(legacyProducts, byFarm) {
       unit: lp.unit,
       certifications: lp.certifications || [],
       mainImage: lp.mainImage,
-      galleryImages: lp.galleryImages || [],
+      galleryImages: [...(lp.galleryImages || []), ...extra.map((x) => x.url)],
+      imageCredits: creditsOf(extra),
       description: lp.description,
       rating: lp.rating,
       reviewCount: lp.reviewCount,
@@ -149,6 +157,33 @@ async function seedProducts(legacyProducts, byFarm) {
     productsByLegacy.set(lp.id, p);
   }
   return productsByLegacy;
+}
+
+/** Sản phẩm bổ sung của bản v2 (extra-products.js): hàng thường, mỗi sản phẩm 1 ảnh chính + nhiều ảnh phụ. */
+async function seedExtraProducts(byFarm) {
+  for (const [i, x] of EXTRA_PRODUCTS.entries()) {
+    const { vendor, farm } = byFarm.get(x.farm);
+    const imgs = imagesFor(x.key);
+    const doc = {
+      vendorId: vendor._id,
+      farmId: farm._id,
+      name: x.name,
+      category: x.category,
+      type: 'regular',
+      rescue: null,
+      price: x.price,
+      unit: x.unit,
+      certifications: x.certifications,
+      mainImage: imgs[0]?.url || '',
+      galleryImages: imgs.slice(1).map((m) => m.url),
+      imageCredits: creditsOf(imgs),
+      description: x.description,
+      legacyId: x.key,
+    };
+    doc.searchText = buildSearchText(doc, farm.name);
+    // Tồn kho demo xác định theo thứ tự để chạy lại cho cùng kết quả; sản phẩm mới chưa có đánh giá/lượt bán.
+    await upsert(Product, { legacyId: x.key }, doc, { slug: slugify(x.name), stock: 15 + ((i * 29) % 70), reservedStock: 0, soldCount: 0, isActive: true });
+  }
 }
 
 async function seedMysteryBoxes(legacyProducts, byFarm, productsByLegacy) {
@@ -322,11 +357,12 @@ export async function runSeed({ reset = false, writeCatalog = !env.isTest } = {}
 
   const passwordHash = await hashPassword(env.seedPassword);
   const legacyProducts = readJson('products.json');
-  const farmNames = [...new Set(legacyProducts.map((p) => p.farm))].filter((f) => !EXCLUDED_FARMS.includes(f));
+  const farmNames = [...new Set([...legacyProducts.map((p) => p.farm), ...EXTRA_PRODUCTS.map((p) => p.farm)])].filter((f) => !EXCLUDED_FARMS.includes(f));
 
   const buyers = await seedUsers(passwordHash);
   const byFarm = await seedVendorsAndFarms(passwordHash, farmNames);
   const productsByLegacy = await seedProducts(legacyProducts, byFarm);
+  await seedExtraProducts(byFarm);
   await seedMysteryBoxes(legacyProducts, byFarm, productsByLegacy);
   await seedGroupBuys(byFarm, productsByLegacy, buyers);
   await seedOrders(productsByLegacy, buyers);

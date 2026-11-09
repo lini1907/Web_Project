@@ -38,6 +38,11 @@ const productSchema = new mongoose.Schema(
     certifications: { type: [String], default: [] },
     mainImage: { type: String, default: '' },
     galleryImages: { type: [String], default: [] },
+    // Ghi nguồn cho ảnh giấy phép mở (CC BY/BY-SA yêu cầu ghi tác giả). Ảnh nhà bán tự tải lên không cần.
+    imageCredits: {
+      type: [{ url: String, artist: String, license: String, page: String, _id: false }],
+      default: [],
+    },
     description: { type: String, default: '' },
     // Số liệu hiển thị kế thừa từ bản HTML cũ — là dữ liệu demo, không dùng làm KPI.
     rating: { type: Number, default: 0 },

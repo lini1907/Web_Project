@@ -40,6 +40,7 @@ export function toPublicProduct(p) {
     certifications: p.certifications || [],
     mainImage: p.mainImage || '',
     galleryImages: p.galleryImages || [],
+    imageCredits: (p.imageCredits || []).map((c) => ({ url: c.url, artist: c.artist || '', license: c.license || '', page: c.page || '' })),
     description: p.description || '',
     rescue: p.type === 'rescue' && p.rescue
       ? {

@@ -53,14 +53,15 @@ cd ml && python evaluate.py    # Precision@5, Recall@5, nDCG@5, coverage, độ 
 cd server && npm run backup    # sao lưu; khôi phục: npm run restore -- backups/<file>.json
 ```
 
-Kết quả đánh giá gợi ý (35 sản phẩm, 26 truy vấn có nhãn độc lập — `ml/eval/labels.json`):
+Kết quả đánh giá gợi ý (89 sản phẩm, 26 truy vấn có nhãn — `ml/eval/labels.json`):
 
 | Phương pháp | Precision@5 | Recall@5 | nDCG@5 | Coverage |
 |---|---|---|---|---|
-| Cơ sở: cùng danh mục + bán chạy | 0.246 | 0.504 | 0.396 | 57% |
-| TF-IDF tên + mô tả | 0.269 | 0.617 | 0.584 | 100% |
-| **TF-IDF đầy đủ đặc trưng (mô hình dùng)** | **0.392** | **0.824** | **0.747** | **100%** |
+| Cơ sở: cùng danh mục + bán chạy | 0.246 | 0.504 | 0.396 | 27% |
+| TF-IDF tên + mô tả | 0.208 | 0.501 | 0.485 | 99% |
+| **TF-IDF đầy đủ đặc trưng (mô hình dùng)** | **0.262** | **0.586** | **0.518** | **100%** |
 
+Lưu ý: nhãn được viết khi catalog còn 35 sản phẩm, chưa gồm 54 sản phẩm bổ sung, nên sản phẩm mới đúng loại vẫn bị tính là "không liên quan" — số đo thấp hơn thực tế; cần bổ sung nhãn để đánh giá lại.
 Giới hạn: catalog nhỏ (35 sản phẩm), nhãn do nhóm gán; Precision@5 có trần < 1 vì mỗi truy vấn chỉ có 1–5 sản phẩm liên quan.
 Dịch vụ ML tắt hoặc chậm hơn 1,5 s ⇒ API tự trả phương pháp cơ sở và ghi rõ `source: "fallback"`.
 
