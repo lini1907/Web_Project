@@ -13,7 +13,7 @@ import { ImgFallbackDirective } from '../../shared/img-fallback.directive';
     <section class="band band-orange">
       <div class="container band-inner">
         <div>
-          <h1>Rủ nhau mua — đủ người là chốt giá nhóm</h1>
+          <h1>Rủ nhau mua, cùng nhận giá tốt</h1>
           <p>Tham gia là <b>cam kết mua</b>, chưa phải trả tiền. Khi chiến dịch đạt ngưỡng, hệ thống tự tạo đơn COD giá nhóm cho từng thành viên. Không đạt ngưỡng thì cam kết được hủy, không mất phí.</p>
         </div>
       </div>

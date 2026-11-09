@@ -28,7 +28,7 @@ import { RouterLink } from '@angular/router';
           <h4>Hỗ trợ</h4>
           <span>Thanh toán: COD (tiền mặt khi nhận hàng)</span>
           <span>Phí ship 20.000đ · miễn phí từ 200.000đ</span>
-          <span>Hotline demo: 1900 0000</span>
+          <a routerLink="/farms">Thông tin nhà bán và nguồn hàng</a>
         </div>
       </div>
       <div class="footer-bottom">

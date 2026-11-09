@@ -7,7 +7,7 @@ import { authGuard, guestGuard, roleGuard } from './core/guards';
  *  - Vendor, Admin: lazy-load cả nhóm route (loadChildren) + canMatch theo vai trò
  */
 export const routes: Routes = [
-  { path: '', loadComponent: () => import('./features/home/home.page').then((m) => m.HomePage), title: 'FarmTable — Nông sản sạch từ nhà vườn' },
+  { path: '', loadComponent: () => import('./features/home/home.page').then((m) => m.HomePage), title: 'FarmTable | Nông sản sạch từ nhà vườn' },
   { path: 'home', redirectTo: '', pathMatch: 'full' },
 
   // Danh mục & sản phẩm (query params: q, category, farm, type, sort, page)

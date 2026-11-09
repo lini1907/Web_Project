@@ -47,7 +47,7 @@ Ngày 09/11/2026 · nhánh `feat/v2-fullstack` · mốc trước chỉnh sửa: 
 
 ## Những phần chưa thể coi là hoàn tất để bán thật
 
-1. **Ảnh catalog cần biên tập lại.** Quan sát thấy ảnh quả dạng dưa dùng cho “Dâu lỗi nứt vỏ giải cứu”, ảnh rùa dưới nước dùng cho “Cá basa tươi sống”, ảnh món gà chế biến dùng cho “Ức gà thả vườn”. Ảnh cam trầy dùng ảnh quả đẹp; nhiều hàng giải cứu chưa có ảnh thể hiện tình trạng thực tế. Cần thay ảnh đúng loại/đúng lô và đồng bộ ánh sáng, nền, tỷ lệ. Không dùng CSS hoặc một ảnh tạo mới để che lỗi dữ liệu. Trang chi tiết có nhãn ảnh minh họa, nhưng nhãn này không thay thế việc sửa ảnh sai loại.
+1. **Ảnh catalog cần biên tập lại.** Lỗi rõ ràng ban đầu gồm ảnh rùa dưới nước dùng cho “Cá basa tươi sống” và ảnh món gà chế biến dùng cho “Ức gà thả vườn”. Đính chính: sản phẩm “Dưa lưới nứt vỏ giải cứu” đã bị đọc nhầm thành “Dâu” trong nhận xét ảnh trước đó; hình quả dưa phù hợp với loại hàng này. Ảnh cam trầy vẫn chỉ là minh họa; nhiều hàng giải cứu chưa có ảnh thể hiện tình trạng thực tế. Lượt nâng cấp tiếp theo đã biên tập lại ảnh và lưu nguồn trong [storefront-upgrade](storefront-upgrade/README.md); ảnh lô hàng thật vẫn cần nhà bán bổ sung.
 2. **Nguồn gốc/chứng nhận.** Các nhãn VietGAP/hữu cơ và câu chuyện nông trại đang dựa trên dữ liệu demo. Cần giấy tờ/đường dẫn kiểm chứng nếu bán thật. Nông trại hiện chủ yếu dùng avatar chữ cái; nên bổ sung ảnh nhà vườn thật khi có dữ liệu.
 3. **Đánh giá/lượt bán/hotline vẫn là demo.** Đã giữ thông tin giải thích, không tạo testimonial hoặc số liệu xã hội mới.
 4. **Ảnh/font bên ngoài.** Giao diện vẫn phụ thuộc Unsplash, Wikimedia và Google Fonts. Cần lưu trữ ảnh có quyền sử dụng, tối ưu kích thước và quản lý font khi triển khai production.

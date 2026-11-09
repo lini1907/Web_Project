@@ -59,6 +59,9 @@ import { StateComponent } from '../../shared/ui';
           </label>
         </div>
         <label>Mô tả<textarea class="input" rows="4" formControlName="description"></textarea></label>
+        <label>Quy cách đóng gói<textarea class="input" rows="2" formControlName="packagingNote" maxlength="500" placeholder="Mô tả đúng trọng lượng, bao bì và cách sơ chế của hàng thực tế"></textarea></label>
+        <label>Hướng dẫn bảo quản<textarea class="input" rows="2" formControlName="storageNote" maxlength="500" placeholder="Ghi theo nhãn sản phẩm hoặc hướng dẫn đã xác nhận"></textarea></label>
+        <label>Thông tin giao hàng<textarea class="input" rows="2" formControlName="deliveryNote" maxlength="500" placeholder="Chỉ nêu khu vực và lịch giao mà bạn có thể đáp ứng"></textarea></label>
 
         <div class="fieldset">
           <div class="row-between"><b>Chứng nhận</b><button type="button" class="btn btn-outline btn-xs" (click)="addCert()">+ Thêm</button></div>
@@ -100,14 +103,14 @@ import { StateComponent } from '../../shared/ui';
               }
             </div>
           }
-          @if (galleryInvalid()) { <span class="field-error">Có ảnh phụ với URL không hợp lệ (phải bắt đầu bằng https:// hoặc /uploads/)</span> }
+          @if (galleryInvalid()) { <span class="field-error">Có ảnh phụ với URL không hợp lệ (phải bắt đầu bằng https://, /uploads/ hoặc /media/)</span> }
           @if (e('galleryImages')) { <span class="field-error">{{ e('galleryImages') }}</span> }
           @if (gallery.length < maxGallery) {
             <div class="row-gap">
               <input class="input grow" [formControl]="newImageUrl" placeholder="Dán URL ảnh phụ rồi bấm Thêm" (keydown.enter)="$event.preventDefault(); addGalleryUrl()" />
               <button type="button" class="btn btn-outline btn-sm" (click)="addGalleryUrl()" [disabled]="newImageUrl.invalid || !newImageUrl.value">+ Thêm</button>
             </div>
-            @if (newImageUrl.invalid && newImageUrl.dirty) { <span class="field-error">URL ảnh phải bắt đầu bằng https:// hoặc /uploads/</span> }
+            @if (newImageUrl.invalid && newImageUrl.dirty) { <span class="field-error">URL ảnh phải bắt đầu bằng https://, /uploads/ hoặc /media/</span> }
             <label class="btn btn-outline btn-sm file-btn"><svg class="icon" aria-hidden="true"><use href="icons.svg#upload" /></svg> Tải nhiều ảnh phụ (tối đa {{ maxGallery - gallery.length }})
               <input type="file" accept="image/jpeg,image/png,image/webp" multiple (change)="uploadGallery($event)" hidden />
             </label>
@@ -145,7 +148,7 @@ export class VendorProductFormPage {
   protected certs = new FormArray<FormControl<string>>([]);
   /** Ảnh phụ: FormArray để thêm/xóa/sắp xếp; API nhận tối đa 8 ảnh. */
   protected readonly maxGallery = 8;
-  private readonly imageUrl = Validators.pattern(/^(https?:\/\/|\/uploads\/)\S+$/);
+  private readonly imageUrl = Validators.pattern(/^(https?:\/\/|\/(?:uploads|media)\/)\S+$/);
   protected gallery = new FormArray<FormControl<string>>([]);
   protected newImageUrl = new FormControl('', { nonNullable: true, validators: [this.imageUrl] });
   protected form = this.fb.nonNullable.group({
@@ -157,6 +160,9 @@ export class VendorProductFormPage {
     unit: ['kg', [Validators.required, Validators.maxLength(30)]],
     stock: [0, [Validators.required, Validators.min(0)]],
     description: [''],
+    packagingNote: ['', Validators.maxLength(500)],
+    storageNote: ['', Validators.maxLength(500)],
+    deliveryNote: ['', Validators.maxLength(500)],
     mainImage: ['', [this.imageUrl]],
     isActive: [true],
     certifications: this.certs,
@@ -197,6 +203,9 @@ export class VendorProductFormPage {
               unit: p.unit,
               stock: p.stock,
               description: p.description,
+              packagingNote: p.packagingNote || '',
+              storageNote: p.storageNote || '',
+              deliveryNote: p.deliveryNote || '',
               mainImage: p.mainImage,
               isActive: p.isActive,
             });
@@ -222,7 +231,7 @@ export class VendorProductFormPage {
     if (c.errors['required']) return 'Bắt buộc nhập';
     if (c.errors['min']) return `Tối thiểu ${c.errors['min'].min}`;
     if (c.errors['minlength']) return `Tối thiểu ${c.errors['minlength'].requiredLength} ký tự`;
-    if (c.errors['pattern']) return 'URL ảnh phải bắt đầu bằng https:// hoặc /uploads/';
+    if (c.errors['pattern']) return 'URL ảnh phải bắt đầu bằng https://, /uploads/ hoặc /media/';
     return 'Không hợp lệ';
   }
 

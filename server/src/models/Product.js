@@ -44,6 +44,9 @@ const productSchema = new mongoose.Schema(
       default: [],
     },
     description: { type: String, default: '' },
+    packagingNote: { type: String, default: '', maxlength: 500 },
+    storageNote: { type: String, default: '', maxlength: 500 },
+    deliveryNote: { type: String, default: '', maxlength: 500 },
     // Số liệu hiển thị kế thừa từ bản HTML cũ — là dữ liệu demo, không dùng làm KPI.
     rating: { type: Number, default: 0 },
     reviewCount: { type: Number, default: 0 },

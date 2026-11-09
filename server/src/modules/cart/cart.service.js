@@ -3,6 +3,7 @@ import { Cart, Product, MysteryBox, User } from '../../models/index.js';
 import { Errors } from '../../utils/AppError.js';
 import { shippingFeeFor, FREE_SHIPPING_FROM, SHIPPING_FEE } from '../../utils/money.js';
 import { availableStock, purchasableReason, isRescueActive } from '../products/product.dto.js';
+import { productMedia } from '../products/product-media.js';
 import { boxesAvailable } from '../mystery/mystery.service.js';
 
 const WARN_MESSAGES = {
@@ -48,7 +49,7 @@ export async function resolveLines(items, session = null) {
         productId: String(item.productId),
         name: p?.name || 'Sản phẩm không còn tồn tại',
         slug: p?.slug,
-        image: p?.mainImage || '',
+        image: p ? productMedia(p).thumbnailImage : '',
         unit: p?.unit || '',
         unitPrice: p?.price || 0,
         qty: item.qty,

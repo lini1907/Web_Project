@@ -62,20 +62,22 @@ import { StateComponent } from '../../shared/ui';
           <aside class="card summary">
             <h2>Đơn hàng ({{ c.itemCount }} món)</h2>
             @for (l of c.items; track l.id) {
-              <div class="row-between small"><span class="line-clamp-1">{{ l.qty }} × {{ l.name }}</span><span>{{ l.lineTotal | money }}</span></div>
+              <div class="checkout-item"><div><b>{{ l.name }}</b><span class="muted small">{{ l.qty }} {{ l.unit }} × {{ l.unitPrice | money }}</span></div><strong>{{ l.lineTotal | money }}</strong></div>
             }
             <hr />
             <div class="row-between"><span>Tạm tính</span><b>{{ c.subtotal | money }}</b></div>
             <div class="row-between"><span>Phí giao hàng</span><b>{{ c.shippingFee === 0 ? 'Miễn phí' : (c.shippingFee | money) }}</b></div>
             <div class="row-between total"><span>Tổng thanh toán</span><b>{{ c.total | money }}</b></div>
             @if (priceChanged()) {
-              <div class="note note-danger">Giá hoặc phí ship vừa thay đổi. Tổng mới: <b>{{ c.total | money }}</b>. Vui lòng kiểm tra và bấm đặt hàng lại.</div>
+              <div class="note note-danger" role="alert" tabindex="-1" data-submit-error>Giá hoặc phí ship vừa thay đổi. Tổng mới: <b>{{ c.total | money }}</b>. Vui lòng kiểm tra và bấm đặt hàng lại.</div>
             }
+            @if (submitError()) { <div class="note note-danger" role="alert" tabindex="-1" data-submit-error>{{ submitError() }}</div> }
             @if (c.hasIssues) { <div class="field-error">Giỏ có sản phẩm không hợp lệ. <a routerLink="/cart">Quay lại giỏ hàng</a></div> }
             <button type="submit" class="btn btn-primary btn-block btn-lg" [disabled]="submitting() || c.hasIssues">
-              {{ submitting() ? 'Đang đặt hàng...' : 'Đặt hàng (COD)' }}
+              {{ submitting() ? 'Đang xác nhận đơn...' : 'Đặt hàng (COD)' }}
             </button>
             <p class="small muted">Bấm đặt hàng nghĩa là bạn đồng ý thanh toán {{ c.total | money }} khi nhận hàng.</p>
+            <p class="small muted">Lịch giao sẽ cần được xác nhận với nhà bán. Bạn có thể hủy khi nhà bán chưa xác nhận đơn.</p>
           </aside>
         </form>
       }
@@ -94,6 +96,7 @@ export class CheckoutPage {
   protected cart = signal<Cart | null>(null);
   protected submitting = signal(false);
   protected priceChanged = signal(false);
+  protected submitError = signal<string | null>(null);
   protected model = { name: '', phone: '', address: '', note: '', saveAddress: true };
   private idemKey = newIdempotencyKey();
 
@@ -121,6 +124,8 @@ export class CheckoutPage {
       return;
     }
     this.submitting.set(true);
+    this.submitError.set(null);
+    this.priceChanged.set(false);
     const shippingAddress = { name: this.model.name.trim(), phone: this.model.phone.trim(), address: this.model.address.trim() };
     this.orders.place({ shippingAddress, note: this.model.note.trim() || undefined, expectedTotal: c.total }, this.idemKey).subscribe({
       next: async (order) => {
@@ -132,16 +137,15 @@ export class CheckoutPage {
       error: async (e) => {
         const err = ApiError.from(e);
         this.submitting.set(false);
+        this.submitError.set(err.code === 'PRICE_CHANGED' ? null : err.status === 0 ? 'Chưa xác nhận được kết quả đặt hàng. Bạn có thể thử lại; hệ thống sẽ kiểm tra để tránh tạo đơn trùng.' : err.message);
+        requestAnimationFrame(() => this.host.nativeElement.querySelector<HTMLElement>('[data-submit-error]')?.focus());
         // Lỗi nghiệp vụ (4xx) chắc chắn chưa tạo đơn => dùng khóa mới. Lỗi mạng/5xx giữ khóa cũ để bấm lại không tạo đơn trùng.
         if (err.status >= 400 && err.status < 500) this.idemKey = newIdempotencyKey();
         if (err.code === 'PRICE_CHANGED') {
           this.priceChanged.set(true);
           await this.loadCart();
         } else if (err.code === 'OUT_OF_STOCK' || err.code === 'RESCUE_EXPIRED') {
-          this.toast.error(err.message);
           await this.loadCart();
-        } else {
-          this.toast.error(err.message);
         }
       },
     });

@@ -16,9 +16,9 @@ class Issue extends Error {
 
 const isMissing = (val) => val === undefined || val === null || val === '';
 
-function wrap(check, { optional = false, nullable = false, def } = {}) {
+function wrap(check, { optional = false, nullable = false, allowEmpty = false, def } = {}) {
   const rule = (value, path) => {
-    if (isMissing(value)) {
+    if (isMissing(value) && !(allowEmpty && value === '')) {
       if (def !== undefined) return typeof def === 'function' ? def() : def;
       if (value === null && nullable) return null;
       if (optional || nullable) return undefined;
@@ -26,9 +26,9 @@ function wrap(check, { optional = false, nullable = false, def } = {}) {
     }
     return check(value, path);
   };
-  rule.optional = () => wrap(check, { optional: true, nullable, def });
-  rule.nullable = () => wrap(check, { optional: true, nullable: true, def });
-  rule.default = (d) => wrap(check, { optional, nullable, def: d });
+  rule.optional = () => wrap(check, { optional: true, nullable, allowEmpty, def });
+  rule.nullable = () => wrap(check, { optional: true, nullable: true, allowEmpty, def });
+  rule.default = (d) => wrap(check, { optional, nullable, allowEmpty, def: d });
   return rule;
 }
 
@@ -95,13 +95,14 @@ export const v = {
       if (Number.isNaN(d.getTime())) throw new Issue(path, 'Ngày không hợp lệ');
       return d;
     }),
-  url: () =>
+  url: ({ allowEmpty = false } = {}) =>
     wrap((value, path) => {
       if (typeof value !== 'string') throw new Issue(path, 'Phải là chuỗi');
       const s = value.trim();
-      if (!/^(https?:\/\/|\/uploads\/)\S+$/.test(s) || s.length > 1000) throw new Issue(path, 'URL ảnh không hợp lệ');
+      if (allowEmpty && s === '') return s;
+      if (!/^(https?:\/\/|\/(?:uploads|media)\/)\S+$/.test(s) || s.length > 1000) throw new Issue(path, 'URL ảnh không hợp lệ');
       return s;
-    }),
+    }, { allowEmpty }),
   array: (item, { min = 0, max = 100 } = {}) =>
     wrap((value, path) => {
       if (!Array.isArray(value)) throw new Issue(path, 'Phải là danh sách');

@@ -1,3 +1,5 @@
+import { productMedia } from './product-media.js';
+
 /**
  * DTO công khai của sản phẩm. Tách dữ liệu nội bộ (reservedStock, searchText, vendorId thô...)
  * khỏi dữ liệu trả cho trình duyệt.
@@ -38,10 +40,12 @@ export function toPublicProduct(p) {
     farm: farmRef(p.farmId),
     vendorId: String(p.vendorId?._id || p.vendorId),
     certifications: p.certifications || [],
-    mainImage: p.mainImage || '',
-    galleryImages: p.galleryImages || [],
-    imageCredits: (p.imageCredits || []).map((c) => ({ url: c.url, artist: c.artist || '', license: c.license || '', page: c.page || '' })),
+    ...productMedia(p),
+    isDemo: !!p.legacyId,
     description: p.description || '',
+    packagingNote: p.packagingNote || '',
+    storageNote: p.storageNote || '',
+    deliveryNote: p.deliveryNote || '',
     rescue: p.type === 'rescue' && p.rescue
       ? {
           originalPrice: p.rescue.originalPrice,

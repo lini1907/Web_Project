@@ -10,6 +10,7 @@ const farmSchema = new mongoose.Schema(
     story: { type: String, default: '' },
     certifications: { type: [String], default: [] },
     images: { type: [String], default: [] },
+    avatarUrl: { type: String, default: '' },
     status: { type: String, enum: ['active', 'hidden'], default: 'active' },
   },
   { timestamps: true },

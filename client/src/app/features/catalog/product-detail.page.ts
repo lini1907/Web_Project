@@ -1,4 +1,4 @@
-import { Component, computed, effect, inject, input, signal } from '@angular/core';
+import { Component, DestroyRef, computed, effect, inject, input, signal } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { Title } from '@angular/platform-browser';
 import { Router, RouterLink } from '@angular/router';
@@ -10,6 +10,7 @@ import { CategoryLabelPipe, MoneyPipe, TimeLeftPipe } from '../../shared/pipes';
 import { QtyComponent, StateComponent } from '../../shared/ui';
 import { ImgFallbackDirective } from '../../shared/img-fallback.directive';
 import { SimilarProductsComponent } from '../recommend/recommend.components';
+import { StorefrontService } from '../../core/services/storefront.service';
 
 /** Chi tiết sản phẩm theo slug (route /products/:slug — slug thân thiện SEO). */
 @Component({
@@ -27,7 +28,7 @@ import { SimilarProductsComponent } from '../recommend/recommend.components';
         <div class="detail">
           <div class="gallery" (keydown.arrowleft)="step(-1)" (keydown.arrowright)="step(1)">
             <div class="gallery-main">
-              <img [src]="activeImage()" [alt]="p.name + ' — ảnh ' + (activeIndex() + 1)" appImgFallback />
+              <img [src]="activeImage()" [alt]="p.name + ' — ảnh ' + (activeIndex() + 1)" width="960" height="960" fetchpriority="high" appImgFallback />
               @if (images().length > 1) {
                 <button type="button" class="gallery-nav prev" (click)="step(-1)" aria-label="Ảnh trước"><svg class="icon" aria-hidden="true"><use href="icons.svg#chevron-left" /></svg></button>
                 <button type="button" class="gallery-nav next" (click)="step(1)" aria-label="Ảnh sau"><svg class="icon" aria-hidden="true"><use href="icons.svg#chevron-right" /></svg></button>
@@ -42,10 +43,10 @@ import { SimilarProductsComponent } from '../recommend/recommend.components';
                 }
               </div>
             }
-            <p class="photo-credit">Ảnh minh họa sản phẩm; hình thức thực tế có thể khác.</p>
+            <p class="photo-credit">{{ p.photoStatus === 'needs-photo' ? 'Chưa có ảnh đúng loại hàng. Nhà bán cần bổ sung ảnh thực tế.' : p.photoStatus === 'illustration' ? 'Ảnh minh họa đúng nhóm thực phẩm; không thể hiện lô hàng, giống hoặc tình trạng thực tế.' : 'Ảnh do nhà bán cung cấp. Hình thức thực tế có thể khác.' }}</p>
             @if (activeCredit(); as c) {
               <p class="photo-credit">Ảnh: {{ c.artist || 'không rõ tác giả' }} · {{ c.license }} ·
-                <a [href]="c.page" target="_blank" rel="noopener noreferrer">Wikimedia Commons</a></p>
+                <a [href]="c.page" target="_blank" rel="noopener noreferrer">Nguồn ảnh</a>@if (c.licenseUrl) { · <a [href]="c.licenseUrl" target="_blank" rel="noopener noreferrer">Giấy phép</a> }@if (c.modified) { · Đã đổi kích thước và định dạng WebP. }</p>
             }
           </div>
           <div class="detail-info">
@@ -55,7 +56,8 @@ import { SimilarProductsComponent } from '../recommend/recommend.components';
             <h1>{{ p.name }}</h1>
             <div class="muted">
               @if (p.farm) { <a [routerLink]="['/farms', p.farm.slug]"><svg class="icon" aria-hidden="true"><use href="icons.svg#farm" /></svg> {{ p.farm.name }}</a> · {{ p.farm.province }} · }
-              <svg class="icon" aria-hidden="true"><use href="icons.svg#star" /></svg> {{ p.rating }} ({{ p.reviewCount }} đánh giá demo) · đã bán {{ p.soldCount }}
+              @if (p.isDemo) { <span class="demo-label">Dữ liệu mẫu · chưa phải hồ sơ nhà bán đã xác minh</span> }
+              @else if (p.reviewCount > 0) { <svg class="icon" aria-hidden="true"><use href="icons.svg#star" /></svg> {{ p.rating }} ({{ p.reviewCount }} đánh giá) }
             </div>
             <div class="detail-price" [class.rescue]="isRescue()">
               {{ p.price | money }} <small>/ {{ p.unit }}</small>
@@ -64,17 +66,19 @@ import { SimilarProductsComponent } from '../recommend/recommend.components';
               }
             </div>
             @if (p.rescue) {
-              <div class="note" [class.note-danger]="p.rescue.expired">
-                @if (p.rescue.expired) {
+              <div class="note" [class.note-danger]="rescueEnded()">
+                @if (rescueEnded()) {
                   <svg class="icon" aria-hidden="true"><use href="icons.svg#alert" /></svg> Hàng giải cứu đã hết hạn bán ({{ p.rescue.expiresAt | date: 'dd/MM/yyyy HH:mm' }}).
                 } @else {
                   <svg class="icon" aria-hidden="true"><use href="icons.svg#clock" /></svg> Giá giải cứu áp dụng đến {{ p.rescue.expiresAt | date: 'HH:mm dd/MM/yyyy' }} ({{ p.rescue.expiresAt | timeLeft }}). Giá do hệ thống tính từ giá gốc.
                 }
               </div>
             }
-            <div class="certs">
-              @for (c of p.certifications; track c) { <span class="tag"><svg class="icon" aria-hidden="true"><use href="icons.svg#check" /></svg> {{ c }}</span> }
-            </div>
+            <dl class="product-facts">
+              <div><dt>Đơn vị bán</dt><dd>1 {{ p.unit }}</dd></div>
+              <div><dt>Quy cách</dt><dd>{{ p.packagingNote || 'Chưa có mô tả đóng gói chi tiết từ nhà bán.' }}</dd></div>
+              <div><dt>Nguồn hàng</dt><dd>{{ p.farm?.province || 'Nhà bán chưa cung cấp địa phương.' }}</dd></div>
+            </dl>
             <div class="stock-line">
               @if (p.inStock) { Còn <b>{{ p.stockLeft }}</b> {{ p.unit }} trong kho } @else { <span class="text-danger">Tạm hết hàng</span> }
             </div>
@@ -85,8 +89,9 @@ import { SimilarProductsComponent } from '../recommend/recommend.components';
               </button>
               <button type="button" class="btn btn-orange btn-lg" [disabled]="!canBuy()" (click)="buyNow()">Mua ngay</button>
             </div>
+            <p class="quantity-total" aria-live="polite" aria-atomic="true">{{ qty() }} {{ p.unit }} · Tiền hàng <b>{{ qty() * p.price | money }}</b> <span class="muted small">(chưa gồm phí giao hàng)</span></p>
             <ul class="perks">
-              <li><svg class="icon" aria-hidden="true"><use href="icons.svg#truck" /></svg> Phí ship 20.000đ, miễn phí cho đơn từ 200.000đ</li>
+              <li><svg class="icon" aria-hidden="true"><use href="icons.svg#truck" /></svg> @if (storefront.info(); as info) { Phí giao hàng {{ info.shippingFee | money }}, miễn phí cho đơn từ {{ info.freeShippingFrom | money }} } @else { Phí giao hàng được hiển thị trong giỏ trước khi đặt. }</li>
               <li><svg class="icon" aria-hidden="true"><use href="icons.svg#wallet" /></svg> Thanh toán khi nhận hàng (COD)</li>
               <li><svg class="icon" aria-hidden="true"><use href="icons.svg#undo" /></svg> Hủy miễn phí khi nhà bán chưa xác nhận</li>
             </ul>
@@ -96,6 +101,10 @@ import { SimilarProductsComponent } from '../recommend/recommend.components';
           <h2>Mô tả sản phẩm</h2>
           <p class="prose">{{ p.description }}</p>
           @if (p.vendor) { <p class="muted">Nhà bán: {{ p.vendor.name }}</p> }
+        </section>
+        <section class="section product-guidance" aria-label="Thông tin trước khi mua">
+          <div><h2>Giao hàng và bảo quản</h2><h3>Lịch giao</h3><p>{{ p.deliveryNote || 'Nhà bán chưa công bố thời gian giao dự kiến. Kiểm tra thông tin nhà bán nếu bạn cần nhận vào ngày cụ thể.' }}</p><h3>Bảo quản</h3><p>{{ p.storageNote || 'Chưa có hướng dẫn riêng từ nhà bán. Kiểm tra nhãn và hướng dẫn đi kèm khi nhận sản phẩm.' }}</p></div>
+          <div id="product-origin"><h2>Nguồn gốc và chứng nhận</h2>@if (p.farm) { <p><a [routerLink]="['/farms', p.farm.slug]">{{ p.farm.name }}</a> · {{ p.farm.province }}</p> }<p class="small muted">Các thông tin dưới đây do nhà bán khai báo; chưa có hồ sơ chứng nhận được xác minh trên FarmTable.</p><div class="certs">@for (c of p.certifications; track c) { <span class="tag">{{ c }}</span> } @empty { <span class="muted">Chưa cung cấp chứng nhận.</span> }</div>@if (p.isDemo) { <p class="small muted">Tên, vùng trồng và chứng nhận của bản ghi này là dữ liệu mẫu cho đồ án.</p> }</div>
         </section>
         <app-similar-products [productId]="p.id" />
       }
@@ -109,6 +118,10 @@ export class ProductDetailPage {
   private title = inject(Title);
   protected actions = inject(ShopActions);
   private router = inject(Router);
+  protected storefront = inject(StorefrontService);
+  private now = signal(Date.now());
+  protected rescueEnded = computed(() => { const r = this.product()?.rescue; return !!r && (r.expired || new Date(r.expiresAt).getTime() <= this.now()); });
+  private requestId = 0;
 
   protected product = signal<Product | null>(null);
   protected state = signal<'loading' | 'error' | 'ok'>('loading');
@@ -122,22 +135,26 @@ export class ProductDetailPage {
   protected activeIndex = computed(() => Math.max(0, this.images().indexOf(this.activeImage())));
   /** Ghi nguồn cho ảnh giấy phép mở đang xem (nếu có). */
   protected activeCredit = computed(() => this.product()?.imageCredits?.find((c) => c.url === this.activeImage()) ?? null);
-  protected isRescue = computed(() => !!this.product()?.rescue && !this.product()!.rescue!.expired);
+  protected isRescue = computed(() => !!this.product()?.rescue && !this.rescueEnded());
   protected canBuy = computed(() => {
     const p = this.product();
-    return !!p && p.inStock && !(p.rescue && p.rescue.expired);
+    return !!p && p.inStock && !this.rescueEnded();
   });
   protected maxQty = computed(() => Math.max(1, Math.min(99, this.product()?.stockLeft ?? 1)));
 
   constructor() {
+    const timer = setInterval(() => this.now.set(Date.now()), 1000);
+    inject(DestroyRef).onDestroy(() => clearInterval(timer));
     effect(() => this.load(this.slug()));
   }
 
   load(slug: string): void {
+    const requestId = ++this.requestId;
     this.state.set('loading');
     this.qty.set(1);
     this.catalog.product(slug).subscribe({
       next: (p) => {
+        if (requestId !== this.requestId) return;
         this.product.set(p);
         this.activeImage.set(p.mainImage);
         this.title.setTitle(`${p.name} · FarmTable`);
@@ -145,6 +162,7 @@ export class ProductDetailPage {
         this.catalog.track('view', p.id);
       },
       error: (e) => {
+        if (requestId !== this.requestId) return;
         const err = ApiError.from(e);
         this.error.set(err.status === 404 ? 'Sản phẩm không tồn tại hoặc đã ngừng bán.' : err.message);
         this.state.set('error');

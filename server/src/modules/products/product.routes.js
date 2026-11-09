@@ -1,10 +1,12 @@
 import { Router } from 'express';
 import * as c from './product.controller.js';
 import { requireRole, requireApprovedVendor } from '../../middleware/auth.js';
+import { SHIPPING_FEE, FREE_SHIPPING_FROM } from '../../utils/money.js';
 
 const router = Router();
 
 // Công khai
+router.get('/storefront-info', (_req, res) => res.json({ shippingFee: SHIPPING_FEE, freeShippingFrom: FREE_SHIPPING_FROM, paymentMethod: 'COD', deliveryEstimate: null }));
 router.get('/products', c.list);
 router.get('/products/:idOrSlug', c.detail);
 router.get('/categories', c.categories);

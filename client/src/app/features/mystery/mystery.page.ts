@@ -17,7 +17,7 @@ import { ImgFallbackDirective } from '../../shared/img-fallback.directive';
     <section class="band band-purple">
       <div class="container band-inner">
         <div>
-          <h1>Mở hộp mới biết — nông sản theo mùa</h1>
+          <h1>Hộp nông sản theo mùa, mở ra bất ngờ</h1>
           <p>Mỗi hộp là một lựa chọn nông sản theo mùa từ nhà vườn. Nhóm hàng, số loại và khoảng giá trị ước tính được hiển thị trước khi bạn chọn hộp; thành phần cụ thể được giữ bí mật tới khi nhận hàng.</p>
         </div>
       </div>
@@ -35,7 +35,8 @@ import { ImgFallbackDirective } from '../../shared/img-fallback.directive';
               </div>
               <div class="box-body">
                 <h2>{{ b.name }}</h2>
-                <div class="muted">Nhà bán: {{ b.vendor.name }} · đã bán {{ b.soldCount }}</div>
+                <div class="muted">Nhà bán: {{ b.vendor.name }}</div>
+                @if (b.isDemo) { <div class="demo-label">Hộp mẫu · ảnh minh họa, không phải thành phần cam kết</div> }
                 <div class="box-price">{{ b.price | money }}</div>
                 @if (b.estimatedValue) {
                   <div class="note"><svg class="icon" aria-hidden="true"><use href="icons.svg#info" /></svg> Giá trị ước tính {{ b.estimatedValue.min | money }} – {{ b.estimatedValue.max | money }}</div>

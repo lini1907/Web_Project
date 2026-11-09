@@ -6,6 +6,7 @@ import { Errors } from '../../utils/AppError.js';
 import { uniqueSlug, normalizeVi } from '../../utils/text.js';
 import { toPublicProduct } from '../products/product.dto.js';
 import { approvedVendorIds, publicFilter, buildSearchText } from '../products/product.service.js';
+import { farmReferencePhotos } from './farm-media.js';
 
 const router = Router();
 
@@ -19,6 +20,8 @@ function toPublicFarm(f, extra = {}) {
     story: f.story,
     certifications: f.certifications || [],
     images: f.images || [],
+    avatarUrl: f.avatarUrl || '',
+    referencePhotos: farmReferencePhotos(f),
     vendorId: String(f.vendorId),
     ...extra,
   };
@@ -32,6 +35,7 @@ const farmShape = (partial) => {
     story: v.string({ min: 0, max: 3000 }).optional(),
     certifications: v.array(v.string({ max: 40 }), { max: 10 }).optional(),
     images: v.array(v.url(), { max: 8 }).optional(),
+    avatarUrl: v.url({ allowEmpty: true }).optional(),
     status: v.enum(['active', 'hidden']).optional(),
   };
   return partial ? Object.fromEntries(Object.entries(shape).map(([k, r]) => [k, r.optional()])) : shape;
@@ -46,12 +50,12 @@ router.get('/farms', async (req, res) => {
   const pf = await publicFilter();
   const counts = await Product.aggregate([
     { $match: { ...pf, farmId: { $in: farms.map((f) => f._id) } } },
-    { $group: { _id: '$farmId', count: { $sum: 1 } } },
+    { $group: { _id: '$farmId', count: { $sum: 1 }, demo: { $max: { $cond: [{ $ne: [{ $ifNull: ['$legacyId', null] }, null] }, 1, 0] } } } },
   ]);
   const q = qstr(req.query.q);
   const list = farms
     .filter((f) => !q || normalizeVi(`${f.name} ${f.province}`).includes(normalizeVi(q)))
-    .map((f) => toPublicFarm(f, { productCount: counts.find((c) => String(c._id) === String(f._id))?.count || 0 }));
+    .map((f) => { const count = counts.find((c) => String(c._id) === String(f._id)); return toPublicFarm(f, { productCount: count?.count || 0, isDemo: !!count?.demo }); });
   res.json(list);
 });
 
@@ -70,6 +74,7 @@ router.get('/farms/:slug', async (req, res) => {
     toPublicFarm(farm, {
       vendor: { id: String(vendor._id), name: vendor.name, since: vendor.createdAt },
       products: products.map(toPublicProduct),
+      isDemo: products.some(p => !!p.legacyId),
     }),
   );
 });

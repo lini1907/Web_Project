@@ -2,6 +2,7 @@ import { MysteryBox, Product, User } from '../../models/index.js';
 import { Errors } from '../../utils/AppError.js';
 import { uniqueSlug } from '../../utils/text.js';
 import { availableStock } from '../products/product.dto.js';
+import { boxImage } from '../products/product-media.js';
 
 /** Số hộp còn bán được = min(tồn khả dụng của từng nguyên liệu / định lượng). */
 export function boxesAvailable(box, productsById) {
@@ -38,7 +39,8 @@ export function toPublicBox(box, productsById, vendor) {
     // Giá trị ước tính dạng khoảng, không cho phép suy ngược thành phần.
     estimatedValue: value > 0 ? { min: Math.floor((value * 0.9) / 10000) * 10000, max: Math.ceil((value * 1.1) / 10000) * 10000 } : null,
     publicNote: box.publicNote,
-    image: box.image,
+    image: boxImage(box.image),
+    isDemo: box.components.some(c => !!productsById.get(String(c.productId))?.legacyId),
     vendor: vendor ? { id: String(vendor._id), name: vendor.name } : { id: String(box.vendorId) },
     soldCount: box.soldCount || 0,
   };

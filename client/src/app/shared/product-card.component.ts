@@ -13,7 +13,7 @@ import { ImgFallbackDirective } from './img-fallback.directive';
     @let p = product();
     <article class="product-card" [class.rescue]="isRescue()">
       <a class="product-image-wrap" [routerLink]="['/products', p.slug]">
-        <img [src]="p.mainImage" [alt]="p.name" loading="lazy" appImgFallback />
+        <img [src]="p.thumbnailImage || p.mainImage" [alt]="p.name" loading="lazy" decoding="async" width="400" height="400" appImgFallback />
         @if (p.galleryImages.length) {
           <!-- Rê chuột: hiện ảnh phụ đầu tiên; góc dưới: số ảnh trong bộ ảnh -->
           <img class="img-alt" [src]="p.galleryImages[0]" alt="" loading="lazy" aria-hidden="true" appImgFallback />
@@ -32,7 +32,8 @@ import { ImgFallbackDirective } from './img-fallback.directive';
       @if (p.farm) {
         <a class="product-farm line-clamp-1" [routerLink]="['/farms', p.farm.slug]"><svg class="icon" aria-hidden="true"><use href="icons.svg#farm" /></svg> {{ p.farm.name }}</a>
       }
-      @if (showRating() && p.rating) {
+      @if (p.isDemo) { <div class="product-rating demo-label">Sản phẩm mẫu</div> }
+      @if (showRating() && p.rating && !p.isDemo) {
         <div class="product-rating" title="Đánh giá và lượt bán là dữ liệu demo"><svg class="icon" aria-hidden="true"><use href="icons.svg#star" /></svg> {{ p.rating }} · {{ p.soldCount }} đã bán <span class="sr-only">(dữ liệu demo)</span></div>
       }
       <div class="product-price">

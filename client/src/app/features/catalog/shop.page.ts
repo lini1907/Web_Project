@@ -42,14 +42,16 @@ import { CategoryLabelPipe } from '../../shared/pipes';
                 <option [value]="farm.slug">{{ farm.name }} ({{ farm.productCount }})</option>
               }
             </select>
+            @if (farmError()) { <div class="small field-error" role="status">Chưa tải được danh sách nông trại. <button type="button" class="btn btn-link btn-sm" (click)="loadFarms()">Thử lại</button></div> }
           </div>
           <div class="filter-group">
             <h3>Khoảng giá (đ)</h3>
             <div class="price-range">
-              <input class="input" type="number" min="0" step="1000" placeholder="Từ" [(ngModel)]="minPrice" aria-label="Giá từ" />
-              <input class="input" type="number" min="0" step="1000" placeholder="Đến" [(ngModel)]="maxPrice" aria-label="Giá đến" />
+              <input class="input" type="number" min="0" step="1000" placeholder="Từ" [(ngModel)]="minPrice" aria-label="Giá từ" [attr.aria-invalid]="!!priceError()" [attr.aria-describedby]="priceError() ? 'price-filter-error' : null" />
+              <input class="input" type="number" min="0" step="1000" placeholder="Đến" [(ngModel)]="maxPrice" aria-label="Giá đến" [attr.aria-invalid]="!!priceError()" [attr.aria-describedby]="priceError() ? 'price-filter-error' : null" />
             </div>
-            <button type="button" class="btn btn-outline btn-sm" (click)="apply({ minPrice: minPrice || null, maxPrice: maxPrice || null })">Áp dụng</button>
+            @if (priceError()) { <span id="price-filter-error" class="field-error" role="alert">{{ priceError() }}</span> }
+            <button type="button" class="btn btn-outline btn-sm" (click)="applyPrice()">Áp dụng</button>
           </div>
           <label class="checkbox"><input type="checkbox" [checked]="f.inStock" (change)="apply({ inStock: $any($event.target).checked ? 'true' : null })" /> Chỉ hiện hàng còn</label>
           <button type="button" class="btn btn-link" (click)="reset()">Xóa bộ lọc</button>
@@ -108,16 +110,35 @@ export class ShopPage {
   protected state = signal<'loading' | 'error' | 'empty' | 'ok'>('loading');
   protected error = signal<string | null>(null);
   protected filtersOpen = signal(false);
+  protected farmError = signal(false);
+  protected priceError = signal<string | null>(null);
 
   constructor() {
-    this.catalog.farms().subscribe({ next: (f) => this.farms.set(f.filter((x) => (x.productCount ?? 0) > 0)) });
+    this.loadFarms();
     // Mỗi lần query string đổi (kể cả nút back/forward) => tải lại danh sách.
     this.route.queryParamMap.pipe(takeUntilDestroyed()).subscribe((p) => this.load(p));
   }
 
   private requestId = 0;
 
+  loadFarms(): void {
+    this.farmError.set(false);
+    this.catalog.farms().subscribe({ next: f => this.farms.set(f.filter(x => (x.productCount ?? 0) > 0)), error: () => this.farmError.set(true) });
+  }
+
+  applyPrice(): void {
+    if ([this.minPrice, this.maxPrice].some(value => value !== null && (!Number.isFinite(value) || value < 0))) {
+      this.priceError.set('Giá cần là số không âm.'); return;
+    }
+    if (this.minPrice !== null && this.maxPrice !== null && this.minPrice > this.maxPrice) {
+      this.priceError.set('Giá từ phải nhỏ hơn hoặc bằng giá đến.'); return;
+    }
+    this.priceError.set(null);
+    this.apply({ minPrice: this.minPrice ?? null, maxPrice: this.maxPrice ?? null });
+  }
+
   private load(p: ParamMap): void {
+    this.priceError.set(null);
     const requestId = ++this.requestId;
     const num = (k: string) => (p.get(k) ? Number(p.get(k)) : undefined);
     this.f = {

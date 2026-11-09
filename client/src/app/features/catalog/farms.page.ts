@@ -4,16 +4,17 @@ import { RouterLink } from '@angular/router';
 import { Farm } from '../../core/models';
 import { CatalogService } from '../../core/services/catalog.service';
 import { StateComponent } from '../../shared/ui';
+import { FarmAvatarComponent } from '../../shared/farm-avatar.component';
 
 @Component({
   selector: 'app-farms',
-  imports: [RouterLink, FormsModule, StateComponent],
+  imports: [RouterLink, FormsModule, StateComponent, FarmAvatarComponent],
   template: `
     <div class="container page">
       <div class="page-head">
         <div>
           <h1><svg class="icon" aria-hidden="true"><use href="icons.svg#farm" /></svg> Nông trại đối tác</h1>
-          <p class="muted">Mỗi sản phẩm trên FarmTable đều truy xuất được về một nông trại cụ thể.</p>
+          <p class="muted">Xem địa phương, câu chuyện và sản phẩm do từng nhà bán cung cấp.</p>
         </div>
         <div class="row-gap">
           <input class="input" type="search" placeholder="Tìm nông trại, tỉnh..." [(ngModel)]="q" aria-label="Tìm nông trại" />
@@ -29,12 +30,13 @@ import { StateComponent } from '../../shared/ui';
         <div class="farm-grid">
           @for (f of filtered(); track f.id) {
             <a class="farm-card" [routerLink]="['/farms', f.slug]">
-              <div class="farm-avatar">{{ f.name.charAt(0) }}</div>
+              <app-farm-avatar [farm]="f" />
               <div>
                 <h3>{{ f.name }}</h3>
                 <div class="muted"><svg class="icon" aria-hidden="true"><use href="icons.svg#pin" /></svg> {{ f.province }} · {{ f.productCount }} sản phẩm</div>
                 <p class="line-clamp-2">{{ f.story }}</p>
-                <div class="certs">@for (c of f.certifications; track c) { <span class="tag"><svg class="icon" aria-hidden="true"><use href="icons.svg#check" /></svg> {{ c }}</span> }</div>
+                @if (f.isDemo) { <span class="demo-label small">Hồ sơ mẫu</span> }
+                <div class="certs">@for (c of f.certifications; track c) { <span class="tag" title="Nhà bán khai báo, chưa xác minh">{{ c }}</span> }</div>
               </div>
             </a>
           } @empty {

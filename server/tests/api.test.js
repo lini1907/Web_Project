@@ -28,6 +28,23 @@ async function freshBuyer(tag = uuid().slice(0, 8)) {
   return c;
 }
 
+test('vendor farm photos and avatar persist publicly with ownership and URL validation',async()=>{
+  const owner=client(app); await owner.login('dalatxanh@farmtable.vn');
+  const own=(await owner.get('/vendor/farms')).body[0];
+  assert.ok(own?.id);
+  const images=['/media/farms/dalat-1-1200.webp','/media/farms/dalat-2-1200.webp'];
+  let r=await owner.patch(`/vendor/farms/${own.id}`,{images,avatarUrl:images[1]});
+  assert.equal(r.status,200); assert.equal(r.body.avatarUrl,images[1]);
+  r=await client(app).get(`/farms/${own.slug}`);
+  assert.deepEqual(r.body.images,images); assert.equal(r.body.avatarUrl,images[1]);
+  const buyer=await freshBuyer();
+  assert.equal((await buyer.patch(`/vendor/farms/${own.id}`,{images:[]})).status,403);
+  assert.equal((await owner.patch(`/vendor/farms/${own.id}`,{avatarUrl:'javascript:alert(1)'})).status,400);
+  assert.equal((await owner.patch(`/vendor/farms/${own.id}`,{images:Array(9).fill(images[0])})).status,400);
+  r=await owner.patch(`/vendor/farms/${own.id}`,{images:own.images,avatarUrl:own.avatarUrl || ''});
+  assert.equal(r.status,200); assert.equal(r.body.avatarUrl,own.avatarUrl || '');
+});
+
 describe('AC02 · Xác thực và phân quyền', () => {
   test('đăng ký: mật khẩu yếu bị từ chối, không trả passwordHash, không tạo được admin', async () => {
     const c = client(app);

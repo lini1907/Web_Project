@@ -12,6 +12,9 @@ export interface ProductInput {
   unit: string;
   stock: number;
   description?: string;
+  packagingNote?: string;
+  storageNote?: string;
+  deliveryNote?: string;
   certifications?: string[];
   mainImage?: string;
   galleryImages?: string[];

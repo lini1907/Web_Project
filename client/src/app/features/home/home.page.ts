@@ -1,6 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { forkJoin } from 'rxjs';
+import { catchError, forkJoin, of, type Observable } from 'rxjs';
 import { CATEGORY_ICONS, CATEGORY_LABELS, Category, Farm, GroupBuy, MysteryBox, Product } from '../../core/models';
 import { AuthService } from '../../core/services/auth.service';
 import { CatalogService } from '../../core/services/catalog.service';
@@ -9,10 +9,11 @@ import { CountdownComponent, StateComponent } from '../../shared/ui';
 import { MoneyPipe } from '../../shared/pipes';
 import { ImgFallbackDirective } from '../../shared/img-fallback.directive';
 import { ForYouComponent } from '../recommend/recommend.components';
+import { FarmAvatarComponent } from '../../shared/farm-avatar.component';
 
 @Component({
   selector: 'app-home',
-  imports: [RouterLink, ProductCardComponent, StateComponent, CountdownComponent, MoneyPipe, ImgFallbackDirective, ForYouComponent],
+  imports: [RouterLink, ProductCardComponent, StateComponent, CountdownComponent, MoneyPipe, ImgFallbackDirective, ForYouComponent, FarmAvatarComponent],
   template: `
     <div class="container page home-page">
       <section class="hero-row">
@@ -27,7 +28,7 @@ import { ForYouComponent } from '../recommend/recommend.components';
           <a routerLink="/farms"><svg class="icon" aria-hidden="true"><use href="icons.svg#farm" /></svg> Cửa hàng nông trại</a>
         </aside>
         <div class="hero">
-          <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&q=80&w=1200" alt="Quầy nông sản với rau củ và trái cây nhiều màu sắc" fetchpriority="high" appImgFallback />
+          <img src="/media/hero.webp" alt="Quầy nông sản với rau củ và trái cây nhiều màu sắc" width="1200" height="800" fetchpriority="high" appImgFallback />
           <div class="hero-text">
             <h1>Từ nhà vườn,<br />về bếp nhà.</h1>
             <p>Rau củ, trái cây và thực phẩm từ các nông trại. Chọn món cho bữa cơm nhà, thanh toán khi nhận hàng.</p>
@@ -51,6 +52,9 @@ import { ForYouComponent } from '../recommend/recommend.components';
         <div><svg class="icon" aria-hidden="true"><use href="icons.svg#spark" /></svg> <b>Gợi ý thông minh</b><span>Theo sở thích của bạn</span></div>
       </section>
 
+      @if (failedSections().length && state() === 'ok') {
+        <div class="note" role="status">Chưa tải được {{ failedSections().join(', ') }}. Các sản phẩm khác vẫn có thể xem và mua. <button type="button" class="btn btn-link" (click)="load()">Tải lại nội dung</button></div>
+      }
       @if (state() !== 'ok') {
         <app-state [state]="state()" (retry)="load()" />
       } @else {
@@ -146,7 +150,7 @@ import { ForYouComponent } from '../recommend/recommend.components';
           <div class="farm-strip">
             @for (f of farms(); track f.id) {
               <a class="farm-chip" [routerLink]="['/farms', f.slug]">
-                <b>{{ f.name }}</b><span>{{ f.province }} · {{ f.productCount }} sản phẩm</span>
+                <app-farm-avatar [farm]="f" /><div class="farm-chip-copy"><b>{{ f.name }}</b><span>{{ f.province }} · {{ f.productCount }} sản phẩm</span></div>
               </a>
             }
           </div>
@@ -169,23 +173,33 @@ export class HomePage {
   protected groupBuys = signal<GroupBuy[]>([]);
   protected boxes = signal<MysteryBox[]>([]);
   protected farms = signal<Farm[]>([]);
+  protected failedSections = signal<string[]>([]);
+  private requestId = 0;
 
   constructor() {
     this.load();
   }
 
   load(): void {
+    const requestId = ++this.requestId;
+    this.failedSections.set([]);
+    const recover = <T>(name: string, fallback: T) => (source: Observable<T>) => source.pipe(catchError(() => {
+      if (requestId === this.requestId) this.failedSections.update(rows => [...rows, name]);
+      return of(fallback);
+    }));
+    const emptyProducts = { data: [] as Product[], page: 1, total: 0, totalPages: 0 };
     this.state.set('loading');
     forkJoin({
-      categories: this.catalog.categories(),
-      rescue: this.catalog.rescue(1, 5),
-      popular: this.catalog.products({ sort: 'popular', limit: 5 }),
-      newest: this.catalog.products({ sort: 'newest', limit: 5, type: 'regular' }),
-      groupBuys: this.catalog.groupBuys('open'),
-      boxes: this.catalog.mysteryBoxes(),
-      farms: this.catalog.farms(),
+      categories: this.catalog.categories().pipe(recover('danh mục', [] as {slug: Category; count: number}[])),
+      rescue: this.catalog.rescue(1, 5).pipe(recover('nông sản giải cứu', emptyProducts)),
+      popular: this.catalog.products({ sort: 'popular', limit: 5 }).pipe(recover('hàng bán chạy', emptyProducts)),
+      newest: this.catalog.products({ sort: 'newest', limit: 5, type: 'regular' }).pipe(recover('hàng mới', emptyProducts)),
+      groupBuys: this.catalog.groupBuys('open').pipe(recover('mua chung', [] as GroupBuy[])),
+      boxes: this.catalog.mysteryBoxes().pipe(recover('hộp theo mùa', [] as MysteryBox[])),
+      farms: this.catalog.farms().pipe(recover('nông trại', [] as Farm[])),
     }).subscribe({
       next: (r) => {
+        if (requestId !== this.requestId) return;
         this.categories.set(r.categories);
         this.rescue.set(r.rescue.data);
         this.popular.set(r.popular.data);
@@ -193,7 +207,7 @@ export class HomePage {
         this.groupBuys.set(r.groupBuys.slice(0, 3));
         this.boxes.set(r.boxes);
         this.farms.set(r.farms.filter((f) => (f.productCount ?? 0) > 0).slice(0, 6));
-        this.state.set('ok');
+        this.state.set(this.failedSections().length === 7 ? 'error' : 'ok');
       },
       error: () => this.state.set('error'),
     });

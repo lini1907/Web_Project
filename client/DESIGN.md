@@ -21,7 +21,7 @@ Các token dùng chung nằm trong `src/styles.css`:
 
 - Nunito Sans dùng nhất quán cho tiêu đề, nội dung, biểu mẫu, nút và giá. Body desktop 16px; mobile 15px, line-height 1.6.
 - Tiêu đề trang dùng weight 800, section 700; nội dung 400–500, thao tác 600 và giá 700. Nét chữ mềm, dễ đọc và gần gũi với cửa hàng thực phẩm.
-- Font tải qua Google Fonts với `display=swap`, chỉ một family và năm weight 400/500/600/700/800. Giữ system sans làm fallback.
+- Font được self-host trong `public/fonts/`, variable weight 400–800, gồm Latin, Latin Extended và tiếng Việt; `display=swap`. Giữ system sans làm fallback. Script `npm run fonts` trong server tải lại từ Google Fonts và lưu giấy phép OFL.
 - Metadata quan trọng trên thẻ mobile khoảng 12–13px. Không giảm cỡ chữ để nhét thêm thông tin.
 - Giá, số lượng và KPI dùng chữ số tabular.
 - Xanh dùng chung cho các CTA cửa hàng, giải cứu, hộp bí ẩn và mua chung. Cam dành cho giảm giá/thời hạn; đỏ cho lỗi. Không tạo một màu thương hiệu mới cho từng chương trình.
@@ -45,6 +45,19 @@ Các token dùng chung nằm trong `src/styles.css`:
 - Chỉ dùng ảnh đúng loại hàng, không tạo chứng nhận/ảnh nông trại giả. Ảnh hàng giải cứu nên thể hiện đúng tình trạng thực tế.
 - Chưa có ảnh thật: ghi rõ ảnh minh họa. Ảnh fallback phải cho biết chưa có ảnh, không giả làm ảnh sản phẩm.
 - Không tuyên bố giao trong ngày, số nông trại, hữu cơ hoặc giá trị hộp cao hơn giá bán nếu chưa có dữ liệu kiểm chứng.
+- Avatar nông trại dùng chung component: ưu tiên avatar nhà bán chọn, ảnh nhà bán tải, rồi ảnh tham khảo có nguồn; thiếu ảnh hoặc lỗi tải thì hiển thị chữ viết tắt. Album dùng ảnh nhà bán cung cấp trước, không trộn ảnh tham khảo vào album đó.
+- Ảnh canh tác từ Wikimedia Commons có chú thích địa điểm, tác giả và giấy phép. Với hồ sơ mẫu, ghi rõ đây là ảnh tham khảo, chưa xác nhận thuộc nhà bán. Không gọi ảnh tìm trên mạng là bằng chứng nông trại thật của nhà bán.
+
+## Nguồn dữ liệu và mức tin cậy
+
+- `isDemo` đánh dấu sản phẩm từ seed; không dùng số đánh giá mẫu làm social proof. Hồ sơ nông trại có sản phẩm seed được ghi rõ là hồ sơ mẫu.
+- Chứng nhận là khai báo của nhà bán cho tới khi có bằng chứng xác minh. Không dùng dấu check để biểu diễn chứng nhận chưa kiểm tra.
+- Ảnh seed được biên tập theo manifest `server/src/seed/data/storefront-media.json`. Thumbnail WebP 400px dùng trên danh sách, ảnh 960px trên chi tiết; nguồn/giấy phép được giữ. Không thay ảnh nhà bán tự cập nhật bằng ảnh seed.
+- Bốn mục đang thiếu ảnh phù hợp dùng placeholder rõ ràng. Không dùng ảnh sai loại để làm đầy catalog.
+- Quy cách, bảo quản và lịch giao là trường nhà bán có thể nhập. Khi trống, ghi rõ chưa được cung cấp; không tự tạo số ngày giao hoặc hạn bảo quản.
+- Giá vận chuyển lấy từ API dùng cùng hằng số với checkout. Tổng tiền theo số lượng hiển thị trước khi thêm giỏ.
+- Lỗi checkout hiển thị cạnh tổng tiền và nút đặt hàng; không lặp toast che nút. Giữ thông tin đã nhập khi giá thay đổi và giữ khóa idempotency khi kết quả mạng chưa rõ.
+- Hiệu năng có budget initial bundle 450kB cảnh báo / 550kB lỗi; không coi số đo lab localhost là trải nghiệm thực địa.
 
 ## Tránh thiết kế đại trà
 

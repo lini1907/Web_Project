@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse, HttpInterceptorFn } from '@angular/common/http';
 import { inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { catchError, switchMap, throwError } from 'rxjs';
+import { TimeoutError, catchError, switchMap, throwError, timeout } from 'rxjs';
 import { API, ApiError } from '../api';
 import { AuthService } from '../services/auth.service';
 import { ToastService } from '../services/toast.service';
@@ -20,8 +20,9 @@ export const apiErrorInterceptor: HttpInterceptorFn = (req, next) => {
   const http = inject(HttpClient);
 
   return next(req).pipe(
+    timeout(req.url.includes('/uploads') ? 30000 : 20000),
     catchError((err: unknown) => {
-      const apiErr = ApiError.from(err);
+      const apiErr = err instanceof TimeoutError ? new ApiError(0, 'REQUEST_TIMEOUT', 'Máy chủ phản hồi chậm. Vui lòng thử lại.') : ApiError.from(err);
       const isApi = req.url.startsWith(API);
 
       if (isApi && apiErr.code === 'CSRF_INVALID' && !req.headers.has('X-Retry-Csrf')) {

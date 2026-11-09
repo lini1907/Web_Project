@@ -69,9 +69,15 @@ export interface Product {
   vendor?: { id: string; name: string };
   certifications: string[];
   mainImage: string;
+  thumbnailImage?: string;
+  photoStatus?: 'illustration' | 'seller-provided' | 'needs-photo';
+  isDemo?: boolean;
+  packagingNote?: string;
+  storageNote?: string;
+  deliveryNote?: string;
   galleryImages: string[];
   /** Ghi nguồn ảnh giấy phép mở (Wikimedia Commons); ảnh nhà bán tự tải lên không có mục này. */
-  imageCredits?: { url: string; artist: string; license: string; page: string }[];
+  imageCredits?: { url: string; artist: string; license: string; page: string; licenseUrl?: string; modified?: string }[];
   description: string;
   rescue: Rescue | null;
   rating: number;
@@ -89,7 +95,19 @@ export interface VendorProduct extends Product {
   updatedAt: string;
 }
 
+export interface FarmPhoto {
+  url: string;
+  thumbnail?: string;
+  caption: string;
+  artist?: string;
+  source?: string;
+  license?: string;
+  licenseUrl?: string;
+  kind: 'reference' | 'seller-provided';
+}
+
 export interface Farm {
+  isDemo?: boolean;
   id: string;
   slug: string;
   name: string;
@@ -98,6 +116,8 @@ export interface Farm {
   story: string;
   certifications: string[];
   images: string[];
+  avatarUrl?: string;
+  referencePhotos?: FarmPhoto[];
   vendorId: string;
   status?: 'active' | 'hidden';
   productCount?: number;
@@ -106,6 +126,7 @@ export interface Farm {
 }
 
 export interface MysteryBox {
+  isDemo?: boolean;
   id: string;
   slug: string;
   name: string;

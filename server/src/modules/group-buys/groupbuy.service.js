@@ -2,6 +2,7 @@ import { GroupBuy, GroupBuyMembership, Product, User } from '../../models/index.
 import { withTransaction } from '../../config/db.js';
 import { AppError, Errors } from '../../utils/AppError.js';
 import { availableStock } from '../products/product.dto.js';
+import { productMedia } from '../products/product-media.js';
 import { createGroupBuyOrder } from '../orders/order.service.js';
 import { env } from '../../config/env.js';
 
@@ -14,7 +15,7 @@ function toDto(c, { product, vendor, membership } = {}) {
     id: String(c._id),
     title: c.title || product?.name || '',
     product: product
-      ? { id: String(product._id), slug: product.slug, name: product.name, unit: product.unit, mainImage: product.mainImage, category: product.category }
+      ? { id: String(product._id), slug: product.slug, name: product.name, unit: product.unit, mainImage: productMedia(product).thumbnailImage, category: product.category }
       : { id: String(c.productId) },
     vendor: vendor ? { id: String(vendor._id), name: vendor.name } : { id: String(c.vendorId) },
     regularPrice: c.regularPrice,
