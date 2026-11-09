@@ -1,6 +1,7 @@
 import { Component, effect, inject, input, signal } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
+import { firstValueFrom } from 'rxjs';
 import { ApiError } from '../../core/api';
 import { CATEGORY_LABELS, Category, Farm, VendorProduct } from '../../core/models';
 import { ToastService } from '../../core/services/toast.service';
@@ -8,7 +9,7 @@ import { VendorService } from '../../core/services/vendor.service';
 import { ImgFallbackDirective } from '../../shared/img-fallback.directive';
 import { StateComponent } from '../../shared/ui';
 
-/** Thêm/sửa sản phẩm — Reactive Form: load data, validation, FormArray chứng nhận, upload ảnh, lỗi server hiển thị tại ô. */
+/** Thêm/sửa sản phẩm — Reactive Form: load data, validation, FormArray chứng nhận và ảnh phụ, upload nhiều ảnh, lỗi server hiển thị tại ô. */
 @Component({
   selector: 'app-vendor-product-form',
   imports: [ReactiveFormsModule, RouterLink, ImgFallbackDirective, StateComponent],
@@ -80,6 +81,38 @@ import { StateComponent } from '../../shared/ui';
             </div>
           </div>
         </div>
+        <div class="fieldset">
+          <div class="row-between">
+            <b>Ảnh phụ ({{ gallery.length }}/{{ maxGallery }})</b>
+            <span class="small muted">Hiện trong bộ ảnh ở trang chi tiết sản phẩm</span>
+          </div>
+          @if (gallery.length) {
+            <div class="gallery-edit">
+              @for (g of gallery.controls; track $index; let i = $index) {
+                <figure class="gallery-edit-item" [class.invalid]="g.invalid">
+                  <img [src]="g.value" alt="Ảnh phụ {{ i + 1 }}" appImgFallback />
+                  <figcaption>
+                    <button type="button" class="icon-btn" (click)="moveGallery(i, -1)" [disabled]="i === 0" aria-label="Đưa lên trước" title="Đưa lên trước">◀</button>
+                    <button type="button" class="icon-btn" (click)="makeMain(i)" aria-label="Đặt làm ảnh chính" title="Đặt làm ảnh chính">★</button>
+                    <button type="button" class="icon-btn" (click)="gallery.removeAt(i); form.markAsDirty()" aria-label="Xóa ảnh" title="Xóa ảnh">✕</button>
+                  </figcaption>
+                </figure>
+              }
+            </div>
+          }
+          @if (galleryInvalid()) { <span class="field-error">Có ảnh phụ với URL không hợp lệ (phải bắt đầu bằng https:// hoặc /uploads/)</span> }
+          @if (e('galleryImages')) { <span class="field-error">{{ e('galleryImages') }}</span> }
+          @if (gallery.length < maxGallery) {
+            <div class="row-gap">
+              <input class="input grow" [formControl]="newImageUrl" placeholder="Dán URL ảnh phụ rồi bấm Thêm" (keydown.enter)="$event.preventDefault(); addGalleryUrl()" />
+              <button type="button" class="btn btn-outline btn-sm" (click)="addGalleryUrl()" [disabled]="newImageUrl.invalid || !newImageUrl.value">+ Thêm</button>
+            </div>
+            @if (newImageUrl.invalid && newImageUrl.dirty) { <span class="field-error">URL ảnh phải bắt đầu bằng https:// hoặc /uploads/</span> }
+            <label class="btn btn-outline btn-sm file-btn">📤 Tải nhiều ảnh phụ (tối đa {{ maxGallery - gallery.length }})
+              <input type="file" accept="image/jpeg,image/png,image/webp" multiple (change)="uploadGallery($event)" hidden />
+            </label>
+          }
+        </div>
         <label class="checkbox"><input type="checkbox" formControlName="isActive" /> Đang bán</label>
 
         @if (serverError()) { <div class="note note-danger">{{ serverError() }}</div> }
@@ -110,6 +143,11 @@ export class VendorProductFormPage {
   private fieldErrors = signal<Record<string, string>>({});
 
   protected certs = new FormArray<FormControl<string>>([]);
+  /** Ảnh phụ: FormArray để thêm/xóa/sắp xếp; API nhận tối đa 8 ảnh. */
+  protected readonly maxGallery = 8;
+  private readonly imageUrl = Validators.pattern(/^(https?:\/\/|\/uploads\/)\S+$/);
+  protected gallery = new FormArray<FormControl<string>>([]);
+  protected newImageUrl = new FormControl('', { nonNullable: true, validators: [this.imageUrl] });
   protected form = this.fb.nonNullable.group({
     name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(120)]],
     farmId: ['', Validators.required],
@@ -119,9 +157,10 @@ export class VendorProductFormPage {
     unit: ['kg', [Validators.required, Validators.maxLength(30)]],
     stock: [0, [Validators.required, Validators.min(0)]],
     description: [''],
-    mainImage: ['', [Validators.pattern(/^(https?:\/\/|\/uploads\/)\S+$/)]],
+    mainImage: ['', [this.imageUrl]],
     isActive: [true],
     certifications: this.certs,
+    galleryImages: this.gallery,
   });
 
   constructor() {
@@ -147,6 +186,8 @@ export class VendorProductFormPage {
             this.original.set(p);
             this.certs.clear();
             p.certifications.forEach((c) => this.certs.push(new FormControl(c, { nonNullable: true })));
+            this.gallery.clear();
+            (p.galleryImages || []).forEach((url) => this.pushGallery(url));
             this.form.patchValue({
               name: p.name,
               farmId: p.farmId,
@@ -185,6 +226,65 @@ export class VendorProductFormPage {
     return 'Không hợp lệ';
   }
 
+  protected galleryInvalid(): boolean {
+    return this.gallery.controls.some((c) => c.invalid);
+  }
+
+  private pushGallery(url: string): void {
+    this.gallery.push(new FormControl(url, { nonNullable: true, validators: [this.imageUrl] }));
+  }
+
+  addGalleryUrl(): void {
+    const url = this.newImageUrl.value.trim();
+    if (!url || this.newImageUrl.invalid || this.gallery.length >= this.maxGallery) return;
+    if (this.gallery.value.includes(url) || url === this.form.value.mainImage) {
+      this.toast.error('Ảnh này đã có trong sản phẩm');
+      return;
+    }
+    this.pushGallery(url);
+    this.newImageUrl.reset('');
+    this.form.markAsDirty();
+  }
+
+  moveGallery(i: number, delta: number): void {
+    const j = i + delta;
+    if (j < 0 || j >= this.gallery.length) return;
+    const c = this.gallery.at(i);
+    this.gallery.removeAt(i);
+    this.gallery.insert(j, c);
+    this.form.markAsDirty();
+  }
+
+  /** Đổi chỗ ảnh phụ thứ i với ảnh chính. */
+  makeMain(i: number): void {
+    const url = this.gallery.at(i).value;
+    const oldMain = this.form.controls.mainImage.value;
+    this.form.controls.mainImage.setValue(url);
+    if (oldMain) this.gallery.at(i).setValue(oldMain);
+    else this.gallery.removeAt(i);
+    this.form.markAsDirty();
+  }
+
+  /** Tải lần lượt từng file (endpoint nhận 1 file/lần), dừng khi đủ số ảnh tối đa. */
+  async uploadGallery(ev: Event): Promise<void> {
+    const input = ev.target as HTMLInputElement;
+    const files = Array.from(input.files ?? []).slice(0, this.maxGallery - this.gallery.length);
+    input.value = '';
+    const tooBig = files.filter((f) => f.size > 2 * 1024 * 1024);
+    if (tooBig.length) this.toast.error(`Bỏ qua ${tooBig.length} ảnh lớn hơn 2 MB`);
+    this.uploading.set(true);
+    for (const file of files.filter((f) => f.size <= 2 * 1024 * 1024)) {
+      try {
+        const r = await firstValueFrom(this.vendor.upload(file));
+        this.pushGallery(r.url);
+        this.form.markAsDirty();
+      } catch (e) {
+        this.toast.error(`${file.name}: ${ApiError.from(e).message}`);
+      }
+    }
+    this.uploading.set(false);
+  }
+
   addCert(): void {
     this.certs.push(new FormControl('', { nonNullable: true }));
   }
@@ -213,7 +313,7 @@ export class VendorProductFormPage {
   save(): void {
     this.fieldErrors.set({});
     this.serverError.set(null);
-    if (this.form.invalid) {
+    if (this.form.invalid || this.uploading()) {
       this.form.markAllAsTouched();
       return;
     }
@@ -222,6 +322,7 @@ export class VendorProductFormPage {
       ...v,
       certifications: v.certifications.map((c) => c.trim()).filter(Boolean),
       mainImage: v.mainImage || undefined,
+      galleryImages: v.galleryImages.filter(Boolean),
       description: v.description || undefined,
     };
     const id = this.id();

@@ -25,14 +25,26 @@ import { SimilarProductsComponent } from '../recommend/recommend.components';
           <a routerLink="/">Trang chủ</a> › <a [routerLink]="['/shop']" [queryParams]="{ category: p.category }">{{ p.category | categoryLabel }}</a> › <span>{{ p.name }}</span>
         </nav>
         <div class="detail">
-          <div class="gallery">
-            <div class="gallery-main"><img [src]="activeImage()" [alt]="p.name" appImgFallback /></div>
+          <div class="gallery" (keydown.arrowleft)="step(-1)" (keydown.arrowright)="step(1)">
+            <div class="gallery-main">
+              <img [src]="activeImage()" [alt]="p.name + ' — ảnh ' + (activeIndex() + 1)" appImgFallback />
+              @if (images().length > 1) {
+                <button type="button" class="gallery-nav prev" (click)="step(-1)" aria-label="Ảnh trước">‹</button>
+                <button type="button" class="gallery-nav next" (click)="step(1)" aria-label="Ảnh sau">›</button>
+                <span class="gallery-count">{{ activeIndex() + 1 }} / {{ images().length }}</span>
+              }
+            </div>
             @if (images().length > 1) {
-              <div class="thumbs">
-                @for (img of images(); track img) {
-                  <button type="button" [class.active]="img === activeImage()" (click)="activeImage.set(img)"><img [src]="img" alt="" appImgFallback /></button>
+              <div class="thumbs" role="tablist" aria-label="Bộ ảnh sản phẩm">
+                @for (img of images(); track img; let i = $index) {
+                  <button type="button" role="tab" [attr.aria-selected]="i === activeIndex()" [attr.aria-label]="'Xem ảnh ' + (i + 1)"
+                    [class.active]="i === activeIndex()" (click)="activeImage.set(img)"><img [src]="img" alt="" loading="lazy" appImgFallback /></button>
                 }
               </div>
+            }
+            @if (activeCredit(); as c) {
+              <p class="photo-credit">Ảnh: {{ c.artist || 'không rõ tác giả' }} · {{ c.license }} ·
+                <a [href]="c.page" target="_blank" rel="noopener noreferrer">Wikimedia Commons</a></p>
             }
           </div>
           <div class="detail-info">
@@ -106,6 +118,9 @@ export class ProductDetailPage {
     const p = this.product();
     return p ? [p.mainImage, ...p.galleryImages].filter(Boolean) : [];
   });
+  protected activeIndex = computed(() => Math.max(0, this.images().indexOf(this.activeImage())));
+  /** Ghi nguồn cho ảnh giấy phép mở đang xem (nếu có). */
+  protected activeCredit = computed(() => this.product()?.imageCredits?.find((c) => c.url === this.activeImage()) ?? null);
   protected isRescue = computed(() => !!this.product()?.rescue && !this.product()!.rescue!.expired);
   protected canBuy = computed(() => {
     const p = this.product();
@@ -134,6 +149,13 @@ export class ProductDetailPage {
         this.state.set('error');
       },
     });
+  }
+
+  /** Chuyển ảnh trước/sau, quay vòng. */
+  step(delta: number): void {
+    const imgs = this.images();
+    if (imgs.length < 2) return;
+    this.activeImage.set(imgs[(this.activeIndex() + delta + imgs.length) % imgs.length]);
   }
 
   add(): void {

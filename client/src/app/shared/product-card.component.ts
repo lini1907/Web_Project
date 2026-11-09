@@ -14,6 +14,11 @@ import { ImgFallbackDirective } from './img-fallback.directive';
     <article class="product-card" [class.rescue]="isRescue()">
       <a class="product-image-wrap" [routerLink]="['/products', p.slug]" [attr.aria-label]="p.name">
         <img [src]="p.mainImage" [alt]="p.name" loading="lazy" appImgFallback />
+        @if (p.galleryImages.length) {
+          <!-- Rê chuột: hiện ảnh phụ đầu tiên; góc dưới: số ảnh trong bộ ảnh -->
+          <img class="img-alt" [src]="p.galleryImages[0]" alt="" loading="lazy" aria-hidden="true" appImgFallback />
+          <span class="badge-photos" [attr.title]="(p.galleryImages.length + 1) + ' ảnh'">📷 {{ p.galleryImages.length + 1 }}</span>
+        }
         @if (isRescue()) {
           <span class="badge-rescue">Giải cứu -{{ p.rescue!.discountRate }}%</span>
         }
