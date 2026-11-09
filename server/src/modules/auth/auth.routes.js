@@ -8,6 +8,8 @@ router.get('/csrf', c.csrf);
 router.post('/register', c.register);
 router.post('/login', c.login);
 router.post('/logout', requireAuth, c.logout);
+router.get('/remembered', c.remembered);
+router.delete('/remembered', c.forgetRemembered);
 router.get('/me', requireAuth, c.me);
 router.patch('/me', requireAuth, c.updateMe);
 router.post('/me/password', requireAuth, c.changePassword);

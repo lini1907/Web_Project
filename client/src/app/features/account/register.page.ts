@@ -67,6 +67,8 @@ import { matchFields, strongPassword, vnPhone } from '../../shared/validators';
 })
 export class RegisterPage {
   readonly mode = input<string | undefined>(undefined, { alias: 'as' });
+  /** Trang quay lại sau khi đăng ký (vd. /checkout khi khách đang có giỏ tạm). */
+  readonly returnUrl = input<string | undefined>();
   private fb = inject(FormBuilder);
   private auth = inject(AuthService);
   private router = inject(Router);
@@ -135,7 +137,12 @@ export class RegisterPage {
         province: this.role() === 'vendor' ? v.province || undefined : undefined,
       });
       this.toast.success(user.role === 'vendor' ? 'Đăng ký thành công! Hồ sơ đang chờ duyệt.' : 'Chào mừng bạn đến FarmTable!');
-      await this.router.navigateByUrl(this.auth.homeFor(user));
+      const merged = this.auth.lastCartMerge();
+      if (merged) this.toast.info(`Đã chuyển ${merged} sản phẩm từ giỏ tạm vào giỏ hàng của bạn`);
+      const back = this.returnUrl();
+      // Chỉ chấp nhận đường dẫn nội bộ (chống open redirect); nhà bán luôn về kênh bán hàng.
+      const target = user.role === 'buyer' && back && back.startsWith('/') && !back.startsWith('//') ? back : this.auth.homeFor(user);
+      await this.router.navigateByUrl(target);
     } catch (e) {
       const err = ApiError.from(e);
       this.serverErrors.set(err.fieldErrors());

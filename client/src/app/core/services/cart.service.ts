@@ -5,7 +5,10 @@ import { API } from '../api';
 import { Cart } from '../models';
 import { AuthService } from './auth.service';
 
-/** Giỏ hàng lưu ở server, gắn với tài khoản buyer. Service giữ bản sao trong signal để header hiển thị số lượng. */
+/**
+ * Giỏ hàng lưu ở server: người mua đã đăng nhập => MongoDB; khách => giỏ tạm trong session (cookie HttpOnly "sid"),
+ * được gộp vào giỏ tài khoản khi đăng nhập. Service giữ bản sao trong signal để header hiển thị số lượng.
+ */
 @Injectable({ providedIn: 'root' })
 export class CartService {
   private http = inject(HttpClient);
@@ -15,9 +18,12 @@ export class CartService {
   readonly count = computed(() => this.cart()?.itemCount ?? 0);
 
   constructor() {
-    // Đăng nhập buyer => tải giỏ; đăng xuất => xóa giỏ phía client.
+    // Khách hoặc người mua => tải giỏ (đổi vai trò khách -> buyer sau đăng nhập sẽ tải lại giỏ đã gộp);
+    // nhà bán/quản trị không có giỏ.
     effect(() => {
-      if (this.auth.isBuyer()) this.refresh().catch(() => undefined);
+      if (!this.auth.ready()) return;
+      const role = this.auth.role();
+      if (role === null || role === 'buyer') this.refresh().catch(() => undefined);
       else this.cart.set(null);
     });
   }

@@ -4,8 +4,8 @@
  */
 import { test, before, after, describe } from 'node:test';
 import assert from 'node:assert/strict';
-import { setup, teardown, client, uuid } from './helpers.js';
-import { Product, User, Order, GroupBuy, GroupBuyMembership, MysteryBox } from '../src/models/index.js';
+import { setup, teardown, client, uuid, PASSWORD } from './helpers.js';
+import { Product, User, Order, GroupBuy, GroupBuyMembership, MysteryBox, Cart } from '../src/models/index.js';
 import { shippingFeeFor, rescuePrice } from '../src/utils/money.js';
 import { closeCampaign } from '../src/modules/group-buys/groupbuy.service.js';
 import { loginLimiter } from '../src/middleware/security.js';
@@ -71,9 +71,15 @@ describe('AC02 · Xác thực và phân quyền', () => {
     assert.equal((await c.get('/auth/me')).status, 401);
   });
 
-  test('buyer gọi API admin => 403; khách gọi giỏ hàng => 401', async () => {
+  test('buyer gọi API admin => 403; khách xem giỏ tạm được nhưng không đặt hàng được; vendor không có giỏ', async () => {
     const c = client(app);
-    assert.equal((await c.get('/cart')).status, 401);
+    const guest = await c.get('/cart');
+    assert.equal(guest.status, 200);
+    assert.equal(guest.body.guest, true);
+    assert.equal((await c.post('/orders', { shippingAddress: addr, expectedTotal: 0 }, { 'Idempotency-Key': uuid() })).status, 401);
+    const v = client(app);
+    await v.login('dalatxanh@farmtable.vn');
+    assert.equal((await v.get('/cart')).status, 403);
     await c.login('bich.tran@example.com');
     assert.equal((await c.get('/admin/users')).status, 403);
     assert.equal((await c.get('/vendor/products')).status, 403);
@@ -103,8 +109,10 @@ describe('AC02 · Xác thực và phân quyền', () => {
     const admin = client(app);
     await admin.login('admin@farmtable.vn');
     assert.equal((await admin.patch(`/admin/users/${me.id}`, { status: 'locked' })).status, 200);
-    const r = await buyer.get('/cart');
+    // Session bị xóa => thành khách: không còn quyền người mua (giỏ chỉ còn là giỏ tạm rỗng).
+    const r = await buyer.get('/auth/me');
     assert.ok([401, 403].includes(r.status));
+    assert.equal((await buyer.get('/cart')).body.guest, true);
     const relogin = await buyer.post('/auth/login', { email: me.email, password: 'Matkhau123' });
     assert.equal(relogin.status, 403);
     assert.equal(relogin.body.error.code, 'ACCOUNT_LOCKED');
@@ -284,6 +292,104 @@ describe('AC03/AC04 · Giỏ hàng, đặt hàng COD, tồn kho', () => {
     const again = (await b.get(`/orders/${order.id}`)).body;
     assert.equal(again.parts[0].items[0].unitPrice, p.price);
     await Product.updateOne({ _id: p._id }, { $set: { price: p.price } });
+  });
+});
+
+describe('Cookie · Ghi nhớ đăng nhập (Chương VIII)', () => {
+  const cookieOf = (res, name) => (res.headers['set-cookie'] || []).find((c) => c.startsWith(`${name}=`)) || '';
+
+  test('tick ghi nhớ: cookie sid sống 30 ngày, cookie remember_email HttpOnly chỉ chứa email; không lộ mật khẩu', async () => {
+    const c = client(app);
+    const res = await c.post('/auth/login', { email: 'bich.tran@example.com', password: PASSWORD, remember: true });
+    assert.equal(res.status, 200);
+    const sid = cookieOf(res, 'sid');
+    const expires = /Expires=([^;]+)/i.exec(sid)?.[1];
+    assert.ok(expires, 'sid phải là persistent cookie');
+    assert.ok(new Date(expires) - Date.now() > 29 * 24 * 3600 * 1000, 'sid phải sống khoảng 30 ngày');
+    const rem = cookieOf(res, 'remember_email');
+    assert.match(rem, /^remember_email=bich\.tran%40example\.com/);
+    assert.match(rem, /HttpOnly/i);
+    for (const ck of res.headers['set-cookie']) assert.ok(!ck.includes(encodeURIComponent(PASSWORD)) && !ck.includes(PASSWORD));
+    assert.equal((await c.get('/auth/remembered')).body.email, 'bich.tran@example.com');
+    // Đăng xuất vẫn nhớ email để điền sẵn; "Không phải bạn?" thì xóa.
+    await c.post('/auth/logout');
+    assert.equal((await c.get('/auth/remembered')).body.email, 'bich.tran@example.com');
+    assert.equal((await c.del('/auth/remembered')).status, 204);
+    assert.equal((await c.get('/auth/remembered')).body.email, null);
+  });
+
+  test('không tick: sid là session cookie (không Expires), remember_email bị xóa', async () => {
+    const c = client(app);
+    await c.post('/auth/login', { email: 'bich.tran@example.com', password: PASSWORD, remember: true });
+    await c.post('/auth/logout');
+    const res = await c.post('/auth/login', { email: 'bich.tran@example.com', password: PASSWORD });
+    assert.equal(res.status, 200);
+    assert.doesNotMatch(cookieOf(res, 'sid'), /Expires=|Max-Age=/i);
+    assert.match(cookieOf(res, 'remember_email'), /Expires=Thu, 01 Jan 1970/i);
+    assert.equal((await c.get('/auth/remembered')).body.email, null);
+  });
+});
+
+describe('Session · Giỏ hàng tạm cho khách (Chương VIII)', () => {
+  test('khách thêm vào giỏ: lưu trong session, không tạo giỏ trong MongoDB; khách khác không thấy', async () => {
+    const g = client(app);
+    const p = await productBy('2'); // Cải bó xôi
+    const cartsBefore = await Cart.countDocuments();
+    const r = await g.post('/cart/items', { productId: String(p._id), qty: 2 });
+    assert.equal(r.status, 201);
+    assert.equal(r.body.guest, true);
+    assert.equal(r.body.items.length, 1);
+    assert.equal(r.body.items[0].unitPrice, p.price); // giá đọc từ DB, không lưu trong session
+    assert.equal((await g.get('/cart')).body.itemCount, 2);
+    // Sửa số lượng và xóa dòng hoạt động như giỏ thường
+    const itemId = r.body.items[0].id;
+    assert.equal((await g.patch(`/cart/items/${itemId}`, { qty: 3 })).body.itemCount, 3);
+    assert.equal((await g.patch(`/cart/items/${itemId}`, { qty: p.stock + 50 })).status, 409);
+    // Không có document Cart nào được tạo cho khách
+    assert.equal(await Cart.countDocuments(), cartsBefore);
+    // Cookie session khác => giỏ khác
+    assert.equal((await client(app).get('/cart')).body.items.length, 0);
+    assert.equal((await g.del('/cart')).body.items.length, 0);
+  });
+
+  test('đăng nhập => giỏ tạm được gộp vào giỏ MongoDB (cộng dồn dòng trùng), session cũ bị thay', async () => {
+    const tag = uuid().slice(0, 8);
+    const email = `merge-${tag}@example.com`;
+    const reg = await freshBuyer(`merge-${tag}`);
+    const pA = await productBy('1'); // Cà chua bi
+    const pB = await productBy('5'); // Súp lơ xanh
+    await reg.post('/cart/items', { productId: String(pA._id), qty: 1 });
+    await reg.post('/auth/logout');
+
+    const g = client(app);
+    await g.post('/cart/items', { productId: String(pA._id), qty: 2 });
+    await g.post('/cart/items', { productId: String(pB._id), qty: 1 });
+    const res = await g.post('/auth/login', { email: email.replace('merge-', 'buyer-merge-'), password: 'Matkhau123' });
+    assert.equal(res.status, 200);
+    assert.equal(res.headers['x-cart-merged'], '2');
+    const cart = (await g.get('/cart')).body;
+    assert.equal(cart.guest, undefined);
+    const qtyOf = (id) => cart.items.find((i) => i.productId === String(id))?.qty;
+    assert.equal(qtyOf(pA._id), 3);
+    assert.equal(qtyOf(pB._id), 1);
+    // Đăng xuất: giỏ trong MongoDB vẫn còn, giỏ tạm của phiên mới trống
+    await g.post('/auth/logout');
+    assert.equal((await g.get('/cart')).body.items.length, 0);
+  });
+
+  test('gộp giỏ không vượt tồn kho; sản phẩm hết hạn giải cứu bị bỏ qua', async () => {
+    const tag = uuid().slice(0, 8);
+    await (await freshBuyer(`cap-${tag}`)).post('/auth/logout');
+    const low = await productBy('5'); // tồn kho demo = 4
+    const g = client(app);
+    const available = low.stock - low.reservedStock;
+    await g.post('/cart/items', { productId: String(low._id), qty: available });
+    await Product.updateOne({ _id: low._id }, { $inc: { stock: -1 } }); // có người mua mất 1 trong lúc khách chưa đăng nhập
+    await g.post('/auth/login', { email: `buyer-cap-${tag}@example.com`, password: 'Matkhau123' });
+    const cart = (await g.get('/cart')).body;
+    assert.equal(cart.items[0].qty, available - 1);
+    assert.equal(cart.hasIssues, false);
+    await Product.updateOne({ _id: low._id }, { $inc: { stock: 1 } });
   });
 });
 

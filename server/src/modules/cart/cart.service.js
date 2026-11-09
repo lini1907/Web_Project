@@ -1,3 +1,4 @@
+import mongoose from 'mongoose';
 import { Cart, Product, MysteryBox, User } from '../../models/index.js';
 import { Errors } from '../../utils/AppError.js';
 import { shippingFeeFor, FREE_SHIPPING_FROM, SHIPPING_FEE } from '../../utils/money.js';
@@ -111,15 +112,12 @@ export async function getCart(userId) {
   return summarize(lines);
 }
 
-export async function addItem(userId, { productId, boxId, qty }) {
-  const cart = await getOrCreate(userId);
-  const kind = productId ? 'product' : 'box';
-  const existing = cart.items.find((i) =>
-    kind === 'product' ? String(i.productId) === productId : String(i.boxId) === boxId,
-  );
-  const newQty = (existing?.qty || 0) + qty;
-  const probe = [{ _id: existing?._id || 'new', kind, productId, boxId, qty: newQty }];
-  const { lines } = await resolveLines(probe);
+const sameLine = (kind, productId, boxId) => (i) =>
+  kind === 'product' ? String(i.productId) === String(productId) : String(i.boxId) === String(boxId);
+
+/** Kiểm tra có thể giữ `newQty` cho một dòng (giá, tồn kho, hạn giải cứu đọc từ DB). Dùng chung cho giỏ DB và giỏ session. */
+async function assertCanHold({ kind, productId, boxId }, newQty, inCart) {
+  const { lines } = await resolveLines([{ _id: 'probe', kind, productId, boxId, qty: newQty }]);
   const line = lines[0];
   if (line.warning && line.warning.code !== 'INSUFFICIENT') {
     const status = line.warning.code === 'RESCUE_EXPIRED' ? 'RESCUE_EXPIRED' : line.warning.code === 'INACTIVE' ? 'NOT_FOUND' : 'OUT_OF_STOCK';
@@ -128,10 +126,18 @@ export async function addItem(userId, { productId, boxId, qty }) {
   }
   if (line.warning) {
     throw Errors.conflict('OUT_OF_STOCK', `Chỉ còn ${line.available} ${line.unit} trong kho`, [
-      { id: productId || boxId, available: line.available, inCart: existing?.qty || 0 },
+      { id: productId || boxId, available: line.available, inCart },
     ]);
   }
   if (newQty > 99) throw Errors.validation([{ field: 'qty', message: 'Tối đa 99 cho mỗi sản phẩm' }]);
+}
+
+export async function addItem(userId, { productId, boxId, qty }) {
+  const cart = await getOrCreate(userId);
+  const kind = productId ? 'product' : 'box';
+  const existing = cart.items.find(sameLine(kind, productId, boxId));
+  const newQty = (existing?.qty || 0) + qty;
+  await assertCanHold({ kind, productId, boxId }, newQty, existing?.qty || 0);
   if (existing) existing.qty = newQty;
   else cart.items.push({ kind, productId, boxId, qty });
   await cart.save();
@@ -161,4 +167,105 @@ export async function updateItem(userId, itemId, qty) {
 export async function clear(userId) {
   await Cart.updateOne({ userId }, { $set: { items: [] } });
   return getCart(userId);
+}
+
+/* ------------------------------------------------------------------------------------------
+ * Giỏ hàng tạm cho KHÁCH CHƯA ĐĂNG NHẬP (Chương VIII – Session):
+ *   - lưu trong req.session.guestCart (session lưu ở MongoDB qua connect-mongo, cookie "sid" HttpOnly);
+ *   - chỉ lưu id + số lượng, giá luôn đọc lại từ DB khi hiển thị/đặt hàng;
+ *   - khi đăng nhập bằng tài khoản người mua, giỏ tạm được gộp vào giỏ bền vững trong MongoDB (mergeGuestCart).
+ * ---------------------------------------------------------------------------------------- */
+const MAX_GUEST_LINES = 30;
+
+const guestItems = (session) => (Array.isArray(session.guestCart?.items) ? session.guestCart.items : []);
+
+function saveGuest(session, items) {
+  // Gán lại object để express-session nhận biết thay đổi và lưu xuống store cuối request.
+  session.guestCart = { items, updatedAt: new Date().toISOString() };
+}
+
+export async function getGuestCart(session) {
+  const { lines } = await resolveLines(guestItems(session));
+  return { ...summarize(lines), guest: true };
+}
+
+export async function addGuestItem(session, { productId, boxId, qty }) {
+  const items = guestItems(session).map((i) => ({ ...i }));
+  const kind = productId ? 'product' : 'box';
+  const existing = items.find(sameLine(kind, productId, boxId));
+  const newQty = (existing?.qty || 0) + qty;
+  await assertCanHold({ kind, productId, boxId }, newQty, existing?.qty || 0);
+  if (existing) existing.qty = newQty;
+  else {
+    if (items.length >= MAX_GUEST_LINES) {
+      throw Errors.validation([{ field: 'cart', message: `Giỏ tạm tối đa ${MAX_GUEST_LINES} sản phẩm` }]);
+    }
+    items.push({ _id: new mongoose.Types.ObjectId().toString(), kind, productId, boxId, qty });
+  }
+  saveGuest(session, items);
+  return getGuestCart(session);
+}
+
+export async function updateGuestItem(session, itemId, qty) {
+  const items = guestItems(session).map((i) => ({ ...i }));
+  const idx = items.findIndex((i) => String(i._id) === String(itemId));
+  if (idx === -1) throw Errors.notFound('Không có sản phẩm này trong giỏ');
+  if (qty === 0) items.splice(idx, 1);
+  else {
+    const it = items[idx];
+    const { lines } = await resolveLines([{ ...it, qty }]);
+    if (lines[0].warning?.code === 'INSUFFICIENT') {
+      throw Errors.conflict('OUT_OF_STOCK', `Chỉ còn ${lines[0].available} ${lines[0].unit} trong kho`, [
+        { id: String(it.productId || it.boxId), available: lines[0].available },
+      ]);
+    }
+    it.qty = qty;
+  }
+  saveGuest(session, items);
+  return getGuestCart(session);
+}
+
+export async function clearGuest(session) {
+  saveGuest(session, []);
+  return getGuestCart(session);
+}
+
+/**
+ * Gộp giỏ tạm (session) vào giỏ của người mua trong MongoDB sau khi đăng nhập.
+ * Dòng trùng thì cộng số lượng; vượt tồn kho/99 thì giảm về mức tối đa còn đặt được;
+ * dòng không còn bán được thì bỏ qua. Trả về số dòng đã gộp/điều chỉnh/bỏ qua để client thông báo.
+ */
+export async function mergeGuestCart(userId, items) {
+  const result = { merged: 0, adjusted: 0, skipped: 0 };
+  if (!Array.isArray(items) || !items.length) return result;
+  const cart = await getOrCreate(userId);
+  for (const it of items) {
+    const kind = it.kind === 'box' ? 'box' : 'product';
+    const qty = Number.parseInt(it.qty, 10);
+    const ref = kind === 'product' ? it.productId : it.boxId;
+    if (!Number.isInteger(qty) || qty < 1 || !mongoose.isValidObjectId(ref)) {
+      result.skipped += 1;
+      continue;
+    }
+    const existing = cart.items.find(sameLine(kind, it.productId, it.boxId));
+    const before = existing?.qty || 0;
+    const want = Math.min(99, before + qty);
+    const { lines } = await resolveLines([{ _id: 'probe', kind, productId: it.productId, boxId: it.boxId, qty: want }]);
+    const line = lines[0];
+    if (line.warning && line.warning.code !== 'INSUFFICIENT') {
+      result.skipped += 1;
+      continue;
+    }
+    const finalQty = line.warning ? Math.min(want, line.available) : want;
+    if (finalQty <= before) {
+      result.skipped += 1;
+      continue;
+    }
+    if (finalQty < before + qty) result.adjusted += 1;
+    if (existing) existing.qty = finalQty;
+    else cart.items.push({ kind, productId: it.productId, boxId: it.boxId, qty: finalQty });
+    result.merged += 1;
+  }
+  await cart.save();
+  return result;
 }

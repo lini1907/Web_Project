@@ -26,6 +26,13 @@ import { ToastService } from '../../core/services/toast.service';
             </div>
             @if (invalid('password')) { <span class="field-error">Nhập mật khẩu</span> }
           </label>
+          <div class="row-between">
+            <label class="checkbox"><input type="checkbox" formControlName="remember" /> Ghi nhớ đăng nhập (30 ngày)</label>
+            @if (rememberedEmail()) {
+              <button type="button" class="btn btn-link btn-xs" (click)="forget()">Không phải {{ rememberedEmail() }}?</button>
+            }
+          </div>
+          <p class="small muted">Không tick: phiên đăng nhập kết thúc khi đóng trình duyệt. Trình duyệt chỉ lưu email, không lưu mật khẩu.</p>
           @if (error()) { <div class="note note-danger" role="alert">{{ error() }}</div> }
           <button type="submit" class="btn btn-primary btn-block btn-lg" [disabled]="loading()">{{ loading() ? 'Đang đăng nhập...' : 'Đăng nhập' }}</button>
         </form>
@@ -56,14 +63,34 @@ export class LoginPage {
   protected form = this.fb.nonNullable.group({
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required]],
+    remember: [false],
   });
+  protected rememberedEmail = signal<string | null>(null);
   protected loading = signal(false);
   protected error = signal<string | null>(null);
   protected show = signal(false);
 
+  constructor() {
+    void this.prefill();
+  }
+
   invalid(name: 'email' | 'password'): boolean {
     const c = this.form.controls[name];
     return c.invalid && (c.touched || c.dirty);
+  }
+
+  /** Điền sẵn email đã ghi nhớ (cookie remember_email do server đặt). */
+  private async prefill(): Promise<void> {
+    const email = await this.auth.rememberedEmail();
+    if (!email) return;
+    this.rememberedEmail.set(email);
+    if (!this.form.controls.email.value) this.form.patchValue({ email, remember: true });
+  }
+
+  async forget(): Promise<void> {
+    await this.auth.forgetRemembered().catch(() => undefined);
+    this.rememberedEmail.set(null);
+    this.form.patchValue({ email: '', remember: false });
   }
 
   fill(email: string): void {
@@ -78,9 +105,11 @@ export class LoginPage {
     this.loading.set(true);
     this.error.set(null);
     try {
-      const { email, password } = this.form.getRawValue();
-      const user = await this.auth.login(email, password);
+      const { email, password, remember } = this.form.getRawValue();
+      const user = await this.auth.login(email, password, remember);
       this.toast.success(`Xin chào ${user.name}!`);
+      const merged = this.auth.lastCartMerge();
+      if (merged) this.toast.info(`Đã chuyển ${merged} sản phẩm từ giỏ tạm vào giỏ hàng của bạn`);
       const back = this.returnUrl();
       // Chỉ chấp nhận đường dẫn nội bộ để tránh open redirect.
       const target = back && back.startsWith('/') && !back.startsWith('//') && !back.startsWith('/login') ? back : this.auth.homeFor(user);

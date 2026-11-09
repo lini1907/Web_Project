@@ -70,6 +70,8 @@ export interface Product {
   certifications: string[];
   mainImage: string;
   galleryImages: string[];
+  /** Ghi nguồn ảnh giấy phép mở (Wikimedia Commons); ảnh nhà bán tự tải lên không có mục này. */
+  imageCredits?: { url: string; artist: string; license: string; page: string }[];
   description: string;
   rescue: Rescue | null;
   rating: number;
@@ -144,6 +146,8 @@ export interface CartLine {
 }
 
 export interface Cart {
+  /** true khi là giỏ tạm của khách (lưu trong session, chưa gắn tài khoản). */
+  guest?: boolean;
   items: CartLine[];
   itemCount: number;
   subtotal: number;

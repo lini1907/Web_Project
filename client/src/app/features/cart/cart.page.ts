@@ -15,11 +15,7 @@ import { ImgFallbackDirective } from '../../shared/img-fallback.directive';
   template: `
     <div class="container page">
       <h1>🛒 Giỏ hàng</h1>
-      @if (!auth.isLoggedIn()) {
-        <app-state state="empty" emptyIcon="🔐" emptyText="Đăng nhập để xem giỏ hàng và đặt mua. Giỏ hàng được lưu theo tài khoản nên đổi máy vẫn còn.">
-          <a class="btn btn-primary" routerLink="/login" [queryParams]="{ returnUrl: '/cart' }">Đăng nhập</a>
-        </app-state>
-      } @else if (!auth.isBuyer()) {
+      @if (auth.isLoggedIn() && !auth.isBuyer()) {
         <app-state state="empty" emptyIcon="🏪" emptyText="Tài khoản nhà bán/quản trị không có giỏ hàng." />
       } @else if (state() !== 'ok') {
         <app-state [state]="state()" (retry)="load()" />
@@ -29,6 +25,14 @@ import { ImgFallbackDirective } from '../../shared/img-fallback.directive';
         </app-state>
       } @else {
         @let c = cart()!;
+        @if (c.guest) {
+          <div class="note guest-note">
+            🛈 Đây là <b>giỏ tạm</b> lưu trong phiên làm việc (session) của trình duyệt này. Khi bạn đăng nhập, các sản phẩm sẽ được
+            chuyển vào giỏ của tài khoản và giữ lại trên mọi thiết bị.
+            <a routerLink="/login" [queryParams]="{ returnUrl: '/cart' }">Đăng nhập</a> ·
+            <a routerLink="/register" [queryParams]="{ returnUrl: '/cart' }">Tạo tài khoản</a>
+          </div>
+        }
         <div class="cart-layout">
           <section class="card">
             @for (group of groups(); track group.vendor) {
@@ -71,7 +75,13 @@ import { ImgFallbackDirective } from '../../shared/img-fallback.directive';
             <div class="row-between total"><span>Tổng cộng</span><b>{{ c.total | money }}</b></div>
             <p class="small muted">Giá được tính lại ở máy chủ theo giá hiện tại khi đặt hàng.</p>
             @if (c.hasIssues) { <div class="field-error">Có sản phẩm không đủ hàng/hết hạn. Vui lòng điều chỉnh trước khi đặt.</div> }
-            <a class="btn btn-primary btn-block btn-lg" [class.disabled]="c.hasIssues" [attr.aria-disabled]="c.hasIssues" [routerLink]="c.hasIssues ? null : '/checkout'">Tiến hành đặt hàng</a>
+            @if (c.guest) {
+              <a class="btn btn-primary btn-block btn-lg" [class.disabled]="c.hasIssues" [attr.aria-disabled]="c.hasIssues"
+                [routerLink]="c.hasIssues ? null : '/login'" [queryParams]="{ returnUrl: '/checkout' }">Đăng nhập để đặt hàng</a>
+              <p class="small muted">Giỏ tạm sẽ được gộp vào tài khoản ngay khi đăng nhập.</p>
+            } @else {
+              <a class="btn btn-primary btn-block btn-lg" [class.disabled]="c.hasIssues" [attr.aria-disabled]="c.hasIssues" [routerLink]="c.hasIssues ? null : '/checkout'">Tiến hành đặt hàng</a>
+            }
           </aside>
         </div>
       }
@@ -96,7 +106,7 @@ export class CartPage {
   });
 
   constructor() {
-    if (this.auth.isBuyer()) this.load();
+    if (!this.auth.isLoggedIn() || this.auth.isBuyer()) this.load();
   }
 
   load(): void {

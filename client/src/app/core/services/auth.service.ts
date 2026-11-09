@@ -30,6 +30,8 @@ export class AuthService {
   readonly isLoggedIn = computed(() => this._user() !== null);
   readonly role = computed<Role | null>(() => this._user()?.role ?? null);
   readonly isBuyer = computed(() => this.role() === 'buyer');
+  /** Số dòng giỏ tạm (session của khách) vừa được server gộp vào giỏ tài khoản ở lần đăng nhập gần nhất. */
+  readonly lastCartMerge = signal(0);
 
   /** Gọi khi khởi động app: khôi phục phiên từ cookie (reload trang vẫn giữ đăng nhập). */
   async restore(): Promise<void> {
@@ -45,14 +47,18 @@ export class AuthService {
     }
   }
 
-  async login(email: string, password: string): Promise<User> {
-    const user = await firstValueFrom(this.http.post<User>(`${API}/auth/login`, { email, password }));
-    this._user.set(user);
-    return user;
+  async login(email: string, password: string, remember = false): Promise<User> {
+    const res = await firstValueFrom(this.http.post<User>(`${API}/auth/login`, { email, password, remember }, { observe: 'response' }));
+    return this.signedIn(res.body!, res.headers.get('X-Cart-Merged'));
   }
 
   async register(payload: RegisterPayload): Promise<User> {
-    const user = await firstValueFrom(this.http.post<User>(`${API}/auth/register`, payload));
+    const res = await firstValueFrom(this.http.post<User>(`${API}/auth/register`, payload, { observe: 'response' }));
+    return this.signedIn(res.body!, res.headers.get('X-Cart-Merged'));
+  }
+
+  private signedIn(user: User, merged: string | null): User {
+    this.lastCartMerge.set(Number(merged) || 0);
     this._user.set(user);
     return user;
   }
@@ -79,6 +85,19 @@ export class AuthService {
 
   changePassword(currentPassword: string, newPassword: string): Promise<unknown> {
     return firstValueFrom(this.http.post(`${API}/auth/me/password`, { currentPassword, newPassword }));
+  }
+
+  /** Email đã ghi nhớ (server đọc từ cookie HttpOnly remember_email). */
+  async rememberedEmail(): Promise<string | null> {
+    try {
+      return (await firstValueFrom(this.http.get<{ email: string | null }>(`${API}/auth/remembered`))).email;
+    } catch {
+      return null;
+    }
+  }
+
+  forgetRemembered(): Promise<unknown> {
+    return firstValueFrom(this.http.delete(`${API}/auth/remembered`));
   }
 
   /** Trang mặc định sau đăng nhập theo vai trò. */

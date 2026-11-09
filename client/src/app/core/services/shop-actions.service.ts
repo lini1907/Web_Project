@@ -18,13 +18,9 @@ export class ShopActions {
   /** id đang được thêm (để khóa nút, tránh bấm liên tục). */
   readonly busyId = signal<string | null>(null);
 
+  /** Khách chưa đăng nhập vẫn thêm được vào giỏ tạm (session); chỉ chặn tài khoản nhà bán/quản trị. */
   private ensureBuyer(): boolean {
-    if (!this.auth.isLoggedIn()) {
-      this.toast.info('Vui lòng đăng nhập để mua hàng');
-      this.router.navigate(['/login'], { queryParams: { returnUrl: this.router.url } });
-      return false;
-    }
-    if (!this.auth.isBuyer()) {
+    if (this.auth.isLoggedIn() && !this.auth.isBuyer()) {
       this.toast.error('Tài khoản nhà bán/quản trị không thể đặt hàng. Hãy dùng tài khoản người mua.');
       return false;
     }

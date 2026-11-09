@@ -5,7 +5,7 @@ import { env } from '../config/env.js';
 export const CSRF_COOKIE = 'XSRF-TOKEN';
 export const CSRF_HEADER = 'x-xsrf-token';
 
-function readCookie(req, name) {
+export function readCookie(req, name) {
   const header = req.headers.cookie;
   if (!header) return undefined;
   for (const part of header.split(';')) {
