@@ -83,6 +83,21 @@ export class AuthService {
     return user;
   }
 
+  /** Các cách đăng nhập máy chủ đang bật (Google cần GOOGLE_CLIENT_ID/SECRET). */
+  providers(): Promise<{ google: boolean }> {
+    return firstValueFrom(this.http.get<{ google: boolean }>(`${API}/auth/providers`));
+  }
+
+  /** Quên mật khẩu bước 1: server gửi mã OTP 6 số qua email. */
+  forgotPassword(email: string): Promise<{ message: string }> {
+    return firstValueFrom(this.http.post<{ message: string }>(`${API}/auth/forgot-password`, { email }));
+  }
+
+  /** Quên mật khẩu bước 2: nhập OTP + mật khẩu mới. */
+  resetPassword(email: string, otp: string, newPassword: string): Promise<unknown> {
+    return firstValueFrom(this.http.post(`${API}/auth/reset-password`, { email, otp, newPassword }));
+  }
+
   changePassword(currentPassword: string, newPassword: string): Promise<unknown> {
     return firstValueFrom(this.http.post(`${API}/auth/me/password`, { currentPassword, newPassword }));
   }

@@ -2,14 +2,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { API, toParams } from '../api';
-import { Address, GroupBuy, MyGroupBuy, Order, Paged } from '../models';
+import { Address, DeliverySlot, GroupBuy, MyGroupBuy, Order, Paged, PaymentMethod, Shipment } from '../models';
 
 @Injectable({ providedIn: 'root' })
 export class OrderService {
   private http = inject(HttpClient);
 
   /** Đặt hàng COD. expectedTotal = tổng tiền buyer đang thấy; server tính lại và báo PRICE_CHANGED nếu lệch. */
-  place(body: { shippingAddress: Address; note?: string; expectedTotal: number }, idempotencyKey: string): Observable<Order> {
+  place(body: { shippingAddress: Address; note?: string; expectedTotal: number; voucherCode?: string; paymentMethod?: PaymentMethod; deliverySlot?: DeliverySlot }, idempotencyKey: string): Observable<Order> {
     return this.http.post<Order>(`${API}/orders`, body, { headers: new HttpHeaders({ 'Idempotency-Key': idempotencyKey }) });
   }
   list(page = 1, status?: string): Observable<Paged<Order>> {
@@ -20,6 +20,16 @@ export class OrderService {
   }
   cancel(id: string): Observable<Order> {
     return this.http.post<Order>(`${API}/orders/${id}/cancel`, {});
+  }
+  /** Tạo link thanh toán VNPay/MoMo cho đơn (server ký và trả URL của cổng). */
+  pay(id: string): Observable<{ payUrl: string }> {
+    return this.http.post<{ payUrl: string }>(`${API}/orders/${id}/pay`, {});
+  }
+  paymentMethods(): Observable<Record<PaymentMethod, boolean>> {
+    return this.http.get<Record<PaymentMethod, boolean>>(`${API}/payments/methods`);
+  }
+  track(code: string): Observable<Shipment & { orderCode: string }> {
+    return this.http.get<Shipment & { orderCode: string }>(`${API}/tracking/${encodeURIComponent(code)}`);
   }
 
   // ----- Mua chung -----

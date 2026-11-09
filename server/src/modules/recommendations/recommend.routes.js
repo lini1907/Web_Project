@@ -18,12 +18,21 @@ function limitOf(q, def, max = 12) {
 router.get('/recommendations/similar/:productId', async (req, res) => {
   const id = assertId(req.params.productId, 'Sản phẩm không tồn tại');
   if (!(await Product.exists({ _id: id }))) throw Errors.notFound('Sản phẩm không tồn tại');
-  res.json(await rec.similar(id, limitOf(req.query, 5)));
+  const r = await rec.similar(id, limitOf(req.query, 5));
+  if (req.user) await rec.saveHistory(req.user._id, 'similar', r, id).catch(() => {});
+  res.json(r);
 });
 
 router.get('/recommendations/for-me', requireAuth, async (req, res) => {
   const ids = await recentInteractions(req.user._id, 20);
-  res.json(await rec.forUser(ids, limitOf(req.query, 8)));
+  const r = await rec.forUser(ids, limitOf(req.query, 8));
+  await rec.saveHistory(req.user._id, 'for-me', r).catch(() => {});
+  res.json(r);
+});
+
+/** Lịch sử gợi ý của chính người dùng (giải thích vì sao từng sản phẩm được gợi ý). */
+router.get('/recommendations/history', requireAuth, async (req, res) => {
+  res.json(await rec.history(req.user._id, limitOf(req.query, 20, 50)));
 });
 
 /** Ghi sự kiện từ client. "purchase" chỉ do server tự ghi khi tạo đơn. */

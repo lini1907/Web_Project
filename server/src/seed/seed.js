@@ -10,7 +10,7 @@ import { pathToFileURL, fileURLToPath } from 'node:url';
 import mongoose from 'mongoose';
 import { env } from '../config/env.js';
 import { connectDb } from '../config/db.js';
-import { User, Farm, Product, MysteryBox, Order, GroupBuy, GroupBuyMembership, Cart, Event, AuditLog, Counter } from '../models/index.js';
+import { User, Farm, Product, MysteryBox, Order, GroupBuy, GroupBuyMembership, Cart, Event, AuditLog, Counter, Voucher, Review, Shipment, RecommendHistory } from '../models/index.js';
 import { hashPassword } from '../modules/auth/auth.service.js';
 import { slugify } from '../utils/text.js';
 import { rescuePrice, shippingFeeFor } from '../utils/money.js';
@@ -346,14 +346,25 @@ async function seedOrders(byLegacyProduct, buyers) {
   }
 }
 
+/** Mã giảm giá mẫu (bỏ qua mã đã có để chạy seed nhiều lần không lỗi). */
+async function seedVouchers() {
+  const in30d = new Date(Date.now() + 30 * 24 * 3600e3);
+  const list = [
+    { code: 'CHAOBANMOI', description: 'Giảm 10% cho đơn đầu tiên, tối đa 30.000đ', type: 'percent', value: 10, maxDiscount: 30000, minOrderValue: 100000, expiresAt: in30d },
+    { code: 'FREESHIP', description: 'Miễn phí giao hàng cho đơn từ 100.000đ', type: 'freeship', minOrderValue: 100000, maxUses: 500, expiresAt: in30d },
+    { code: 'GIAM20K', description: 'Giảm 20.000đ cho đơn từ 150.000đ', type: 'fixed', value: 20000, minOrderValue: 150000, maxUses: 200, expiresAt: in30d },
+  ];
+  for (const x of list) await Voucher.updateOne({ code: x.code }, { $setOnInsert: x }, { upsert: true });
+}
+
 export async function runSeed({ reset = false, writeCatalog = !env.isTest } = {}) {
   if (reset) {
-    const collections = [User, Farm, Product, MysteryBox, Order, GroupBuy, GroupBuyMembership, Cart, Event, AuditLog, Counter];
+    const collections = [User, Farm, Product, MysteryBox, Order, GroupBuy, GroupBuyMembership, Cart, Event, AuditLog, Counter, Voucher, Review, Shipment, RecommendHistory];
     for (const M of collections) await M.deleteMany({});
     await mongoose.connection.collection('sessions').deleteMany({}).catch(() => {});
     console.log('Đã xóa dữ liệu cũ.');
   }
-  for (const M of [User, Farm, Product, MysteryBox, Order, GroupBuy, GroupBuyMembership, Cart, Event, AuditLog]) await M.syncIndexes();
+  for (const M of [User, Farm, Product, MysteryBox, Order, GroupBuy, GroupBuyMembership, Cart, Event, AuditLog, Voucher, Review, Shipment, RecommendHistory]) await M.syncIndexes();
 
   const passwordHash = await hashPassword(env.seedPassword);
   const legacyProducts = readJson('products.json');
@@ -366,6 +377,7 @@ export async function runSeed({ reset = false, writeCatalog = !env.isTest } = {}
   await seedMysteryBoxes(legacyProducts, byFarm, productsByLegacy);
   await seedGroupBuys(byFarm, productsByLegacy, buyers);
   await seedOrders(productsByLegacy, buyers);
+  await seedVouchers();
   const catalogPath = writeCatalog ? await exportCatalog() : null;
 
   const summary = {
@@ -377,6 +389,7 @@ export async function runSeed({ reset = false, writeCatalog = !env.isTest } = {}
     mysteryBoxes: await MysteryBox.countDocuments(),
     groupBuys: await GroupBuy.countDocuments(),
     orders: await Order.countDocuments(),
+    vouchers: await Voucher.countDocuments(),
     legacyProducts: legacyProducts.length,
     excluded: legacyProducts.filter((p) => EXCLUDED_FARMS.includes(p.farm)).map((p) => p.name),
     ...counts,

@@ -3,6 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './layout/header.component';
 import { FooterComponent } from './layout/footer.component';
 import { ToastService } from './core/services/toast.service';
+import { RealtimeService } from './core/services/realtime.service';
 
 @Component({
   selector: 'app-root',
@@ -23,4 +24,6 @@ import { ToastService } from './core/services/toast.service';
 })
 export class App {
   protected toast = inject(ToastService);
+  // Khởi tạo kênh SSE ngay khi app chạy (tự kết nối khi đăng nhập).
+  private realtime = inject(RealtimeService);
 }

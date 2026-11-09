@@ -19,6 +19,8 @@ export interface User {
   status: 'active' | 'locked';
   vendorStatus: VendorStatus;
   vendorNote?: string;
+  authProvider?: 'local' | 'google';
+  googleLinked?: boolean;
   createdAt: string;
   lastLoginAt?: string | null;
 }
@@ -210,6 +212,27 @@ export interface OrderPart {
   subtotal: number;
   cod: { status: 'unpaid' | 'collected'; collectedAt: string | null };
   history: StatusEvent[];
+  shipment: Shipment | null;
+}
+
+export type PaymentMethod = 'cod' | 'vnpay' | 'momo';
+export type PaymentStatus = 'unpaid' | 'pending' | 'paid' | 'failed' | 'refund_pending';
+export type DeliveryWindow = 'morning' | 'afternoon' | 'evening';
+export interface DeliverySlot {
+  date: string;
+  window: DeliveryWindow;
+}
+
+export type ShipmentStatus = 'picked' | 'in_transit' | 'out_for_delivery' | 'delivered' | 'failed';
+export type Carrier = 'self' | 'ghn' | 'ghtk' | 'viettel-post' | 'other';
+export interface Shipment {
+  id: string;
+  trackingCode: string;
+  carrier: Carrier;
+  carrierLabel: string;
+  status: ShipmentStatus;
+  estimatedDelivery: string | null;
+  events: { status: ShipmentStatus; note: string; location: string; at: string }[];
 }
 
 export interface Order {
@@ -220,10 +243,15 @@ export interface Order {
   parts: OrderPart[];
   subtotal: number;
   shippingFee: number;
+  discount: number;
+  voucher: { code: string; type: VoucherType } | null;
   total: number;
-  paymentMethod: 'cod';
+  paymentMethod: PaymentMethod;
+  payment: { status: PaymentStatus; transactionId: string | null; paidAt: string | null; message: string };
+  deliverySlot: DeliverySlot | null;
   status: OrderStatus;
   canCancel: boolean;
+  canPay: boolean;
   shippingAddress: Address;
   note: string;
   createdAt: string;
@@ -243,6 +271,11 @@ export interface VendorOrderPart {
   nextStatuses: PartStatus[];
   cod: { status: 'unpaid' | 'collected'; collectedAt: string | null };
   history: StatusEvent[];
+  paymentMethod: PaymentMethod;
+  paymentStatus: PaymentStatus;
+  awaitingPayment: boolean;
+  deliverySlot: DeliverySlot | null;
+  shipment: Shipment | null;
 }
 
 export interface GroupBuy {
@@ -285,7 +318,25 @@ export interface Recommendation {
   reason?: string;
   modelVersion: string | null;
   latencyMs: number;
-  items: { product: Product; score: number | null }[];
+  items: { product: Product; score: number | null; reason?: string }[];
+}
+
+export interface RecHistoryEntry {
+  id: string;
+  kind: 'for-me' | 'similar';
+  source: 'model' | 'fallback';
+  reason: string;
+  modelVersion: string | null;
+  context: RecBrief | null;
+  items: { product: RecBrief; score: number | null; reason: string }[];
+  at: string;
+}
+export interface RecBrief {
+  id: string;
+  name: string;
+  slug: string;
+  image: string;
+  price: number;
 }
 
 export interface Kpi {
@@ -380,3 +431,95 @@ export const STATUS_LABELS: Record<string, string> = {
   active: 'Hoạt động',
   locked: 'Đã khóa',
 };
+
+// ---------- Mã giảm giá ----------
+export type VoucherType = 'percent' | 'fixed' | 'freeship';
+
+export interface PublicVoucher {
+  code: string;
+  description: string;
+  type: VoucherType;
+  value: number;
+  maxDiscount: number;
+  minOrderValue: number;
+  expiresAt: string | null;
+}
+
+export interface AdminVoucher extends PublicVoucher {
+  id: string;
+  maxUses: number;
+  usedCount: number;
+  startsAt: string | null;
+  isActive: boolean;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface VoucherInput {
+  code: string;
+  description?: string;
+  type: VoucherType;
+  value?: number;
+  maxDiscount?: number;
+  minOrderValue?: number;
+  maxUses?: number;
+  startsAt?: string | null;
+  expiresAt?: string | null;
+  isActive?: boolean;
+}
+
+export interface VoucherPreview {
+  voucher: PublicVoucher;
+  discount: number;
+  total: number;
+}
+
+// ---------- Đánh giá ----------
+export interface Review {
+  id: string;
+  productId: string;
+  userName: string;
+  rating: number;
+  comment: string;
+  status: 'visible' | 'hidden';
+  mine: boolean;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface ReviewPage extends Paged<Review> {
+  distribution: Record<1 | 2 | 3 | 4 | 5, number>;
+}
+
+export interface AdminReview extends Review {
+  product: { name: string; slug: string };
+}
+
+/** Sự kiện real-time (SSE) server đẩy xuống. */
+export interface RealtimeEvent {
+  type: 'order.created' | 'order.updated' | 'payment.updated';
+  orderId: string;
+  partId?: string;
+  code: string;
+  status?: string;
+  shipmentStatus?: string;
+  message: string;
+  at: string;
+}
+
+export const DELIVERY_WINDOW_LABELS: Record<DeliveryWindow, string> = { morning: 'Sáng 8:00–12:00', afternoon: 'Chiều 13:00–17:00', evening: 'Tối 18:00–21:00' };
+export const SHIPMENT_STATUS_LABELS: Record<ShipmentStatus, string> = {
+  picked: 'Đã lấy hàng',
+  in_transit: 'Đang trung chuyển',
+  out_for_delivery: 'Đang đi giao',
+  delivered: 'Đã giao',
+  failed: 'Giao không thành công',
+};
+export const PAYMENT_STATUS_LABELS: Record<PaymentStatus, string> = {
+  unpaid: 'Chưa thanh toán',
+  pending: 'Chờ thanh toán',
+  paid: 'Đã thanh toán',
+  failed: 'Thanh toán thất bại',
+  refund_pending: 'Chờ hoàn tiền',
+};
+export const PAYMENT_METHOD_LABELS: Record<PaymentMethod, string> = { cod: 'Thanh toán khi nhận hàng (COD)', vnpay: 'VNPay', momo: 'Ví MoMo' };

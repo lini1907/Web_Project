@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { API, toParams } from '../api';
-import { Category, Farm, GroupBuy, MysteryBox, Paged, Product, Recommendation } from '../models';
+import { Category, Farm, GroupBuy, MysteryBox, Paged, Product, RecHistoryEntry, Recommendation } from '../models';
 
 export interface ProductQuery {
   q?: string;
@@ -54,6 +54,9 @@ export class CatalogService {
   }
   forMe(limit = 8): Observable<Recommendation> {
     return this.http.get<Recommendation>(`${API}/recommendations/for-me`, { params: toParams({ limit }) });
+  }
+  recHistory(limit = 20): Observable<RecHistoryEntry[]> {
+    return this.http.get<RecHistoryEntry[]>(`${API}/recommendations/history`, { params: toParams({ limit }) });
   }
   /** Ghi sự kiện hành vi cho mô hình gợi ý (lỗi thì bỏ qua, không ảnh hưởng trải nghiệm). */
   track(type: 'view' | 'add_to_cart', productId: string): void {

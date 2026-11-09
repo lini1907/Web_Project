@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { API, toParams } from '../api';
-import { Farm, GroupBuy, Kpi, Paged, PartStatus, VendorMysteryBox, VendorOrderPart, VendorProduct } from '../models';
+import { Carrier, Farm, GroupBuy, Kpi, Paged, PartStatus, VendorMysteryBox, VendorOrderPart, VendorProduct } from '../models';
 
 export interface ProductInput {
   farmId: string;
@@ -23,6 +23,13 @@ export interface ProductInput {
 }
 
 /** Các API dành cho nhà bán (vendor). Quyền sở hữu luôn được kiểm tra ở server. */
+export interface ShipmentInput {
+  carrier?: Carrier;
+  trackingCode?: string;
+  estimatedDelivery?: string | null;
+  note?: string;
+}
+
 @Injectable({ providedIn: 'root' })
 export class VendorService {
   private http = inject(HttpClient);
@@ -71,8 +78,15 @@ export class VendorService {
   orders(page = 1, status?: string): Observable<Paged<VendorOrderPart>> {
     return this.http.get<Paged<VendorOrderPart>>(`${this.base}/orders`, { params: toParams({ page, status }) });
   }
-  setPartStatus(orderId: string, partId: string, status: PartStatus): Observable<VendorOrderPart> {
-    return this.http.patch<VendorOrderPart>(`${this.base}/orders/${orderId}/parts/${partId}`, { status });
+  /** Đổi trạng thái phần đơn; khi chuyển sang "shipping" có thể kèm thông tin vận đơn. */
+  setPartStatus(orderId: string, partId: string, status: PartStatus, shipment?: ShipmentInput): Observable<VendorOrderPart> {
+    return this.http.patch<VendorOrderPart>(`${this.base}/orders/${orderId}/parts/${partId}`, { status, ...(shipment || {}) });
+  }
+  updateShipment(orderId: string, partId: string, body: ShipmentInput): Observable<VendorOrderPart> {
+    return this.http.patch<VendorOrderPart>(`${this.base}/orders/${orderId}/parts/${partId}/shipment`, body);
+  }
+  addShipmentEvent(orderId: string, partId: string, body: { status: 'in_transit' | 'out_for_delivery' | 'failed'; note?: string; location?: string }): Observable<VendorOrderPart> {
+    return this.http.post<VendorOrderPart>(`${this.base}/orders/${orderId}/parts/${partId}/shipment/events`, body);
   }
   collectCod(orderId: string, partId: string): Observable<VendorOrderPart> {
     return this.http.patch<VendorOrderPart>(`${this.base}/orders/${orderId}/parts/${partId}/cod`, { status: 'collected' });

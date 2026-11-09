@@ -1,8 +1,9 @@
-import { Component, effect, inject, input, signal } from '@angular/core';
+import { Component, DestroyRef, effect, inject, input, signal } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { ApiError } from '../../core/api';
-import { Order, OrderPart, PartStatus } from '../../core/models';
+import { DELIVERY_WINDOW_LABELS, Order, OrderPart, PAYMENT_METHOD_LABELS, PAYMENT_STATUS_LABELS, PartStatus, SHIPMENT_STATUS_LABELS } from '../../core/models';
+import { RealtimeService } from '../../core/services/realtime.service';
 import { OrderService } from '../../core/services/order.service';
 import { ToastService } from '../../core/services/toast.service';
 import { MoneyPipe, StatusLabelPipe } from '../../shared/pipes';
@@ -23,15 +24,26 @@ const FLOW: PartStatus[] = ['pending', 'confirmed', 'shipping', 'delivered'];
         @let o = order()!;
         <nav class="breadcrumb"><a routerLink="/orders">Đơn hàng của tôi</a> › <span>{{ o.code }}</span></nav>
         @if (placed()) {
-          <div class="note note-success big-note"><svg class="icon" aria-hidden="true"><use href="icons.svg#check" /></svg> Đặt hàng thành công! Nhà bán sẽ xác nhận sớm. Bạn thanh toán <b>{{ o.total | money }}</b> khi nhận hàng.</div>
+          <div class="note note-success big-note"><svg class="icon" aria-hidden="true"><use href="icons.svg#check" /></svg> Đặt hàng thành công!
+            @if (o.paymentMethod === 'cod') { Nhà bán sẽ xác nhận sớm. Bạn thanh toán <b>{{ o.total | money }}</b> khi nhận hàng. }
+            @else if (o.payment.status !== 'paid') { Vui lòng thanh toán <b>{{ o.total | money }}</b> qua {{ methodLabel[o.paymentMethod] }} để nhà bán xác nhận đơn. }
+          </div>
+        }
+        @if (paymentResult() === 'success' && o.payment.status === 'paid') {
+          <div class="note note-success big-note" role="status"><svg class="icon" aria-hidden="true"><use href="icons.svg#check" /></svg> Thanh toán thành công qua {{ methodLabel[o.paymentMethod] }}. Mã giao dịch: {{ o.payment.transactionId }}</div>
+        } @else if (paymentResult() === 'failed' || o.payment.status === 'failed') {
+          <div class="note note-danger" role="alert">Thanh toán chưa thành công{{ o.payment.message ? ': ' + o.payment.message : '' }}. Bạn có thể thanh toán lại hoặc hủy đơn.</div>
         }
         <div class="page-head">
           <div>
             <h1>Đơn {{ o.code }}</h1>
-            <div class="muted">Đặt lúc {{ o.createdAt | date: 'HH:mm dd/MM/yyyy' }} · Thanh toán khi nhận hàng (COD) @if (o.source === 'group-buy') { · <span class="tag tag-orange">Đơn mua chung</span> }</div>
+            <div class="muted">Đặt lúc {{ o.createdAt | date: 'HH:mm dd/MM/yyyy' }} · {{ methodLabel[o.paymentMethod] }} @if (o.source === 'group-buy') { · <span class="tag tag-orange">Đơn mua chung</span> }</div>
           </div>
           <div class="row-gap">
             <app-status [value]="o.status" />
+            @if (o.canPay) {
+              <button type="button" class="btn btn-primary" [disabled]="paying()" (click)="pay()">{{ paying() ? 'Đang chuyển sang cổng...' : 'Thanh toán ' + methodLabel[o.paymentMethod] }}</button>
+            }
             @if (o.canCancel) {
               <button type="button" class="btn btn-outline text-danger" [disabled]="busy()" (click)="cancel()">Hủy phần đơn chờ xác nhận</button>
             }
@@ -44,7 +56,7 @@ const FLOW: PartStatus[] = ['pending', 'confirmed', 'shipping', 'delivered'];
               <section class="card part">
                 <div class="row-between">
                   <b><svg class="icon" aria-hidden="true"><use href="icons.svg#farm" /></svg> {{ part.vendor.name }}</b>
-                  <div class="row-gap"><app-status [value]="part.status" /><app-status [value]="part.cod.status" /></div>
+                  <div class="row-gap"><app-status [value]="part.status" />@if (o.paymentMethod === 'cod') { <app-status [value]="part.cod.status" /> }</div>
                 </div>
                 @if (part.status !== 'cancelled') {
                   <ol class="tracker">
@@ -56,6 +68,17 @@ const FLOW: PartStatus[] = ['pending', 'confirmed', 'shipping', 'delivered'];
                       </li>
                     }
                   </ol>
+                  @if (part.shipment; as sh) {
+                    <details class="shipment" [open]="part.status === 'shipping'">
+                      <summary><b>{{ sh.carrierLabel }}</b> · Mã vận đơn <code>{{ sh.trackingCode }}</code> · {{ shipLabel[sh.status] }}
+                        @if (sh.estimatedDelivery) { · dự kiến {{ sh.estimatedDelivery | date: 'dd/MM' }} }</summary>
+                      <ol class="ship-events">
+                        @for (e of sh.events.slice().reverse(); track $index) {
+                          <li><small class="muted">{{ e.at | date: 'HH:mm dd/MM' }}</small> <b>{{ shipLabel[e.status] }}</b>@if (e.location) { · {{ e.location }} }@if (e.note) { — {{ e.note }} }</li>
+                        }
+                      </ol>
+                    </details>
+                  }
                 } @else {
                   <div class="note note-danger">Phần đơn đã hủy @if (timeOf(part, 'cancelled'); as t) { lúc {{ t | date: 'HH:mm dd/MM' }} } — hàng đã được hoàn kho.</div>
                 }
@@ -76,21 +99,41 @@ const FLOW: PartStatus[] = ['pending', 'confirmed', 'shipping', 'delivered'];
           <aside class="card summary">
             <h3>Giao tới</h3>
             <p><b>{{ o.shippingAddress.name }}</b> · {{ o.shippingAddress.phone }}<br />{{ o.shippingAddress.address }}</p>
+            @if (o.deliverySlot) { <p class="small">Nhận hàng: <b>{{ o.deliverySlot.date | date: 'dd/MM/yyyy' }}</b>, {{ windowLabel[o.deliverySlot.window] }}</p> }
             @if (o.note) { <p class="small muted">Ghi chú: {{ o.note }}</p> }
             <hr />
             <div class="row-between"><span>Tạm tính</span><b>{{ o.subtotal | money }}</b></div>
             <div class="row-between"><span>Phí giao hàng</span><b>{{ o.shippingFee === 0 ? 'Miễn phí' : (o.shippingFee | money) }}</b></div>
-            <div class="row-between total"><span>Tổng (COD)</span><b>{{ o.total | money }}</b></div>
+            @if (o.discount > 0) { <div class="row-between"><span>Giảm giá @if (o.voucher) { ({{ o.voucher.code }}) }</span><b>−{{ o.discount | money }}</b></div> }
+            <div class="row-between total"><span>Tổng {{ o.paymentMethod === 'cod' ? '(COD)' : '' }}</span><b>{{ o.total | money }}</b></div>
+            @if (o.paymentMethod !== 'cod') {
+              <div class="row-between small"><span>{{ methodLabel[o.paymentMethod] }}</span><b [class.text-danger]="o.payment.status === 'failed'">{{ payLabel[o.payment.status] }}</b></div>
+              @if (o.payment.status === 'refund_pending') { <p class="small muted">Đơn đã hủy sau khi thanh toán. FarmTable sẽ hoàn tiền về tài khoản của bạn.</p> }
+            }
             <p class="small muted">Giá trong đơn là bản chụp lúc đặt, không đổi khi nhà bán sửa giá sau này. Trạng thái thu tiền do nhà bán xác nhận khi giao.</p>
           </aside>
         </div>
       }
     </div>
   `,
+  styles: [
+    `
+      .shipment { margin: 8px 0 12px; padding: 8px 10px; background: #f9fafb; border-radius: 8px; }
+      .shipment summary { cursor: pointer; }
+      .ship-events { list-style: none; padding: 0; margin: 8px 0 0; display: grid; gap: 4px; font-size: 0.88rem; }
+    `,
+  ],
 })
 export class OrderDetailPage {
   readonly id = input.required<string>();
   readonly placedParam = input<string | undefined>(undefined, { alias: 'placed' });
+  /** ?payment=success|failed khi cổng thanh toán chuyển về. */
+  readonly paymentResult = input<string | undefined>(undefined, { alias: 'payment' });
+  protected methodLabel = PAYMENT_METHOD_LABELS;
+  protected payLabel = PAYMENT_STATUS_LABELS;
+  protected shipLabel = SHIPMENT_STATUS_LABELS;
+  protected windowLabel = DELIVERY_WINDOW_LABELS;
+  protected paying = signal(false);
   private orders = inject(OrderService);
   private toast = inject(ToastService);
   protected flow = FLOW;
@@ -105,10 +148,30 @@ export class OrderDetailPage {
       this.placed.set(this.placedParam() === '1');
       this.load(this.id());
     });
+    // Real-time: nhà bán đổi trạng thái / thanh toán xong => tải lại đơn, không cần F5.
+    const sub = inject(RealtimeService)
+      .on()
+      .subscribe((e) => {
+        if (e.orderId === this.id()) this.load(this.id(), true);
+      });
+    inject(DestroyRef).onDestroy(() => sub.unsubscribe());
   }
 
-  load(id: string): void {
-    this.state.set('loading');
+  pay(): void {
+    const o = this.order();
+    if (!o) return;
+    this.paying.set(true);
+    this.orders.pay(o.id).subscribe({
+      next: (r) => (window.location.href = r.payUrl),
+      error: (e) => {
+        this.paying.set(false);
+        this.toast.error(ApiError.from(e).message);
+      },
+    });
+  }
+
+  load(id: string, silent = false): void {
+    if (!silent) this.state.set('loading');
     this.orders.get(id).subscribe({
       next: (o) => {
         this.order.set(o);

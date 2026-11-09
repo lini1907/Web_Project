@@ -54,6 +54,16 @@ import { isoDay } from '../vendor/vendor-dashboard.page';
           </tbody>
         </table>
       </section>
+      <section class="card">
+        <h3>Xuất dữ liệu (CSV, mở bằng Excel)</h3>
+        <div class="row-gap wrap">
+          <a class="btn btn-outline btn-sm" [href]="'/api/v1/admin/export/orders.csv?from=' + from + '&to=' + to" download>Đơn hàng trong kỳ</a>
+          <a class="btn btn-outline btn-sm" href="/api/v1/admin/export/products.csv" download>Sản phẩm</a>
+          <a class="btn btn-outline btn-sm" href="/api/v1/admin/export/users.csv" download>Người dùng</a>
+          <a class="btn btn-outline btn-sm" href="/api/v1/admin/export/vouchers.csv" download>Mã giảm giá</a>
+          <a class="btn btn-outline btn-sm" href="/api/v1/admin/export/reviews.csv" download>Đánh giá</a>
+        </div>
+      </section>
     }
   `,
 })

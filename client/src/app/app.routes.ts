@@ -28,11 +28,13 @@ export const routes: Routes = [
   { path: 'checkout', canActivate: [authGuard], loadComponent: () => import('./features/cart/checkout.page').then((m) => m.CheckoutPage), title: 'Thanh toán · FarmTable' },
   { path: 'orders', canActivate: [authGuard], loadComponent: () => import('./features/orders/orders.page').then((m) => m.OrdersPage), title: 'Đơn hàng của tôi · FarmTable' },
   { path: 'orders/:id', canActivate: [authGuard], loadComponent: () => import('./features/orders/order-detail.page').then((m) => m.OrderDetailPage), title: 'Theo dõi đơn hàng · FarmTable' },
-  { path: 'track-order', redirectTo: 'orders' },
+  { path: 'tracking', loadComponent: () => import('./features/orders/tracking.page').then((m) => m.TrackingPage), title: 'Tra cứu vận đơn · FarmTable' },
+  { path: 'track-order', redirectTo: 'tracking' },
 
   // Tài khoản
   { path: 'login', canActivate: [guestGuard], loadComponent: () => import('./features/account/login.page').then((m) => m.LoginPage), title: 'Đăng nhập · FarmTable' },
   { path: 'register', canActivate: [guestGuard], loadComponent: () => import('./features/account/register.page').then((m) => m.RegisterPage), title: 'Đăng ký · FarmTable' },
+  { path: 'forgot-password', canActivate: [guestGuard], loadComponent: () => import('./features/account/forgot-password.page').then((m) => m.ForgotPasswordPage), title: 'Quên mật khẩu · FarmTable' },
   { path: 'vendor-login', redirectTo: '/login?as=vendor' },
   { path: 'account', canActivate: [authGuard], loadComponent: () => import('./features/account/account.page').then((m) => m.AccountPage), title: 'Tài khoản · FarmTable' },
 

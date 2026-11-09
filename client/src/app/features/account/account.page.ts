@@ -3,7 +3,8 @@ import { DatePipe } from '@angular/common';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { ApiError } from '../../core/api';
-import { MyGroupBuy } from '../../core/models';
+import { MyGroupBuy, RecHistoryEntry } from '../../core/models';
+import { CatalogService } from '../../core/services/catalog.service';
 import { AuthService } from '../../core/services/auth.service';
 import { OrderService } from '../../core/services/order.service';
 import { ToastService } from '../../core/services/toast.service';
@@ -22,6 +23,7 @@ import { matchFields, strongPassword, vnPhone } from '../../shared/validators';
         <a class="tab" [class.active]="tab() === 'password'" [routerLink]="[]" [queryParams]="{ tab: 'password' }">Đổi mật khẩu</a>
         @if (auth.isBuyer()) {
           <a class="tab" [class.active]="tab() === 'group-buys'" [routerLink]="[]" [queryParams]="{ tab: 'group-buys' }">Mua chung của tôi</a>
+          <a class="tab" [class.active]="tab() === 'recs'" [routerLink]="[]" [queryParams]="{ tab: 'recs' }">Lịch sử gợi ý</a>
           <a class="tab" routerLink="/orders">Đơn hàng →</a>
         }
       </div>
@@ -37,6 +39,26 @@ import { matchFields, strongPassword, vnPhone } from '../../shared/validators';
             @if (pwForm.hasError('mismatch') && pwForm.controls.confirm.touched) { <span class="field-error">Mật khẩu nhập lại không khớp</span> }
             <button class="btn btn-primary" type="submit" [disabled]="busy()">Đổi mật khẩu</button>
           </form>
+        }
+        @case ('recs') {
+          <p class="muted small">Các lần FarmTable gợi ý sản phẩm cho bạn, kèm lý do. Lịch sử tự xóa sau 90 ngày.</p>
+          @if (recState() !== 'ok') {
+            <app-state [state]="recState()" emptyText="Chưa có gợi ý nào. Hãy xem vài sản phẩm để hệ thống hiểu sở thích của bạn." emptyIcon="spark" (retry)="loadRecs()" />
+          } @else {
+            @for (h of recs(); track h.id) {
+              <section class="card rec-history">
+                <div class="row-between">
+                  <b>@if (h.kind === 'for-me') { Gợi ý cho bạn } @else { Sản phẩm tương tự @if (h.context) { <a [routerLink]="['/products', h.context.slug]">{{ h.context.name }}</a> } }</b>
+                  <small class="muted">{{ h.at | date: 'HH:mm dd/MM/yyyy' }} · <span class="tag" [class.tag-green]="h.source === 'model'">{{ h.source === 'model' ? 'Mô hình' : 'Phương pháp cơ sở' }}</span></small>
+                </div>
+                <ul class="rec-history-list">
+                  @for (it of h.items; track it.product.id) {
+                    <li><a [routerLink]="['/products', it.product.slug]">{{ it.product.name }}</a> <span class="muted">— {{ it.reason }}@if (it.score !== null) { (điểm {{ it.score }}) }</span></li>
+                  }
+                </ul>
+              </section>
+            }
+          }
         }
         @case ('group-buys') {
           @if (gbState() !== 'ok') {
@@ -91,6 +113,7 @@ import { matchFields, strongPassword, vnPhone } from '../../shared/validators';
       }
     </div>
   `,
+  styles: [`.rec-history { margin-bottom: 10px; } .rec-history-list { margin: 6px 0 0; padding-left: 18px; font-size: 0.9rem; }`],
 })
 export class AccountPage {
   readonly tabParam = input<string | undefined>(undefined, { alias: 'tab' });
@@ -101,7 +124,10 @@ export class AccountPage {
   private router = inject(Router);
   protected roleLabel = { buyer: 'Người mua', vendor: 'Nhà bán', admin: 'Quản trị viên' } as const;
 
-  protected tab = signal<'profile' | 'password' | 'group-buys'>('profile');
+  protected tab = signal<'profile' | 'password' | 'group-buys' | 'recs'>('profile');
+  private catalog = inject(CatalogService);
+  protected recs = signal<RecHistoryEntry[]>([]);
+  protected recState = signal<'loading' | 'error' | 'empty' | 'ok'>('loading');
   protected busy = signal(false);
   protected pwServerError = signal<string | null>(null);
   protected myGroupBuys = signal<MyGroupBuy[]>([]);
@@ -128,9 +154,21 @@ export class AccountPage {
     });
     effect(() => {
       const t = this.tabParam();
-      const tab = t === 'password' || t === 'group-buys' ? t : 'profile';
+      const tab = t === 'password' || t === 'group-buys' || t === 'recs' ? t : 'profile';
       this.tab.set(tab);
       if (tab === 'group-buys') this.loadGroupBuys();
+      if (tab === 'recs') this.loadRecs();
+    });
+  }
+
+  loadRecs(): void {
+    this.recState.set('loading');
+    this.catalog.recHistory(20).subscribe({
+      next: (r) => {
+        this.recs.set(r);
+        this.recState.set(r.length ? 'ok' : 'empty');
+      },
+      error: () => this.recState.set('error'),
     });
   }
 

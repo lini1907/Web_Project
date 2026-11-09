@@ -5,6 +5,9 @@ import { AppError, Errors } from '../../utils/AppError.js';
 import { shippingFeeFor } from '../../utils/money.js';
 import { paged } from '../../utils/validate.js';
 import { resolveLines, summarize } from '../cart/cart.service.js';
+import * as vouchers from '../vouchers/voucher.service.js';
+import * as shipments from '../shipments/shipment.service.js';
+import { publish } from '../../services/realtime.js';
 
 // Luồng trạng thái phần đơn (vendor). Không cho nhảy lùi.
 export const TRANSITIONS = {
@@ -81,7 +84,7 @@ async function findByKey(buyerId, idempotencyKey) {
  * đọc giỏ + giá hiện tại -> kiểm tồn/hạn Rescue -> so expectedTotal -> trừ kho có điều kiện
  * -> tạo đơn (bản chụp giá) -> xóa giỏ. Bất kỳ lỗi nào cũng rollback toàn bộ.
  */
-export async function createFromCart(buyer, { shippingAddress, note, expectedTotal }, idempotencyKey) {
+export async function createFromCart(buyer, { shippingAddress, note, expectedTotal, voucherCode, paymentMethod = 'cod', deliverySlot }, idempotencyKey) {
   const existing = await findByKey(buyer._id, idempotencyKey);
   if (existing) return { order: existing, replayed: true };
 
@@ -152,6 +155,9 @@ export async function createFromCart(buyer, { shippingAddress, note, expectedTot
       const vendorNames = new Map(lines.map((l) => [l.vendor.id, l.vendor.name]));
       const subtotal = orderItems.reduce((s, x) => s + x.lineTotal, 0);
       const shippingFee = shippingFeeFor(subtotal);
+      // Voucher: kiểm tra + trừ lượt trong cùng transaction (đặt đơn lỗi thì lượt dùng cũng được hoàn).
+      const applied = voucherCode ? await vouchers.redeem(voucherCode, buyer._id, { subtotal, shippingFee }, session) : null;
+      const discount = applied?.discount || 0;
       const [created] = await Order.create(
         [
           {
@@ -162,7 +168,12 @@ export async function createFromCart(buyer, { shippingAddress, note, expectedTot
             parts: groupIntoParts(orderItems, vendorNames),
             subtotal,
             shippingFee,
-            total: subtotal + shippingFee,
+            discount,
+            voucher: applied ? { code: applied.code, type: applied.type } : null,
+            total: subtotal + shippingFee - discount,
+            paymentMethod,
+            payment: { status: paymentMethod === 'cod' ? 'unpaid' : 'pending' },
+            deliverySlot: deliverySlot || null,
             shippingAddress,
             note: note || '',
           },
@@ -179,6 +190,12 @@ export async function createFromCart(buyer, { shippingAddress, note, expectedTot
       );
       return created;
     });
+    // Báo ngay cho các nhà bán có hàng trong đơn (SSE).
+    publish(
+      order.parts.map((p) => p.vendorId),
+      'order.created',
+      { orderId: String(order._id), code: order.code, message: `Có đơn mới ${order.code}` },
+    );
     return { order, replayed: false };
   } catch (err) {
     // Hai request cùng Idempotency-Key chạy song song: request thua sẽ vấp unique index -> trả đơn đã tạo.
@@ -244,6 +261,27 @@ export async function createGroupBuyOrder({ campaign, membership, product, vendo
   return order;
 }
 
+/** Cả đơn đã hủy hết => trả lại lượt dùng voucher (chỉ một lần nhờ $pull/usedBy). */
+async function releaseVoucherIfCancelled(order, session) {
+  if (order?.voucher?.code && order.parts.every((p) => p.status === 'cancelled')) {
+    await vouchers.release(order.voucher.code, order.buyerId, session);
+  }
+}
+
+export const isOnline = (o) => !!o.paymentMethod && o.paymentMethod !== 'cod';
+
+function paymentDto(o) {
+  const p = o.payment || {};
+  return { status: p.status || 'unpaid', transactionId: p.transactionId || null, paidAt: p.paidAt || null, message: p.message || '' };
+}
+
+/** Phần đơn bị hủy hết và đơn đã thanh toán online => chờ hoàn tiền (xử lý thủ công với cổng). */
+async function markRefundIfNeeded(order, session) {
+  if (isOnline(order) && order.payment?.status === 'paid' && order.parts.every((p) => p.status === 'cancelled')) {
+    await Order.updateOne({ _id: order._id }, { $set: { 'payment.status': 'refund_pending' } }, { session });
+  }
+}
+
 // ---------------- DTO ----------------
 function itemDto(i, { forVendor = false, names } = {}) {
   const dto = {
@@ -266,7 +304,7 @@ function itemDto(i, { forVendor = false, names } = {}) {
   return dto;
 }
 
-export function toBuyerOrder(o) {
+export function toBuyerOrder(o, ships = null) {
   const status = deriveOrderStatus(o.parts);
   return {
     id: String(o._id),
@@ -281,20 +319,26 @@ export function toBuyerOrder(o) {
       subtotal: p.subtotal,
       cod: { status: p.cod?.status || 'unpaid', collectedAt: p.cod?.collectedAt || null },
       history: p.history,
+      shipment: ships ? shipments.shipmentFor(ships, o._id, p._id) : null,
     })),
     subtotal: o.subtotal,
     shippingFee: o.shippingFee,
+    discount: o.discount || 0,
+    voucher: o.voucher?.code ? { code: o.voucher.code, type: o.voucher.type } : null,
     total: o.total,
-    paymentMethod: 'cod',
+    paymentMethod: o.paymentMethod || 'cod',
+    payment: paymentDto(o),
+    deliverySlot: o.deliverySlot || null,
     status,
     canCancel: o.parts.some((p) => p.status === 'pending'),
+    canPay: isOnline(o) && ['pending', 'failed'].includes(o.payment?.status) && o.parts.some((p) => p.status === 'pending'),
     shippingAddress: o.shippingAddress,
     note: o.note,
     createdAt: o.createdAt,
   };
 }
 
-export function toVendorPart(o, p, names) {
+export function toVendorPart(o, p, names, ships = null) {
   return {
     orderId: String(o._id),
     partId: String(p._id),
@@ -309,6 +353,12 @@ export function toVendorPart(o, p, names) {
     nextStatuses: TRANSITIONS[p.status],
     cod: { status: p.cod?.status || 'unpaid', collectedAt: p.cod?.collectedAt || null },
     history: p.history,
+    paymentMethod: o.paymentMethod || 'cod',
+    paymentStatus: o.payment?.status || 'unpaid',
+    // Đơn thanh toán online chỉ được xác nhận khi đã trả tiền xong.
+    awaitingPayment: isOnline(o) && o.payment?.status !== 'paid',
+    deliverySlot: o.deliverySlot || null,
+    shipment: ships ? shipments.shipmentFor(ships, o._id, p._id) : null,
   };
 }
 
@@ -335,7 +385,7 @@ export async function getForBuyer(buyerId, id) {
   const o = await Order.findOne({ _id: id, buyerId }).lean();
   // Không phải đơn của mình -> 404 (không tiết lộ đơn tồn tại).
   if (!o) throw Errors.notFound('Không tìm thấy đơn hàng');
-  return toBuyerOrder(o);
+  return toBuyerOrder(o, await shipments.shipmentMap([o._id]));
 }
 
 /** Buyer hủy các phần đơn còn pending. Mỗi phần đơn chỉ được giành quyền hủy một lần => hoàn kho đúng một lần. */
@@ -356,6 +406,14 @@ export async function cancelByBuyer(buyerId, id) {
       );
       if (r.modifiedCount === 1) await restoreStock(part, session);
     }
+    const fresh = await Order.findById(o._id).session(session).lean();
+    await releaseVoucherIfCancelled(fresh, session);
+    await markRefundIfNeeded(fresh, session);
+    publish(
+      pending.map((p) => p.vendorId),
+      'order.updated',
+      { orderId: String(o._id), code: o.code, status: 'cancelled', message: `Người mua đã hủy đơn ${o.code}` },
+    );
     return toBuyerOrder(await Order.findById(o._id).session(session).lean());
   });
 }
@@ -374,8 +432,9 @@ export async function listForVendor(vendorId, page, status) {
   ]);
   const rows = res.rows;
   const names = await productNames(rows.map((r) => r.parts));
+  const ships = await shipments.shipmentMap(rows.map((r) => r._id));
   return paged(
-    rows.map((r) => toVendorPart(r, r.parts, names)),
+    rows.map((r) => toVendorPart(r, r.parts, names, ships)),
     res.total[0]?.n || 0,
     page,
   );
@@ -388,11 +447,16 @@ async function loadVendorPart(vendorId, orderId, partId, session) {
   return { o, part };
 }
 
-export async function vendorUpdateStatus(vendorId, orderId, partId, status) {
-  return withTransaction(async (session) => {
+const STATUS_VI = { confirmed: 'đã được xác nhận', shipping: 'đang được giao', delivered: 'đã giao thành công', cancelled: 'đã bị nhà bán hủy' };
+
+export async function vendorUpdateStatus(vendorId, orderId, partId, status, shipmentInfo = {}) {
+  const result = await withTransaction(async (session) => {
     const { o, part } = await loadVendorPart(vendorId, orderId, partId, session);
     if (!TRANSITIONS[part.status].includes(status)) {
       throw Errors.invalidState(`Không thể chuyển từ "${part.status}" sang "${status}"`);
+    }
+    if (status === 'confirmed' && isOnline(o) && o.payment?.status !== 'paid') {
+      throw Errors.invalidState('Đơn thanh toán online chưa được người mua thanh toán, chưa thể xác nhận');
     }
     const set = { 'parts.$.status': status };
     if (status === 'cancelled') set['parts.$.stockRestored'] = true;
@@ -403,10 +467,26 @@ export async function vendorUpdateStatus(vendorId, orderId, partId, status) {
     );
     if (r.modifiedCount !== 1) throw Errors.invalidState('Phần đơn vừa được cập nhật bởi thao tác khác, vui lòng tải lại');
     if (status === 'cancelled') await restoreStock(part, session);
+    // Vận đơn: bắt đầu giao => tạo vận đơn; giao xong => đóng vận đơn.
+    if (status === 'shipping') await shipments.ensureShipment(o, part, shipmentInfo, session);
+    if (status === 'delivered') await shipments.pushEvent(o._id, part._id, 'delivered', 'Giao hàng thành công', session);
     const fresh = await Order.findById(o._id).session(session).lean();
+    if (status === 'cancelled') {
+      await releaseVoucherIfCancelled(fresh, session);
+      await markRefundIfNeeded(fresh, session);
+    }
     const names = await productNames([part]);
-    return toVendorPart(fresh, fresh.parts.find((p) => String(p._id) === String(part._id)), names);
+    const ships = await shipments.shipmentMap([o._id], session);
+    return { buyerId: o.buyerId, code: o.code, dto: toVendorPart(fresh, fresh.parts.find((p) => String(p._id) === String(part._id)), names, ships) };
   });
+  publish(result.buyerId, 'order.updated', {
+    orderId: String(orderId),
+    partId: String(partId),
+    code: result.code,
+    status,
+    message: `Đơn ${result.code} ${STATUS_VI[status] || status}`,
+  });
+  return result.dto;
 }
 
 /** Vendor xác nhận đã thu tiền COD — chỉ khi phần đơn đã giao. Buyer không có endpoint này. */
@@ -420,8 +500,20 @@ export async function vendorCollectCod(vendorId, orderId, partId) {
   );
   const fresh = await Order.findById(o._id).lean();
   const names = await productNames([part]);
-  return toVendorPart(fresh, fresh.parts.find((p) => String(p._id) === String(part._id)), names);
+  const ships = await shipments.shipmentMap([o._id]);
+  return toVendorPart(fresh, fresh.parts.find((p) => String(p._id) === String(part._id)), names, ships);
 }
+
+/** Dùng chung cho các route vận đơn: trả DTO phần đơn mới nhất. */
+export async function vendorPartView(vendorId, orderId, partId) {
+  const { o, part } = await loadVendorPart(vendorId, orderId, partId, null);
+  const fresh = await Order.findById(o._id).lean();
+  const names = await productNames([part]);
+  const ships = await shipments.shipmentMap([o._id]);
+  return toVendorPart(fresh, fresh.parts.find((p) => String(p._id) === String(part._id)), names, ships);
+}
+
+export { loadVendorPart };
 
 export async function buyerNameMap(ids) {
   const rows = await User.find({ _id: { $in: ids } }, { name: 1 }).lean();

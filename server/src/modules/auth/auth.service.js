@@ -1,7 +1,10 @@
+import crypto from 'node:crypto';
+import mongoose from 'mongoose';
 import bcrypt from 'bcryptjs';
 import { User, Farm } from '../../models/index.js';
 import { AppError, Errors } from '../../utils/AppError.js';
 import { uniqueSlug } from '../../utils/text.js';
+import { sendResetOtp } from '../../services/mail.service.js';
 
 const BCRYPT_COST = 10;
 // Hash giả để so sánh khi email không tồn tại (thời gian phản hồi tương đương, giảm dò email).
@@ -49,4 +52,47 @@ export async function changePassword(userId, currentPassword, newPassword) {
   }
   user.passwordHash = await hashPassword(newPassword);
   await user.save();
+}
+
+// ---------------- Quên mật khẩu (OTP 6 số qua email) ----------------
+export const OTP_MINUTES = 10;
+const OTP_MAX_ATTEMPTS = 5;
+const hashOtp = (email, otp) => crypto.createHash('sha256').update(`${email}:${otp}`).digest('hex');
+
+/**
+ * Tạo OTP và gửi mail. Email không tồn tại / bị khóa vẫn trả về bình thường
+ * (không cho kẻ xấu dò email nào đã đăng ký).
+ */
+export async function requestPasswordReset(email) {
+  const user = await User.findOne({ email });
+  if (!user || user.status === 'locked') return;
+  const otp = String(crypto.randomInt(0, 1_000_000)).padStart(6, '0');
+  await User.updateOne(
+    { _id: user._id },
+    { $set: { resetOtpHash: hashOtp(email, otp), resetOtpExpires: new Date(Date.now() + OTP_MINUTES * 60_000), resetOtpAttempts: 0 } },
+  );
+  await sendResetOtp({ to: user.email, name: user.name, otp, minutes: OTP_MINUTES });
+}
+
+/** Kiểm OTP, đặt mật khẩu mới, xóa OTP và đăng xuất mọi phiên cũ của tài khoản. */
+export async function resetPassword(email, otp, newPassword) {
+  const bad = (message = 'Mã xác nhận không đúng hoặc đã hết hạn') =>
+    new AppError(400, 'OTP_INVALID', message, [{ field: 'otp', message }]);
+  const user = await User.findOne({ email }).select('+resetOtpHash +resetOtpExpires +resetOtpAttempts');
+  if (!user || !user.resetOtpHash || !user.resetOtpExpires || user.resetOtpExpires < new Date()) throw bad();
+  if (user.resetOtpAttempts >= OTP_MAX_ATTEMPTS) throw bad('Nhập sai quá nhiều lần. Vui lòng yêu cầu mã mới.');
+  const expected = Buffer.from(user.resetOtpHash);
+  const sent = Buffer.from(hashOtp(email, otp));
+  if (expected.length !== sent.length || !crypto.timingSafeEqual(expected, sent)) {
+    await User.updateOne({ _id: user._id }, { $inc: { resetOtpAttempts: 1 } });
+    throw bad();
+  }
+  await User.updateOne(
+    { _id: user._id },
+    { $set: { passwordHash: await hashPassword(newPassword), resetOtpHash: null, resetOtpExpires: null, resetOtpAttempts: 0 } },
+  );
+  await mongoose.connection
+    .collection('sessions')
+    .deleteMany({ session: { $regex: `"userId":"${user._id}"` } })
+    .catch(() => {});
 }

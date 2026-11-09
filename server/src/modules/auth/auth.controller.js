@@ -4,6 +4,8 @@ import { issueCsrfToken, loginLimiter, readCookie } from '../../middleware/secur
 import { env } from '../../config/env.js';
 import { Errors } from '../../utils/AppError.js';
 import { mergeGuestCart } from '../cart/cart.service.js';
+import * as google from './google.js';
+import { appUrl } from '../payments/payment.config.js';
 
 const registerShape = {
   name: v.string({ min: 2, max: 80 }),
@@ -147,4 +149,56 @@ export async function changePassword(req, res) {
   }
   await authService.changePassword(req.user._id, currentPassword, newPassword);
   res.status(204).end();
+}
+
+/** Bước 1: gửi mã OTP. Luôn trả 202 dù email có tồn tại hay không. */
+export async function forgotPassword(req, res) {
+  const { email } = parse({ email: v.email() }, req.body);
+  await authService.requestPasswordReset(email);
+  res.status(202).json({ message: `Nếu email đã đăng ký, mã xác nhận đã được gửi. Mã có hiệu lực ${authService.OTP_MINUTES} phút.` });
+}
+
+/** Bước 2: nhập OTP + mật khẩu mới. */
+export async function resetPassword(req, res) {
+  const { email, otp, newPassword } = parse(
+    { email: v.email(), otp: v.string({ min: 6, max: 6, pattern: /^\d{6}$/, message: 'Mã gồm 6 chữ số' }), newPassword: v.password() },
+    req.body,
+  );
+  await authService.resetPassword(email, otp, newPassword);
+  res.status(204).end();
+}
+
+// ---------------- Đăng nhập Google ----------------
+export async function providers(req, res) {
+  res.json({ google: google.googleEnabled() });
+}
+
+export async function googleStart(req, res) {
+  if (!google.googleEnabled()) return res.redirect(302, google.loginErrorRedirect('google_disabled'));
+  const url = google.buildAuthUrl(req);
+  await saveSession(req);
+  return res.redirect(302, url);
+}
+
+export async function googleCallback(req, res) {
+  const { code, state, error } = req.query;
+  const expected = req.session.googleState;
+  const returnUrl = req.session.googleReturn || '';
+  delete req.session.googleState;
+  delete req.session.googleReturn;
+  if (error) return res.redirect(302, google.loginErrorRedirect('google_cancelled'));
+  if (typeof code !== 'string' || typeof state !== 'string' || !expected || state !== expected) {
+    return res.redirect(302, google.loginErrorRedirect('google_state'));
+  }
+  let user;
+  try {
+    user = await google.findOrCreateGoogleUser(await google.fetchGoogleProfile(code));
+  } catch (e) {
+    return res.redirect(302, google.loginErrorRedirect(e.message === 'GOOGLE_EMAIL_UNVERIFIED' ? 'google_unverified' : 'google_failed'));
+  }
+  if (user.status === 'locked') return res.redirect(302, google.loginErrorRedirect('locked'));
+  user.lastLoginAt = new Date();
+  await user.save();
+  await startSession(req, res, user, { remember: false });
+  return res.redirect(302, appUrl() + (returnUrl || '/'));
 }

@@ -27,6 +27,13 @@ export const env = {
   uploadDir: path.resolve(root, 'uploads'),
   seedPassword: process.env.SEED_DEMO_PASSWORD || 'FarmTable@2026',
   cookieSecure: process.env.COOKIE_SECURE === 'true',
+  smtp: {
+    host: process.env.SMTP_HOST || '',
+    port: num('SMTP_PORT', 587),
+    user: process.env.SMTP_USER || '',
+    pass: process.env.SMTP_PASS || '',
+    from: process.env.MAIL_FROM || 'FarmTable <no-reply@farmtable.vn>',
+  },
 };
 
 if (env.isProd && env.sessionSecret.startsWith('dev-only')) {

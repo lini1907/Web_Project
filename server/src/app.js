@@ -8,7 +8,7 @@ import helmet from 'helmet';
 import mongoose from 'mongoose';
 import { env } from './config/env.js';
 import { loadUser } from './middleware/auth.js';
-import { csrfProtection, rejectMongoOperators } from './middleware/security.js';
+import { csrfProtection, rejectMongoOperators, limits } from './middleware/security.js';
 import { errorHandler, notFoundApi } from './middleware/errorHandler.js';
 import authRoutes from './modules/auth/auth.routes.js';
 import productRoutes from './modules/products/product.routes.js';
@@ -21,6 +21,13 @@ import adminRoutes from './modules/admin/admin.routes.js';
 import kpiRoutes from './modules/kpi/kpi.routes.js';
 import recommendRoutes from './modules/recommendations/recommend.routes.js';
 import uploadRoutes from './modules/uploads/upload.routes.js';
+import voucherRoutes from './modules/vouchers/voucher.routes.js';
+import reviewRoutes from './modules/reviews/review.routes.js';
+import exportRoutes from './modules/exports/export.routes.js';
+import paymentRoutes from './modules/payments/payment.routes.js';
+import { trackingRouter } from './modules/orders/order.routes.js';
+import { streamHandler } from './services/realtime.js';
+import { requireAuth } from './middleware/auth.js';
 
 /**
  * Tạo Express app. Tách khỏi server.js để test (supertest) dùng lại mà không mở cổng.
@@ -67,11 +74,14 @@ export function createApp({ mongoClient } = {}) {
   );
 
   const api = express.Router();
+  api.use(limits.api);
   api.use(rejectMongoOperators);
   api.use(csrfProtection);
   api.use(loadUser);
   api.use('/auth', authRoutes);
-  for (const r of [productRoutes, farmRoutes, mysteryRoutes, cartRoutes, orderRoutes, groupBuyRoutes, adminRoutes, kpiRoutes, recommendRoutes, uploadRoutes]) {
+  // SSE: luồng thông báo thời gian thực cho người dùng đang đăng nhập.
+  api.get('/realtime/stream', requireAuth, streamHandler);
+  for (const r of [productRoutes, farmRoutes, mysteryRoutes, cartRoutes, orderRoutes, groupBuyRoutes, adminRoutes, kpiRoutes, recommendRoutes, uploadRoutes, voucherRoutes, reviewRoutes, exportRoutes, paymentRoutes, trackingRouter]) {
     api.use(r);
   }
   api.use(notFoundApi);

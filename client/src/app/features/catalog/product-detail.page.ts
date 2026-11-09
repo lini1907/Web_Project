@@ -10,12 +10,13 @@ import { CategoryLabelPipe, MoneyPipe, TimeLeftPipe } from '../../shared/pipes';
 import { QtyComponent, StateComponent } from '../../shared/ui';
 import { ImgFallbackDirective } from '../../shared/img-fallback.directive';
 import { SimilarProductsComponent } from '../recommend/recommend.components';
+import { ProductReviewsComponent } from './product-reviews.component';
 import { StorefrontService } from '../../core/services/storefront.service';
 
 /** Chi tiết sản phẩm theo slug (route /products/:slug — slug thân thiện SEO). */
 @Component({
   selector: 'app-product-detail',
-  imports: [RouterLink, DatePipe, MoneyPipe, TimeLeftPipe, CategoryLabelPipe, QtyComponent, StateComponent, ImgFallbackDirective, SimilarProductsComponent],
+  imports: [RouterLink, DatePipe, MoneyPipe, TimeLeftPipe, CategoryLabelPipe, QtyComponent, StateComponent, ImgFallbackDirective, SimilarProductsComponent, ProductReviewsComponent],
   template: `
     <div class="container page">
       @if (state() !== 'ok') {
@@ -106,6 +107,7 @@ import { StorefrontService } from '../../core/services/storefront.service';
           <div><h2>Giao hàng và bảo quản</h2><h3>Lịch giao</h3><p>{{ p.deliveryNote || 'Nhà bán chưa công bố thời gian giao dự kiến. Kiểm tra thông tin nhà bán nếu bạn cần nhận vào ngày cụ thể.' }}</p><h3>Bảo quản</h3><p>{{ p.storageNote || 'Chưa có hướng dẫn riêng từ nhà bán. Kiểm tra nhãn và hướng dẫn đi kèm khi nhận sản phẩm.' }}</p></div>
           <div id="product-origin"><h2>Nguồn gốc và chứng nhận</h2>@if (p.farm) { <p><a [routerLink]="['/farms', p.farm.slug]">{{ p.farm.name }}</a> · {{ p.farm.province }}</p> }<p class="small muted">Các thông tin dưới đây do nhà bán khai báo; chưa có hồ sơ chứng nhận được xác minh trên FarmTable.</p><div class="certs">@for (c of p.certifications; track c) { <span class="tag">{{ c }}</span> } @empty { <span class="muted">Chưa cung cấp chứng nhận.</span> }</div>@if (p.isDemo) { <p class="small muted">Tên, vùng trồng và chứng nhận của bản ghi này là dữ liệu mẫu cho đồ án.</p> }</div>
         </section>
+        <app-product-reviews [productId]="p.id" (changed)="refreshRating()" />
         <app-similar-products [productId]="p.id" />
       }
     </div>
@@ -167,6 +169,13 @@ export class ProductDetailPage {
         this.error.set(err.status === 404 ? 'Sản phẩm không tồn tại hoặc đã ngừng bán.' : err.message);
         this.state.set('error');
       },
+    });
+  }
+
+  /** Sau khi viết/sửa/xóa đánh giá: tải lại điểm trung bình hiển thị ở đầu trang. */
+  refreshRating(): void {
+    this.catalog.product(this.slug()).subscribe({
+      next: (p) => this.product.update((cur) => (cur ? { ...cur, rating: p.rating, reviewCount: p.reviewCount } : cur)),
     });
   }
 

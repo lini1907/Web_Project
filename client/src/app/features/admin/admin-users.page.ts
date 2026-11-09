@@ -12,7 +12,10 @@ import { PaginationComponent, StateComponent, StatusBadgeComponent } from '../..
   selector: 'app-admin-users',
   imports: [FormsModule, DatePipe, PaginationComponent, StateComponent, StatusBadgeComponent],
   template: `
-    <div class="page-head"><h1>Tài khoản người dùng</h1></div>
+    <div class="page-head">
+      <h1>Tài khoản người dùng</h1>
+      <a class="btn btn-outline btn-sm" [href]="'/api/v1/admin/export/users.csv' + (role ? '?role=' + role : '')" download>Xuất CSV</a>
+    </div>
     <form class="toolbar" (ngSubmit)="page.set(1); load()">
       <input class="input" name="q" type="search" placeholder="Tên hoặc email" [(ngModel)]="q" aria-label="Tìm người dùng" />
       <select class="input" name="role" [(ngModel)]="role" (ngModelChange)="page.set(1); load()" aria-label="Vai trò">

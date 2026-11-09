@@ -17,6 +17,7 @@ import { RouterLink } from '@angular/router';
           <a routerLink="/rescue">Nông sản giải cứu</a>
           <a routerLink="/mystery-box">Mystery Box</a>
           <a routerLink="/group-buy">Mua chung</a>
+          <a routerLink="/tracking">Tra cứu vận đơn</a>
         </div>
         <div>
           <h4>Nhà bán</h4>

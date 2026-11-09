@@ -4,6 +4,7 @@ import { env } from '../config/env.js';
 
 export const CSRF_COOKIE = 'XSRF-TOKEN';
 export const CSRF_HEADER = 'x-xsrf-token';
+const CSRF_EXEMPT = new Set(['/payments/momo/ipn']);
 
 export function readCookie(req, name) {
   const header = req.headers.cookie;
@@ -35,6 +36,8 @@ export function csrfProtection(req, res, next) {
     issueCsrfToken(req, res);
   }
   if (['GET', 'HEAD', 'OPTIONS'].includes(req.method)) return next();
+  // Callback server-to-server của cổng thanh toán: không có cookie trình duyệt, xác thực bằng chữ ký HMAC.
+  if (CSRF_EXEMPT.has(req.path)) return next();
   const sent = req.get(CSRF_HEADER);
   const expected = req.session.csrfToken;
   const ok =
@@ -92,4 +95,62 @@ export const loginLimiter = {
   clearAll() {
     attempts.clear();
   },
+};
+
+/**
+ * Rate limiting chung (cửa sổ cố định, lưu trong bộ nhớ tiến trình).
+ *   rateLimit({ name: 'register', windowMs: 3600e3, max: 10 })
+ * Mặc định đếm theo IP; truyền key(req) để đếm theo user/email. Vượt ngưỡng => 429 + header Retry-After.
+ * Khi chạy test (NODE_ENV=test) bộ giới hạn tắt, trừ khi đặt RATE_LIMIT_IN_TEST=1.
+ */
+const limiters = new Set();
+
+export function rateLimit({ name, windowMs, max, key = (req) => req.ip, message }) {
+  const hits = new Map();
+  limiters.add(hits);
+  return function rateLimitMiddleware(req, res, next) {
+    if (env.isTest && process.env.RATE_LIMIT_IN_TEST !== '1') return next();
+    const now = Date.now();
+    const k = `${name}|${key(req)}`;
+    let rec = hits.get(k);
+    if (!rec || now - rec.start >= windowMs) {
+      rec = { start: now, count: 0 };
+      hits.set(k, rec);
+    }
+    rec.count += 1;
+    const remaining = Math.max(0, max - rec.count);
+    const resetSec = Math.ceil((rec.start + windowMs - now) / 1000);
+    res.set('RateLimit-Limit', String(max));
+    res.set('RateLimit-Remaining', String(remaining));
+    res.set('RateLimit-Reset', String(resetSec));
+    if (rec.count > max) {
+      res.set('Retry-After', String(resetSec));
+      return next(
+        new AppError(429, 'RATE_LIMITED', message || `Bạn thao tác quá nhanh. Vui lòng thử lại sau ${Math.max(1, Math.ceil(resetSec / 60))} phút.`, {
+          retryAfter: resetSec,
+        }),
+      );
+    }
+    // Dọn bớt bản ghi hết hạn để Map không phình mãi.
+    if (hits.size > 5000) for (const [kk, r] of hits) if (now - r.start >= windowMs) hits.delete(kk);
+    return next();
+  };
+}
+
+export function resetRateLimits() {
+  for (const m of limiters) m.clear();
+}
+
+const userOrIp = (req) => (req.user ? `u:${req.user._id}` : `ip:${req.ip}`);
+const emailAndIp = (req) => `${typeof req.body?.email === 'string' ? req.body.email.trim().toLowerCase() : ''}|${req.ip}`;
+
+/** Các bộ giới hạn dùng trong ứng dụng. */
+export const limits = {
+  api: rateLimit({ name: 'api', windowMs: 60_000, max: 300 }),
+  register: rateLimit({ name: 'register', windowMs: 60 * 60_000, max: 10, message: 'Đăng ký quá nhiều tài khoản từ thiết bị này. Thử lại sau.' }),
+  forgotPassword: rateLimit({ name: 'forgot', windowMs: 15 * 60_000, max: 3, key: emailAndIp, message: 'Đã gửi mã quá nhiều lần. Vui lòng đợi 15 phút.' }),
+  resetPassword: rateLimit({ name: 'reset', windowMs: 15 * 60_000, max: 10, key: emailAndIp }),
+  placeOrder: rateLimit({ name: 'order', windowMs: 60_000, max: 10, key: userOrIp }),
+  writeReview: rateLimit({ name: 'review', windowMs: 60_000, max: 10, key: userOrIp }),
+  voucherCheck: rateLimit({ name: 'voucher', windowMs: 60_000, max: 20, key: userOrIp, message: 'Nhập mã quá nhiều lần. Vui lòng thử lại sau 1 phút.' }),
 };
