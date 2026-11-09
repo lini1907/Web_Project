@@ -46,7 +46,7 @@ import { futureAtLeast } from '../../shared/validators';
                     <div class="small muted">{{ p.category | categoryLabel }} · {{ p.farm?.name }}</div>
                     @if (p.type === 'rescue' && p.rescue) {
                       <span class="tag" [class.tag-green]="!p.rescue.expired" [class.tag-red]="p.rescue.expired">
-                        ♻️ -{{ p.rescue.discountRate }}% · {{ p.rescue.expired ? 'đã hết hạn' : (p.rescue.expiresAt | timeLeft) }}
+                        <svg class="icon" aria-hidden="true"><use href="icons.svg#rescue" /></svg> -{{ p.rescue.discountRate }}% · {{ p.rescue.expired ? 'đã hết hạn' : (p.rescue.expiresAt | timeLeft) }}
                       </span>
                     }
                     @if (p.type === 'mystery-ingredient') { <span class="tag tag-purple">Nguyên liệu Mystery Box</span> }
@@ -69,7 +69,7 @@ import { futureAtLeast } from '../../shared/validators';
                 <td class="actions">
                   <a [routerLink]="['/vendor/products', p.id]" class="btn btn-outline btn-xs">Sửa</a>
                   @if (p.type !== 'mystery-ingredient') {
-                    <button type="button" class="btn btn-outline btn-xs" (click)="openRescue(p)" [disabled]="!approved()">♻️ Giải cứu</button>
+                    <button type="button" class="btn btn-outline btn-xs" (click)="openRescue(p)" [disabled]="!approved()"><svg class="icon" aria-hidden="true"><use href="icons.svg#rescue" /></svg> Giải cứu</button>
                   }
                   <button type="button" class="btn btn-outline btn-xs text-danger" (click)="remove(p)" [disabled]="!approved()">Xóa</button>
                 </td>
@@ -83,7 +83,7 @@ import { futureAtLeast } from '../../shared/validators';
     @if (rescueTarget(); as t) {
       <div class="modal-backdrop" (click)="rescueTarget.set(null)">
         <form class="modal card form" [formGroup]="rescueForm" (ngSubmit)="saveRescue()" (click)="$event.stopPropagation()">
-          <h3>♻️ Giải cứu: {{ t.name }}</h3>
+          <h3><svg class="icon" aria-hidden="true"><use href="icons.svg#rescue" /></svg> Giải cứu: {{ t.name }}</h3>
           <p class="small muted">Giá bán = giá gốc × (1 − % giảm), làm tròn nghìn — do máy chủ tính. Mức giảm 30–50%.</p>
           <div class="form-row">
             <label>Giá gốc (đ)<input class="input" type="number" formControlName="originalPrice" min="1000" step="1000" /></label>

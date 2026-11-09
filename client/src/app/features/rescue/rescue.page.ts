@@ -14,7 +14,6 @@ import { MoneyPipe } from '../../shared/pipes';
     <section class="band band-green">
       <div class="container band-inner">
         <div>
-          <span class="tag tag-light">♻️ CHIẾN DỊCH GIẢI CỨU NÔNG SẢN</span>
           <h1>Xấu mã nhưng ngon — giảm 30–50%</h1>
           <p>Nông sản trầy vỏ, sai kích cỡ hoặc dư cung cuối vụ được bán với giá giải cứu trong thời gian giới hạn. Mua để giảm lãng phí thực phẩm và hỗ trợ nhà vườn.</p>
         </div>

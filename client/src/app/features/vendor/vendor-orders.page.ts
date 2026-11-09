@@ -38,7 +38,7 @@ const ACTION_LABEL: Record<string, string> = {
               </div>
               <div class="row-gap"><app-status [value]="o.status" /><app-status [value]="o.cod.status" /></div>
             </div>
-            <div class="small">👤 {{ o.buyer.name }} · {{ o.buyer.phone }} · {{ o.buyer.address }}</div>
+            <div class="small"><svg class="icon" aria-hidden="true"><use href="icons.svg#user" /></svg> {{ o.buyer.name }} · {{ o.buyer.phone }} · {{ o.buyer.address }}</div>
             @if (o.note) { <div class="small muted">Ghi chú: {{ o.note }}</div> }
             <ul class="item-list">
               @for (i of o.items; track i.id) {
@@ -57,7 +57,7 @@ const ACTION_LABEL: Record<string, string> = {
                   <button type="button" class="btn btn-sm" [class.btn-primary]="s !== 'cancelled'" [class.btn-outline]="s === 'cancelled'" [disabled]="busy() === o.partId" (click)="setPartStatus(o, s)">{{ actionLabel[s] }}</button>
                 }
                 @if (o.status === 'delivered' && o.cod.status === 'unpaid') {
-                  <button type="button" class="btn btn-sm btn-orange" [disabled]="busy() === o.partId" (click)="collect(o)">💵 Đã thu tiền COD</button>
+                  <button type="button" class="btn btn-sm btn-orange" [disabled]="busy() === o.partId" (click)="collect(o)"><svg class="icon" aria-hidden="true"><use href="icons.svg#wallet" /></svg> Đã thu tiền COD</button>
                 }
               </div>
             </div>

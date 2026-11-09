@@ -17,7 +17,7 @@ import { ImgFallbackDirective } from './img-fallback.directive';
         @if (p.galleryImages.length) {
           <!-- Rê chuột: hiện ảnh phụ đầu tiên; góc dưới: số ảnh trong bộ ảnh -->
           <img class="img-alt" [src]="p.galleryImages[0]" alt="" loading="lazy" aria-hidden="true" appImgFallback />
-          <span class="badge-photos" [attr.title]="(p.galleryImages.length + 1) + ' ảnh'">📷 {{ p.galleryImages.length + 1 }}</span>
+          <span class="badge-photos" [attr.title]="(p.galleryImages.length + 1) + ' ảnh'"><svg class="icon" aria-hidden="true"><use href="icons.svg#camera" /></svg> {{ p.galleryImages.length + 1 }}</span>
         }
         @if (isRescue()) {
           <span class="badge-rescue">Giải cứu -{{ p.rescue!.discountRate }}%</span>
@@ -30,7 +30,7 @@ import { ImgFallbackDirective } from './img-fallback.directive';
       </a>
       <a class="product-name line-clamp-2" [routerLink]="['/products', p.slug]">{{ p.name }}</a>
       @if (p.farm) {
-        <a class="product-farm line-clamp-1" [routerLink]="['/farms', p.farm.slug]">🏡 {{ p.farm.name }}</a>
+        <a class="product-farm line-clamp-1" [routerLink]="['/farms', p.farm.slug]"><svg class="icon" aria-hidden="true"><use href="icons.svg#farm" /></svg> {{ p.farm.name }}</a>
       }
       @if (showRating() && p.rating) {
         <div class="product-rating" title="Số liệu hiển thị kế thừa bản demo">★ {{ p.rating }} · Đã bán {{ p.soldCount }}</div>
@@ -42,7 +42,7 @@ import { ImgFallbackDirective } from './img-fallback.directive';
         }
       </div>
       @if (isRescue()) {
-        <div class="rescue-left">⏳ {{ p.rescue!.expiresAt | timeLeft }}</div>
+        <div class="rescue-left"><svg class="icon" aria-hidden="true"><use href="icons.svg#clock" /></svg> {{ p.rescue!.expiresAt | timeLeft }}</div>
       }
       <button
         type="button"

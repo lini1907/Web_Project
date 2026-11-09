@@ -17,7 +17,6 @@ import { ImgFallbackDirective } from '../../shared/img-fallback.directive';
     <section class="band band-purple">
       <div class="container band-inner">
         <div>
-          <span class="tag tag-light">🎁 MYSTERY BOX</span>
           <h1>Mở hộp mới biết — nông sản theo mùa</h1>
           <p>Mỗi hộp gồm 3–5 loại nông sản đang vào mùa do nhà vườn tự chọn. Thành phần được giữ bí mật cho tới khi bạn nhận hàng; giá trị ước tính luôn cao hơn giá bán.</p>
         </div>
@@ -42,9 +41,9 @@ import { ImgFallbackDirective } from '../../shared/img-fallback.directive';
                   <div class="note">💡 Giá trị ước tính {{ b.estimatedValue.min | money }} – {{ b.estimatedValue.max | money }}</div>
                 }
                 <ul class="box-facts">
-                  <li>📦 {{ b.itemCount }} loại nông sản</li>
+                  <li><svg class="icon" aria-hidden="true"><use href="icons.svg#box" /></svg> {{ b.itemCount }} loại nông sản</li>
                   <li>🏷️ Nhóm: @for (c of b.categories; track c) { <span class="tag">{{ c | categoryLabel }}</span> }</li>
-                  <li>📝 {{ b.publicNote }}</li>
+                  <li><svg class="icon" aria-hidden="true"><use href="icons.svg#note" /></svg> {{ b.publicNote }}</li>
                   <li [class.text-danger]="b.available === 0">🔢 {{ b.available > 0 ? 'Còn ' + b.available + ' hộp' : 'Tạm hết — nguyên liệu không đủ' }}</li>
                 </ul>
                 <button type="button" class="btn btn-purple btn-block" [disabled]="b.available === 0 || actions.busyId() === b.id" (click)="actions.addBox(b.id, b.name)">

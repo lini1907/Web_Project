@@ -24,7 +24,7 @@ import { StateComponent } from '../../shared/ui';
       <div class="box-grid">
         @for (b of boxes(); track b.id) {
           <div class="card">
-            <div class="row-between"><h3>🎁 {{ b.name }}</h3><span class="tag" [class.tag-green]="b.isActive">{{ b.isActive ? 'Đang bán' : 'Ẩn' }}</span></div>
+            <div class="row-between"><h3><svg class="icon" aria-hidden="true"><use href="icons.svg#box" /></svg> {{ b.name }}</h3><span class="tag" [class.tag-green]="b.isActive">{{ b.isActive ? 'Đang bán' : 'Ẩn' }}</span></div>
             <div><b>{{ b.price | money }}</b> · còn bán được <b>{{ b.available }}</b> hộp · đã bán {{ b.soldCount }}</div>
             <table class="table small">
               <thead><tr><th>Thành phần</th><th>Định lượng</th><th>Tồn</th><th>Đủ cho</th></tr></thead>

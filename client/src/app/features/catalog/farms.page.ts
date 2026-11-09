@@ -12,7 +12,7 @@ import { StateComponent } from '../../shared/ui';
     <div class="container page">
       <div class="page-head">
         <div>
-          <h1>🏡 Nông trại đối tác</h1>
+          <h1><svg class="icon" aria-hidden="true"><use href="icons.svg#farm" /></svg> Nông trại đối tác</h1>
           <p class="muted">Mỗi sản phẩm trên FarmTable đều truy xuất được về một nông trại cụ thể.</p>
         </div>
         <div class="row-gap">

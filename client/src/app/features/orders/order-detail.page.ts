@@ -43,7 +43,7 @@ const FLOW: PartStatus[] = ['pending', 'confirmed', 'shipping', 'delivered'];
             @for (part of o.parts; track part.id) {
               <section class="card part">
                 <div class="row-between">
-                  <b>🏡 {{ part.vendor.name }}</b>
+                  <b><svg class="icon" aria-hidden="true"><use href="icons.svg#farm" /></svg> {{ part.vendor.name }}</b>
                   <div class="row-gap"><app-status [value]="part.status" /><app-status [value]="part.cod.status" /></div>
                 </div>
                 @if (part.status !== 'cancelled') {

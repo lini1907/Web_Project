@@ -16,7 +16,7 @@ import { matchFields, strongPassword, vnPhone } from '../../shared/validators';
   imports: [ReactiveFormsModule, RouterLink, DatePipe, MoneyPipe, StateComponent, StatusBadgeComponent],
   template: `
     <div class="container page">
-      <h1>⚙️ Tài khoản</h1>
+      <h1><svg class="icon" aria-hidden="true"><use href="icons.svg#settings" /></svg> Tài khoản</h1>
       <div class="tabs">
         <a class="tab" [class.active]="tab() === 'profile'" [routerLink]="[]" [queryParams]="{ tab: null }">Hồ sơ</a>
         <a class="tab" [class.active]="tab() === 'password'" [routerLink]="[]" [queryParams]="{ tab: 'password' }">Đổi mật khẩu</a>

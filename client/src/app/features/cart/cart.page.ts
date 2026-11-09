@@ -14,7 +14,7 @@ import { ImgFallbackDirective } from '../../shared/img-fallback.directive';
   imports: [RouterLink, MoneyPipe, QtyComponent, StateComponent, ImgFallbackDirective],
   template: `
     <div class="container page">
-      <h1>🛒 Giỏ hàng</h1>
+      <h1><svg class="icon" aria-hidden="true"><use href="icons.svg#cart" /></svg> Giỏ hàng</h1>
       @if (auth.isLoggedIn() && !auth.isBuyer()) {
         <app-state state="empty" emptyIcon="🏪" emptyText="Tài khoản nhà bán/quản trị không có giỏ hàng." />
       } @else if (state() !== 'ok') {
@@ -36,7 +36,7 @@ import { ImgFallbackDirective } from '../../shared/img-fallback.directive';
         <div class="cart-layout">
           <section class="card">
             @for (group of groups(); track group.vendor) {
-              <div class="cart-vendor">🏡 {{ group.vendor }}</div>
+              <div class="cart-vendor"><svg class="icon" aria-hidden="true"><use href="icons.svg#farm" /></svg> {{ group.vendor }}</div>
               @for (l of group.lines; track l.id) {
                 <div class="cart-line" [class.has-warning]="l.warning">
                   <img [src]="l.image" alt="" appImgFallback />
@@ -44,7 +44,7 @@ import { ImgFallbackDirective } from '../../shared/img-fallback.directive';
                     @if (l.kind === 'product' && l.slug) {
                       <a [routerLink]="['/products', l.slug]" class="cart-name">{{ l.name }}</a>
                     } @else {
-                      <span class="cart-name">🎁 {{ l.name }}</span>
+                      <span class="cart-name"><svg class="icon" aria-hidden="true"><use href="icons.svg#box" /></svg> {{ l.name }}</span>
                     }
                     <div class="small muted">
                       {{ l.unitPrice | money }} / {{ l.unit }}

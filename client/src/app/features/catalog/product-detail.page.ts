@@ -49,11 +49,11 @@ import { SimilarProductsComponent } from '../recommend/recommend.components';
           </div>
           <div class="detail-info">
             @if (isRescue()) {
-              <span class="tag tag-green">♻️ GIẢI CỨU · {{ p.rescue!.reason }}</span>
+              <span class="tag tag-green"><svg class="icon" aria-hidden="true"><use href="icons.svg#rescue" /></svg> GIẢI CỨU · {{ p.rescue!.reason }}</span>
             }
             <h1>{{ p.name }}</h1>
             <div class="muted">
-              @if (p.farm) { <a [routerLink]="['/farms', p.farm.slug]">🏡 {{ p.farm.name }}</a> · {{ p.farm.province }} · }
+              @if (p.farm) { <a [routerLink]="['/farms', p.farm.slug]"><svg class="icon" aria-hidden="true"><use href="icons.svg#farm" /></svg> {{ p.farm.name }}</a> · {{ p.farm.province }} · }
               ★ {{ p.rating }} ({{ p.reviewCount }} đánh giá demo) · đã bán {{ p.soldCount }}
             </div>
             <div class="detail-price" [class.rescue]="isRescue()">
@@ -67,7 +67,7 @@ import { SimilarProductsComponent } from '../recommend/recommend.components';
                 @if (p.rescue.expired) {
                   ⛔ Hàng giải cứu đã hết hạn bán ({{ p.rescue.expiresAt | date: 'dd/MM/yyyy HH:mm' }}).
                 } @else {
-                  ⏳ Giá giải cứu áp dụng đến {{ p.rescue.expiresAt | date: 'HH:mm dd/MM/yyyy' }} ({{ p.rescue.expiresAt | timeLeft }}). Giá do hệ thống tính từ giá gốc.
+                  <svg class="icon" aria-hidden="true"><use href="icons.svg#clock" /></svg> Giá giải cứu áp dụng đến {{ p.rescue.expiresAt | date: 'HH:mm dd/MM/yyyy' }} ({{ p.rescue.expiresAt | timeLeft }}). Giá do hệ thống tính từ giá gốc.
                 }
               </div>
             }
@@ -80,13 +80,13 @@ import { SimilarProductsComponent } from '../recommend/recommend.components';
             <div class="buy-row">
               <app-qty [(value)]="qty" [max]="maxQty()" [disabled]="!canBuy()" />
               <button type="button" class="btn btn-primary btn-lg" [disabled]="!canBuy() || actions.busyId() === p.id" (click)="add()">
-                🛒 {{ actions.busyId() === p.id ? 'Đang thêm...' : 'Thêm vào giỏ' }}
+                <svg class="icon" aria-hidden="true"><use href="icons.svg#cart" /></svg> {{ actions.busyId() === p.id ? 'Đang thêm...' : 'Thêm vào giỏ' }}
               </button>
               <button type="button" class="btn btn-orange btn-lg" [disabled]="!canBuy()" (click)="buyNow()">Mua ngay</button>
             </div>
             <ul class="perks">
-              <li>🚚 Phí ship 20.000đ, miễn phí cho đơn từ 200.000đ</li>
-              <li>💵 Thanh toán khi nhận hàng (COD)</li>
+              <li><svg class="icon" aria-hidden="true"><use href="icons.svg#truck" /></svg> Phí ship 20.000đ, miễn phí cho đơn từ 200.000đ</li>
+              <li><svg class="icon" aria-hidden="true"><use href="icons.svg#wallet" /></svg> Thanh toán khi nhận hàng (COD)</li>
               <li>↩️ Hủy miễn phí khi nhà bán chưa xác nhận</li>
             </ul>
           </div>

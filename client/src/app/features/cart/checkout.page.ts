@@ -52,7 +52,7 @@ import { StateComponent } from '../../shared/ui';
             <label class="checkbox"><input type="checkbox" name="save" [(ngModel)]="model.saveAddress" /> Lưu địa chỉ này cho lần sau</label>
 
             <h3>2. Phương thức thanh toán</h3>
-            <label class="pay-option active"><input type="radio" name="pay" checked /> 💵 Thanh toán khi nhận hàng (COD)</label>
+            <label class="pay-option active"><input type="radio" name="pay" checked /> <svg class="icon" aria-hidden="true"><use href="icons.svg#wallet" /></svg> Thanh toán khi nhận hàng (COD)</label>
             <label class="pay-option disabled" title="Chưa tích hợp cổng thanh toán"><input type="radio" name="pay" disabled /> 🏦 Chuyển khoản ngân hàng — <i>chưa hỗ trợ</i></label>
             <label class="pay-option disabled" title="Chưa tích hợp cổng thanh toán"><input type="radio" name="pay" disabled /> 📱 Ví MoMo — <i>chưa hỗ trợ</i></label>
           </section>

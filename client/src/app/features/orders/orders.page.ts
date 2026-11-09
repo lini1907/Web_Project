@@ -12,7 +12,7 @@ import { PaginationComponent, StateComponent, StatusBadgeComponent } from '../..
   imports: [RouterLink, DatePipe, MoneyPipe, PaginationComponent, StateComponent, StatusBadgeComponent],
   template: `
     <div class="container page">
-      <h1>📦 Đơn hàng của tôi</h1>
+      <h1><svg class="icon" aria-hidden="true"><use href="icons.svg#box" /></svg> Đơn hàng của tôi</h1>
       <div class="tabs">
         @for (t of tabs; track t.key) {
           <a class="tab" [class.active]="status() === t.key" [routerLink]="[]" [queryParams]="{ status: t.key || null, page: null }">{{ t.label }}</a>

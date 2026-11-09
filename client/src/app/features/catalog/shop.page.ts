@@ -25,14 +25,14 @@ import { CategoryLabelPipe } from '../../shared/pipes';
             <h3>Danh mục</h3>
             <button type="button" class="filter-btn" [class.active]="!f.category" (click)="apply({ category: null })">Tất cả</button>
             @for (c of categoryList; track c) {
-              <button type="button" class="filter-btn" [class.active]="f.category === c" (click)="apply({ category: c })">{{ icons[c] }} {{ labels[c] }}</button>
+              <button type="button" class="filter-btn" [class.active]="f.category === c" (click)="apply({ category: c })"><svg class="icon" aria-hidden="true"><use [attr.href]="'icons.svg#' + c" /></svg> {{ labels[c] }}</button>
             }
           </div>
           <div class="filter-group">
             <h3>Loại hàng</h3>
             <label class="radio"><input type="radio" name="type" [checked]="!f.type" (change)="apply({ type: null })" /> Tất cả</label>
             <label class="radio"><input type="radio" name="type" [checked]="f.type === 'regular'" (change)="apply({ type: 'regular' })" /> Hàng tiêu chuẩn</label>
-            <label class="radio"><input type="radio" name="type" [checked]="f.type === 'rescue'" (change)="apply({ type: 'rescue' })" /> ♻️ Hàng giải cứu</label>
+            <label class="radio"><input type="radio" name="type" [checked]="f.type === 'rescue'" (change)="apply({ type: 'rescue' })" /> <svg class="icon" aria-hidden="true"><use href="icons.svg#rescue" /></svg> Hàng giải cứu</label>
           </div>
           <div class="filter-group">
             <h3>Nông trại</h3>
@@ -56,8 +56,9 @@ import { CategoryLabelPipe } from '../../shared/pipes';
         </aside>
 
         <section class="shop-main">
+          <h1 class="shop-title">Cửa hàng nông sản</h1>
           <div class="shop-toolbar">
-            <button type="button" class="btn btn-outline btn-sm show-sm" (click)="filtersOpen.set(!filtersOpen())">⚙ Bộ lọc</button>
+            <button type="button" class="btn btn-outline btn-sm show-sm" (click)="filtersOpen.set(!filtersOpen())"><svg class="icon" aria-hidden="true"><use href="icons.svg#settings" /></svg> Bộ lọc</button>
             <div class="muted">
               @if (f.q) { Kết quả cho "<b>{{ f.q }}</b>": }
               {{ result()?.total ?? 0 }} sản phẩm

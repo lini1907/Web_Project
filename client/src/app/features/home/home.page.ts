@@ -14,22 +14,21 @@ import { ForYouComponent } from '../recommend/recommend.components';
   selector: 'app-home',
   imports: [RouterLink, ProductCardComponent, StateComponent, CountdownComponent, MoneyPipe, ImgFallbackDirective, ForYouComponent],
   template: `
-    <div class="container page">
+    <div class="container page home-page">
       <section class="hero-row">
         <aside class="cat-side hide-sm">
           <div class="cat-side-head">Danh mục sản phẩm</div>
           @for (c of categories(); track c.slug) {
-            <a [routerLink]="['/shop']" [queryParams]="{ category: c.slug }">{{ icons[c.slug] }} {{ labels[c.slug] }} <small>{{ c.count }}</small></a>
+            <a [routerLink]="['/shop']" [queryParams]="{ category: c.slug }"><svg class="icon" aria-hidden="true"><use [attr.href]="'icons.svg#' + c.slug" /></svg> {{ labels[c.slug] }} <small>{{ c.count }}</small></a>
           }
-          <a routerLink="/rescue">♻️ Nông sản xấu mã <span class="tag tag-green">GIẢI CỨU</span></a>
-          <a routerLink="/mystery-box">🎁 Mystery Box <span class="tag tag-purple">BÍ ẨN</span></a>
-          <a routerLink="/group-buy">👥 Đang mua chung <span class="tag tag-orange">HOT</span></a>
-          <a routerLink="/farms">🏡 Cửa hàng nông trại</a>
+          <a routerLink="/rescue"><svg class="icon" aria-hidden="true"><use href="icons.svg#rescue" /></svg> Nông sản xấu mã</a>
+          <a routerLink="/mystery-box"><svg class="icon" aria-hidden="true"><use href="icons.svg#box" /></svg> Mystery Box</a>
+          <a routerLink="/group-buy"><svg class="icon" aria-hidden="true"><use href="icons.svg#users" /></svg> Đang mua chung</a>
+          <a routerLink="/farms"><svg class="icon" aria-hidden="true"><use href="icons.svg#farm" /></svg> Cửa hàng nông trại</a>
         </aside>
         <div class="hero">
-          <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&q=80&w=1200" alt="" appImgFallback />
+          <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&q=80&w=1200" alt="Quầy nông sản với rau củ và trái cây nhiều màu sắc" fetchpriority="high" appImgFallback />
           <div class="hero-text">
-            <span class="hero-chip">🌱 Từ nhà vườn tới bếp nhà bạn</span>
             <h1>Nông sản sạch,<br />giá tận vườn</h1>
             <p>Hơn 20 nông trại tại Lâm Đồng, Sơn La, miền Tây... giao trong ngày, trả tiền khi nhận hàng.</p>
             <div class="row-gap">
@@ -38,21 +37,13 @@ import { ForYouComponent } from '../recommend/recommend.components';
             </div>
           </div>
         </div>
-        <div class="hero-side hide-md">
-          <a routerLink="/rescue" class="hero-tile tile-orange">
-            <b>♻️ Giải cứu</b><span>Giảm 30–50% hàng xấu mã</span>
-          </a>
-          <a routerLink="/group-buy" class="hero-tile tile-green">
-            <b>👥 Mua chung</b><span>Đủ người là chốt giá nhóm</span>
-          </a>
-        </div>
       </section>
 
       <section class="features-strip">
-        <div>🚚 <b>Giao nhanh</b><span>Miễn phí từ 200.000đ</span></div>
-        <div>💵 <b>COD</b><span>Nhận hàng mới trả tiền</span></div>
-        <div>🌿 <b>Truy xuất</b><span>Biết rõ nông trại</span></div>
-        <div>🤖 <b>Gợi ý thông minh</b><span>Theo sở thích của bạn</span></div>
+        <div><svg class="icon" aria-hidden="true"><use href="icons.svg#truck" /></svg> <b>Giao nhanh</b><span>Miễn phí từ 200.000đ</span></div>
+        <div><svg class="icon" aria-hidden="true"><use href="icons.svg#wallet" /></svg> <b>COD</b><span>Nhận hàng mới trả tiền</span></div>
+        <div><svg class="icon" aria-hidden="true"><use href="icons.svg#leaf" /></svg> <b>Truy xuất</b><span>Biết rõ nông trại</span></div>
+        <div><svg class="icon" aria-hidden="true"><use href="icons.svg#spark" /></svg> <b>Gợi ý thông minh</b><span>Theo sở thích của bạn</span></div>
       </section>
 
       @if (state() !== 'ok') {
@@ -61,7 +52,7 @@ import { ForYouComponent } from '../recommend/recommend.components';
         @if (rescue().length) {
           <section class="section rescue-band">
             <div class="section-head">
-              <h2>♻️ Giải cứu nông sản — sắp hết hạn</h2>
+              <h2><svg class="icon" aria-hidden="true"><use href="icons.svg#rescue" /></svg> Giải cứu nông sản — sắp hết hạn</h2>
               <a routerLink="/rescue" class="link">Xem tất cả →</a>
             </div>
             <div class="product-grid cols-5">
@@ -75,7 +66,7 @@ import { ForYouComponent } from '../recommend/recommend.components';
         @if (groupBuys().length) {
           <section class="section">
             <div class="section-head">
-              <h2>👥 Đang mua chung</h2>
+              <h2><svg class="icon" aria-hidden="true"><use href="icons.svg#users" /></svg> Đang mua chung</h2>
               <a routerLink="/group-buy" class="link">Xem tất cả →</a>
             </div>
             <div class="gb-grid">
@@ -84,7 +75,7 @@ import { ForYouComponent } from '../recommend/recommend.components';
                   <img [src]="g.product.mainImage" alt="" appImgFallback />
                   <div class="gb-body">
                     <div class="gb-title line-clamp-2">{{ g.title }}</div>
-                    <div class="gb-price">{{ g.groupPrice | money }} <s>{{ g.regularPrice | money }}</s> <span class="tag tag-orange">-{{ g.discountRate }}%</span></div>
+                    <div class="gb-price">{{ g.groupPrice | money }} <s>{{ g.regularPrice | money }}</s></div>
                     <div class="progress"><div [style.width.%]="g.progress"></div></div>
                     <div class="gb-meta"><span>{{ g.joinedQty }}/{{ g.targetQty }} {{ g.product.unit }}</span><app-countdown [deadline]="g.deadline" [serverTime]="g.serverTime" /></div>
                   </div>
@@ -100,7 +91,7 @@ import { ForYouComponent } from '../recommend/recommend.components';
 
         <section class="section">
           <div class="section-head">
-            <h2>🔥 Bán chạy</h2>
+            <h2><svg class="icon" aria-hidden="true"><use href="icons.svg#spark" /></svg> Bán chạy</h2>
             <a [routerLink]="['/shop']" [queryParams]="{ sort: 'popular' }" class="link">Xem thêm →</a>
           </div>
           <div class="product-grid cols-5">
@@ -113,14 +104,14 @@ import { ForYouComponent } from '../recommend/recommend.components';
         @if (boxes().length) {
           <section class="section mystery-band">
             <div>
-              <h2>🎁 Mystery Box — mở hộp mới biết</h2>
+              <h2><svg class="icon" aria-hidden="true"><use href="icons.svg#box" /></svg> Mystery Box — mở hộp mới biết</h2>
               <p>Hộp nông sản theo mùa, giá trị ước tính cao hơn giá bán. Thành phần được giữ bí mật tới khi bạn nhận hàng.</p>
               <a routerLink="/mystery-box" class="btn btn-purple">Khám phá hộp bí ẩn</a>
             </div>
             <div class="mystery-mini">
               @for (b of boxes(); track b.id) {
                 <a routerLink="/mystery-box" class="mini-box">
-                  <span class="big-emoji">🎁</span>
+                  <span class="big-emoji"><svg class="icon" aria-hidden="true"><use href="icons.svg#box" /></svg></span>
                   <b>{{ b.name }}</b>
                   <span>{{ b.price | money }} · còn {{ b.available }} hộp</span>
                 </a>
@@ -131,7 +122,7 @@ import { ForYouComponent } from '../recommend/recommend.components';
 
         <section class="section">
           <div class="section-head">
-            <h2>🆕 Mới lên kệ</h2>
+            <h2><svg class="icon" aria-hidden="true"><use href="icons.svg#leaf" /></svg> Mới lên kệ</h2>
             <a routerLink="/shop" class="link">Xem cửa hàng →</a>
           </div>
           <div class="product-grid cols-5">
@@ -143,7 +134,7 @@ import { ForYouComponent } from '../recommend/recommend.components';
 
         <section class="section">
           <div class="section-head">
-            <h2>🏡 Nông trại đối tác</h2>
+            <h2><svg class="icon" aria-hidden="true"><use href="icons.svg#farm" /></svg> Nông trại đối tác</h2>
             <a routerLink="/farms" class="link">Tất cả nông trại →</a>
           </div>
           <div class="farm-strip">

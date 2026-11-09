@@ -15,8 +15,8 @@ import { matchFields, strongPassword, vnPhone } from '../../shared/validators';
       <div class="auth-card card wide">
         <h1>Tạo tài khoản</h1>
         <div class="segmented">
-          <button type="button" [class.active]="role() === 'buyer'" (click)="setRole('buyer')">🛒 Tôi muốn mua</button>
-          <button type="button" [class.active]="role() === 'vendor'" (click)="setRole('vendor')">🏪 Tôi muốn bán</button>
+          <button type="button" [class.active]="role() === 'buyer'" (click)="setRole('buyer')"><svg class="icon" aria-hidden="true"><use href="icons.svg#cart" /></svg> Tôi muốn mua</button>
+          <button type="button" [class.active]="role() === 'vendor'" (click)="setRole('vendor')"><svg class="icon" aria-hidden="true"><use href="icons.svg#store" /></svg> Tôi muốn bán</button>
         </div>
         @if (role() === 'vendor') {
           <p class="note">Tài khoản nhà bán cần quản trị viên <b>duyệt</b> trước khi đăng sản phẩm. Bạn vẫn có thể đăng nhập và chuẩn bị hồ sơ nông trại.</p>
