@@ -24,6 +24,7 @@ before(async () => {
     VNP_TMN_CODE: 'TESTTMN1',
     VNP_HASH_SECRET: VNP_SECRET,
     MOMO_PARTNER_CODE: MOMO.partner,
+    MOMO_REQUEST_TYPE: 'captureWallet',
     MOMO_ACCESS_KEY: MOMO.access,
     MOMO_SECRET_KEY: MOMO.secret,
     GOOGLE_CLIENT_ID: 'test-client.apps.googleusercontent.com',
@@ -229,6 +230,16 @@ describe('Thanh toán VNPay Sandbox', () => {
     assert.equal(paid.canPay, false);
     assert.equal((await b.post(`/orders/${order.id}/pay`, {})).status, 409);
     assert.equal((await v.patch(`/vendor/orders/${order.id}/parts/${order.parts[0].id}`, { status: 'confirmed' })).status, 200);
+  });
+
+  test('Return URL đến trước IPN (chạy ở localhost) => chuyển về trang đơn với payment=success', async () => {
+    const b = await freshBuyer();
+    const order = await placeOrder(b, { paymentMethod: 'vnpay' });
+    const q = Object.fromEntries(new URL((await b.post(`/orders/${order.id}/pay`, {})).body.payUrl).searchParams);
+    const p = { vnp_Amount: q.vnp_Amount, vnp_TxnRef: q.vnp_TxnRef, vnp_ResponseCode: '00', vnp_TransactionStatus: '00', vnp_TransactionNo: '14000002' };
+    const r = await request(app).get('/api/v1/payments/vnpay/return').query({ ...p, vnp_SecureHash: vnpSign(p, VNP_SECRET) });
+    assert.equal(r.headers.location, `http://localhost:4200/orders/${order.id}?payment=success`);
+    assert.equal((await b.get(`/orders/${order.id}`)).body.payment.status, 'paid');
   });
 
   test('VNPay trả mã lỗi => thanh toán thất bại, có thể trả lại; hủy đơn đã trả => chờ hoàn tiền', async () => {

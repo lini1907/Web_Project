@@ -11,7 +11,7 @@ import { escapeRegex, normalizeVi } from '../../utils/text.js';
  * Gemini không "bịa" sản phẩm mà gọi các hàm đọc dữ liệu thật của FarmTable
  * (tìm sản phẩm, xem chi tiết, tìm công thức, chính sách, đơn hàng của chính người dùng).
  * Cấu hình: GEMINI_API_KEY (bắt buộc, lấy tại https://aistudio.google.com/apikey),
- * GEMINI_MODEL (mặc định gemini-2.5-flash).
+ * GEMINI_MODEL (mặc định gemini-3.5-flash-lite).
  */
 const MAX_TOOL_ROUNDS = 5;
 
@@ -21,12 +21,13 @@ export function setChatClient(c) {
   client = c;
 }
 function getClient() {
-  if (!client) client = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+  // Giới hạn thời gian chờ và số lần thử lại: model quá tải (503) thì báo lỗi sớm thay vì treo nhiều phút.
+  if (!client) client = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY, httpOptions: { timeout: 15000, retryOptions: { attempts: 2 } } });
   return client;
 }
 
 export const chatbotEnabled = () => !!process.env.GEMINI_API_KEY || client !== null;
-const model = () => (process.env.GEMINI_MODEL || 'gemini-2.5-flash').trim();
+const model = () => (process.env.GEMINI_MODEL || 'gemini-3.5-flash-lite').trim();
 
 const SYSTEM_PROMPT = `Bạn là "Bé Nông", trợ lý mua sắm của FarmTable - sàn nông sản sạch kết nối trực tiếp người mua với nhà vườn Việt Nam.
 
@@ -83,6 +84,8 @@ const TOOLS = [
 
 const SORT_MAP = { newest: 'newest', price_asc: 'price_asc', price_desc: 'price_desc', best_selling: 'popular' };
 const STATUS_VI = { pending: 'chờ xác nhận', confirmed: 'đã xác nhận', processing: 'đang xử lý', shipping: 'đang giao', delivered: 'đã giao', cancelled: 'đã hủy' };
+const PAY_METHOD_VI = { cod: 'COD', vnpay: 'VNPay', momo: 'Ví MoMo' };
+const PAY_STATUS_VI = { unpaid: 'chưa thanh toán', pending: 'đang chờ thanh toán', paid: 'đã thanh toán', failed: 'thanh toán thất bại', refund_pending: 'chờ hoàn tiền' };
 
 const brief = (p) => ({
   id: p.id,
@@ -157,7 +160,15 @@ async function runTool(name, input, user) {
       const rows = await Order.find({ buyerId: user._id }).sort({ createdAt: -1 }).limit(5).lean();
       return {
         result: {
-          items: rows.map((o) => ({ code: o.code, status: STATUS_VI[deriveOrderStatus(o.parts)], total: o.total, createdAt: o.createdAt, link: `/orders/${o._id}` })),
+          items: rows.map((o) => ({
+            code: o.code,
+            status: STATUS_VI[deriveOrderStatus(o.parts)],
+            total: o.total,
+            paymentMethod: PAY_METHOD_VI[o.paymentMethod] || o.paymentMethod,
+            paymentStatus: o.paymentMethod === 'cod' ? 'Trả tiền khi nhận hàng' : PAY_STATUS_VI[o.payment?.status] || 'Chưa thanh toán',
+            createdAt: o.createdAt,
+            link: `/orders/${o._id}`,
+          })),
         },
       };
     }

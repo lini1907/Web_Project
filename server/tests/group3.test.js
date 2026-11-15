@@ -62,7 +62,7 @@ describe('Chatbot tư vấn (Gemini + function calling)', () => {
     const parts = lastParts(calls, 1);
     assert.deepEqual(parts.map((x) => x.functionResponse.name), ['search_products', 'get_shop_policies']);
     assert.match(JSON.stringify(parts[1].functionResponse.response), /Phí giao hàng/);
-    assert.equal(calls[0].model, 'gemini-2.5-flash');
+    assert.equal(calls[0].model, 'gemini-3.5-flash-lite');
     assert.equal(calls[0].config.tools[0].functionDeclarations.length, 5);
     assert.match(calls[0].config.systemInstruction, /chưa đăng nhập/);
   });
