@@ -33,7 +33,7 @@ import { PaginationComponent, StateComponent, StatusBadgeComponent } from '../..
               <div class="order-thumbs">
                 @for (p of o.parts; track p.id) {
                   @for (i of p.items; track i.id) {
-                    <span class="small">{{ i.qty }} × {{ i.name }}</span>
+                    <span class="small">{{ i.qty }} × {{ i.name }}@if (i.categoryName) { <span class="muted"> · {{ i.categoryName }}</span> }</span>
                   }
                 }
               </div>

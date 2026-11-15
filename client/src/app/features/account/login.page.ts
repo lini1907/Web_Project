@@ -4,6 +4,7 @@ import { Router, RouterLink } from '@angular/router';
 import { ApiError } from '../../core/api';
 import { AuthService } from '../../core/services/auth.service';
 import { ToastService } from '../../core/services/toast.service';
+import { emailOrVnPhone } from '../../shared/validators';
 
 const OAUTH_ERRORS: Record<string, string> = {
   google_disabled: 'Máy chủ chưa cấu hình đăng nhập Google.',
@@ -24,9 +25,11 @@ const OAUTH_ERRORS: Record<string, string> = {
         <h1>{{ mode() === 'vendor' ? 'Đăng nhập nhà bán' : 'Đăng nhập' }}</h1>
         <p class="muted">Đăng nhập để lưu giỏ hàng và theo dõi đơn nông sản của bạn.</p>
         <form [formGroup]="form" (ngSubmit)="submit()" class="form" novalidate>
-          <label>Email
-            <input class="input" type="email" formControlName="email" [attr.aria-invalid]="invalid('email')" [attr.aria-describedby]="invalid('email') ? 'login-email-error' : null" autocomplete="email" [class.invalid]="invalid('email')" />
-            @if (invalid('email')) { <span id="login-email-error" class="field-error">Email không hợp lệ</span> }
+          <label>Email hoặc số điện thoại
+            <input class="input" type="text" inputmode="email" formControlName="identifier" [attr.aria-invalid]="invalid('identifier')" [attr.aria-describedby]="invalid('identifier') ? 'login-identifier-error' : null" autocomplete="username" autocapitalize="off" spellcheck="false" placeholder="ban@example.com hoặc 0901234567" [class.invalid]="invalid('identifier')" />
+            @if (invalid('identifier')) {
+              <span id="login-identifier-error" class="field-error">{{ form.controls.identifier.hasError('required') ? 'Nhập email hoặc số điện thoại' : 'Email hoặc số điện thoại không hợp lệ' }}</span>
+            }
           </label>
           <label>Mật khẩu
             <div class="input-group">
@@ -42,7 +45,7 @@ const OAUTH_ERRORS: Record<string, string> = {
               <button type="button" class="btn btn-link btn-xs" (click)="forget()">Không phải {{ rememberedEmail() }}?</button>
             }
           </div>
-          <p class="small muted">Không tick: phiên đăng nhập kết thúc khi đóng trình duyệt. Trình duyệt chỉ lưu email, không lưu mật khẩu.</p>
+          <p class="small muted">Không tick: phiên đăng nhập kết thúc khi đóng trình duyệt. Trình duyệt chỉ lưu email (kể cả khi bạn đăng nhập bằng số điện thoại), không lưu mật khẩu.</p>
           @if (error()) { <div class="note note-danger" role="alert">{{ error() }}</div> }
           <button type="submit" class="btn btn-primary btn-block btn-lg" [disabled]="loading()">{{ loading() ? 'Đang đăng nhập...' : 'Đăng nhập' }}</button>
         </form>
@@ -61,6 +64,7 @@ const OAUTH_ERRORS: Record<string, string> = {
           <p class="small">Mật khẩu chung xem trong <code>server/.env</code> (biến <code>SEED_DEMO_PASSWORD</code>).</p>
           <div class="row-gap wrap">
             <button type="button" class="btn btn-outline btn-sm" (click)="fill('bich.tran@example.com')">Người mua</button>
+            <button type="button" class="btn btn-outline btn-sm" (click)="fill('0901234567')">Người mua (SĐT)</button>
             <button type="button" class="btn btn-outline btn-sm" (click)="fill('dalatxanh@farmtable.vn')">Nhà bán</button>
             <button type="button" class="btn btn-outline btn-sm" (click)="fill('admin@farmtable.vn')">Quản trị</button>
           </div>
@@ -90,7 +94,7 @@ export class LoginPage {
   private toast = inject(ToastService);
 
   protected form = this.fb.nonNullable.group({
-    email: ['', [Validators.required, Validators.email]],
+    identifier: ['', [Validators.required, emailOrVnPhone]],
     password: ['', [Validators.required]],
     remember: [false],
   });
@@ -108,7 +112,7 @@ export class LoginPage {
     });
   }
 
-  invalid(name: 'email' | 'password'): boolean {
+  invalid(name: 'identifier' | 'password'): boolean {
     const c = this.form.controls[name];
     return c.invalid && (c.touched || c.dirty);
   }
@@ -118,17 +122,17 @@ export class LoginPage {
     const email = await this.auth.rememberedEmail();
     if (!email) return;
     this.rememberedEmail.set(email);
-    if (!this.form.controls.email.value) this.form.patchValue({ email, remember: true });
+    if (!this.form.controls.identifier.value) this.form.patchValue({ identifier: email, remember: true });
   }
 
   async forget(): Promise<void> {
     await this.auth.forgetRemembered().catch(() => undefined);
     this.rememberedEmail.set(null);
-    this.form.patchValue({ email: '', remember: false });
+    this.form.patchValue({ identifier: '', remember: false });
   }
 
-  fill(email: string): void {
-    this.form.patchValue({ email });
+  fill(identifier: string): void {
+    this.form.patchValue({ identifier });
   }
 
   async submit(): Promise<void> {
@@ -140,8 +144,8 @@ export class LoginPage {
     this.loading.set(true);
     this.error.set(null);
     try {
-      const { email, password, remember } = this.form.getRawValue();
-      const user = await this.auth.login(email, password, remember);
+      const { identifier, password, remember } = this.form.getRawValue();
+      const user = await this.auth.login(identifier, password, remember);
       this.toast.success(`Xin chào ${user.name}!`);
       const merged = this.auth.lastCartMerge();
       if (merged) this.toast.info(`Đã chuyển ${merged} sản phẩm từ giỏ tạm vào giỏ hàng của bạn`);

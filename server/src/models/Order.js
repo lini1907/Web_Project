@@ -24,6 +24,9 @@ const orderItemSchema = new mongoose.Schema(
     boxId: { type: ObjectId, ref: 'MysteryBox' },
     // Bản chụp tại thời điểm đặt: đổi giá/tên sau này không ảnh hưởng đơn cũ.
     name: { type: String, required: true },
+    // Danh mục tại thời điểm đặt (slug + tên hiển thị). Đơn cũ không có 2 field này.
+    category: { type: String, default: undefined },
+    categoryName: { type: String, default: undefined },
     unit: { type: String, default: '' },
     image: { type: String, default: '' },
     unitPrice: { type: Number, required: true },
@@ -36,7 +39,13 @@ const orderItemSchema = new mongoose.Schema(
 );
 
 const historySchema = new mongoose.Schema(
-  { status: String, at: { type: Date, default: Date.now }, by: { type: String, enum: ['buyer', 'vendor', 'system', 'admin'] } },
+  {
+    status: String,
+    at: { type: Date, default: Date.now },
+    by: { type: String, enum: ['buyer', 'vendor', 'system', 'admin'] },
+    // Ghi chú (vd lý do quản trị viên hủy đơn).
+    note: { type: String, default: undefined },
+  },
   { _id: false },
 );
 

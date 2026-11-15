@@ -1,5 +1,7 @@
-import { Component, inject } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, computed, inject } from '@angular/core';
+import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { filter, map } from 'rxjs';
 import { HeaderComponent } from './layout/header.component';
 import { FooterComponent } from './layout/footer.component';
 import { ToastService } from './core/services/toast.service';
@@ -11,12 +13,14 @@ import { ChatWidgetComponent } from './features/content/chat-widget.component';
   imports: [RouterOutlet, HeaderComponent, FooterComponent, ChatWidgetComponent],
   template: `
     <a class="skip-link" href="#main">Bỏ qua tới nội dung</a>
-    <app-header />
-    <main id="main" class="main">
+    @if (storefront()) { <app-header /> }
+    <main id="main" [class.main]="storefront()">
       <router-outlet />
     </main>
-    <app-footer />
-    <app-chat-widget />
+    @if (storefront()) {
+      <app-footer />
+      <app-chat-widget />
+    }
     <div class="toasts" aria-live="polite">
       @for (t of toast.toasts(); track t.id) {
         <div class="toast" [class]="'toast toast-' + t.kind"><span>{{ t.text }}</span><button type="button" class="icon-btn" (click)="toast.dismiss(t.id)" aria-label="Đóng thông báo"><svg class="icon" aria-hidden="true"><use href="icons.svg#close" /></svg></button></div>
@@ -26,6 +30,17 @@ import { ChatWidgetComponent } from './features/content/chat-widget.component';
 })
 export class App {
   protected toast = inject(ToastService);
+  private router = inject(Router);
+  /** URL hiện tại (cập nhật sau mỗi lần điều hướng xong). */
+  private url = toSignal(
+    this.router.events.pipe(
+      filter((e): e is NavigationEnd => e instanceof NavigationEnd),
+      map((e) => e.urlAfterRedirects),
+    ),
+    { initialValue: this.router.url },
+  );
+  /** Khu vực quản trị / nhà bán có layout riêng => ẩn header, footer, chat của cửa hàng. */
+  protected storefront = computed(() => !/^\/(admin|vendor)(?=[/?#]|$)/.test(this.url()));
   // Khởi tạo kênh SSE ngay khi app chạy (tự kết nối khi đăng nhập).
   private realtime = inject(RealtimeService);
 }

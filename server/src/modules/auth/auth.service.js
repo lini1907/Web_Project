@@ -4,6 +4,7 @@ import bcrypt from 'bcryptjs';
 import { User, Farm } from '../../models/index.js';
 import { AppError, Errors } from '../../utils/AppError.js';
 import { uniqueSlug } from '../../utils/text.js';
+import { normalizePhone } from '../../utils/validate.js';
 import { sendResetOtp } from '../../services/mail.service.js';
 
 const BCRYPT_COST = 10;
@@ -18,10 +19,12 @@ export async function register({ name, email, password, phone, role, farmName, p
   if (await User.exists({ email })) {
     throw new AppError(409, 'EMAIL_TAKEN', 'Email đã được sử dụng', [{ field: 'email', message: 'Email đã được sử dụng' }]);
   }
+  const normPhone = phone ? normalizePhone(phone) : '';
+  if (normPhone) await assertPhoneFree(normPhone);
   const user = await User.create({
     name,
     email,
-    phone: phone || '',
+    phone: normPhone,
     passwordHash: await hashPassword(password),
     role,
     vendorStatus: role === 'vendor' ? 'pending' : null,
@@ -33,10 +36,31 @@ export async function register({ name, email, password, phone, role, farmName, p
   return user;
 }
 
-export async function verifyCredentials(email, password) {
-  const user = await User.findOne({ email }).select('+passwordHash');
+/** Dữ liệu cũ có thể lưu dạng +84..., nên tra cả hai dạng. */
+function phoneVariants(phone) {
+  const p = normalizePhone(phone);
+  return p.startsWith('0') ? [p, `+84${p.slice(1)}`] : [p];
+}
+
+/** Số điện thoại đã thuộc tài khoản khác => 409 (số điện thoại là định danh đăng nhập nên phải duy nhất). */
+export async function assertPhoneFree(phone, exceptUserId = null) {
+  const filter = { phone: { $in: phoneVariants(phone) } };
+  if (exceptUserId) filter._id = { $ne: exceptUserId };
+  if (await User.exists(filter)) {
+    throw new AppError(409, 'PHONE_TAKEN', 'Số điện thoại đã được sử dụng', [{ field: 'phone', message: 'Số điện thoại đã được sử dụng' }]);
+  }
+}
+
+/**
+ * Đăng nhập bằng email hoặc số điện thoại. `identifier` là { email } hoặc { phone } (đã chuẩn hóa ở controller).
+ * Một thông báo lỗi chung cho mọi trường hợp để không lộ tài khoản nào tồn tại.
+ */
+export async function verifyCredentials(identifier, password) {
+  const id = typeof identifier === 'string' ? { email: identifier } : identifier;
+  const filter = id.email ? { email: id.email } : { phone: { $in: phoneVariants(id.phone) } };
+  const user = await User.findOne(filter).select('+passwordHash');
   const ok = await bcrypt.compare(password, user?.passwordHash || DUMMY_HASH);
-  if (!user || !ok) throw new AppError(401, 'INVALID_CREDENTIALS', 'Email hoặc mật khẩu không đúng');
+  if (!user || !ok) throw new AppError(401, 'INVALID_CREDENTIALS', 'Tài khoản hoặc mật khẩu không đúng');
   if (user.status === 'locked') throw new AppError(403, 'ACCOUNT_LOCKED', 'Tài khoản đã bị khóa. Vui lòng liên hệ quản trị viên.');
   user.lastLoginAt = new Date();
   await user.save();

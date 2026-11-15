@@ -29,6 +29,9 @@ const userSchema = new mongoose.Schema(
   { timestamps: true },
 );
 
+// Số điện thoại dùng để đăng nhập => duy nhất. Bỏ qua tài khoản chưa nhập số ('' hoặc không có field).
+userSchema.index({ phone: 1 }, { unique: true, partialFilterExpression: { phone: { $type: 'string', $gt: '' } } });
+
 /** DTO: không bao giờ trả passwordHash. */
 userSchema.methods.toPublic = function toPublic() {
   return {

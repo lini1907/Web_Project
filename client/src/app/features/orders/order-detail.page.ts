@@ -2,7 +2,7 @@ import { Component, DestroyRef, effect, inject, input, signal } from '@angular/c
 import { DatePipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { ApiError } from '../../core/api';
-import { DELIVERY_WINDOW_LABELS, Order, OrderPart, PAYMENT_METHOD_LABELS, PAYMENT_STATUS_LABELS, PartStatus, SHIPMENT_STATUS_LABELS } from '../../core/models';
+import { DELIVERY_WINDOW_LABELS, Order, OrderPart, PAYMENT_METHOD_LABELS, PAYMENT_STATUS_LABELS, PartStatus, SHIPMENT_STATUS_LABELS, StatusEvent } from '../../core/models';
 import { RealtimeService } from '../../core/services/realtime.service';
 import { OrderService } from '../../core/services/order.service';
 import { ToastService } from '../../core/services/toast.service';
@@ -80,14 +80,16 @@ const FLOW: PartStatus[] = ['pending', 'confirmed', 'shipping', 'delivered'];
                     </details>
                   }
                 } @else {
-                  <div class="note note-danger">Phần đơn đã hủy @if (timeOf(part, 'cancelled'); as t) { lúc {{ t | date: 'HH:mm dd/MM' }} } — hàng đã được hoàn kho.</div>
+                  <div class="note note-danger">Phần đơn đã hủy @if (timeOf(part, 'cancelled'); as t) { lúc {{ t | date: 'HH:mm dd/MM' }} } — hàng đã được hoàn kho.
+                    @if (cancelEvent(part); as ev) { @if (ev.by === 'admin') { <br />Đơn được quản trị viên hủy@if (ev.note) {<span>: {{ ev.note }}</span>}. } }
+                  </div>
                 }
                 @for (i of part.items; track i.id) {
                   <div class="order-item">
                     <img [src]="i.image" alt="" appImgFallback />
                     <div class="grow">
                       <div>{{ i.kind === 'box' ? 'Hộp: ' : '' }}{{ i.name }} @if (i.isRescue) { <span class="tag tag-green">Giải cứu</span> }</div>
-                      <div class="small muted">{{ i.unitPrice | money }} × {{ i.qty }} {{ i.unit }}</div>
+                      <div class="small muted">{{ i.unitPrice | money }} × {{ i.qty }} {{ i.unit }}@if (i.categoryName) { · {{ i.categoryName }} }</div>
                     </div>
                     <b>{{ i.lineTotal | money }}</b>
                   </div>
@@ -190,6 +192,10 @@ export class OrderDetailPage {
   }
   timeOf(part: OrderPart, status: string): string | null {
     return part.history.find((h) => h.status === status)?.at ?? null;
+  }
+
+  cancelEvent(part: OrderPart): StatusEvent | null {
+    return part.history.find((h) => h.status === 'cancelled') ?? null;
   }
 
   cancel(): void {

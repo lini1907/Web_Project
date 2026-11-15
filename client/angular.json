@@ -25,7 +25,12 @@
               }
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              {
+                "input": "src/admin-material.css",
+                "bundleName": "admin-material",
+                "inject": false
+              }
             ]
           },
           "configurations": {

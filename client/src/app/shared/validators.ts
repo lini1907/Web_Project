@@ -7,6 +7,14 @@ export function vnPhone(control: AbstractControl): ValidationErrors | null {
   return /^(\+84|0)\d{9,10}$/.test(v) ? null : { vnPhone: true };
 }
 
+/** Custom validator: email HOẶC số điện thoại Việt Nam (ô đăng nhập). Khớp parseLoginIdentifier ở server. */
+export function emailOrVnPhone(control: AbstractControl): ValidationErrors | null {
+  const raw = String(control.value ?? '').trim();
+  if (!raw) return null;
+  if (raw.includes('@')) return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(raw) ? null : { identifier: true };
+  return /^(\+84|0)[0-9]{9,10}$/.test(raw.replace(/[\s.-]/g, '')) ? null : { identifier: true };
+}
+
 /** Custom validator: mật khẩu có cả chữ và số, 8–72 ký tự (khớp quy tắc server). */
 export function strongPassword(control: AbstractControl): ValidationErrors | null {
   const v = String(control.value ?? '');

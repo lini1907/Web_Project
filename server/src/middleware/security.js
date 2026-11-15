@@ -1,6 +1,7 @@
 import crypto from 'node:crypto';
 import { AppError } from '../utils/AppError.js';
 import { env } from '../config/env.js';
+import { parseLoginIdentifier } from '../utils/validate.js';
 
 export const CSRF_COOKIE = 'XSRF-TOKEN';
 export const CSRF_HEADER = 'x-xsrf-token';
@@ -61,16 +62,19 @@ export function rejectMongoOperators(req, res, next) {
 }
 
 /**
- * Giới hạn đăng nhập sai: tối đa 5 lần / 15 phút / (email + IP). Lưu trong bộ nhớ tiến trình
+ * Giới hạn đăng nhập sai: tối đa 5 lần / 15 phút / (email hoặc SĐT + IP). Lưu trong bộ nhớ tiến trình
  * — đủ cho demo một máy chủ; triển khai nhiều instance thì chuyển sang Redis/MongoDB.
  */
 const attempts = new Map();
 const WINDOW_MS = 15 * 60 * 1000;
 const MAX_FAILS = 5;
 
+/** Khóa đếm theo định danh đăng nhập đã chuẩn hóa (email viết thường / SĐT dạng 0...) + IP. */
 function keyOf(req) {
-  const email = typeof req.body?.email === 'string' ? req.body.email.trim().toLowerCase() : '';
-  return `${email}|${req.ip}`;
+  const raw = req.body?.identifier ?? req.body?.email;
+  const id = parseLoginIdentifier(raw);
+  const who = id ? id.email || id.phone : typeof raw === 'string' ? raw.trim().toLowerCase() : '';
+  return `${who}|${req.ip}`;
 }
 
 export const loginLimiter = {

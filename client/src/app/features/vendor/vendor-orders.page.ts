@@ -50,7 +50,7 @@ const ACTION_LABEL: Record<string, string> = {
             <ul class="item-list">
               @for (i of o.items; track i.id) {
                 <li>
-                  {{ i.qty }} × {{ i.kind === 'box' ? 'Hộp: ' : '' }}{{ i.name }} <span class="muted">({{ i.unitPrice | money }}/{{ i.unit }})</span> — <b>{{ i.lineTotal | money }}</b>
+                  {{ i.qty }} × {{ i.kind === 'box' ? 'Hộp: ' : '' }}{{ i.name }} <span class="muted">({{ i.unitPrice | money }}/{{ i.unit }}@if (i.categoryName) {<span> · {{ i.categoryName }}</span>})</span> — <b>{{ i.lineTotal | money }}</b>
                   @if (i.contents?.length) {
                     <div class="small muted">Đóng gói: @for (c of i.contents; track c.productId) { {{ c.qty }} × {{ c.name }}; }</div>
                   }

@@ -16,6 +16,7 @@ import { hashPassword } from '../modules/auth/auth.service.js';
 import { slugify } from '../utils/text.js';
 import { rescuePrice, shippingFeeFor } from '../utils/money.js';
 import { buildSearchText } from '../modules/products/product.service.js';
+import { categorySnapshot } from '../modules/orders/order.service.js';
 import { FARM_META, LEGACY_VENDOR_BY_FARM, EXCLUDED_FARMS, rescueReason } from './farm-meta.js';
 import { EXTRA_PRODUCTS, EXTRA_FARM_META } from './extra-products.js';
 import { exportCatalog } from './export-catalog.js';
@@ -80,7 +81,7 @@ async function seedVendorsAndFarms(passwordHash, farmNames) {
   const legacyVendors = readJson('vendors.json');
   const byFarm = new Map();
   const allFarms = [...new Set([...farmNames, ...legacyVendors.map((v) => v.name)])];
-  for (const farmName of allFarms) {
+  for (const [idx, farmName] of allFarms.entries()) {
     const legacy = legacyVendors.find((v) => v.id === LEGACY_VENDOR_BY_FARM[farmName] || v.name === farmName);
     const meta = FARM_META[farmName] || EXTRA_FARM_META[farmName] || { province: '', certifications: [], story: '' };
     const slug = slugify(farmName);
@@ -89,7 +90,7 @@ async function seedVendorsAndFarms(passwordHash, farmNames) {
     const vendor = await upsert(
       User,
       { email },
-      { name: farmName, phone: legacy?.phone || '0900000000', role: 'vendor', legacyId: legacy?.id || `farm:${slug}` },
+      { name: farmName, phone: legacy?.phone || `0900${String(idx + 1).padStart(6, '0')}`, role: 'vendor', legacyId: legacy?.id || `farm:${slug}` },
       { passwordHash, status: 'active', vendorStatus: pending ? 'pending' : 'approved' },
     );
     const farm = await upsert(
@@ -303,6 +304,7 @@ async function seedOrders(byLegacyProduct, buyers) {
         kind: 'product',
         productId: p._id,
         name: p.name,
+        ...categorySnapshot(p.category),
         unit: p.unit,
         image: p.mainImage,
         unitPrice: it.price,
@@ -365,7 +367,8 @@ export async function runSeed({ reset = false, writeCatalog = !env.isTest } = {}
     await mongoose.connection.collection('sessions').deleteMany({}).catch(() => {});
     console.log('Đã xóa dữ liệu cũ.');
   }
-  for (const M of [User, Farm, Product, MysteryBox, Order, GroupBuy, GroupBuyMembership, Cart, Event, AuditLog, Voucher, Review, Shipment, RecommendHistory, Article]) await M.syncIndexes();
+  // User đồng bộ index sau khi seed tài khoản: DB cũ có thể còn SĐT trùng (bản seed trước dùng chung 0900000000).
+  for (const M of [Farm, Product, MysteryBox, Order, GroupBuy, GroupBuyMembership, Cart, Event, AuditLog, Voucher, Review, Shipment, RecommendHistory, Article]) await M.syncIndexes();
 
   const passwordHash = await hashPassword(env.seedPassword);
   const legacyProducts = readJson('products.json');
@@ -373,6 +376,7 @@ export async function runSeed({ reset = false, writeCatalog = !env.isTest } = {}
 
   const buyers = await seedUsers(passwordHash);
   const byFarm = await seedVendorsAndFarms(passwordHash, farmNames);
+  await User.syncIndexes().catch((e) => console.warn(`Không tạo được index User (SĐT trùng?): ${e.message}. Chạy "npm run seed -- --reset".`));
   const productsByLegacy = await seedProducts(legacyProducts, byFarm);
   await seedExtraProducts(byFarm);
   await seedMysteryBoxes(legacyProducts, byFarm, productsByLegacy);

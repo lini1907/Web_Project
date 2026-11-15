@@ -1,22 +1,24 @@
 import { Router } from 'express';
 import mongoose from 'mongoose';
-import { User, AuditLog, Farm, Product } from '../../models/index.js';
+import { User, AuditLog, Farm, Product, PART_STATUSES } from '../../models/index.js';
 import { requireRole } from '../../middleware/auth.js';
 import { parse, v, pageParams, paged, qstr, assertId } from '../../utils/validate.js';
 import { Errors } from '../../utils/AppError.js';
 import { escapeRegex } from '../../utils/text.js';
+import * as adminOrders from './admin-orders.service.js';
 
 const router = Router();
 router.use('/admin', requireRole('admin'));
 
-async function audit(req, { action, target, before, after, reason }) {
-  await AuditLog.create({
-    actorId: req.user._id,
-    actorEmail: req.user.email,
+/**
+ * Ghi nhật ký quản trị. `target` là user (mặc định) hoặc truyền targetType/targetId/targetLabel cho đối tượng khác (vd đơn hàng).
+ */
+async function audit(req, { action, target, targetType = 'user', targetId, targetLabel, before, after, reason }) {
+  await adminOrders.audit(req.user, {
     action,
-    targetType: 'user',
-    targetId: String(target._id),
-    targetLabel: `${target.name} <${target.email}>`,
+    targetType,
+    targetId: targetId ?? String(target._id),
+    targetLabel: targetLabel ?? `${target.name} <${target.email}>`,
     before,
     after,
     reason,
@@ -107,6 +109,42 @@ router.patch('/admin/users/:id', async (req, res) => {
   }
   await audit(req, { action: `user.${body.status === 'locked' ? 'lock' : 'unlock'}`, target: user, before, after: { status: user.status }, reason: body.reason });
   res.json(user.toPublic());
+});
+
+// ---------------- Quản lý đơn hàng (toàn sàn) ----------------
+router.get('/admin/orders', async (req, res) => {
+  const status = qstr(req.query.status);
+  const dir = qstr(req.query.dir);
+  res.json(
+    await adminOrders.listOrders(
+      {
+        status: adminOrders.ORDER_STATUSES.includes(status) ? status : undefined,
+        q: qstr(req.query.q),
+        sort: qstr(req.query.sort),
+        dir: dir === 'asc' ? 'asc' : 'desc',
+      },
+      pageParams(req.query, { defLimit: 10 }),
+    ),
+  );
+});
+
+router.get('/admin/orders/:id', async (req, res) => {
+  res.json(await adminOrders.getOrder(assertId(req.params.id, 'Không tìm thấy đơn hàng')));
+});
+
+router.put('/admin/orders/:id/status', async (req, res) => {
+  const id = assertId(req.params.id, 'Không tìm thấy đơn hàng');
+  const body = parse(
+    {
+      status: v.enum(PART_STATUSES.filter((s) => s !== 'pending')),
+      reason: v.string({ min: 0, max: 300 }).optional(),
+    },
+    req.body,
+  );
+  if (body.status === 'cancelled' && !body.reason) {
+    throw Errors.validation([{ field: 'reason', message: 'Cần ghi lý do khi hủy đơn' }]);
+  }
+  res.json(await adminOrders.updateStatus(req.user, id, body.status, body.reason || undefined));
 });
 
 router.get('/admin/audit-logs', async (req, res) => {

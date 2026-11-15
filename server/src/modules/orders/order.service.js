@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { Order, Product, MysteryBox, Cart, Counter, User, Event, deriveOrderStatus } from '../../models/index.js';
+import { Order, Product, MysteryBox, Cart, Counter, User, Event, deriveOrderStatus, CATEGORY_LABELS } from '../../models/index.js';
 import { withTransaction } from '../../config/db.js';
 import { AppError, Errors } from '../../utils/AppError.js';
 import { shippingFeeFor } from '../../utils/money.js';
@@ -8,6 +8,12 @@ import { resolveLines, summarize } from '../cart/cart.service.js';
 import * as vouchers from '../vouchers/voucher.service.js';
 import * as shipments from '../shipments/shipment.service.js';
 import { publish } from '../../services/realtime.js';
+
+/** Bản chụp danh mục cho dòng đơn (slug + tên hiển thị). Hộp bí ẩn gồm nhiều danh mục nên có nhãn riêng. */
+export const BOX_CATEGORY = { category: 'mystery-box', categoryName: 'Hộp bí ẩn' };
+export function categorySnapshot(slug) {
+  return slug ? { category: slug, categoryName: CATEGORY_LABELS[slug] || slug } : {};
+}
 
 // Luồng trạng thái phần đơn (vendor). Không cho nhảy lùi.
 export const TRANSITIONS = {
@@ -46,7 +52,7 @@ async function takeStock(productId, qty, session, name) {
 }
 
 /** Hoàn kho theo đúng các lần đã trừ (gọi trong transaction, sau khi đã giành được quyền hủy phần đơn). */
-async function restoreStock(part, session) {
+export async function restoreStock(part, session) {
   for (const item of part.items) {
     for (const move of item.stockMoves) {
       await Product.updateOne({ _id: move.productId }, { $inc: { stock: move.qty, soldCount: -move.qty } }, { session });
@@ -121,6 +127,7 @@ export async function createFromCart(buyer, { shippingAddress, note, expectedTot
             kind: 'product',
             productId: line.productId,
             name: line.name,
+            ...categorySnapshot(line.category),
             unit: line.unit,
             image: line.image,
             unitPrice: line.unitPrice,
@@ -142,6 +149,7 @@ export async function createFromCart(buyer, { shippingAddress, note, expectedTot
             kind: 'box',
             boxId: line.boxId,
             name: line.name,
+            ...BOX_CATEGORY,
             unit: 'hộp',
             image: line.image,
             unitPrice: line.unitPrice,
@@ -235,6 +243,7 @@ export async function createGroupBuyOrder({ campaign, membership, product, vendo
                 kind: 'group-buy',
                 productId: product._id,
                 name: product.name,
+                ...categorySnapshot(product.category),
                 unit: product.unit,
                 image: product.mainImage,
                 unitPrice: campaign.groupPrice,
@@ -262,7 +271,7 @@ export async function createGroupBuyOrder({ campaign, membership, product, vendo
 }
 
 /** Cả đơn đã hủy hết => trả lại lượt dùng voucher (chỉ một lần nhờ $pull/usedBy). */
-async function releaseVoucherIfCancelled(order, session) {
+export async function releaseVoucherIfCancelled(order, session) {
   if (order?.voucher?.code && order.parts.every((p) => p.status === 'cancelled')) {
     await vouchers.release(order.voucher.code, order.buyerId, session);
   }
@@ -270,26 +279,29 @@ async function releaseVoucherIfCancelled(order, session) {
 
 export const isOnline = (o) => !!o.paymentMethod && o.paymentMethod !== 'cod';
 
-function paymentDto(o) {
+export function paymentDto(o) {
   const p = o.payment || {};
   return { status: p.status || 'unpaid', transactionId: p.transactionId || null, paidAt: p.paidAt || null, message: p.message || '' };
 }
 
 /** Phần đơn bị hủy hết và đơn đã thanh toán online => chờ hoàn tiền (xử lý thủ công với cổng). */
-async function markRefundIfNeeded(order, session) {
+export async function markRefundIfNeeded(order, session) {
   if (isOnline(order) && order.payment?.status === 'paid' && order.parts.every((p) => p.status === 'cancelled')) {
     await Order.updateOne({ _id: order._id }, { $set: { 'payment.status': 'refund_pending' } }, { session });
   }
 }
 
 // ---------------- DTO ----------------
-function itemDto(i, { forVendor = false, names } = {}) {
+export function itemDto(i, { forVendor = false, names } = {}) {
   const dto = {
     id: String(i._id),
     kind: i.kind,
     productId: i.productId ? String(i.productId) : null,
     boxId: i.boxId ? String(i.boxId) : null,
     name: i.name,
+    // Đơn cũ (trước khi lưu bản chụp danh mục) trả null; client tự ẩn.
+    category: i.category || null,
+    categoryName: i.categoryName || (i.category ? CATEGORY_LABELS[i.category] || null : null),
     unit: i.unit,
     image: i.image,
     unitPrice: i.unitPrice,
@@ -362,7 +374,7 @@ export function toVendorPart(o, p, names, ships = null) {
   };
 }
 
-async function productNames(parts) {
+export async function productNames(parts) {
   const ids = parts.flatMap((p) => p.items.flatMap((i) => i.stockMoves.map((m) => m.productId)));
   const rows = await Product.find({ _id: { $in: ids } }, { name: 1 }).lean();
   return new Map(rows.map((r) => [String(r._id), r.name]));
@@ -447,7 +459,7 @@ async function loadVendorPart(vendorId, orderId, partId, session) {
   return { o, part };
 }
 
-const STATUS_VI = { confirmed: 'đã được xác nhận', shipping: 'đang được giao', delivered: 'đã giao thành công', cancelled: 'đã bị nhà bán hủy' };
+export const STATUS_VI = { confirmed: 'đã được xác nhận', shipping: 'đang được giao', delivered: 'đã giao thành công', cancelled: 'đã bị nhà bán hủy' };
 
 export async function vendorUpdateStatus(vendorId, orderId, partId, status, shipmentInfo = {}) {
   const result = await withTransaction(async (session) => {

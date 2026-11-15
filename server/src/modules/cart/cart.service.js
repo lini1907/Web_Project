@@ -49,6 +49,7 @@ export async function resolveLines(items, session = null) {
         productId: String(item.productId),
         name: p?.name || 'Sản phẩm không còn tồn tại',
         slug: p?.slug,
+        category: p?.category || null,
         image: p ? productMedia(p).thumbnailImage : '',
         unit: p?.unit || '',
         unitPrice: p?.price || 0,

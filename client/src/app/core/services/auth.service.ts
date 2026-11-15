@@ -47,8 +47,9 @@ export class AuthService {
     }
   }
 
-  async login(email: string, password: string, remember = false): Promise<User> {
-    const res = await firstValueFrom(this.http.post<User>(`${API}/auth/login`, { email, password, remember }, { observe: 'response' }));
+  /** `identifier` = email hoặc số điện thoại. */
+  async login(identifier: string, password: string, remember = false): Promise<User> {
+    const res = await firstValueFrom(this.http.post<User>(`${API}/auth/login`, { identifier: identifier.trim(), password, remember }, { observe: 'response' }));
     return this.signedIn(res.body!, res.headers.get('X-Cart-Merged'));
   }
 

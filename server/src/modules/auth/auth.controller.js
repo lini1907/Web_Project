@@ -1,5 +1,5 @@
 import * as authService from './auth.service.js';
-import { parse, v } from '../../utils/validate.js';
+import { parse, v, parseLoginIdentifier, normalizePhone } from '../../utils/validate.js';
 import { issueCsrfToken, loginLimiter, readCookie } from '../../middleware/security.js';
 import { env } from '../../config/env.js';
 import { Errors } from '../../utils/AppError.js';
@@ -79,14 +79,27 @@ export async function register(req, res) {
 }
 
 export async function login(req, res) {
-  const { email, password, remember } = parse(
-    { email: v.email(), password: v.string({ min: 1, max: 200 }), remember: v.bool().default(false) },
+  // "identifier" = email hoặc số điện thoại; vẫn nhận "email" cho client/test cũ.
+  const { identifier, email, password, remember } = parse(
+    {
+      identifier: v.string({ min: 1, max: 120 }).optional(),
+      email: v.string({ min: 1, max: 120 }).optional(),
+      password: v.string({ min: 1, max: 200 }),
+      remember: v.bool().default(false),
+    },
     req.body,
   );
+  const field = identifier !== undefined ? 'identifier' : 'email';
+  const raw = identifier ?? email;
+  if (raw === undefined) throw Errors.validation([{ field: 'identifier', message: 'Nhập email hoặc số điện thoại' }]);
+  const id = parseLoginIdentifier(raw);
+  if (!id || (field === 'email' && !id.email)) {
+    throw Errors.validation([{ field, message: field === 'email' ? 'Email không hợp lệ' : 'Nhập email hoặc số điện thoại hợp lệ' }]);
+  }
   loginLimiter.check(req);
   let user;
   try {
-    user = await authService.verifyCredentials(email, password);
+    user = await authService.verifyCredentials(id, password);
   } catch (err) {
     if (err.code === 'INVALID_CREDENTIALS') loginLimiter.fail(req);
     throw err;
@@ -134,6 +147,10 @@ export async function updateMe(req, res) {
     },
     req.body,
   );
+  if (body.phone) {
+    body.phone = normalizePhone(body.phone);
+    await authService.assertPhoneFree(body.phone, req.user._id);
+  }
   Object.assign(req.user, body);
   await req.user.save();
   res.json(req.user.toPublic());

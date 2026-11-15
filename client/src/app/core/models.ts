@@ -189,6 +189,9 @@ export interface OrderItem {
   productId: string | null;
   boxId: string | null;
   name: string;
+  /** Bản chụp danh mục lúc đặt; đơn cũ không có => null. */
+  category?: string | null;
+  categoryName?: string | null;
   unit: string;
   image: string;
   unitPrice: number;
@@ -202,6 +205,7 @@ export interface StatusEvent {
   status: PartStatus;
   at: string;
   by: 'buyer' | 'vendor' | 'system' | 'admin';
+  note?: string;
 }
 
 export interface OrderPart {
@@ -373,6 +377,54 @@ export interface AdminVendor {
   farms: { id: string; name: string; province: string }[];
   productCount: number;
   activeProductCount: number;
+}
+
+/** Một dòng trong bảng quản lý đơn hàng của admin. */
+export interface AdminOrderRow {
+  id: string;
+  code: string;
+  source: 'checkout' | 'group-buy';
+  createdAt: string;
+  buyer: { id: string; name: string; email: string; phone: string };
+  vendors: string[];
+  itemCount: number;
+  total: number;
+  paymentMethod: PaymentMethod;
+  paymentStatus: PaymentStatus;
+  status: OrderStatus;
+}
+
+export type AdminOrderCounts = Record<OrderStatus | 'all', number>;
+export interface AdminOrderPage extends Paged<AdminOrderRow> {
+  counts: AdminOrderCounts;
+}
+
+export interface AdminOrderPart {
+  id: string;
+  vendorId: string;
+  vendorName: string;
+  status: PartStatus;
+  items: OrderItem[];
+  subtotal: number;
+  cod: { status: 'unpaid' | 'collected'; collectedAt: string | null };
+  history: StatusEvent[];
+  shipment: Shipment | null;
+}
+
+export interface AdminOrderDetail extends AdminOrderRow {
+  parts: AdminOrderPart[];
+  subtotal: number;
+  shippingFee: number;
+  discount: number;
+  voucher: { code: string; type: VoucherType } | null;
+  payment: { status: PaymentStatus; transactionId: string | null; paidAt: string | null; message: string };
+  deliverySlot: DeliverySlot | null;
+  shippingAddress: Address;
+  note: string;
+  /** Trạng thái chung của các phần đơn chưa hủy (null nếu lệch nhau). */
+  uniformStatus: PartStatus | null;
+  nextStatuses: PartStatus[];
+  lockedReason: string | null;
 }
 
 export interface AuditLog {

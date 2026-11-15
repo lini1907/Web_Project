@@ -135,6 +135,27 @@ function runShape(shape, input, prefix = '') {
   return out;
 }
 
+export const PHONE_RE = /^(\+84|0)[0-9]{9,10}$/;
+export const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+/** Chuẩn hóa số điện thoại VN để lưu/tra cứu: bỏ khoảng trắng, dấu chấm, gạch; "+84" => "0". */
+export function normalizePhone(value) {
+  const s = String(value ?? '').replace(/[\s.-]/g, '');
+  return s.startsWith('+84') ? `0${s.slice(3)}` : s;
+}
+
+/** Đăng nhập bằng email HOẶC số điện thoại: trả { email } | { phone } | null nếu sai định dạng. */
+export function parseLoginIdentifier(raw) {
+  if (typeof raw !== 'string') return null;
+  const s = raw.trim();
+  if (s.includes('@')) {
+    const email = s.toLowerCase();
+    return EMAIL_RE.test(email) && email.length <= 120 ? { email } : null;
+  }
+  const compact = s.replace(/[\s.-]/g, '');
+  return PHONE_RE.test(compact) ? { phone: normalizePhone(compact) } : null;
+}
+
 /** Kiểm tra input theo shape; trả object đã chuẩn hóa hoặc ném 400 VALIDATION_ERROR. */
 export function parse(shape, input) {
   return runShape(shape, input && typeof input === 'object' ? input : {});
