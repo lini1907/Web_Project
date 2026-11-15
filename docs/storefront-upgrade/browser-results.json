@@ -1,0 +1,203 @@
+{
+  "base": "http://127.0.0.1:3000",
+  "environment": "Edge headless, emulated viewports. Lab observations, not field Core Web Vitals or human usability results.",
+  "views": [
+    {
+      "route": "/",
+      "width": 375,
+      "overflow": false,
+      "font": "\"Nunito Sans\", system-ui, -apple-system, \"Segoe UI\", sans-serif",
+      "brokenImages": 0,
+      "violations": []
+    },
+    {
+      "route": "/",
+      "width": 1440,
+      "overflow": false,
+      "font": "\"Nunito Sans\", system-ui, -apple-system, \"Segoe UI\", sans-serif",
+      "brokenImages": 0
+    },
+    {
+      "route": "/shop",
+      "width": 375,
+      "overflow": false,
+      "font": "\"Nunito Sans\", system-ui, -apple-system, \"Segoe UI\", sans-serif",
+      "brokenImages": 0,
+      "violations": []
+    },
+    {
+      "route": "/shop",
+      "width": 1440,
+      "overflow": false,
+      "font": "\"Nunito Sans\", system-ui, -apple-system, \"Segoe UI\", sans-serif",
+      "brokenImages": 0
+    },
+    {
+      "route": "/products/bo-lat",
+      "width": 375,
+      "overflow": false,
+      "font": "\"Nunito Sans\", system-ui, -apple-system, \"Segoe UI\", sans-serif",
+      "brokenImages": 0,
+      "violations": []
+    },
+    {
+      "route": "/products/bo-lat",
+      "width": 1440,
+      "overflow": false,
+      "font": "\"Nunito Sans\", system-ui, -apple-system, \"Segoe UI\", sans-serif",
+      "brokenImages": 0
+    },
+    {
+      "route": "/farms/cac-nong-trai-lien-ket",
+      "width": 375,
+      "overflow": false,
+      "font": "\"Nunito Sans\", system-ui, -apple-system, \"Segoe UI\", sans-serif",
+      "brokenImages": 0,
+      "violations": []
+    },
+    {
+      "route": "/farms/cac-nong-trai-lien-ket",
+      "width": 1440,
+      "overflow": false,
+      "font": "\"Nunito Sans\", system-ui, -apple-system, \"Segoe UI\", sans-serif",
+      "brokenImages": 0
+    },
+    {
+      "route": "/mystery-box",
+      "width": 375,
+      "overflow": false,
+      "font": "\"Nunito Sans\", system-ui, -apple-system, \"Segoe UI\", sans-serif",
+      "brokenImages": 0,
+      "violations": []
+    },
+    {
+      "route": "/mystery-box",
+      "width": 1440,
+      "overflow": false,
+      "font": "\"Nunito Sans\", system-ui, -apple-system, \"Segoe UI\", sans-serif",
+      "brokenImages": 0
+    },
+    {
+      "route": "/products/bo-lat",
+      "width": 320,
+      "overflow": false,
+      "font": "\"Nunito Sans\", system-ui, -apple-system, \"Segoe UI\", sans-serif",
+      "brokenImages": 0
+    },
+    {
+      "route": "/products/bo-lat",
+      "width": 768,
+      "overflow": false,
+      "font": "\"Nunito Sans\", system-ui, -apple-system, \"Segoe UI\", sans-serif",
+      "brokenImages": 0
+    },
+    {
+      "route": "/products/bo-lat",
+      "width": 900,
+      "overflow": false,
+      "font": "\"Nunito Sans\", system-ui, -apple-system, \"Segoe UI\", sans-serif",
+      "brokenImages": 0
+    },
+    {
+      "route": "/products/bo-lat",
+      "width": 375,
+      "overflow": false,
+      "font": "\"Nunito Sans\", system-ui, -apple-system, \"Segoe UI\", sans-serif",
+      "brokenImages": 0
+    },
+    {
+      "route": "/shop",
+      "width": 375,
+      "overflow": false,
+      "font": "\"Nunito Sans\", system-ui, -apple-system, \"Segoe UI\", sans-serif",
+      "brokenImages": 0
+    },
+    {
+      "route": "/",
+      "width": 375,
+      "overflow": false,
+      "font": "\"Nunito Sans\", system-ui, -apple-system, \"Segoe UI\", sans-serif",
+      "brokenImages": 0
+    },
+    {
+      "route": "/shop",
+      "width": 375,
+      "overflow": false,
+      "font": "\"Nunito Sans\", system-ui, -apple-system, \"Segoe UI\", sans-serif",
+      "brokenImages": 0
+    },
+    {
+      "route": "/products/bo-lat",
+      "width": 375,
+      "overflow": false,
+      "font": "\"Nunito Sans\", system-ui, -apple-system, \"Segoe UI\", sans-serif",
+      "brokenImages": 0
+    },
+    {
+      "route": "/login",
+      "width": 375,
+      "overflow": false,
+      "font": "\"Nunito Sans\", system-ui, -apple-system, \"Segoe UI\", sans-serif",
+      "brokenImages": 0
+    },
+    {
+      "route": "/checkout",
+      "width": 375,
+      "overflow": false,
+      "font": "\"Nunito Sans\", system-ui, -apple-system, \"Segoe UI\", sans-serif",
+      "brokenImages": 0
+    },
+    {
+      "route": "/",
+      "width": 375,
+      "overflow": false,
+      "font": "\"Nunito Sans\", system-ui, -apple-system, \"Segoe UI\", sans-serif",
+      "brokenImages": 0
+    }
+  ],
+  "tests": [
+    {
+      "name": "Responsive storefront, source transparency and local fonts",
+      "passed": true
+    },
+    {
+      "name": "Quantity updates product total and demo claims are explicit",
+      "passed": true
+    },
+    {
+      "name": "Invalid price ranges stay inline without requesting products",
+      "passed": true
+    },
+    {
+      "name": "One failed home section preserves the other products",
+      "passed": true
+    },
+    {
+      "name": "Unavailable farm filter preserves shop and retries cleanly",
+      "passed": true
+    },
+    {
+      "name": "Sold-out and newly expired rescue products cannot be purchased",
+      "passed": true
+    },
+    {
+      "name": "Checkout preserves form, updates price and retries safely without placing a real order",
+      "passed": true
+    },
+    {
+      "name": "Production cold-load lab metrics",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "externalAssets": [],
+  "performance": [
+    {
+      "viewport": 375,
+      "lcp": 384,
+      "cls": 0.07646071984756257,
+      "resourceTransferBytes": 963914,
+      "navigationMs": 103.69999998807907
+    }
+  ]
+}

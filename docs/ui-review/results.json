@@ -1,0 +1,677 @@
+{
+  "date": "2026-11-09",
+  "branch": "feat/v2-fullstack",
+  "baselineCommit": "1046aca",
+  "environment": "Microsoft Edge headless; emulated viewports, not physical devices",
+  "build": {
+    "status": "passed",
+    "command": "npm run build",
+    "initialRawBytes": 395180,
+    "estimatedTransferBytes": 103660,
+    "note": "Final build passed with NG_BUILD_MAX_WORKERS=2 and GOMAXPROCS=2 after an earlier host-memory failure."
+  },
+  "summary": {
+    "routes": 26,
+    "routeViewportPairs": 54,
+    "horizontalOverflows": 0,
+    "javascriptErrors": 0,
+    "brokenCompletedImages": 0,
+    "remainingAutomatedA11yViolations": 0
+  },
+  "interactions": [
+    "Mobile menu opens, closes with Escape, returns focus",
+    "Category filtering updates URL and selected button",
+    "Login validation links errors and focuses invalid email",
+    "Register empty submit shows field errors",
+    "Password mismatch focuses confirmation field; no account created",
+    "Guest adds product and cart renders at 375px",
+    "Account menu Escape restores focus on mobile",
+    "Checkout network failure shows retry and recovers"
+  ],
+  "resolvedFollowup": [
+    {
+      "route": "/admin",
+      "width": 375,
+      "rule": "scrollable-region-focusable",
+      "fix": "Focusable labelled region around vendor KPI table",
+      "verifiedBy": "final-delta.json"
+    }
+  ],
+  "limitations": [
+    "External image requests on one product-detail capture were still pending after the 12-second wait; they are not counted as completed broken images.",
+    "Automated WCAG checks do not certify full accessibility.",
+    "No orders or new accounts submitted; vendor/admin mutations not exercised.",
+    "Some existing demo product photographs remain factually mismatched and need editorial replacement."
+  ],
+  "checks": [
+    {
+      "route": "/",
+      "width": 1440,
+      "overflow": false,
+      "height": 3934,
+      "failedImages": 0,
+      "pendingImages": 0,
+      "missingIcons": 0
+    },
+    {
+      "route": "/",
+      "width": 375,
+      "overflow": false,
+      "height": 7185,
+      "failedImages": 0,
+      "pendingImages": 0,
+      "missingIcons": 0
+    },
+    {
+      "route": "/",
+      "width": 768,
+      "overflow": false,
+      "height": 6037,
+      "failedImages": 0,
+      "pendingImages": 0,
+      "missingIcons": 0
+    },
+    {
+      "route": "/",
+      "width": 900,
+      "overflow": false,
+      "height": 6285,
+      "failedImages": 0,
+      "pendingImages": 0,
+      "missingIcons": 0
+    },
+    {
+      "route": "/shop",
+      "width": 1440,
+      "overflow": false,
+      "height": 2093,
+      "failedImages": 0,
+      "pendingImages": 0,
+      "missingIcons": 0
+    },
+    {
+      "route": "/shop",
+      "width": 375,
+      "overflow": false,
+      "height": 3369,
+      "failedImages": 0,
+      "pendingImages": 0,
+      "missingIcons": 0
+    },
+    {
+      "route": "/rescue",
+      "width": 1440,
+      "overflow": false,
+      "height": 1906,
+      "failedImages": 0,
+      "pendingImages": 0,
+      "missingIcons": 0
+    },
+    {
+      "route": "/rescue",
+      "width": 375,
+      "overflow": false,
+      "height": 3734,
+      "failedImages": 0,
+      "pendingImages": 0,
+      "missingIcons": 0
+    },
+    {
+      "route": "/mystery-box",
+      "width": 1440,
+      "overflow": false,
+      "height": 1911,
+      "failedImages": 0,
+      "pendingImages": 0,
+      "missingIcons": 0
+    },
+    {
+      "route": "/mystery-box",
+      "width": 375,
+      "overflow": false,
+      "height": 2951,
+      "failedImages": 0,
+      "pendingImages": 0,
+      "missingIcons": 0
+    },
+    {
+      "route": "/group-buy",
+      "width": 1440,
+      "overflow": false,
+      "height": 1387,
+      "failedImages": 0,
+      "pendingImages": 0,
+      "missingIcons": 0
+    },
+    {
+      "route": "/group-buy",
+      "width": 375,
+      "overflow": false,
+      "height": 2502,
+      "failedImages": 0,
+      "pendingImages": 0,
+      "missingIcons": 0
+    },
+    {
+      "route": "/farms",
+      "width": 1440,
+      "overflow": false,
+      "height": 2202,
+      "failedImages": 0,
+      "pendingImages": 0,
+      "missingIcons": 0
+    },
+    {
+      "route": "/farms",
+      "width": 375,
+      "overflow": false,
+      "height": 5150,
+      "failedImages": 0,
+      "pendingImages": 0,
+      "missingIcons": 0
+    },
+    {
+      "route": "/products/ca-rot-gay-nho-giai-cuu",
+      "width": 1440,
+      "overflow": false,
+      "height": 1671,
+      "failedImages": 0,
+      "pendingImages": 0,
+      "missingIcons": 0
+    },
+    {
+      "route": "/products/ca-rot-gay-nho-giai-cuu",
+      "width": 375,
+      "overflow": false,
+      "height": 3771,
+      "failedImages": 0,
+      "pendingImages": 8,
+      "missingIcons": 0
+    },
+    {
+      "route": "/farms/cac-nong-trai-lien-ket",
+      "width": 1440,
+      "overflow": false,
+      "height": 1468,
+      "failedImages": 0,
+      "pendingImages": 0,
+      "missingIcons": 0
+    },
+    {
+      "route": "/farms/cac-nong-trai-lien-ket",
+      "width": 375,
+      "overflow": false,
+      "height": 1861,
+      "failedImages": 0,
+      "pendingImages": 0,
+      "missingIcons": 0
+    },
+    {
+      "route": "/group-buy/6af09484757c54940bdaf2d3",
+      "width": 1440,
+      "overflow": false,
+      "height": 1304,
+      "failedImages": 0,
+      "pendingImages": 0,
+      "missingIcons": 0
+    },
+    {
+      "route": "/group-buy/6af09484757c54940bdaf2d3",
+      "width": 375,
+      "overflow": false,
+      "height": 1901,
+      "failedImages": 0,
+      "pendingImages": 0,
+      "missingIcons": 0
+    },
+    {
+      "route": "/cart",
+      "width": 1440,
+      "overflow": false,
+      "height": 1143,
+      "failedImages": 0,
+      "pendingImages": 0,
+      "missingIcons": 0
+    },
+    {
+      "route": "/cart",
+      "width": 375,
+      "overflow": false,
+      "height": 2031,
+      "failedImages": 0,
+      "pendingImages": 0,
+      "missingIcons": 0
+    },
+    {
+      "route": "/login",
+      "width": 1440,
+      "overflow": false,
+      "height": 1407,
+      "failedImages": 0,
+      "pendingImages": 0,
+      "missingIcons": 0
+    },
+    {
+      "route": "/login",
+      "width": 375,
+      "overflow": false,
+      "height": 1702,
+      "failedImages": 0,
+      "pendingImages": 0,
+      "missingIcons": 0
+    },
+    {
+      "route": "/register",
+      "width": 1440,
+      "overflow": false,
+      "height": 1268,
+      "failedImages": 0,
+      "pendingImages": 0,
+      "missingIcons": 0
+    },
+    {
+      "route": "/register",
+      "width": 375,
+      "overflow": false,
+      "height": 1745,
+      "failedImages": 0,
+      "pendingImages": 0,
+      "missingIcons": 0
+    },
+    {
+      "route": "/not-a-page",
+      "width": 1440,
+      "overflow": false,
+      "height": 1143,
+      "failedImages": 0,
+      "pendingImages": 0,
+      "missingIcons": 0
+    },
+    {
+      "route": "/not-a-page",
+      "width": 375,
+      "overflow": false,
+      "height": 1421,
+      "failedImages": 0,
+      "pendingImages": 0,
+      "missingIcons": 0
+    },
+    {
+      "route": "/account",
+      "width": 1440,
+      "overflow": false,
+      "height": 1245,
+      "failedImages": 0,
+      "pendingImages": 0,
+      "missingIcons": 0
+    },
+    {
+      "route": "/account",
+      "width": 375,
+      "overflow": false,
+      "height": 1767,
+      "failedImages": 0,
+      "pendingImages": 0,
+      "missingIcons": 0
+    },
+    {
+      "route": "/orders",
+      "width": 1440,
+      "overflow": false,
+      "height": 1143,
+      "failedImages": 0,
+      "pendingImages": 0,
+      "missingIcons": 0
+    },
+    {
+      "route": "/orders",
+      "width": 375,
+      "overflow": false,
+      "height": 1421,
+      "failedImages": 0,
+      "pendingImages": 0,
+      "missingIcons": 0
+    },
+    {
+      "route": "/vendor",
+      "width": 1440,
+      "overflow": false,
+      "height": 1532,
+      "failedImages": 0,
+      "pendingImages": 0,
+      "missingIcons": 0
+    },
+    {
+      "route": "/vendor",
+      "width": 375,
+      "overflow": false,
+      "height": 2670,
+      "failedImages": 0,
+      "pendingImages": 0,
+      "missingIcons": 0
+    },
+    {
+      "route": "/vendor/products",
+      "width": 1440,
+      "overflow": false,
+      "height": 1216,
+      "failedImages": 0,
+      "pendingImages": 0,
+      "missingIcons": 0
+    },
+    {
+      "route": "/vendor/products",
+      "width": 375,
+      "overflow": false,
+      "height": 1916,
+      "failedImages": 0,
+      "pendingImages": 0,
+      "missingIcons": 0
+    },
+    {
+      "route": "/vendor/products/new",
+      "width": 1440,
+      "overflow": false,
+      "height": 1850,
+      "failedImages": 0,
+      "pendingImages": 0,
+      "missingIcons": 0
+    },
+    {
+      "route": "/vendor/products/new",
+      "width": 375,
+      "overflow": false,
+      "height": 2663,
+      "failedImages": 0,
+      "pendingImages": 0,
+      "missingIcons": 0
+    },
+    {
+      "route": "/vendor/orders",
+      "width": 1440,
+      "overflow": false,
+      "height": 1143,
+      "failedImages": 0,
+      "pendingImages": 0,
+      "missingIcons": 0
+    },
+    {
+      "route": "/vendor/orders",
+      "width": 375,
+      "overflow": false,
+      "height": 1421,
+      "failedImages": 0,
+      "pendingImages": 0,
+      "missingIcons": 0
+    },
+    {
+      "route": "/vendor/farm",
+      "width": 1440,
+      "overflow": false,
+      "height": 1143,
+      "failedImages": 0,
+      "pendingImages": 0,
+      "missingIcons": 0
+    },
+    {
+      "route": "/vendor/farm",
+      "width": 375,
+      "overflow": false,
+      "height": 1421,
+      "failedImages": 0,
+      "pendingImages": 0,
+      "missingIcons": 0
+    },
+    {
+      "route": "/vendor/mystery-boxes",
+      "width": 1440,
+      "overflow": false,
+      "height": 1148,
+      "failedImages": 0,
+      "pendingImages": 0,
+      "missingIcons": 0
+    },
+    {
+      "route": "/vendor/mystery-boxes",
+      "width": 375,
+      "overflow": false,
+      "height": 1670,
+      "failedImages": 0,
+      "pendingImages": 0,
+      "missingIcons": 0
+    },
+    {
+      "route": "/vendor/group-buys",
+      "width": 1440,
+      "overflow": false,
+      "height": 1143,
+      "failedImages": 0,
+      "pendingImages": 0,
+      "missingIcons": 0
+    },
+    {
+      "route": "/vendor/group-buys",
+      "width": 375,
+      "overflow": false,
+      "height": 1421,
+      "failedImages": 0,
+      "pendingImages": 0,
+      "missingIcons": 0
+    },
+    {
+      "route": "/admin",
+      "width": 1440,
+      "overflow": false,
+      "height": 1924,
+      "failedImages": 0,
+      "pendingImages": 0,
+      "missingIcons": 0
+    },
+    {
+      "route": "/admin",
+      "width": 375,
+      "overflow": false,
+      "height": 2614,
+      "failedImages": 0,
+      "pendingImages": 0,
+      "missingIcons": 0
+    },
+    {
+      "route": "/admin/vendors",
+      "width": 1440,
+      "overflow": false,
+      "height": 3087,
+      "failedImages": 0,
+      "pendingImages": 0,
+      "missingIcons": 0
+    },
+    {
+      "route": "/admin/vendors",
+      "width": 375,
+      "overflow": false,
+      "height": 5483,
+      "failedImages": 0,
+      "pendingImages": 0,
+      "missingIcons": 0
+    },
+    {
+      "route": "/admin/users",
+      "width": 1440,
+      "overflow": false,
+      "height": 2463,
+      "failedImages": 0,
+      "pendingImages": 0,
+      "missingIcons": 0
+    },
+    {
+      "route": "/admin/users",
+      "width": 375,
+      "overflow": false,
+      "height": 3783,
+      "failedImages": 0,
+      "pendingImages": 0,
+      "missingIcons": 0
+    },
+    {
+      "route": "/admin/audit-logs",
+      "width": 1440,
+      "overflow": false,
+      "height": 1143,
+      "failedImages": 0,
+      "pendingImages": 0,
+      "missingIcons": 0
+    },
+    {
+      "route": "/admin/audit-logs",
+      "width": 375,
+      "overflow": false,
+      "height": 1421,
+      "failedImages": 0,
+      "pendingImages": 0,
+      "missingIcons": 0
+    }
+  ],
+  "a11y": [
+    {
+      "route": "/",
+      "width": 1440,
+      "violations": []
+    },
+    {
+      "route": "/",
+      "width": 375,
+      "violations": []
+    },
+    {
+      "route": "/shop",
+      "width": 375,
+      "violations": []
+    },
+    {
+      "route": "/rescue",
+      "width": 375,
+      "violations": []
+    },
+    {
+      "route": "/mystery-box",
+      "width": 375,
+      "violations": []
+    },
+    {
+      "route": "/group-buy",
+      "width": 375,
+      "violations": []
+    },
+    {
+      "route": "/farms",
+      "width": 375,
+      "violations": []
+    },
+    {
+      "route": "/products/ca-rot-gay-nho-giai-cuu",
+      "width": 375,
+      "violations": []
+    },
+    {
+      "route": "/farms/cac-nong-trai-lien-ket",
+      "width": 375,
+      "violations": []
+    },
+    {
+      "route": "/group-buy/6af09484757c54940bdaf2d3",
+      "width": 375,
+      "violations": []
+    },
+    {
+      "route": "/cart",
+      "width": 375,
+      "violations": []
+    },
+    {
+      "route": "/login",
+      "width": 375,
+      "violations": []
+    },
+    {
+      "route": "/register",
+      "width": 375,
+      "violations": []
+    },
+    {
+      "route": "/not-a-page",
+      "width": 375,
+      "violations": []
+    },
+    {
+      "route": "/account",
+      "width": 375,
+      "violations": []
+    },
+    {
+      "route": "/orders",
+      "width": 375,
+      "violations": []
+    },
+    {
+      "route": "/vendor",
+      "width": 375,
+      "violations": []
+    },
+    {
+      "route": "/vendor/products",
+      "width": 375,
+      "violations": []
+    },
+    {
+      "route": "/vendor/products/new",
+      "width": 375,
+      "violations": []
+    },
+    {
+      "route": "/vendor/orders",
+      "width": 375,
+      "violations": []
+    },
+    {
+      "route": "/vendor/farm",
+      "width": 375,
+      "violations": []
+    },
+    {
+      "route": "/vendor/mystery-boxes",
+      "width": 375,
+      "violations": []
+    },
+    {
+      "route": "/vendor/group-buys",
+      "width": 375,
+      "violations": []
+    },
+    {
+      "route": "/admin",
+      "width": 375,
+      "violations": []
+    },
+    {
+      "route": "/admin/vendors",
+      "width": 375,
+      "violations": []
+    },
+    {
+      "route": "/admin/users",
+      "width": 375,
+      "violations": []
+    },
+    {
+      "route": "/admin/audit-logs",
+      "width": 375,
+      "violations": []
+    },
+    {
+      "route": "/mystery-box",
+      "width": 1440,
+      "violations": []
+    }
+  ],
+  "javascriptErrors": []
+}

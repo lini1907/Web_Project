@@ -1,0 +1,53 @@
+{
+  "modelVersion": "tfidf-0c7b522c",
+  "catalogSize": 89,
+  "queries": 26,
+  "missingQueries": [],
+  "k": 5,
+  "summary": [
+    {
+      "method": "baseline_category_popular",
+      "queries": 26,
+      "precision@5": 0.2462,
+      "recall@5": 0.5038,
+      "hitRate@5": 0.8077,
+      "ndcg@5": 0.3957,
+      "coverage": 0.2697,
+      "latencyMs_p50": 0.028,
+      "latencyMs_p95": 0.041
+    },
+    {
+      "method": "tfidf_name_desc",
+      "queries": 26,
+      "precision@5": 0.2077,
+      "recall@5": 0.5013,
+      "hitRate@5": 0.7308,
+      "ndcg@5": 0.4848,
+      "coverage": 0.9888,
+      "latencyMs_p50": 0.241,
+      "latencyMs_p95": 0.621
+    },
+    {
+      "method": "tfidf_unigram_full",
+      "queries": 26,
+      "precision@5": 0.2308,
+      "recall@5": 0.5346,
+      "hitRate@5": 0.7308,
+      "ndcg@5": 0.5089,
+      "coverage": 1.0,
+      "latencyMs_p50": 0.225,
+      "latencyMs_p95": 0.333
+    },
+    {
+      "method": "tfidf_full (model)",
+      "queries": 26,
+      "precision@5": 0.2615,
+      "recall@5": 0.5859,
+      "hitRate@5": 0.7692,
+      "ndcg@5": 0.5176,
+      "coverage": 1.0,
+      "latencyMs_p50": 0.222,
+      "latencyMs_p95": 0.269
+    }
+  ]
+}
