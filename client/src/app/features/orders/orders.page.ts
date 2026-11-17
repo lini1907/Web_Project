@@ -38,7 +38,7 @@ import { PaginationComponent, StateComponent, StatusBadgeComponent } from '../..
                 }
               </div>
               <div class="row-between">
-                <span class="muted small">{{ o.parts.length }} nhà bán · COD</span>
+                <span class="muted small">{{ o.parts.length }} nhà bán · {{ o.paymentMethod === 'vnpay' ? 'VNPay' : o.paymentMethod === 'momo' ? 'MoMo' : 'COD' }}</span>
                 <b>{{ o.total | money }}</b>
               </div>
             </a>
