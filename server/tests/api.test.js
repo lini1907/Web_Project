@@ -446,6 +446,34 @@ describe('AC06 · Mystery Box', () => {
     assert.equal((await b2.post('/cart/items', { boxId: String(box._id), qty: 1 })).status, 409);
     await Product.updateOne({ _id: ing._id }, { $set: { stock: saved } });
   });
+
+  test('nhiều người mua hộp cuối cùng lúc: chỉ 1 thành công, nguyên liệu không âm, đơn lỗi không trừ kho', async () => {
+    const box = await MysteryBox.findOne({ legacyId: 'box-rau-dalat' }).lean();
+    const ids = box.components.map((c) => c.productId);
+    const saved = await Product.find({ _id: { $in: ids } }).lean();
+    // Nguyên liệu đầu tiên chỉ đủ đúng 1 hộp; các nguyên liệu khác còn dư nhiều.
+    const [scarce, ...rest] = box.components;
+    await Product.updateOne({ _id: scarce.productId }, { $set: { stock: scarce.qty, reservedStock: 0 } });
+    for (const c of rest) await Product.updateOne({ _id: c.productId }, { $set: { stock: c.qty * 10, reservedStock: 0 } });
+    const soldBefore = box.soldCount || 0;
+
+    const buyers = await Promise.all([1, 2, 3, 4, 5].map(() => freshBuyer()));
+    for (const b of buyers) assert.equal((await b.post('/cart/items', { boxId: String(box._id), qty: 1 })).status, 201);
+    const res = await Promise.all(buyers.map((b) => b.post('/orders', { shippingAddress: addr }, { 'Idempotency-Key': uuid() })));
+    const codes = res.map((r) => r.status).sort();
+    assert.deepEqual(codes, [201, 409, 409, 409, 409]);
+    for (const r of res.filter((x) => x.status === 409)) assert.equal(r.body.error.code, 'OUT_OF_STOCK');
+
+    // Chỉ đúng 1 hộp bị trừ: nguyên liệu hiếm về 0, nguyên liệu khác giảm đúng 1 lần định lượng.
+    assert.equal((await Product.findById(scarce.productId)).stock, 0);
+    for (const c of rest) assert.equal((await Product.findById(c.productId)).stock, c.qty * 9);
+    assert.equal((await MysteryBox.findById(box._id)).soldCount, soldBefore + 1);
+    const buyerIds = await Promise.all(buyers.map(async (b) => (await b.get('/auth/me')).body.id));
+    assert.equal(await Order.countDocuments({ buyerId: { $in: buyerIds } }), 1);
+
+    for (const p of saved) await Product.updateOne({ _id: p._id }, { $set: { stock: p.stock, reservedStock: p.reservedStock } });
+    await MysteryBox.updateOne({ _id: box._id }, { $set: { soldCount: soldBefore } });
+  });
 });
 
 describe('AC07 · Group Buy', () => {
