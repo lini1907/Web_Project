@@ -387,7 +387,7 @@ export async function listForBuyer(buyerId, page, status) {
     Order.find(filter).sort({ createdAt: -1 }).lean(),
     Order.countDocuments(filter),
   ]);
-  let list = rows.map(toBuyerOrder);
+  let list = rows.map((o) => toBuyerOrder(o));
   if (status) list = list.filter((o) => o.status === status);
   const count = status ? list.length : total;
   return paged(list.slice(page.skip, page.skip + page.limit), count, page);

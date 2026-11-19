@@ -51,6 +51,9 @@ export async function applyResult({ txnRef, amount, success, transactionId, mess
     : { 'payment.status': 'failed', 'payment.transactionId': transactionId || null, 'payment.message': message || 'Thanh toán không thành công' };
   const r = await Order.updateOne({ _id: order._id, 'payment.txnRef': txnRef, 'payment.status': { $ne: 'paid' } }, { $set: set });
   if (r.modifiedCount === 1) {
+    // Đồng bộ bản trong bộ nhớ để nơi gọi (Return URL) đọc đúng trạng thái vừa ghi.
+    order.payment.status = set['payment.status'];
+    order.payment.message = set['payment.message'];
     const text = success ? `Đơn ${order.code} đã thanh toán thành công` : `Thanh toán đơn ${order.code} không thành công`;
     publish(order.buyerId, 'payment.updated', { orderId: String(order._id), code: order.code, status: success ? 'paid' : 'failed', message: text });
     if (success) {
@@ -167,7 +170,7 @@ export async function createMomoUrl(buyerId, orderId) {
     orderInfo: `Thanh toan don hang ${order.code}`,
     redirectUrl: cfg.redirectUrl,
     ipnUrl: cfg.ipnUrl,
-    requestType: 'captureWallet',
+    requestType: cfg.requestType,
     extraData: '',
     lang: 'vi',
   };

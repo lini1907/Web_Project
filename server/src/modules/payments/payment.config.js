@@ -28,6 +28,8 @@ export function momoConfig() {
     accessKey: trim(process.env.MOMO_ACCESS_KEY),
     secretKey: trim(process.env.MOMO_SECRET_KEY),
     endpoint: trim(process.env.MOMO_ENDPOINT) || 'https://test-payment.momo.vn/v2/gateway/api/create',
+    // captureWallet = quét QR bằng app MoMo; payWithATM = nhập thẻ ATM nội địa (NAPAS) ngay trên web.
+    requestType: trim(process.env.MOMO_REQUEST_TYPE) === 'payWithATM' ? 'payWithATM' : 'captureWallet',
     redirectUrl: `${publicUrl()}/api/v1/payments/momo/return`,
     ipnUrl: `${publicUrl()}/api/v1/payments/momo/ipn`,
   };
